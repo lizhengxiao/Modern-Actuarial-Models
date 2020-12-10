@@ -1,7 +1,13 @@
+fig:pairs1
+fig:pairs2
 fig:pairs
 fig:2pcas
+fig:2pcas-2
 fig:bnn-structure
 fig:bnn-train
+fig:gda
+fig:bnns
+fig:BPcamparison
 fig:cluster-results
 fig:som-ill
 pre
@@ -92,6 +98,7 @@ unsupervised-learning
 k-means-clustering
 k-medoids-clustering-pam
 gaussian-mixture-modelsgmms
+三种聚类方法评价
 t-sne
 umap
 som
