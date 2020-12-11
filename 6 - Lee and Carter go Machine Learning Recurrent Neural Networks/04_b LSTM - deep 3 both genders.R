@@ -4,22 +4,22 @@
 
 
 # select parameters
-path.data <- "CHE_mort.csv"           # path and name of data file
+path.data <- "./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"           # path and name of data file
 region <- "CHE"                    # country to be loaded (code is for one selected country)
 
 # load corresponding data
-source(file="00_a package - load data.R")
+source(file="./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R")
 str(all_mort)
 
 # load pre-defined networks
-source(file="00_b package - network definitions.R")
+source(file="./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_b package - network definitions.R")
 
 ##################################################################
 ### Setting the parameters and load data
 ##################################################################
 
 # package containing relevant functions
-source(file="00_c package - data preparation RNNs.R")
+source(file="./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_c package - data preparation RNNs.R")
 
 # choice of parameters
 T0 <- 10
@@ -76,7 +76,7 @@ RNN.type <- "LSTM"
 {if (RNN.type=="LSTM"){model <- LSTM3.Gender(T0, tau0, tau1, tau2, tau3, y0, optimizer)}else{model <- GRU3.Gender(T0, tau0, tau1, tau2, tau3, y0, optimizer)}
  name.model <- paste(RNN.type,"3_", tau0, "_", tau1, "_", tau2, "_", tau3, sep="")
  #file.name <- paste("./Model_Full_Param/best_model_", name.model, sep="")
- file.name <- paste("./CallBack/best_model_", name.model, sep="")
+ file.name <- paste("./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model_", name.model, sep="")
  summary(model)}
 
 # define callback
@@ -85,7 +85,7 @@ CBs <- callback_model_checkpoint(file.name, monitor = "val_loss", verbose = 0,  
 # gradient descent fitting: takes roughly 400 seconds on my laptop
 {t1 <- proc.time()
   fit <- model %>% fit(x=x.train, y=y.train, validation_split=0.2,
-                                        batch_size=100, epochs=500, verbose=0, callbacks=CBs)                                        
+                                        batch_size=100, epochs=200, verbose=1, callbacks=CBs)                                        
 proc.time()-t1}
 
 # plot loss figures

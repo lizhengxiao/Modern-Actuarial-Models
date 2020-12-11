@@ -82,14 +82,14 @@ y.vali  <- - YT[2,]
 tau1 <- 5    # dimension of the outputs z_t^(1) first RNN layer
 tau2 <- 4    # dimension of the outputs z_t^(2) second RNN layer
 
-CBs <- callback_model_checkpoint("./CallBack/best_model", monitor = "val_loss", verbose = 0,  save_best_only = TRUE, save_weights_only = TRUE)
+CBs <- callback_model_checkpoint("./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model", monitor = "val_loss", verbose = 0,  save_best_only = TRUE, save_weights_only = TRUE)
 model <- LSTM2(T0, tau0, tau1, tau2, y0, "nadam")     
 summary(model)
 
 # takes 40 seconds on my laptop
 {t1 <- proc.time()
   fit <- model %>% fit(x=x.train, y=y.train, validation_data=list(x.vali, y.vali),
-                                  batch_size=10, epochs=500, verbose=0, callbacks=CBs)
+                                  batch_size=10, epochs=500, verbose=1, callbacks=CBs)
  proc.time()-t1}
 
 plot(fit[[2]]$val_loss,col="red", ylim=c(0,0.2), main=list("early stopping rule", cex=1.5),xlab="epochs", ylab="MSE loss", cex=1.5, cex.lab=1.5)
@@ -97,9 +97,7 @@ lines(fit[[2]]$loss,col="blue")
 abline(h=0.1, lty=1, col="black")
 legend(x="bottomleft", col=c("blue","red"), lty=c(1,-1), lwd=c(1,-1), pch=c(-1,1), legend=c("in-sample loss", "out-of-sample loss"))
 
-
-
-load_model_weights_hdf5(model, "./CallBack/best_model")
+load_model_weights_hdf5(model, "./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model")
 Yhat.train1 <- as.vector(model %>% predict(x.train))
 Yhat.vali1 <- as.vector(model %>% predict(x.vali))
 c(round(mean((Yhat.train1-y.train)^2),4), round(mean((Yhat.vali1-y.vali)^2),4))
