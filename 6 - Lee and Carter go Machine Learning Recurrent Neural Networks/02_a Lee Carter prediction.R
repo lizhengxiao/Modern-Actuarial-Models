@@ -4,11 +4,12 @@
 
 
 # select parameters
-path.data <- "CHE_mort.csv"           # path and name of data file
+# path.data <- "CHE_mort.csv"           # path and name of data file
+path.data<-"./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"
 region <- "CHE"                    # country to be loaded (code is for one selected country)
 
 # load corresponding data
-source(file="00_a package - load data.R")
+source(file="./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R")
 str(all_mort)
 
 

@@ -20,6 +20,8 @@ set.seed(1234)
 #### Load data
 ##################################################################
 
+path.data<-"./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"
+
 all_mort <- fread(path.data)                      # load data from csv file
 all_mort$Gender <- as.factor(all_mort$Gender)
 

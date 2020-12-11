@@ -88,4 +88,4 @@ plot.losses <- function(name.model, gender, val_loss, loss){
      lines(loss,col="blue")
      abline(h=0.05, lty=1, col="black")
      legend(x="bottomleft", col=c("blue","cyan3"), lty=c(1,-1), lwd=c(1,-1), pch=c(-1,20), legend=c("in-sample loss", "out-of-sample loss"))
-   }   
+}   
