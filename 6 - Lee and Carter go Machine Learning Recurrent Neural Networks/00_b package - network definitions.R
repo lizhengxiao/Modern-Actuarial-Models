@@ -22,17 +22,36 @@ LSTM1 <- function(T0, tau0, tau1, y0=0, optimizer){
      
 
 # double hidden LSTM layers
-LSTM2 <- function(T0, tau0, tau1, tau2, y0=0, optimizer){
+LSTM2 <- function(T0, tau0, tau1, tau2, y0, optimizer){
     Input <- layer_input(shape=c(T0,tau0), dtype='float32', name='Input') 
-    Output = Input %>%  
+    LSTM = Input %>%  
        layer_lstm(units=tau1, activation='tanh', recurrent_activation='tanh', 
                   return_sequences=TRUE, name='LSTM1') %>%
-       layer_lstm(units=tau2, activation='tanh', recurrent_activation='tanh', name='LSTM2') %>%           
+       layer_lstm(units=tau2, activation='tanh', recurrent_activation='tanh', name='LSTM2')%>%
        layer_dense(units=1, activation=k_exp, name="Output",
                    weights=list(array(0,dim=c(tau2,1)), array(log(y0),dim=c(1))))  
-    model <- keras_model(inputs = list(Input), outputs = c(Output))
+    model <- keras_model(inputs = list(Input), outputs = c(LSTM))
     model %>% compile(loss = 'mean_squared_error', optimizer = optimizer)
      }
+
+LSTM2.1 <- function(T0, tau0, tau1, tau2, y0, optimizer){
+    ## This function add the age covariate but it does not work since we have one sample for one age.
+    Input <- layer_input(shape=c(T0,tau0), dtype='float32', name='Input') 
+    Age <- layer_input(shape=c(1), dtype='int32',name = 'Input_Age')
+    Age_Embed <- Age %>% 
+        layer_embedding(input_dim = 1, output_dim = 1,input_length = 1, name='Age_Embed')%>%
+        layer_flatten(name="Age_Factor")
+    
+    LSTM = Input %>%  
+        layer_lstm(units=tau1, activation='tanh', recurrent_activation='tanh', 
+                   return_sequences=TRUE, name='LSTM1') %>%
+        layer_lstm(units=tau2, activation='tanh', recurrent_activation='tanh', name='LSTM2')
+    Output = list (Age_Embed, LSTM) %>% layer_concatenate() %>%
+        layer_dense(units=1, activation=k_exp, name="Output",
+                    weights=list(array(0,dim=c(tau2+1,1)), array(log(y0),dim=c(1))))  
+    model <- keras_model(inputs = list(Input, Age), outputs = c(Output))
+    model %>% compile(loss = 'mean_squared_error', optimizer = optimizer)
+}
 
 
 # triple hidden LSTM layers

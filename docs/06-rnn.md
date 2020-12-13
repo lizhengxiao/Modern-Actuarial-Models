@@ -2,9 +2,7 @@
 
 *方玉昕、鲁瑶、高光远*
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = F)
-```
+
 
 😷 新冠肺炎死亡率数据：<https://mpidr.shinyapps.io/stmortality/>
 
@@ -214,7 +212,8 @@ GRU网络比LSTM网络的结构更简洁，而且会产生相近的结果。
 
 ## 案例分析（Case study）
 
-```{r data}
+
+```r
 path.data <- "6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"           # path and name of data file
 region <- "CHE"                    # country to be loaded (code is for one selected country)
 source(file="6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R")
@@ -226,7 +225,8 @@ length(unique(all_mort$Year))
 
 ### 死亡率热力图
 
-```{r heatmap}
+
+```r
 gender <- "Male"
 #gender <- "Female"
 m0 <- c(min(all_mort$logmx), max(all_mort$logmx))
@@ -242,14 +242,15 @@ dev.off()
 
 图\@ref(fig:heatplot)显示了男性死亡率随时间的改善。
 
-```{r heatplot,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="瑞士男性死亡率热力图"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/6/heat.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./plots/6/heat.png" alt="瑞士男性死亡率热力图" width="60%" />
+<p class="caption">(\#fig:heatplot)瑞士男性死亡率热力图</p>
+</div>
 
 ### Lee-Carter 模型
 
-```{r LC}
+
+```r
 ObsYear <- 1999
 gender <- "Female"
 train <- all_mort[Year<=ObsYear][Gender == gender]
@@ -295,7 +296,8 @@ round(c((mean((train$mx-train$pred_LC_svd)^2)*10^4) , (mean((vali$mx-vali$pred_L
 
 ### 初试RNN
 
-```{r toy example}
+
+```r
 # load corresponding data
 path.data <- "6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"           # path and name of data file
 region <- "CHE"                    # country to be loaded (code is for one selected country)
@@ -388,7 +390,8 @@ c(round(mean((Yhat.train1-y.train)^2),4), round(mean((Yhat.vali1-y.vali)^2),4))
 
 ### RNN
 
-```{r rnn}
+
+```r
 # load corresponding data
 path.data <- "6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"           # path and name of data file
 region <- "CHE"                    # country to be loaded (code is for one selected country)
@@ -461,7 +464,8 @@ round(10^4*mean((vali$mx-vali.Y$mx)^2),4)
 
 ### 引入性别协变量
 
-```{r both gender}
+
+```r
 # load corresponding data
 path.data <- "6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv"           # path and name of data file
 region <- "CHE"                    # country to be loaded (code is for one selected country)

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 循环神经网络与死亡率预测 | 现代精算统计模型</title>
+  <meta name="description" content="The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 循环神经网络与死亡率预测 | 现代精算统计模型" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 循环神经网络与死亡率预测 | 现代精算统计模型" />
+  
+  <meta name="twitter:description" content="The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Modern Actuarial Models" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="unsupervised-learning.html"/>
+
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">现代精算统计模型</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>👨‍🏫 欢迎</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#答疑"><i class="fa fa-check"></i>🤔 答疑</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程安排"><i class="fa fa-check"></i>🗓️ 课程安排</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>简介</a></li>
+<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 准备工作</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="pre.html"><a href="pre.html#常用链接"><i class="fa fa-check"></i><b>1.1</b> 常用链接</a></li>
+<li class="chapter" data-level="1.2" data-path="pre.html"><a href="pre.html#克隆代码"><i class="fa fa-check"></i><b>1.2</b> 克隆代码</a></li>
+<li class="chapter" data-level="1.3" data-path="pre.html"><a href="pre.html#r-interface-to-keras"><i class="fa fa-check"></i><b>1.3</b> R interface to Keras</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="pre.html"><a href="pre.html#r自动安装"><i class="fa fa-check"></i><b>1.3.1</b> R自动安装</a></li>
+<li class="chapter" data-level="1.3.2" data-path="pre.html"><a href="pre.html#使用reticulate关联conda环境"><i class="fa fa-check"></i><b>1.3.2</b> 使用reticulate关联conda环境</a></li>
+<li class="chapter" data-level="1.3.3" data-path="pre.html"><a href="pre.html#指定conda安装"><i class="fa fa-check"></i><b>1.3.3</b> 指定conda安装</a></li>
+<li class="chapter" data-level="1.3.4" data-path="pre.html"><a href="pre.html#使用reticulate安装"><i class="fa fa-check"></i><b>1.3.4</b> 使用reticulate安装</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="pre.html"><a href="pre.html#r-interface-to-python"><i class="fa fa-check"></i><b>1.4</b> R interface to Python</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="pre.html"><a href="pre.html#reticulate-常见命令"><i class="fa fa-check"></i><b>1.4.1</b> reticulate 常见命令</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pre.html"><a href="pre.html#切换r关联的conda环境"><i class="fa fa-check"></i><b>1.4.2</b> 切换R关联的conda环境</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pre.html"><a href="pre.html#python"><i class="fa fa-check"></i><b>1.5</b> Python</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="pre.html"><a href="pre.html#conda环境"><i class="fa fa-check"></i><b>1.5.1</b> Conda环境</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pre.html"><a href="pre.html#常用的conda命令"><i class="fa fa-check"></i><b>1.5.2</b> 常用的Conda命令</a></li>
+<li class="chapter" data-level="1.5.3" data-path="pre.html"><a href="pre.html#tensorflowpytorch-gpu-version"><i class="fa fa-check"></i><b>1.5.3</b> Tensorflow/Pytorch GPU version</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 车险索赔频率预测</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="french.html"><a href="french.html#背景介绍"><i class="fa fa-check"></i><b>2.1</b> 背景介绍</a></li>
+<li class="chapter" data-level="2.2" data-path="french.html"><a href="french.html#预测模型概述"><i class="fa fa-check"></i><b>2.2</b> 预测模型概述</a></li>
+<li class="chapter" data-level="2.3" data-path="french.html"><a href="french.html#特征工程"><i class="fa fa-check"></i><b>2.3</b> 特征工程</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="french.html"><a href="french.html#截断"><i class="fa fa-check"></i><b>2.3.1</b> 截断</a></li>
+<li class="chapter" data-level="2.3.2" data-path="french.html"><a href="french.html#离散化"><i class="fa fa-check"></i><b>2.3.2</b> 离散化</a></li>
+<li class="chapter" data-level="2.3.3" data-path="french.html"><a href="french.html#设定基础水平"><i class="fa fa-check"></i><b>2.3.3</b> 设定基础水平</a></li>
+<li class="chapter" data-level="2.3.4" data-path="french.html"><a href="french.html#协变量变形"><i class="fa fa-check"></i><b>2.3.4</b> 协变量变形</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="french.html"><a href="french.html#训练集-验证集-测试集"><i class="fa fa-check"></i><b>2.4</b> 训练集-验证集-测试集</a></li>
+<li class="chapter" data-level="2.5" data-path="french.html"><a href="french.html#泊松偏差损失函数"><i class="fa fa-check"></i><b>2.5</b> 泊松偏差损失函数</a></li>
+<li class="chapter" data-level="2.6" data-path="french.html"><a href="french.html#泊松回归模型"><i class="fa fa-check"></i><b>2.6</b> 泊松回归模型</a></li>
+<li class="chapter" data-level="2.7" data-path="french.html"><a href="french.html#泊松可加模型"><i class="fa fa-check"></i><b>2.7</b> 泊松可加模型</a></li>
+<li class="chapter" data-level="2.8" data-path="french.html"><a href="french.html#泊松回归树"><i class="fa fa-check"></i><b>2.8</b> 泊松回归树</a></li>
+<li class="chapter" data-level="2.9" data-path="french.html"><a href="french.html#随机森林"><i class="fa fa-check"></i><b>2.9</b> 随机森林</a></li>
+<li class="chapter" data-level="2.10" data-path="french.html"><a href="french.html#泊松提升树"><i class="fa fa-check"></i><b>2.10</b> 泊松提升树</a></li>
+<li class="chapter" data-level="2.11" data-path="french.html"><a href="french.html#模型比较"><i class="fa fa-check"></i><b>2.11</b> 模型比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>3</b> 神经网络</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>3.1</b> 建立神经网络的一般步骤</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>3.1.1</b> 明确目标和数据类型</a></li>
+<li class="chapter" data-level="3.1.2" data-path="nn.html"><a href="nn.html#数据预处理"><i class="fa fa-check"></i><b>3.1.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>3.1.3</b> 选取合适的神经网络类型</a></li>
+<li class="chapter" data-level="3.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>3.1.4</b> 建立神经网络（全连接神经网络）</a></li>
+<li class="chapter" data-level="3.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>3.1.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="3.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>3.1.6</b> 调参</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>3.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>3.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
+<li class="chapter" data-level="3.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>3.4</b> 神经网络结构</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>3.4.1</b> 结构参数</a></li>
+<li class="chapter" data-level="3.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>3.4.2</b> 输入层</a></li>
+<li class="chapter" data-level="3.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>3.4.3</b> Embedding layer</a></li>
+<li class="chapter" data-level="3.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>3.4.4</b> 隐藏层</a></li>
+<li class="chapter" data-level="3.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>3.4.5</b> 输出层</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>3.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="3.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>3.6</b> 总结</a></li>
+<li class="chapter" data-level="3.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>3.7</b> 其它模型</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>4</b> 提升方法 (Boosting)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>4.1</b> AdaBoost</a></li>
+<li class="chapter" data-level="4.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>4.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
+<li class="chapter" data-level="4.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>4.3</b> AdaBoost.M1</a></li>
+<li class="chapter" data-level="4.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>4.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
+<li class="chapter" data-level="4.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>4.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
+<li class="chapter" data-level="4.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>4.6</b> Gradient Boosting</a></li>
+<li class="chapter" data-level="4.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>4.7</b> Newton Boosting</a></li>
+<li class="chapter" data-level="4.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>4.8</b> XGBoost</a></li>
+<li class="chapter" data-level="4.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>4.9</b> Case study</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>4.9.1</b> 数据描述</a></li>
+<li class="chapter" data-level="4.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理-2"><i class="fa fa-check"></i><b>4.9.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>4.9.3</b> 特征工程</a></li>
+<li class="chapter" data-level="4.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>4.9.4</b> 建模流程</a></li>
+<li class="chapter" data-level="4.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>4.9.5</b> 模型度量——Gini系数</a></li>
+<li class="chapter" data-level="4.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>4.9.6</b> 建立AdaBoost模型</a></li>
+<li class="chapter" data-level="4.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>4.9.7</b> 建立XGBoost模型</a></li>
+<li class="chapter" data-level="4.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>4.9.8</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>4.10</b> Appendix: Commonly used Python code (for py-beginners)</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>4.10.1</b> Python标准数据类型</a></li>
+<li class="chapter" data-level="4.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>4.10.2</b> Python内置函数</a></li>
+<li class="chapter" data-level="4.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>4.10.3</b> numpy包</a></li>
+<li class="chapter" data-level="4.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>4.10.4</b> pandas包</a></li>
+<li class="chapter" data-level="4.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>4.10.5</b> Matplotlib包</a></li>
+<li class="chapter" data-level="4.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>4.10.6</b> 常用教程网址</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>5</b> 无监督学习方法</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-3"><i class="fa fa-check"></i><b>5.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="5.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>5.2</b> 主成分分析</a></li>
+<li class="chapter" data-level="5.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>5.3</b> 自编码</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>5.3.1</b> 模型训练</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>5.4</b> K-means clustering</a></li>
+<li class="chapter" data-level="5.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>5.5</b> K-medoids clustering (PAM)</a></li>
+<li class="chapter" data-level="5.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>5.6</b> Gaussian mixture models(GMMs)</a></li>
+<li class="chapter" data-level="5.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>5.7</b> 三种聚类方法评价</a></li>
+<li class="chapter" data-level="5.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>5.8</b> t-SNE</a></li>
+<li class="chapter" data-level="5.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>5.9</b> UMAP</a></li>
+<li class="chapter" data-level="5.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>5.10</b> SOM</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="rnn.html"><a href="rnn.html"><i class="fa fa-check"></i><b>6</b> 循环神经网络与死亡率预测</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="rnn.html"><a href="rnn.html#lee-carter-model"><i class="fa fa-check"></i><b>6.1</b> Lee-Carter Model</a></li>
+<li class="chapter" data-level="6.2" data-path="rnn.html"><a href="rnn.html#普通循环神经网络recurrent-neural-network"><i class="fa fa-check"></i><b>6.2</b> 普通循环神经网络（recurrent neural network）</a></li>
+<li class="chapter" data-level="6.3" data-path="rnn.html"><a href="rnn.html#长短期记忆神经网络long-short-term-memory"><i class="fa fa-check"></i><b>6.3</b> 长短期记忆神经网络（Long short-term memory）</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="rnn.html"><a href="rnn.html#激活函数activation-functions"><i class="fa fa-check"></i><b>6.3.1</b> 激活函数（Activation functions）</a></li>
+<li class="chapter" data-level="6.3.2" data-path="rnn.html"><a href="rnn.html#gates-and-cell-state"><i class="fa fa-check"></i><b>6.3.2</b> Gates and cell state</a></li>
+<li class="chapter" data-level="6.3.3" data-path="rnn.html"><a href="rnn.html#output-function"><i class="fa fa-check"></i><b>6.3.3</b> Output Function</a></li>
+<li class="chapter" data-level="6.3.4" data-path="rnn.html"><a href="rnn.html#time-distributed-layer"><i class="fa fa-check"></i><b>6.3.4</b> Time-distributed Layer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="rnn.html"><a href="rnn.html#门控循环神经网络gated-recurrent-unit"><i class="fa fa-check"></i><b>6.4</b> 门控循环神经网络（Gated Recurrent Unit）</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="rnn.html"><a href="rnn.html#gates"><i class="fa fa-check"></i><b>6.4.1</b> Gates</a></li>
+<li class="chapter" data-level="6.4.2" data-path="rnn.html"><a href="rnn.html#neuron-activations"><i class="fa fa-check"></i><b>6.4.2</b> Neuron Activations</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="rnn.html"><a href="rnn.html#案例分析case-study"><i class="fa fa-check"></i><b>6.5</b> 案例分析（Case study）</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="rnn.html"><a href="rnn.html#死亡率热力图"><i class="fa fa-check"></i><b>6.5.1</b> 死亡率热力图</a></li>
+<li class="chapter" data-level="6.5.2" data-path="rnn.html"><a href="rnn.html#lee-carter-模型"><i class="fa fa-check"></i><b>6.5.2</b> Lee-Carter 模型</a></li>
+<li class="chapter" data-level="6.5.3" data-path="rnn.html"><a href="rnn.html#初试rnn"><i class="fa fa-check"></i><b>6.5.3</b> 初试RNN</a></li>
+<li class="chapter" data-level="6.5.4" data-path="rnn.html"><a href="rnn.html#rnn-1"><i class="fa fa-check"></i><b>6.5.4</b> RNN</a></li>
+<li class="chapter" data-level="6.5.5" data-path="rnn.html"><a href="rnn.html#引入性别协变量"><i class="fa fa-check"></i><b>6.5.5</b> 引入性别协变量</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">现代精算统计模型</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rnn" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> 循环神经网络与死亡率预测</h1>
+<p><em>方玉昕、鲁瑶、高光远</em></p>
+<p>😷 新冠肺炎死亡率数据：<a href="https://mpidr.shinyapps.io/stmortality/" class="uri">https://mpidr.shinyapps.io/stmortality/</a></p>
+<div id="lee-carter-model" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Lee-Carter Model</h2>
+<p>Lee Carter模型中，死亡力（force of mortality）的定义如下：<br />
+<span class="math display">\[\log \left(m_{t, x}\right)=a_{x}+b_{x} k_{t}\]</span>
+其中，</p>
+<ul>
+<li><p><span class="math inline">\(m_{t, x}&gt;0\)</span> 是 <span class="math inline">\(x\)</span> 岁的人在日历年 <span class="math inline">\(t\)</span> 的死亡率（mortality rate）,</p></li>
+<li><p><span class="math inline">\(a_{x}\)</span> 是 <span class="math inline">\(x\)</span> 岁的人的平均对数死亡率,</p></li>
+<li><p><span class="math inline">\(b_{x}\)</span> 是死亡率变化的年龄因素,</p></li>
+<li><p><span class="math inline">\(\left(k_{t}\right)_{t}\)</span> 是死亡率变化的日历年因素.</p></li>
+</ul>
+<p>用 <span class="math inline">\(M_{t, x}\)</span> 表示某一性别死亡率的观察值（raw mortality rates）.<br />
+我们对对数死亡率 <span class="math inline">\(\log \left(M_{t, x}\right)\)</span> 中心化处理：<br />
+<span class="math display">\[\log \left(M_{t, x}^{\circ}\right)=\log \left(M_{t, x}\right)-\widehat{a}_{x}=\log \left(M_{t, x}\right)-\frac{1}{|\mathcal{T}|} \sum_{s \in \mathcal{T}} \log \left(M_{s, x}\right)\]</span></p>
+<p>其中，</p>
+<ul>
+<li><p><span class="math inline">\(\mathcal{T}\)</span> 为训练集中日历年的集合,</p></li>
+<li><p><span class="math inline">\(\widehat{a}_{x}=\frac{1}{|\mathcal{T}|} \sum_{s \in \mathcal{T}} \log \left(M_{s, x}\right)\)</span> 是平均对数死亡率 <span class="math inline">\(a_{x}\)</span> 的估计.</p></li>
+</ul>
+<p>对于<span class="math inline">\(b_x,k_t\)</span> 我们的目标是求如下最优化问题：<br />
+<span class="math display">\[\underset{\left(b_{x}\right)_{x},\left(k_{t}\right)_{t}}{\arg \min } \sum_{t, x}\left(\log \left(M_{t, x}^{\circ}\right)-b_{x} k_{t}\right)^{2}。\]</span></p>
+<p>定义矩阵 <span class="math inline">\(A=\left(\log \left(M_{t, x}^{\circ}\right)\right)_{x, t}\)</span>。上述最优化问题可以通过对<span class="math inline">\(A\)</span>进行奇异值分解（SVD）解决<span class="math display">\[A=U\Lambda V^\intercal,\]</span>
+其中<span class="math inline">\(U\)</span>称为左奇异矩阵，对角矩阵<span class="math inline">\(\Lambda=\text{diag}(\lambda_1,\ldots,\lambda_T)\)</span>中的对角元素<span class="math inline">\(\lambda_1\geq\lambda_2\geq\ldots\geq\lambda_T\geq0\)</span>称为奇异值，<span class="math inline">\(V\)</span>称为右奇异矩阵。</p>
+<ul>
+<li><p><span class="math inline">\(A\)</span> 的第一个左奇异向量<span class="math inline">\(U_{\cdot,1}\)</span>与第一个奇异值<span class="math inline">\(\lambda_1\)</span>相乘，可以得到 <span class="math inline">\(\left(b_{x}\right)_{x}\)</span> 的一个估计 <span class="math inline">\(\left(\widehat{b}_{x}\right)_{x}\)</span>。</p></li>
+<li><p><span class="math inline">\(A\)</span> 的第一个右奇异向量<span class="math inline">\(V_{\cdot,1}\)</span>给出了 <span class="math inline">\(\left(k_{t}\right)_{t}\)</span> 的一个估计 <span class="math inline">\(\left(\widehat{k}_{t}\right)_{t}\)</span>。</p></li>
+</ul>
+<p>为了求解结果的唯一性，增加约束：<br />
+<span class="math display">\[\sum_{x} \hat{b}_{x}=1 \quad \text { and } \quad \sum_{t \in \mathcal{T}} \hat{k}_{t}=0\]</span>
+至此即可解出唯一的 <span class="math inline">\(\left(\hat{a}_{x}, \hat{b}_{x}\right)_{x}, \left(\hat{k}_{t}\right)_{t}\)</span> . 这就是经典的LC模型构建方法.</p>
+</div>
+<div id="普通循环神经网络recurrent-neural-network" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> 普通循环神经网络（recurrent neural network）</h2>
+<p><strong>输入变量（Input）</strong> : <span class="math inline">\(\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{T}\right)\)</span> with components <span class="math inline">\(\boldsymbol{x}_{t} \in \mathbb{R}^{\tau_{0}}\)</span> at times <span class="math inline">\(t=1, \ldots, T\)</span> (in time series structure).</p>
+<p><strong>输出变量（Output）</strong>: <span class="math inline">\(y \in \mathcal{Y} \subset \mathbb{R}\)</span> .</p>
+<p>首先看一个具有 <span class="math inline">\(\tau_{1} \in \mathbb{N}\)</span> 个隐层神经元（hidden neurons）和单一隐层（hidden layer）的RNN. 隐层由如下映射（mapping）定义：
+<span class="math display">\[\boldsymbol{z}^{(1)}: \mathbb{R}^{\tau_{0} \times \tau_{1}} \rightarrow \mathbb{R}^{\tau_{1}}, \quad\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}\right) \mapsto \boldsymbol{z}_{t}^{(1)}=\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}\right)\]</span>
+其中下标 <span class="math inline">\(t\)</span> 表示时间,上标 (1) 表示第一隐层（本例中也是唯一隐层）.</p>
+<p>隐层结构构造如下：<br />
+<span class="math display">\[
+\begin{aligned}
+\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}\right) =&amp;\left(\phi\left(\left\langle\boldsymbol{w}_{1}^{(1)}, \boldsymbol{x}_{t}\right\rangle+\left\langle\boldsymbol{u}_{1}^{(1)}, \boldsymbol{z}_{t-1}\right\rangle\right),  \ldots, \phi\left(\left\langle\boldsymbol{w}_{\tau_{1}}^{(1)}, \boldsymbol{x}_{t}\right\rangle+\left\langle\boldsymbol{u}_{\tau_{1}}^{(1)}, \boldsymbol{z}_{t-1}\right\rangle\right)\right)^{\top} \\
+\stackrel{\text { def. }}{=} &amp;\phi\left(\left\langle W^{(1)}, \boldsymbol{x}_{t}\right\rangle+\left\langle U^{(1)}, \boldsymbol{z}_{t-1}\right\rangle\right)
+\end{aligned}
+\]</span>
+其中第 <span class="math inline">\(1 \leq j \leq \tau_{1}\)</span> 个神经元的结构为：<br />
+<span class="math display">\[\phi\left(\left\langle\boldsymbol{w}_{j}^{(1)}, \boldsymbol{x}_{t}\right\rangle+\left\langle\boldsymbol{u}_{j}^{(1)}, \boldsymbol{z}_{t-1}\right\rangle\right)=\phi\left(w_{j, 0}^{(1)}+\sum_{l=1}^{\tau_{0}} w_{j, l}^{(1)} x_{t, l}+\sum_{l=1}^{\tau_{1}} u_{j, l}^{(1)} z_{t-1, l}\right)\]</span></p>
+<ul>
+<li><span class="math inline">\(\phi: \mathbb{R} \rightarrow \mathbb{R}\)</span> 是非线性激活函数（activation function）</li>
+<li>网络参数（network parameters）为 <span class="math display">\[W^{(1)}=\left(\boldsymbol{w}_{j}^{(1)}\right)_{1 \leq j \leq \tau_{1}}^{\top} \in \mathbb{R}^{\tau \times\left(\tau_{0}+1\right)} \text{(including an intercept)}\]</span> <span class="math display">\[U^{(1)}=\left(\boldsymbol{u}_{j}^{(1)}\right)_{1 \leq j \leq \tau_{1}}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}} \text{(excluding an intercept)}\]</span></li>
+</ul>
+<p>除了上述单隐层的结构，我们还可以轻松地设计多隐层的RNN.</p>
+<p>例如，双隐层的RNN结构可以为:</p>
+<ul>
+<li><p><strong>1st variant</strong> : 仅允许同级隐层之间的循环
+<span class="math display">\[
+\begin{aligned}
+\boldsymbol{z}_{t}^{(1)} &amp;=\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right) \\
+\boldsymbol{z}_{t}^{(2)} &amp;=\boldsymbol{z}^{(2)}\left(\boldsymbol{z}_{t}^{(1)}, \boldsymbol{z}_{t-1}^{(2)}\right)
+\end{aligned}
+\]</span></p></li>
+<li><p><strong>2nd variant</strong> : 允许跨级隐层循环
+<span class="math display">\[
+\begin{aligned}
+\boldsymbol{z}_{t}^{(1)} &amp;=\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}, \boldsymbol{z}_{t-1}^{(2)}\right) \\
+\boldsymbol{z}_{t}^{(2)} &amp;=\boldsymbol{z}^{(2)}\left(\boldsymbol{z}_{t}^{(1)}, \boldsymbol{z}_{t-1}^{(2)}\right)
+\end{aligned}
+\]</span></p></li>
+<li><p><strong>3rd variant</strong> : 允许二级隐层与输入层 <span class="math inline">\(\boldsymbol{x}_{t}\)</span> 进行循环
+<span class="math display">\[
+\begin{aligned}
+\boldsymbol{z}_{t}^{(1)} &amp;=\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}, \boldsymbol{z}_{t-1}^{(2)}\right) \\
+\boldsymbol{z}_{t}^{(2)} &amp;=\boldsymbol{z}^{(2)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t}^{(1)}, \boldsymbol{z}_{t-1}^{(2)}\right)
+\end{aligned}
+\]</span></p></li>
+</ul>
+</div>
+<div id="长短期记忆神经网络long-short-term-memory" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> 长短期记忆神经网络（Long short-term memory）</h2>
+<p>以上plain vanilla RNN 无法处理长距离依赖和且有梯度消散的问题。为此，Hochreiter-Schmidhuber (1997)提出了长短期记忆神经网络(Long Short Term Memory Network, LSTM)。</p>
+<div id="激活函数activation-functions" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> 激活函数（Activation functions）</h3>
+<p>LSTM 用到3种不同的 <strong>激活函数（activation functions）</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Sigmoid函数（Sigmoid function）<br />
+<span class="math display">\[\phi_{\sigma}(x)=\frac{1}{1+e^{-x}} \in(0,1)\]</span></p></li>
+<li><p>双曲正切函数（Hyberbolic tangent function）
+<span class="math display">\[\phi_{\tanh }(x)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}=2 \phi_{\sigma}(2 x)-1 \in(-1,1)\]</span></p></li>
+<li><p>一般的激活函数（General activation function）
+<span class="math display">\[\phi: \mathbb{R} \rightarrow \mathbb{R}\]</span></p></li>
+</ol>
+</div>
+<div id="gates-and-cell-state" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Gates and cell state</h3>
+<p>令 <span class="math inline">\(\boldsymbol{z}_{t-1}^{(1)} \in \mathbb{R}^{\tau_{1}}\)</span> 表示时间 <span class="math inline">\((t-1)\)</span> 时的<strong>活化状态（neuron activations）</strong>. 我们定义3中不同的 <strong>门（gates）</strong>, 用来决定传播到下一个时间的信息量：</p>
+<ul>
+<li><p><strong>遗忘门（Forget gate）</strong> (loss of memory rate):
+<span class="math display">\[\boldsymbol{f}_{t}^{(1)}=\boldsymbol{f}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right)=\phi_{\sigma}\left(\left\langle W_{f}, \boldsymbol{x}_{t}\right\rangle+\left\langle U_{f}, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in(0,1)^{\tau_{1}}\]</span>
+for network parameters <span class="math inline">\(W_{f}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept) <span class="math inline">\(, U_{f}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}}\)</span> (excluding an intercept <span class="math inline">\(),\)</span> and where the activation function is evaluated element wise.</p></li>
+<li><p><strong>输入门（Input gate）</strong> (memory update rate):
+<span class="math display">\[\boldsymbol{i}_{t}^{(1)}=\boldsymbol{i}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right)=\phi_{\sigma}\left(\left\langle W_{i}, \boldsymbol{x}_{t}\right\rangle+\left\langle U_{i}, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in(0,1)^{\tau_{1}}\]</span>
+for network parameters <span class="math inline">\(W_{i}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept), <span class="math inline">\(U_{i}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}}\)</span>.</p></li>
+<li><p><strong>输出门（Output gate）</strong> (release of memory information rate):
+<span class="math display">\[\boldsymbol{o}_{t}^{(1)}=\boldsymbol{o}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right)=\phi_{\sigma}\left(\left\langle W_{o}, \boldsymbol{x}_{t}\right\rangle+\left\langle U_{o}, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in(0,1)^{\tau_{1}}\]</span>
+for network parameters <span class="math inline">\(W_{o}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept) <span class="math inline">\(, U_{o}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}}\)</span>.</p></li>
+</ul>
+<p>注意：以上三种门的名字并不代表着它们在实际中的作用，它们的作用由网络参数决定，而网络参数是从数据中学到的。</p>
+<p>令 <span class="math inline">\(\left(\boldsymbol{c}_{t}^{(1)}\right)_{t}\)</span> 表示 <strong>细胞状态（cell state）</strong> , 用以储存已获得的相关信息.</p>
+<p>细胞状态的更新规则如下：<br />
+<span class="math display">\[\begin{aligned}
+\boldsymbol{c}_{t}^{(1)}&amp;=\boldsymbol{c}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}, \boldsymbol{c}_{t-1}^{(1)}\right)\\&amp;=\boldsymbol{f}_{t}^{(1)} \circ \boldsymbol{c}_{t-1}^{(1)}+\boldsymbol{i}_{t}^{(1)} \circ \phi_{\tanh }\left(\left\langle W_{c}, \boldsymbol{x}_{t}\right\rangle+\left\langle U_{c}, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in \mathbb{R}^{\tau_{1}}
+\end{aligned}\]</span>
+for network parameters <span class="math inline">\(W_{c}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept), <span class="math inline">\(U_{c}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}},\)</span> and <span class="math inline">\(\circ\)</span>
+denotes the Hadamard product (element wise product).</p>
+<p>最后，我们更新时刻 <span class="math inline">\(t\)</span> 时的活化状态 <span class="math inline">\(\boldsymbol{z}_{t}^{(1)} \in \mathbb{R}^{\tau_{1}}\)</span>.<br />
+<span class="math display">\[\boldsymbol{z}_{t}^{(1)}=\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}, \boldsymbol{c}_{t-1}^{(1)}\right)=\boldsymbol{o}_{t}^{(1)} \circ \phi\left(\boldsymbol{c}_{t}^{(1)}\right) \in \mathbb{R}^{\tau_{1}}\]</span></p>
+<p>至此，</p>
+<ul>
+<li><p>涉及的全部网络参数有: <span class="math display">\[W_{f}^{\top}, W_{i}^{\top}, W_{o}^{\top}, W_{c}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}，~~ U_{f}^{\top}, U_{i}^{\top}, U_{o}^{\top}, U_{c}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}} .\]</span></p></li>
+<li><p>一个LSTM层需要 <span class="math inline">\(4\left(\left(\tau_{0}+1\right) \tau_{1}+\tau_{1}^{2}\right)\)</span> 个网络参数。</p></li>
+<li><p>以上定义的复杂映射在keras通过函数<code>layer_lstm()</code>即可实现。</p></li>
+<li><p>这些参数均由梯度下降的变式算法（a variant of the gradient descent algorithm）学习得.</p></li>
+</ul>
+</div>
+<div id="output-function" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Output Function</h3>
+<p>基于 <span class="math inline">\(\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{T}\right)\)</span> , 我们来预测定义在 <span class="math inline">\(\mathcal{Y} \subset \mathbb{R}\)</span> 的随机变量 <span class="math inline">\(Y_{T}\)</span> .</p>
+<p><span class="math display">\[\widehat{Y}_{T}=\widehat{Y}_{T}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{T}\right)=\varphi\left\langle\boldsymbol{w}, \boldsymbol{z}_{T}^{(1)}\right\rangle \in \mathcal{Y}\]</span>
+其中，</p>
+<ul>
+<li><p><span class="math inline">\(z_{T}^{(1)}\)</span> 是最新的隐层神经元活化状态（hidden neuron activation）</p></li>
+<li><p><span class="math inline">\(\boldsymbol{w} \in \mathbb{R}^{\tau_{1}+1}\)</span> 是输出权重(again including an intercept component)</p></li>
+<li><p><span class="math inline">\(\varphi: \mathbb{R} \rightarrow \mathcal{Y}\)</span> 是一个恰当的输出激活函数，选择时需要考虑<span class="math inline">\(y\)</span>的取值范围。</p></li>
+</ul>
+</div>
+<div id="time-distributed-layer" class="section level3" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Time-distributed Layer</h3>
+<p>以上只考虑了根据最新的状态 <span class="math inline">\(\boldsymbol{z}_{T}^{(1)}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{T}\right)\)</span> 所确定的单一的输出 <span class="math inline">\(Y_{T}\)</span>.</p>
+<p>但是我们可以考虑 <strong>所有</strong> 隐层神经元状态:<br />
+<span class="math display">\[\boldsymbol{z}_{1}^{(1)}\left(\boldsymbol{x}_{1}\right), \boldsymbol{z}_{2}^{(1)}\left(\boldsymbol{x}_{1}, \boldsymbol{x}_{2}\right), \boldsymbol{z}_{3}^{(1)}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{3}\right), \ldots, \boldsymbol{z}_{T}^{(1)}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{T}\right)\]</span>
+每一个状态 <span class="math inline">\(\boldsymbol{z}_{t}^{(1)}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{t}\right)\)</span> 都可以作为解释变量，用以估计 <span class="math inline">\(t\)</span> 时所对应的 <span class="math inline">\(Y_{t}\)</span> :</p>
+<p><span class="math display">\[\widehat{Y}_{t}=\widehat{Y}_{t}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{t}\right)=\varphi\left\langle\boldsymbol{w}, \boldsymbol{z}_{t}^{(1)}\right\rangle=\varphi\left\langle\boldsymbol{w}, \boldsymbol{z}_{t}^{(1)}\left(\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{t}\right)\right\rangle\]</span>
+其中过滤器（filter） <span class="math inline">\(\varphi\langle\boldsymbol{w}, \cdot\rangle\)</span> 对所有时间 <span class="math inline">\(t\)</span> 取相同函数.</p>
+<p><strong>小结：LSTM的优势</strong></p>
+<ul>
+<li><p>时间序列结构和因果关系都可以得到正确的反应</p></li>
+<li><p>由于参数不依赖时间，LSTM可以很容易地拓展到未来时间段</p></li>
+</ul>
+</div>
+</div>
+<div id="门控循环神经网络gated-recurrent-unit" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> 门控循环神经网络（Gated Recurrent Unit）</h2>
+<p>另一个比较热门的RNN结构是：门控循环单元（gated recurrent unit, GRU), 由Cho et al. (2014) 提出，它比LSTM更加简洁，但同样可以缓解plain vanilla RNN中梯度消散的问题。</p>
+<div id="gates" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Gates</h3>
+<p>GRU只使用2个不同的<strong>门（gates）</strong>. 令 <span class="math inline">\(\boldsymbol{z}_{t-1}^{(1)} \in \mathbb{R}^{\tau_{1}}\)</span> 表示 <span class="math inline">\((t-1)\)</span> 时神经元活化状态.</p>
+<ul>
+<li><p><strong>Reset gate</strong>: 类似于LSTM中的遗忘门
+<span class="math display">\[\boldsymbol{r}_{t}^{(1)}=\boldsymbol{r}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right)=\phi_{\sigma}\left(\left\langle W_{r}, \boldsymbol{x}_{t}\right\rangle+\left\langle U_{r}, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in(0,1)^{\tau_{1}}\]</span>
+for network parameters <span class="math inline">\(W_{r}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept), <span class="math inline">\(U_{r}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}}\)</span>.</p></li>
+<li><p><strong>Update gate</strong>: 类似于LSTM中的输入门
+<span class="math display">\[\boldsymbol{u}_{t}^{(1)}=\boldsymbol{u}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right)=\phi_{\sigma}\left(\left\langle W_{u}, \boldsymbol{x}_{t}\right\rangle+\left\langle U_{u}, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in(0,1)^{\tau_{1}}\]</span>
+for network parameters <span class="math inline">\(W_{u}^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept), <span class="math inline">\(U_{u}^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}}\)</span></p></li>
+</ul>
+</div>
+<div id="neuron-activations" class="section level3" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Neuron Activations</h3>
+<p>以上门变量的作用是，已知 <span class="math inline">\(t-1\)</span> 时神经元活化状态 <span class="math inline">\(\boldsymbol{z}_{t-1}^{(1)}\)</span>, 计算 <span class="math inline">\(t\)</span> 时神经元活化状态 <span class="math inline">\(\boldsymbol{z}_{t}^{(1)} \in \mathbb{R}^{\tau_{1}}\)</span> . 我们选用如下结构：
+<span class="math display">\[\boldsymbol{z}_{t}^{(1)}=\boldsymbol{z}^{(1)}\left(\boldsymbol{x}_{t}, \boldsymbol{z}_{t-1}^{(1)}\right)=\boldsymbol{r}_{t}^{(1)} \circ \boldsymbol{z}_{t-1}^{(1)}+\left(\mathbf{1}-\boldsymbol{r}_{t}^{(1)}\right) \circ \phi\left(\left\langle W, \boldsymbol{x}_{t}\right\rangle+\boldsymbol{u}_{t} \circ\left\langle U, \boldsymbol{z}_{t-1}^{(1)}\right\rangle\right) \in \mathbb{R}^{\tau_{1}}\]</span>
+for network parameters <span class="math inline">\(W^{\top} \in \mathbb{R}^{\tau_{1} \times\left(\tau_{0}+1\right)}\)</span> (including an intercept) <span class="math inline">\(, U^{\top} \in \mathbb{R}^{\tau_{1} \times \tau_{1}},\)</span> and where <span class="math inline">\(\circ\)</span> denotes the Hadamard product.</p>
+<p>GRU网络比LSTM网络的结构更简洁，而且会产生相近的结果。
+但是，GRU在稳健性上有较大缺陷，因此现阶段LSTM的使用更为广泛.</p>
+</div>
+</div>
+<div id="案例分析case-study" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> 案例分析（Case study）</h2>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="rnn.html#cb82-1" aria-hidden="true" tabindex="-1"></a>path.data <span class="ot">&lt;-</span> <span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv&quot;</span>           <span class="co"># path and name of data file</span></span>
+<span id="cb82-2"><a href="rnn.html#cb82-2" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="st">&quot;CHE&quot;</span>                    <span class="co"># country to be loaded (code is for one selected country)</span></span>
+<span id="cb82-3"><a href="rnn.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R&quot;</span>)</span>
+<span id="cb82-4"><a href="rnn.html#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(all_mort)</span>
+<span id="cb82-5"><a href="rnn.html#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(all_mort<span class="sc">$</span>Age))</span>
+<span id="cb82-6"><a href="rnn.html#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(all_mort<span class="sc">$</span>Year))</span>
+<span id="cb82-7"><a href="rnn.html#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="dv">67</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<div id="死亡率热力图" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> 死亡率热力图</h3>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="rnn.html#cb83-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="st">&quot;Male&quot;</span></span>
+<span id="cb83-2"><a href="rnn.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="co">#gender &lt;- &quot;Female&quot;</span></span>
+<span id="cb83-3"><a href="rnn.html#cb83-3" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(all_mort<span class="sc">$</span>logmx), <span class="fu">max</span>(all_mort<span class="sc">$</span>logmx))</span>
+<span id="cb83-4"><a href="rnn.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rows are calendar year t, columns are ages x</span></span>
+<span id="cb83-5"><a href="rnn.html#cb83-5" aria-hidden="true" tabindex="-1"></a>logmx <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">matrix</span>(<span class="fu">as.matrix</span>(all_mort[<span class="fu">which</span>(all_mort<span class="sc">$</span>Gender<span class="sc">==</span>gender),<span class="st">&quot;logmx&quot;</span>]), <span class="at">nrow=</span><span class="dv">100</span>, <span class="at">ncol=</span><span class="dv">67</span>))</span>
+<span id="cb83-6"><a href="rnn.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="co"># png(&quot;./plots/6/heat.png&quot;)</span></span>
+<span id="cb83-7"><a href="rnn.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(<span class="at">z=</span>logmx, <span class="at">useRaster=</span><span class="cn">TRUE</span>,  <span class="at">zlim=</span>m0, <span class="at">col=</span><span class="fu">rev</span>(<span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">60</span>, <span class="at">start=</span><span class="dv">0</span>, <span class="at">end=</span>.<span class="dv">72</span>)), <span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="at">yaxt=</span><span class="st">&#39;n&#39;</span>, <span class="at">main=</span><span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&quot;Swiss &quot;</span>,gender, <span class="st">&quot; raw log-mortality rates&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>), <span class="at">cex=</span><span class="fl">1.5</span>), <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">ylab=</span><span class="st">&quot;age x&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;calendar year t&quot;</span>)</span>
+<span id="cb83-8"><a href="rnn.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at=</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span>(<span class="dv">2016-1950</span>))<span class="sc">/</span>(<span class="dv">2016-1950</span>), <span class="fu">c</span>(<span class="dv">1950</span><span class="sc">:</span><span class="dv">2016</span>))                   </span>
+<span id="cb83-9"><a href="rnn.html#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at=</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">49</span>)<span class="sc">/</span><span class="dv">50</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">49</span>)<span class="sc">*</span><span class="dv">2</span>)                   </span>
+<span id="cb83-10"><a href="rnn.html#cb83-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span><span class="fu">rep</span>((<span class="dv">1999-1950</span><span class="fl">+0.5</span>)<span class="sc">/</span>(<span class="dv">2016-1950</span>), <span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb83-11"><a href="rnn.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p>图<a href="rnn.html#fig:heatplot">6.1</a>显示了男性死亡率随时间的改善。</p>
+<div class="figure" style="text-align: center"><span id="fig:heatplot"></span>
+<img src="plots/6/heat.png" alt="瑞士男性死亡率热力图" width="60%" />
+<p class="caption">
+Figure 6.1: 瑞士男性死亡率热力图
+</p>
+</div>
+</div>
+<div id="lee-carter-模型" class="section level3" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> Lee-Carter 模型</h3>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="rnn.html#cb84-1" aria-hidden="true" tabindex="-1"></a>ObsYear <span class="ot">&lt;-</span> <span class="dv">1999</span></span>
+<span id="cb84-2"><a href="rnn.html#cb84-2" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="st">&quot;Female&quot;</span></span>
+<span id="cb84-3"><a href="rnn.html#cb84-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> all_mort[Year<span class="sc">&lt;=</span>ObsYear][Gender <span class="sc">==</span> gender]</span>
+<span id="cb84-4"><a href="rnn.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(train<span class="sc">$</span>Year)</span>
+<span id="cb84-5"><a href="rnn.html#cb84-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb84-6"><a href="rnn.html#cb84-6" aria-hidden="true" tabindex="-1"></a><span class="do">### fit via SVD</span></span>
+<span id="cb84-7"><a href="rnn.html#cb84-7" aria-hidden="true" tabindex="-1"></a>train[,ax<span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>(logmx), by <span class="ot">=</span> (Age)]</span>
+<span id="cb84-8"><a href="rnn.html#cb84-8" aria-hidden="true" tabindex="-1"></a>train[,mx_adj<span class="sc">:</span><span class="er">=</span> logmx<span class="sc">-</span>ax]  </span>
+<span id="cb84-9"><a href="rnn.html#cb84-9" aria-hidden="true" tabindex="-1"></a>rates_mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(train <span class="sc">%&gt;%</span> <span class="fu">dcast.data.table</span>(Age<span class="sc">~</span>Year, <span class="at">value.var =</span> <span class="st">&quot;mx_adj&quot;</span>, sum))[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb84-10"><a href="rnn.html#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(rates_mat)</span>
+<span id="cb84-11"><a href="rnn.html#cb84-11" aria-hidden="true" tabindex="-1"></a>svd_fit <span class="ot">&lt;-</span> <span class="fu">svd</span>(rates_mat)</span>
+<span id="cb84-12"><a href="rnn.html#cb84-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb84-13"><a href="rnn.html#cb84-13" aria-hidden="true" tabindex="-1"></a>ax <span class="ot">&lt;-</span> train[,<span class="fu">unique</span>(ax)]</span>
+<span id="cb84-14"><a href="rnn.html#cb84-14" aria-hidden="true" tabindex="-1"></a>bx <span class="ot">&lt;-</span> svd_fit<span class="sc">$</span>u[,<span class="dv">1</span>]<span class="sc">*</span>svd_fit<span class="sc">$</span>d[<span class="dv">1</span>]</span>
+<span id="cb84-15"><a href="rnn.html#cb84-15" aria-hidden="true" tabindex="-1"></a>kt <span class="ot">&lt;-</span> svd_fit<span class="sc">$</span>v[,<span class="dv">1</span>]</span>
+<span id="cb84-16"><a href="rnn.html#cb84-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb84-17"><a href="rnn.html#cb84-17" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(kt)</span>
+<span id="cb84-18"><a href="rnn.html#cb84-18" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(bx)</span>
+<span id="cb84-19"><a href="rnn.html#cb84-19" aria-hidden="true" tabindex="-1"></a>ax <span class="ot">&lt;-</span> ax<span class="sc">+</span>c1<span class="sc">*</span>bx</span>
+<span id="cb84-20"><a href="rnn.html#cb84-20" aria-hidden="true" tabindex="-1"></a>bx <span class="ot">&lt;-</span> bx<span class="sc">/</span>c2</span>
+<span id="cb84-21"><a href="rnn.html#cb84-21" aria-hidden="true" tabindex="-1"></a>kt <span class="ot">&lt;-</span> (kt<span class="sc">-</span>c1)<span class="sc">*</span>c2</span>
+<span id="cb84-22"><a href="rnn.html#cb84-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb84-23"><a href="rnn.html#cb84-23" aria-hidden="true" tabindex="-1"></a><span class="do">### extrapolation and forecast</span></span>
+<span id="cb84-24"><a href="rnn.html#cb84-24" aria-hidden="true" tabindex="-1"></a>vali  <span class="ot">&lt;-</span> all_mort[Year<span class="sc">&gt;</span>ObsYear][Gender <span class="sc">==</span> gender]    </span>
+<span id="cb84-25"><a href="rnn.html#cb84-25" aria-hidden="true" tabindex="-1"></a>t_forecast <span class="ot">&lt;-</span> vali[,<span class="fu">unique</span>(Year)] <span class="sc">%&gt;%</span> <span class="fu">length</span>()</span>
+<span id="cb84-26"><a href="rnn.html#cb84-26" aria-hidden="true" tabindex="-1"></a>forecast_kt  <span class="ot">=</span>kt <span class="sc">%&gt;%</span> forecast<span class="sc">::</span><span class="fu">rwf</span>(t_forecast, <span class="at">drift =</span> T)</span>
+<span id="cb84-27"><a href="rnn.html#cb84-27" aria-hidden="true" tabindex="-1"></a>kt_forecast <span class="ot">=</span> forecast_kt<span class="sc">$</span>mean</span>
+<span id="cb84-28"><a href="rnn.html#cb84-28" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb84-29"><a href="rnn.html#cb84-29" aria-hidden="true" tabindex="-1"></a><span class="co"># illustration selected drift</span></span>
+<span id="cb84-30"><a href="rnn.html#cb84-30" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">c</span>(kt, kt_forecast)</span>
+<span id="cb84-31"><a href="rnn.html#cb84-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(plot_data, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">cex=</span><span class="dv">2</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>, <span class="at">ylab=</span><span class="st">&quot;values k_t&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;calendar year t&quot;</span>, <span class="at">main=</span><span class="fu">list</span>(<span class="fu">paste</span>(<span class="st">&quot;estimated process k_t for &quot;</span>,gender, <span class="at">sep=</span><span class="st">&quot;&quot;</span>), <span class="at">cex=</span><span class="fl">1.5</span>)) </span>
+<span id="cb84-32"><a href="rnn.html#cb84-32" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(kt, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb84-33"><a href="rnn.html#cb84-33" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(plot_data)), <span class="at">labels=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(plot_data))<span class="sc">+</span><span class="dv">1949</span>)                   </span>
+<span id="cb84-34"><a href="rnn.html#cb84-34" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>(<span class="fu">length</span>(kt)<span class="sc">+</span><span class="fl">0.5</span>), <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb84-35"><a href="rnn.html#cb84-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-36"><a href="rnn.html#cb84-36" aria-hidden="true" tabindex="-1"></a><span class="co"># in-sample and out-of-sample analysis    </span></span>
+<span id="cb84-37"><a href="rnn.html#cb84-37" aria-hidden="true" tabindex="-1"></a>fitted <span class="ot">=</span> (ax<span class="sc">+</span>(bx)<span class="sc">%*%</span><span class="fu">t</span>(kt)) <span class="sc">%&gt;%</span> melt</span>
+<span id="cb84-38"><a href="rnn.html#cb84-38" aria-hidden="true" tabindex="-1"></a>train<span class="sc">$</span>pred_LC_svd <span class="ot">=</span> fitted<span class="sc">$</span>value <span class="sc">%&gt;%</span> exp</span>
+<span id="cb84-39"><a href="rnn.html#cb84-39" aria-hidden="true" tabindex="-1"></a>fitted_vali <span class="ot">=</span> (ax<span class="sc">+</span>(bx)<span class="sc">%*%</span><span class="fu">t</span>(kt_forecast)) <span class="sc">%&gt;%</span> melt</span>
+<span id="cb84-40"><a href="rnn.html#cb84-40" aria-hidden="true" tabindex="-1"></a>vali<span class="sc">$</span>pred_LC_svd <span class="ot">=</span>   fitted_vali<span class="sc">$</span>value <span class="sc">%&gt;%</span> exp</span>
+<span id="cb84-41"><a href="rnn.html#cb84-41" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>((<span class="fu">mean</span>((train<span class="sc">$</span>mx<span class="sc">-</span>train<span class="sc">$</span>pred_LC_svd)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>) , (<span class="fu">mean</span>((vali<span class="sc">$</span>mx<span class="sc">-</span>vali<span class="sc">$</span>pred_LC_svd)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>)),<span class="dv">4</span>)</span></code></pre></div>
+</div>
+<div id="初试rnn" class="section level3" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> 初试RNN</h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="rnn.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load corresponding data</span></span>
+<span id="cb85-2"><a href="rnn.html#cb85-2" aria-hidden="true" tabindex="-1"></a>path.data <span class="ot">&lt;-</span> <span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv&quot;</span>           <span class="co"># path and name of data file</span></span>
+<span id="cb85-3"><a href="rnn.html#cb85-3" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="st">&quot;CHE&quot;</span>                    <span class="co"># country to be loaded (code is for one selected country)</span></span>
+<span id="cb85-4"><a href="rnn.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R&quot;</span>)</span>
+<span id="cb85-5"><a href="rnn.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(all_mort)</span>
+<span id="cb85-6"><a href="rnn.html#cb85-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-7"><a href="rnn.html#cb85-7" aria-hidden="true" tabindex="-1"></a><span class="co"># LSTMs and GRUs</span></span>
+<span id="cb85-8"><a href="rnn.html#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_b package - network definitions.R&quot;</span>)</span>
+<span id="cb85-9"><a href="rnn.html#cb85-9" aria-hidden="true" tabindex="-1"></a>T0 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb85-10"><a href="rnn.html#cb85-10" aria-hidden="true" tabindex="-1"></a>tau0 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb85-11"><a href="rnn.html#cb85-11" aria-hidden="true" tabindex="-1"></a>tau1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb85-12"><a href="rnn.html#cb85-12" aria-hidden="true" tabindex="-1"></a>tau2 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb85-13"><a href="rnn.html#cb85-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">LSTM1</span>(T0, tau0, tau1, <span class="dv">0</span>, <span class="st">&quot;nadam&quot;</span>))</span>
+<span id="cb85-14"><a href="rnn.html#cb85-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">LSTM2</span>(T0, tau0, tau1, tau2, <span class="dv">0</span>, <span class="st">&quot;nadam&quot;</span>))</span>
+<span id="cb85-15"><a href="rnn.html#cb85-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">LSTM_TD</span>(T0, tau0, tau1, <span class="dv">0</span>, <span class="st">&quot;nadam&quot;</span>))</span>
+<span id="cb85-16"><a href="rnn.html#cb85-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">GRU1</span>(T0, tau0, tau1, <span class="dv">0</span>, <span class="st">&quot;nadam&quot;</span>))</span>
+<span id="cb85-17"><a href="rnn.html#cb85-17" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">GRU2</span>(T0, tau0, tau1, tau2, <span class="dv">0</span>, <span class="st">&quot;nadam&quot;</span>))</span>
+<span id="cb85-18"><a href="rnn.html#cb85-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">FNN</span>(T0, tau0, tau1, tau2, <span class="dv">0</span>, <span class="st">&quot;nadam&quot;</span>))</span>
+<span id="cb85-19"><a href="rnn.html#cb85-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-20"><a href="rnn.html#cb85-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Bringing the data in the right structure for a toy example</span></span>
+<span id="cb85-21"><a href="rnn.html#cb85-21" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="st">&quot;Female&quot;</span></span>
+<span id="cb85-22"><a href="rnn.html#cb85-22" aria-hidden="true" tabindex="-1"></a>ObsYear <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb85-23"><a href="rnn.html#cb85-23" aria-hidden="true" tabindex="-1"></a>mort_rates <span class="ot">&lt;-</span> all_mort[<span class="fu">which</span>(all_mort<span class="sc">$</span>Gender<span class="sc">==</span>gender), <span class="fu">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;logmx&quot;</span>)] </span>
+<span id="cb85-24"><a href="rnn.html#cb85-24" aria-hidden="true" tabindex="-1"></a>mort_rates <span class="ot">&lt;-</span> <span class="fu">dcast</span>(mort_rates, Year <span class="sc">~</span> Age, <span class="at">value.var=</span><span class="st">&quot;logmx&quot;</span>)</span>
+<span id="cb85-25"><a href="rnn.html#cb85-25" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mort_rates)</span>
+<span id="cb85-26"><a href="rnn.html#cb85-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-27"><a href="rnn.html#cb85-27" aria-hidden="true" tabindex="-1"></a>T0 <span class="ot">&lt;-</span> <span class="dv">10</span>     <span class="co"># lookback period</span></span>
+<span id="cb85-28"><a href="rnn.html#cb85-28" aria-hidden="true" tabindex="-1"></a>tau0 <span class="ot">&lt;-</span> <span class="dv">3</span>    <span class="co"># dimension of x_t (should be odd for our application)</span></span>
+<span id="cb85-29"><a href="rnn.html#cb85-29" aria-hidden="true" tabindex="-1"></a>delta0 <span class="ot">&lt;-</span> (tau0<span class="dv">-1</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb85-30"><a href="rnn.html#cb85-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-31"><a href="rnn.html#cb85-31" aria-hidden="true" tabindex="-1"></a>toy_rates <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(mort_rates[<span class="fu">which</span>(mort_rates<span class="sc">$</span>Year <span class="sc">%in%</span> <span class="fu">c</span>((ObsYear<span class="sc">-</span>T0)<span class="sc">:</span>(ObsYear<span class="sc">+</span><span class="dv">1</span>))),])</span>
+<span id="cb85-32"><a href="rnn.html#cb85-32" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(toy_rates)</span>
+<span id="cb85-33"><a href="rnn.html#cb85-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-34"><a href="rnn.html#cb85-34" aria-hidden="true" tabindex="-1"></a>xt <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="cn">NA</span>, <span class="fu">c</span>(<span class="dv">2</span>,<span class="fu">ncol</span>(toy_rates)<span class="sc">-</span>tau0, T0, tau0))</span>
+<span id="cb85-35"><a href="rnn.html#cb85-35" aria-hidden="true" tabindex="-1"></a>YT <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="cn">NA</span>, <span class="fu">c</span>(<span class="dv">2</span>,<span class="fu">ncol</span>(toy_rates)<span class="sc">-</span>tau0))</span>
+<span id="cb85-36"><a href="rnn.html#cb85-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-37"><a href="rnn.html#cb85-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){<span class="cf">for</span> (a0 <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">ncol</span>(toy_rates)<span class="sc">-</span>tau0)){ </span>
+<span id="cb85-38"><a href="rnn.html#cb85-38" aria-hidden="true" tabindex="-1"></a>    xt[i,a0,,] <span class="ot">&lt;-</span> toy_rates[<span class="fu">c</span>(i<span class="sc">:</span>(T0<span class="sc">+</span>i<span class="dv">-1</span>)),<span class="fu">c</span>((a0<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(a0<span class="sc">+</span>tau0))]</span>
+<span id="cb85-39"><a href="rnn.html#cb85-39" aria-hidden="true" tabindex="-1"></a>    YT[i,a0] <span class="ot">&lt;-</span> toy_rates[T0<span class="sc">+</span>i,a0<span class="sc">+</span><span class="dv">1</span><span class="sc">+</span>delta0]</span>
+<span id="cb85-40"><a href="rnn.html#cb85-40" aria-hidden="true" tabindex="-1"></a>}}</span>
+<span id="cb85-41"><a href="rnn.html#cb85-41" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(xt)</span>
+<span id="cb85-42"><a href="rnn.html#cb85-42" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(YT)</span>
+<span id="cb85-43"><a href="rnn.html#cb85-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-44"><a href="rnn.html#cb85-44" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>toy_rates[<span class="dv">1</span><span class="sc">:</span>T0,<span class="dv">1</span>], <span class="at">y=</span>toy_rates[<span class="dv">1</span><span class="sc">:</span>T0,<span class="dv">2</span>], <span class="at">col=</span><span class="st">&quot;white&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;calendar years&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;raw log-mortality rates&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">main=</span><span class="fu">list</span>(<span class="st">&quot;data toy example&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>), <span class="at">xlim=</span><span class="fu">range</span>(toy_rates[,<span class="dv">1</span>]), <span class="at">ylim=</span><span class="fu">range</span>(toy_rates[,<span class="sc">-</span><span class="dv">1</span>]), <span class="at">type=</span><span class="st">&#39;l&#39;</span>)</span>
+<span id="cb85-45"><a href="rnn.html#cb85-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (a0 <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(toy_rates)){</span>
+<span id="cb85-46"><a href="rnn.html#cb85-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (a0 <span class="sc">%in%</span> (<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">*</span><span class="dv">3</span>)){</span>
+<span id="cb85-47"><a href="rnn.html#cb85-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="at">x=</span>toy_rates[<span class="dv">1</span><span class="sc">:</span>T0,<span class="dv">1</span>], <span class="at">y=</span>toy_rates[<span class="dv">1</span><span class="sc">:</span>T0,a0])    </span>
+<span id="cb85-48"><a href="rnn.html#cb85-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">points</span>(<span class="at">x=</span>toy_rates[(T0<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(T0<span class="sc">+</span><span class="dv">2</span>),<span class="dv">1</span>], <span class="at">y=</span>toy_rates[(T0<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(T0<span class="sc">+</span><span class="dv">2</span>),a0], <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">20</span>)</span>
+<span id="cb85-49"><a href="rnn.html#cb85-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="at">x=</span>toy_rates[(T0)<span class="sc">:</span>(T0<span class="sc">+</span><span class="dv">1</span>),<span class="dv">1</span>], <span class="at">y=</span>toy_rates[(T0)<span class="sc">:</span>(T0<span class="sc">+</span><span class="dv">1</span>),a0], <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb85-50"><a href="rnn.html#cb85-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(<span class="at">x=</span>toy_rates[(T0<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(T0<span class="sc">+</span><span class="dv">2</span>),<span class="dv">1</span>], <span class="at">y=</span>toy_rates[(T0<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(T0<span class="sc">+</span><span class="dv">2</span>),a0], <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb85-51"><a href="rnn.html#cb85-51" aria-hidden="true" tabindex="-1"></a>    }}</span>
+<span id="cb85-52"><a href="rnn.html#cb85-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-53"><a href="rnn.html#cb85-53" aria-hidden="true" tabindex="-1"></a><span class="co"># LSTMs and GRUs</span></span>
+<span id="cb85-54"><a href="rnn.html#cb85-54" aria-hidden="true" tabindex="-1"></a>x.train <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">2</span><span class="sc">*</span>(xt[<span class="dv">1</span>,,,]<span class="sc">-</span><span class="fu">min</span>(xt))<span class="sc">/</span>(<span class="fu">max</span>(xt)<span class="sc">-</span><span class="fu">min</span>(xt))<span class="sc">-</span><span class="dv">1</span>, <span class="fu">c</span>(<span class="fu">ncol</span>(toy_rates)<span class="sc">-</span>tau0, T0, tau0))</span>
+<span id="cb85-55"><a href="rnn.html#cb85-55" aria-hidden="true" tabindex="-1"></a>x.vali  <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">2</span><span class="sc">*</span>(xt[<span class="dv">2</span>,,,]<span class="sc">-</span><span class="fu">min</span>(xt))<span class="sc">/</span>(<span class="fu">max</span>(xt)<span class="sc">-</span><span class="fu">min</span>(xt))<span class="sc">-</span><span class="dv">1</span>, <span class="fu">c</span>(<span class="fu">ncol</span>(toy_rates)<span class="sc">-</span>tau0, T0, tau0))</span>
+<span id="cb85-56"><a href="rnn.html#cb85-56" aria-hidden="true" tabindex="-1"></a>y.train <span class="ot">&lt;-</span> <span class="sc">-</span> YT[<span class="dv">1</span>,]</span>
+<span id="cb85-57"><a href="rnn.html#cb85-57" aria-hidden="true" tabindex="-1"></a>(y0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y.train))</span>
+<span id="cb85-58"><a href="rnn.html#cb85-58" aria-hidden="true" tabindex="-1"></a>y.vali  <span class="ot">&lt;-</span> <span class="sc">-</span> YT[<span class="dv">2</span>,]</span>
+<span id="cb85-59"><a href="rnn.html#cb85-59" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x.train)</span>
+<span id="cb85-60"><a href="rnn.html#cb85-60" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(y.train);<span class="fu">length</span>(y.vali)</span>
+<span id="cb85-61"><a href="rnn.html#cb85-61" aria-hidden="true" tabindex="-1"></a><span class="co"># x.age.train&lt;-as.matrix(0:0)</span></span>
+<span id="cb85-62"><a href="rnn.html#cb85-62" aria-hidden="true" tabindex="-1"></a><span class="co"># x.training&lt;-list(x.train,x.age.train)</span></span>
+<span id="cb85-63"><a href="rnn.html#cb85-63" aria-hidden="true" tabindex="-1"></a><span class="co"># x.age.valid&lt;-as.matrix(0:0)</span></span>
+<span id="cb85-64"><a href="rnn.html#cb85-64" aria-hidden="true" tabindex="-1"></a><span class="co"># x.validation&lt;-list(x.vali,x.age.valid)</span></span>
+<span id="cb85-65"><a href="rnn.html#cb85-65" aria-hidden="true" tabindex="-1"></a><span class="do">### examples</span></span>
+<span id="cb85-66"><a href="rnn.html#cb85-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-67"><a href="rnn.html#cb85-67" aria-hidden="true" tabindex="-1"></a>tau1 <span class="ot">&lt;-</span> <span class="dv">5</span>    <span class="co"># dimension of the outputs z_t^(1) first RNN layer</span></span>
+<span id="cb85-68"><a href="rnn.html#cb85-68" aria-hidden="true" tabindex="-1"></a>tau2 <span class="ot">&lt;-</span> <span class="dv">4</span>    <span class="co"># dimension of the outputs z_t^(2) second RNN layer</span></span>
+<span id="cb85-69"><a href="rnn.html#cb85-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-70"><a href="rnn.html#cb85-70" aria-hidden="true" tabindex="-1"></a>CBs <span class="ot">&lt;-</span> <span class="fu">callback_model_checkpoint</span>(<span class="st">&quot;./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model&quot;</span>, <span class="at">monitor =</span> <span class="st">&quot;val_loss&quot;</span>, <span class="at">verbose =</span> <span class="dv">0</span>,  <span class="at">save_best_only =</span> <span class="cn">TRUE</span>, <span class="at">save_weights_only =</span> <span class="cn">TRUE</span>,<span class="at">save_freq =</span> <span class="cn">NULL</span>)</span>
+<span id="cb85-71"><a href="rnn.html#cb85-71" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">LSTM2</span>(T0, tau0, tau1, tau2, y0, <span class="st">&quot;nadam&quot;</span>)     </span>
+<span id="cb85-72"><a href="rnn.html#cb85-72" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb85-73"><a href="rnn.html#cb85-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-74"><a href="rnn.html#cb85-74" aria-hidden="true" tabindex="-1"></a><span class="co"># takes 40 seconds on my laptop</span></span>
+<span id="cb85-75"><a href="rnn.html#cb85-75" aria-hidden="true" tabindex="-1"></a>{t1 <span class="ot">&lt;-</span> <span class="fu">proc.time</span>()</span>
+<span id="cb85-76"><a href="rnn.html#cb85-76" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">x=</span>x.train, <span class="at">y=</span>y.train, <span class="at">validation_data=</span><span class="fu">list</span>(x.vali, y.vali), <span class="at">batch_size=</span><span class="dv">10</span>, <span class="at">epochs=</span><span class="dv">500</span>, <span class="at">verbose=</span><span class="dv">1</span>, <span class="at">callbacks=</span>CBs)</span>
+<span id="cb85-77"><a href="rnn.html#cb85-77" aria-hidden="true" tabindex="-1"></a> <span class="fu">proc.time</span>()<span class="sc">-</span>t1}</span>
+<span id="cb85-78"><a href="rnn.html#cb85-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-79"><a href="rnn.html#cb85-79" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit[[<span class="dv">2</span>]]<span class="sc">$</span>val_loss,<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="at">main=</span><span class="fu">list</span>(<span class="st">&quot;early stopping rule&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>),<span class="at">xlab=</span><span class="st">&quot;epochs&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;MSE loss&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>)</span>
+<span id="cb85-80"><a href="rnn.html#cb85-80" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(fit[[<span class="dv">2</span>]]<span class="sc">$</span>loss,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb85-81"><a href="rnn.html#cb85-81" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.1</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb85-82"><a href="rnn.html#cb85-82" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="st">&quot;bottomleft&quot;</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="at">lwd=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;in-sample loss&quot;</span>, <span class="st">&quot;out-of-sample loss&quot;</span>))</span>
+<span id="cb85-83"><a href="rnn.html#cb85-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-84"><a href="rnn.html#cb85-84" aria-hidden="true" tabindex="-1"></a><span class="fu">load_model_weights_hdf5</span>(model, <span class="st">&quot;./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model&quot;</span>)</span>
+<span id="cb85-85"><a href="rnn.html#cb85-85" aria-hidden="true" tabindex="-1"></a>Yhat.train1 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(model <span class="sc">%&gt;%</span> <span class="fu">predict</span>(x.train))</span>
+<span id="cb85-86"><a href="rnn.html#cb85-86" aria-hidden="true" tabindex="-1"></a>Yhat.vali1 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(model <span class="sc">%&gt;%</span> <span class="fu">predict</span>(x.vali))</span>
+<span id="cb85-87"><a href="rnn.html#cb85-87" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">round</span>(<span class="fu">mean</span>((Yhat.train1<span class="sc">-</span>y.train)<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>), <span class="fu">round</span>(<span class="fu">mean</span>((Yhat.vali1<span class="sc">-</span>y.vali)<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="rnn-1" class="section level3" number="6.5.4">
+<h3><span class="header-section-number">6.5.4</span> RNN</h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="rnn.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load corresponding data</span></span>
+<span id="cb86-2"><a href="rnn.html#cb86-2" aria-hidden="true" tabindex="-1"></a>path.data <span class="ot">&lt;-</span> <span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv&quot;</span>           <span class="co"># path and name of data file</span></span>
+<span id="cb86-3"><a href="rnn.html#cb86-3" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="st">&quot;CHE&quot;</span>                    <span class="co"># country to be loaded (code is for one selected country)</span></span>
+<span id="cb86-4"><a href="rnn.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R&quot;</span>)</span>
+<span id="cb86-5"><a href="rnn.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(all_mort)</span>
+<span id="cb86-6"><a href="rnn.html#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_b package - network definitions.R&quot;</span>)</span>
+<span id="cb86-7"><a href="rnn.html#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_c package - data preparation RNNs.R&quot;</span>)</span>
+<span id="cb86-8"><a href="rnn.html#cb86-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-9"><a href="rnn.html#cb86-9" aria-hidden="true" tabindex="-1"></a><span class="co"># choice of parameters</span></span>
+<span id="cb86-10"><a href="rnn.html#cb86-10" aria-hidden="true" tabindex="-1"></a>T0 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb86-11"><a href="rnn.html#cb86-11" aria-hidden="true" tabindex="-1"></a>tau0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb86-12"><a href="rnn.html#cb86-12" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="st">&quot;Female&quot;</span></span>
+<span id="cb86-13"><a href="rnn.html#cb86-13" aria-hidden="true" tabindex="-1"></a>ObsYear <span class="ot">&lt;-</span> <span class="dv">1999</span></span>
+<span id="cb86-14"><a href="rnn.html#cb86-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-15"><a href="rnn.html#cb86-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training data pre-processing </span></span>
+<span id="cb86-16"><a href="rnn.html#cb86-16" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">data.preprocessing.RNNs</span>(all_mort, gender, T0, tau0, ObsYear)</span>
+<span id="cb86-17"><a href="rnn.html#cb86-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data1[[<span class="dv">1</span>]])</span>
+<span id="cb86-18"><a href="rnn.html#cb86-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data1[[<span class="dv">2</span>]])</span>
+<span id="cb86-19"><a href="rnn.html#cb86-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-20"><a href="rnn.html#cb86-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-21"><a href="rnn.html#cb86-21" aria-hidden="true" tabindex="-1"></a><span class="co"># validation data pre-processing</span></span>
+<span id="cb86-22"><a href="rnn.html#cb86-22" aria-hidden="true" tabindex="-1"></a>all_mort2 <span class="ot">&lt;-</span> all_mort[<span class="fu">which</span>((all_mort<span class="sc">$</span>Year <span class="sc">&gt;</span> (ObsYear<span class="dv">-10</span>))<span class="sc">&amp;</span>(Gender<span class="sc">==</span>gender)),]</span>
+<span id="cb86-23"><a href="rnn.html#cb86-23" aria-hidden="true" tabindex="-1"></a>all_mortV <span class="ot">&lt;-</span> all_mort2</span>
+<span id="cb86-24"><a href="rnn.html#cb86-24" aria-hidden="true" tabindex="-1"></a>vali.Y <span class="ot">&lt;-</span> all_mortV[<span class="fu">which</span>(all_mortV<span class="sc">$</span>Year <span class="sc">&gt;</span> ObsYear),]</span>
+<span id="cb86-25"><a href="rnn.html#cb86-25" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb86-26"><a href="rnn.html#cb86-26" aria-hidden="true" tabindex="-1"></a><span class="co"># MinMaxScaler data pre-processing</span></span>
+<span id="cb86-27"><a href="rnn.html#cb86-27" aria-hidden="true" tabindex="-1"></a>x.min <span class="ot">&lt;-</span> <span class="fu">min</span>(data1[[<span class="dv">1</span>]])</span>
+<span id="cb86-28"><a href="rnn.html#cb86-28" aria-hidden="true" tabindex="-1"></a>x.max <span class="ot">&lt;-</span> <span class="fu">max</span>(data1[[<span class="dv">1</span>]])</span>
+<span id="cb86-29"><a href="rnn.html#cb86-29" aria-hidden="true" tabindex="-1"></a>x.train <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">2</span><span class="sc">*</span>(data1[[<span class="dv">1</span>]]<span class="sc">-</span>x.min)<span class="sc">/</span>(x.min<span class="sc">-</span>x.max)<span class="sc">-</span><span class="dv">1</span>, <span class="fu">dim</span>(data1[[<span class="dv">1</span>]]))</span>
+<span id="cb86-30"><a href="rnn.html#cb86-30" aria-hidden="true" tabindex="-1"></a>y.train <span class="ot">&lt;-</span> <span class="sc">-</span> data1[[<span class="dv">2</span>]]</span>
+<span id="cb86-31"><a href="rnn.html#cb86-31" aria-hidden="true" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y.train)</span>
+<span id="cb86-32"><a href="rnn.html#cb86-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-33"><a href="rnn.html#cb86-33" aria-hidden="true" tabindex="-1"></a><span class="co"># LSTM architectures</span></span>
+<span id="cb86-34"><a href="rnn.html#cb86-34" aria-hidden="true" tabindex="-1"></a><span class="co"># network architecture deep 3 network</span></span>
+<span id="cb86-35"><a href="rnn.html#cb86-35" aria-hidden="true" tabindex="-1"></a>tau1 <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb86-36"><a href="rnn.html#cb86-36" aria-hidden="true" tabindex="-1"></a>tau2 <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb86-37"><a href="rnn.html#cb86-37" aria-hidden="true" tabindex="-1"></a>tau3 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb86-38"><a href="rnn.html#cb86-38" aria-hidden="true" tabindex="-1"></a>optimizer <span class="ot">&lt;-</span> <span class="st">&#39;adam&#39;</span></span>
+<span id="cb86-39"><a href="rnn.html#cb86-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-40"><a href="rnn.html#cb86-40" aria-hidden="true" tabindex="-1"></a><span class="co"># choose either LSTM or GRU network</span></span>
+<span id="cb86-41"><a href="rnn.html#cb86-41" aria-hidden="true" tabindex="-1"></a>RNN.type <span class="ot">&lt;-</span> <span class="st">&quot;LSTM&quot;</span></span>
+<span id="cb86-42"><a href="rnn.html#cb86-42" aria-hidden="true" tabindex="-1"></a><span class="co">#RNN.type &lt;- &quot;GRU&quot;</span></span>
+<span id="cb86-43"><a href="rnn.html#cb86-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-44"><a href="rnn.html#cb86-44" aria-hidden="true" tabindex="-1"></a>{<span class="cf">if</span> (RNN.type<span class="sc">==</span><span class="st">&quot;LSTM&quot;</span>){model <span class="ot">&lt;-</span> <span class="fu">LSTM3</span>(T0, tau0, tau1, tau2, tau3, y0, optimizer)}<span class="cf">else</span>{model <span class="ot">&lt;-</span> <span class="fu">GRU3</span>(T0, tau0, tau1, tau2, tau3, y0, optimizer)}</span>
+<span id="cb86-45"><a href="rnn.html#cb86-45" aria-hidden="true" tabindex="-1"></a> name.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(RNN.type,<span class="st">&quot;3_&quot;</span>, tau0, <span class="st">&quot;_&quot;</span>, tau1, <span class="st">&quot;_&quot;</span>, tau2, <span class="st">&quot;_&quot;</span>, tau3, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb86-46"><a href="rnn.html#cb86-46" aria-hidden="true" tabindex="-1"></a> file.name <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model_&quot;</span>, name.model,<span class="st">&quot;_&quot;</span>, gender, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb86-47"><a href="rnn.html#cb86-47" aria-hidden="true" tabindex="-1"></a> <span class="fu">summary</span>(model)}</span>
+<span id="cb86-48"><a href="rnn.html#cb86-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-49"><a href="rnn.html#cb86-49" aria-hidden="true" tabindex="-1"></a><span class="co"># define callback</span></span>
+<span id="cb86-50"><a href="rnn.html#cb86-50" aria-hidden="true" tabindex="-1"></a>CBs <span class="ot">&lt;-</span> <span class="fu">callback_model_checkpoint</span>(file.name, <span class="at">monitor =</span> <span class="st">&quot;val_loss&quot;</span>, <span class="at">verbose =</span> <span class="dv">0</span>,  <span class="at">save_best_only =</span> <span class="cn">TRUE</span>, <span class="at">save_weights_only =</span> <span class="cn">TRUE</span>, <span class="at">save_freq =</span> <span class="cn">NULL</span>)</span>
+<span id="cb86-51"><a href="rnn.html#cb86-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-52"><a href="rnn.html#cb86-52" aria-hidden="true" tabindex="-1"></a><span class="co"># gradient descent fitting: takes roughly 200 seconds on my laptop</span></span>
+<span id="cb86-53"><a href="rnn.html#cb86-53" aria-hidden="true" tabindex="-1"></a>{t1 <span class="ot">&lt;-</span> <span class="fu">proc.time</span>()</span>
+<span id="cb86-54"><a href="rnn.html#cb86-54" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">x=</span>x.train, <span class="at">y=</span>y.train, <span class="at">validation_split=</span><span class="fl">0.2</span>,</span>
+<span id="cb86-55"><a href="rnn.html#cb86-55" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">batch_size=</span><span class="dv">100</span>, <span class="at">epochs=</span><span class="dv">500</span>, <span class="at">verbose=</span><span class="dv">1</span>, <span class="at">callbacks=</span>CBs)                                        </span>
+<span id="cb86-56"><a href="rnn.html#cb86-56" aria-hidden="true" tabindex="-1"></a><span class="fu">proc.time</span>()<span class="sc">-</span>t1}</span>
+<span id="cb86-57"><a href="rnn.html#cb86-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-58"><a href="rnn.html#cb86-58" aria-hidden="true" tabindex="-1"></a><span class="co"># plot loss figures</span></span>
+<span id="cb86-59"><a href="rnn.html#cb86-59" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.losses</span>(name.model, gender, fit[[<span class="dv">2</span>]]<span class="sc">$</span>val_loss, fit[[<span class="dv">2</span>]]<span class="sc">$</span>loss)</span>
+<span id="cb86-60"><a href="rnn.html#cb86-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-61"><a href="rnn.html#cb86-61" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating in-sample loss: LC is c(Female=3.7573, Male=8.8110)</span></span>
+<span id="cb86-62"><a href="rnn.html#cb86-62" aria-hidden="true" tabindex="-1"></a><span class="fu">load_model_weights_hdf5</span>(model, file.name)</span>
+<span id="cb86-63"><a href="rnn.html#cb86-63" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">4</span><span class="sc">*</span><span class="fu">mean</span>((<span class="fu">exp</span>(<span class="sc">-</span><span class="fu">as.vector</span>(model <span class="sc">%&gt;%</span> <span class="fu">predict</span>(x.train)))<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>y.train))<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>)</span>
+<span id="cb86-64"><a href="rnn.html#cb86-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-65"><a href="rnn.html#cb86-65" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating out-of-sample loss: LC is c(Female=0.6045, Male=1.8152)</span></span>
+<span id="cb86-66"><a href="rnn.html#cb86-66" aria-hidden="true" tabindex="-1"></a>pred.result <span class="ot">&lt;-</span> <span class="fu">recursive.prediction</span>(ObsYear, all_mort2, gender, T0, tau0, x.min, x.max, model)</span>
+<span id="cb86-67"><a href="rnn.html#cb86-67" aria-hidden="true" tabindex="-1"></a>vali <span class="ot">&lt;-</span> pred.result[[<span class="dv">1</span>]][<span class="fu">which</span>(all_mort2<span class="sc">$</span>Year <span class="sc">&gt;</span> ObsYear),]</span>
+<span id="cb86-68"><a href="rnn.html#cb86-68" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">4</span><span class="sc">*</span><span class="fu">mean</span>((vali<span class="sc">$</span>mx<span class="sc">-</span>vali.Y<span class="sc">$</span>mx)<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>)</span></code></pre></div>
+</div>
+<div id="引入性别协变量" class="section level3" number="6.5.5">
+<h3><span class="header-section-number">6.5.5</span> 引入性别协变量</h3>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="rnn.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load corresponding data</span></span>
+<span id="cb87-2"><a href="rnn.html#cb87-2" aria-hidden="true" tabindex="-1"></a>path.data <span class="ot">&lt;-</span> <span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CHE_mort.csv&quot;</span>           <span class="co"># path and name of data file</span></span>
+<span id="cb87-3"><a href="rnn.html#cb87-3" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="st">&quot;CHE&quot;</span>                    <span class="co"># country to be loaded (code is for one selected country)</span></span>
+<span id="cb87-4"><a href="rnn.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_a package - load data.R&quot;</span>)</span>
+<span id="cb87-5"><a href="rnn.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(all_mort)</span>
+<span id="cb87-6"><a href="rnn.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_b package - network definitions.R&quot;</span>)</span>
+<span id="cb87-7"><a href="rnn.html#cb87-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file=</span><span class="st">&quot;6 - Lee and Carter go Machine Learning Recurrent Neural Networks/00_c package - data preparation RNNs.R&quot;</span>)</span>
+<span id="cb87-8"><a href="rnn.html#cb87-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-9"><a href="rnn.html#cb87-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-10"><a href="rnn.html#cb87-10" aria-hidden="true" tabindex="-1"></a><span class="co"># choice of parameters</span></span>
+<span id="cb87-11"><a href="rnn.html#cb87-11" aria-hidden="true" tabindex="-1"></a>T0 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb87-12"><a href="rnn.html#cb87-12" aria-hidden="true" tabindex="-1"></a>tau0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb87-13"><a href="rnn.html#cb87-13" aria-hidden="true" tabindex="-1"></a>ObsYear <span class="ot">&lt;-</span> <span class="dv">1999</span></span>
+<span id="cb87-14"><a href="rnn.html#cb87-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-15"><a href="rnn.html#cb87-15" aria-hidden="true" tabindex="-1"></a><span class="co"># training data pre-processing </span></span>
+<span id="cb87-16"><a href="rnn.html#cb87-16" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">data.preprocessing.RNNs</span>(all_mort, <span class="st">&quot;Female&quot;</span>, T0, tau0, ObsYear)</span>
+<span id="cb87-17"><a href="rnn.html#cb87-17" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">data.preprocessing.RNNs</span>(all_mort, <span class="st">&quot;Male&quot;</span>, T0, tau0, ObsYear)</span>
+<span id="cb87-18"><a href="rnn.html#cb87-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-19"><a href="rnn.html#cb87-19" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">dim</span>(data1[[<span class="dv">1</span>]])[<span class="dv">1</span>]</span>
+<span id="cb87-20"><a href="rnn.html#cb87-20" aria-hidden="true" tabindex="-1"></a>x.train <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="cn">NA</span>, <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">*</span>xx, <span class="fu">dim</span>(data1[[<span class="dv">1</span>]])[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]))</span>
+<span id="cb87-21"><a href="rnn.html#cb87-21" aria-hidden="true" tabindex="-1"></a>y.train <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="cn">NA</span>, <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">*</span>xx))</span>
+<span id="cb87-22"><a href="rnn.html#cb87-22" aria-hidden="true" tabindex="-1"></a>gender.indicator <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), xx)</span>
+<span id="cb87-23"><a href="rnn.html#cb87-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (l <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>xx){</span>
+<span id="cb87-24"><a href="rnn.html#cb87-24" aria-hidden="true" tabindex="-1"></a>   x.train[(l<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>,,] <span class="ot">&lt;-</span> data1[[<span class="dv">1</span>]][l,,]</span>
+<span id="cb87-25"><a href="rnn.html#cb87-25" aria-hidden="true" tabindex="-1"></a>   x.train[(l<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span>,,] <span class="ot">&lt;-</span> data2[[<span class="dv">1</span>]][l,,]</span>
+<span id="cb87-26"><a href="rnn.html#cb87-26" aria-hidden="true" tabindex="-1"></a>   y.train[(l<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span>data1[[<span class="dv">2</span>]][l]</span>
+<span id="cb87-27"><a href="rnn.html#cb87-27" aria-hidden="true" tabindex="-1"></a>   y.train[(l<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="sc">-</span>data2[[<span class="dv">2</span>]][l]</span>
+<span id="cb87-28"><a href="rnn.html#cb87-28" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb87-29"><a href="rnn.html#cb87-29" aria-hidden="true" tabindex="-1"></a><span class="co"># MinMaxScaler data pre-processing</span></span>
+<span id="cb87-30"><a href="rnn.html#cb87-30" aria-hidden="true" tabindex="-1"></a>x.min <span class="ot">&lt;-</span> <span class="fu">min</span>(x.train)</span>
+<span id="cb87-31"><a href="rnn.html#cb87-31" aria-hidden="true" tabindex="-1"></a>x.max <span class="ot">&lt;-</span> <span class="fu">max</span>(x.train)</span>
+<span id="cb87-32"><a href="rnn.html#cb87-32" aria-hidden="true" tabindex="-1"></a>x.train <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">array</span>(<span class="dv">2</span><span class="sc">*</span>(x.train<span class="sc">-</span>x.min)<span class="sc">/</span>(x.min<span class="sc">-</span>x.max)<span class="sc">-</span><span class="dv">1</span>, <span class="fu">dim</span>(x.train)), gender.indicator)</span>
+<span id="cb87-33"><a href="rnn.html#cb87-33" aria-hidden="true" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y.train)</span>
+<span id="cb87-34"><a href="rnn.html#cb87-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-35"><a href="rnn.html#cb87-35" aria-hidden="true" tabindex="-1"></a><span class="co"># validation data pre-processing</span></span>
+<span id="cb87-36"><a href="rnn.html#cb87-36" aria-hidden="true" tabindex="-1"></a>all_mort2.Female <span class="ot">&lt;-</span> all_mort[<span class="fu">which</span>((all_mort<span class="sc">$</span>Year <span class="sc">&gt;</span> (ObsYear<span class="dv">-10</span>))<span class="sc">&amp;</span>(Gender<span class="sc">==</span><span class="st">&quot;Female&quot;</span>)),]</span>
+<span id="cb87-37"><a href="rnn.html#cb87-37" aria-hidden="true" tabindex="-1"></a>all_mortV.Female <span class="ot">&lt;-</span> all_mort2.Female</span>
+<span id="cb87-38"><a href="rnn.html#cb87-38" aria-hidden="true" tabindex="-1"></a>vali.Y.Female <span class="ot">&lt;-</span> all_mortV.Female[<span class="fu">which</span>(all_mortV.Female<span class="sc">$</span>Year <span class="sc">&gt;</span> ObsYear),]</span>
+<span id="cb87-39"><a href="rnn.html#cb87-39" aria-hidden="true" tabindex="-1"></a>all_mort2.Male <span class="ot">&lt;-</span> all_mort[<span class="fu">which</span>((all_mort<span class="sc">$</span>Year <span class="sc">&gt;</span> (ObsYear<span class="dv">-10</span>))<span class="sc">&amp;</span>(Gender<span class="sc">==</span><span class="st">&quot;Male&quot;</span>)),]</span>
+<span id="cb87-40"><a href="rnn.html#cb87-40" aria-hidden="true" tabindex="-1"></a>all_mortV.Male <span class="ot">&lt;-</span> all_mort2.Male</span>
+<span id="cb87-41"><a href="rnn.html#cb87-41" aria-hidden="true" tabindex="-1"></a>vali.Y.Male <span class="ot">&lt;-</span> all_mortV.Male[<span class="fu">which</span>(all_mortV.Male<span class="sc">$</span>Year <span class="sc">&gt;</span> ObsYear),]</span>
+<span id="cb87-42"><a href="rnn.html#cb87-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-43"><a href="rnn.html#cb87-43" aria-hidden="true" tabindex="-1"></a><span class="co"># LSTM architectures</span></span>
+<span id="cb87-44"><a href="rnn.html#cb87-44" aria-hidden="true" tabindex="-1"></a><span class="co"># network architecture deep 3 network</span></span>
+<span id="cb87-45"><a href="rnn.html#cb87-45" aria-hidden="true" tabindex="-1"></a>tau1 <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb87-46"><a href="rnn.html#cb87-46" aria-hidden="true" tabindex="-1"></a>tau2 <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb87-47"><a href="rnn.html#cb87-47" aria-hidden="true" tabindex="-1"></a>tau3 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb87-48"><a href="rnn.html#cb87-48" aria-hidden="true" tabindex="-1"></a>optimizer <span class="ot">&lt;-</span> <span class="st">&#39;adam&#39;</span></span>
+<span id="cb87-49"><a href="rnn.html#cb87-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-50"><a href="rnn.html#cb87-50" aria-hidden="true" tabindex="-1"></a><span class="co"># choose either LSTM or GRU network</span></span>
+<span id="cb87-51"><a href="rnn.html#cb87-51" aria-hidden="true" tabindex="-1"></a>RNN.type <span class="ot">&lt;-</span> <span class="st">&quot;LSTM&quot;</span></span>
+<span id="cb87-52"><a href="rnn.html#cb87-52" aria-hidden="true" tabindex="-1"></a><span class="co">#RNN.type &lt;- &quot;GRU&quot;</span></span>
+<span id="cb87-53"><a href="rnn.html#cb87-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-54"><a href="rnn.html#cb87-54" aria-hidden="true" tabindex="-1"></a>{<span class="cf">if</span> (RNN.type<span class="sc">==</span><span class="st">&quot;LSTM&quot;</span>){model <span class="ot">&lt;-</span> <span class="fu">LSTM3.Gender</span>(T0, tau0, tau1, tau2, tau3, y0, optimizer)}<span class="cf">else</span>{model <span class="ot">&lt;-</span> <span class="fu">GRU3.Gender</span>(T0, tau0, tau1, tau2, tau3, y0, optimizer)}</span>
+<span id="cb87-55"><a href="rnn.html#cb87-55" aria-hidden="true" tabindex="-1"></a> name.model <span class="ot">&lt;-</span> <span class="fu">paste</span>(RNN.type,<span class="st">&quot;3_&quot;</span>, tau0, <span class="st">&quot;_&quot;</span>, tau1, <span class="st">&quot;_&quot;</span>, tau2, <span class="st">&quot;_&quot;</span>, tau3, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb87-56"><a href="rnn.html#cb87-56" aria-hidden="true" tabindex="-1"></a> <span class="co">#file.name &lt;- paste(&quot;./Model_Full_Param/best_model_&quot;, name.model, sep=&quot;&quot;)</span></span>
+<span id="cb87-57"><a href="rnn.html#cb87-57" aria-hidden="true" tabindex="-1"></a> file.name <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;./6 - Lee and Carter go Machine Learning Recurrent Neural Networks/CallBack/best_model_&quot;</span>, name.model, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb87-58"><a href="rnn.html#cb87-58" aria-hidden="true" tabindex="-1"></a> <span class="fu">summary</span>(model)}</span>
+<span id="cb87-59"><a href="rnn.html#cb87-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-60"><a href="rnn.html#cb87-60" aria-hidden="true" tabindex="-1"></a><span class="co"># define callback</span></span>
+<span id="cb87-61"><a href="rnn.html#cb87-61" aria-hidden="true" tabindex="-1"></a>CBs <span class="ot">&lt;-</span> <span class="fu">callback_model_checkpoint</span>(file.name, <span class="at">monitor =</span> <span class="st">&quot;val_loss&quot;</span>, <span class="at">verbose =</span> <span class="dv">0</span>,  <span class="at">save_best_only =</span> <span class="cn">TRUE</span>, <span class="at">save_weights_only =</span> <span class="cn">TRUE</span>,<span class="at">save_freq =</span> <span class="cn">NULL</span>)</span>
+<span id="cb87-62"><a href="rnn.html#cb87-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-63"><a href="rnn.html#cb87-63" aria-hidden="true" tabindex="-1"></a><span class="co"># gradient descent fitting: takes roughly 400 seconds on my laptop</span></span>
+<span id="cb87-64"><a href="rnn.html#cb87-64" aria-hidden="true" tabindex="-1"></a>{t1 <span class="ot">&lt;-</span> <span class="fu">proc.time</span>()</span>
+<span id="cb87-65"><a href="rnn.html#cb87-65" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">x=</span>x.train, <span class="at">y=</span>y.train, <span class="at">validation_split=</span><span class="fl">0.2</span>,</span>
+<span id="cb87-66"><a href="rnn.html#cb87-66" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">batch_size=</span><span class="dv">100</span>, <span class="at">epochs=</span><span class="dv">500</span>, <span class="at">verbose=</span><span class="dv">1</span>, <span class="at">callbacks=</span>CBs)                                        </span>
+<span id="cb87-67"><a href="rnn.html#cb87-67" aria-hidden="true" tabindex="-1"></a><span class="fu">proc.time</span>()<span class="sc">-</span>t1}</span>
+<span id="cb87-68"><a href="rnn.html#cb87-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-69"><a href="rnn.html#cb87-69" aria-hidden="true" tabindex="-1"></a><span class="co"># plot loss figures</span></span>
+<span id="cb87-70"><a href="rnn.html#cb87-70" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.losses</span>(name.model, <span class="st">&quot;Both&quot;</span>, fit[[<span class="dv">2</span>]]<span class="sc">$</span>val_loss, fit[[<span class="dv">2</span>]]<span class="sc">$</span>loss)</span>
+<span id="cb87-71"><a href="rnn.html#cb87-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-72"><a href="rnn.html#cb87-72" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating in-sample loss: LC is c(Female=3.7573, Male=8.8110)</span></span>
+<span id="cb87-73"><a href="rnn.html#cb87-73" aria-hidden="true" tabindex="-1"></a><span class="fu">load_model_weights_hdf5</span>(model, file.name)</span>
+<span id="cb87-74"><a href="rnn.html#cb87-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-75"><a href="rnn.html#cb87-75" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">4</span><span class="sc">*</span><span class="fu">mean</span>((<span class="fu">exp</span>(<span class="sc">-</span><span class="fu">as.vector</span>(model <span class="sc">%&gt;%</span> <span class="fu">predict</span>(x.train)))<span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>y.train))<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>)</span>
+<span id="cb87-76"><a href="rnn.html#cb87-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-77"><a href="rnn.html#cb87-77" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating out-of-sample loss: LC is c(Female=0.6045, Male=1.8152)</span></span>
+<span id="cb87-78"><a href="rnn.html#cb87-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Female</span></span>
+<span id="cb87-79"><a href="rnn.html#cb87-79" aria-hidden="true" tabindex="-1"></a>pred.result <span class="ot">&lt;-</span> <span class="fu">recursive.prediction.Gender</span>(ObsYear, all_mort2.Female, <span class="st">&quot;Female&quot;</span>, T0, tau0, x.min, x.max, model)</span>
+<span id="cb87-80"><a href="rnn.html#cb87-80" aria-hidden="true" tabindex="-1"></a>vali <span class="ot">&lt;-</span> pred.result[[<span class="dv">1</span>]][<span class="fu">which</span>(all_mort2.Female<span class="sc">$</span>Year <span class="sc">&gt;</span> ObsYear),]</span>
+<span id="cb87-81"><a href="rnn.html#cb87-81" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">4</span><span class="sc">*</span><span class="fu">mean</span>((vali<span class="sc">$</span>mx<span class="sc">-</span>vali.Y.Female<span class="sc">$</span>mx)<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>)</span>
+<span id="cb87-82"><a href="rnn.html#cb87-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Male</span></span>
+<span id="cb87-83"><a href="rnn.html#cb87-83" aria-hidden="true" tabindex="-1"></a>pred.result <span class="ot">&lt;-</span> <span class="fu">recursive.prediction.Gender</span>(ObsYear, all_mort2.Male, <span class="st">&quot;Male&quot;</span>, T0, tau0, x.min, x.max, model)</span>
+<span id="cb87-84"><a href="rnn.html#cb87-84" aria-hidden="true" tabindex="-1"></a>vali <span class="ot">&lt;-</span> pred.result[[<span class="dv">1</span>]][<span class="fu">which</span>(all_mort2.Male<span class="sc">$</span>Year <span class="sc">&gt;</span> ObsYear),]</span>
+<span id="cb87-85"><a href="rnn.html#cb87-85" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">4</span><span class="sc">*</span><span class="fu">mean</span>((vali<span class="sc">$</span>mx<span class="sc">-</span>vali.Y.Male<span class="sc">$</span>mx)<span class="sc">^</span><span class="dv">2</span>),<span class="dv">4</span>)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="unsupervised-learning.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": "github"
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true,
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
