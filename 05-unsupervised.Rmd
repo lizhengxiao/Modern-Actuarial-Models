@@ -813,6 +813,7 @@ knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/5/cluster.png")
 ```
 
+
 ## t-SNE
 
 **简介**
@@ -852,6 +853,11 @@ $$
 p_{i,j}=\frac{(1+||y_i-y_j||_2^2)^{-1}}{\sum_{k\ne l}(1+||y_k-y_l||_2^2)^{-1}},\ for\ i\ne j
 $$
 **t(1)分布的选择**：解决拥挤问题（高维空间中分离的簇，在低维中被分的不明显）
+```{r tdist,echo=F, fig.align='center', fig.cap="t-distribution", out.width="60%"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/5/t-distribution.png")
+```
+    图\@ref(fig:tdist)展示了不同自由度下的t分布的密度函数图像，可以看出，自由度越小，t分布的尾部越厚。
 $$
 p_{i,j}\approx||y_i-y_j||^{-2}_2\ for\ ||y_i-y_j||_2\rightarrow\infty 
 $$
@@ -860,40 +866,38 @@ $$
 D_{KL}(q||p)=\sum_{j=1}^Jq_jlog\frac{q_j}{p_j}
 $$
 
-```{r t-sne, eval=F}
-require(MASS)
-library(plyr)
-library(stringr)
-library(plotrix)
-library(matrixStats)
+```{r t-sne,eval=F,warning=FALSE, message=FALSE}
 library(tsne)
-library(umap)
-library(kohonen)
-seed <- 100
-set.seed(seed)
-# it takes roughly 50 seconds
-# KL divergence 0.427991566501587
-{t1 <- proc.time()
-   (K_res <- tsne(X, k=2, initial_dim=ncol(X), perplexity=30))
-proc.time()-t1}
-i1 <- 2
-i2 <- 1
-sign0 <- 1
-K_res1 <- K_res[,c(i1,i2)]
-K_res1 <- sign0 * K_res1
-plot(K_res1, pch=20, col="blue", cex.lab=1.5, ylab=paste("component ", i2, paste=""), xlab=paste("component ", i1, paste=""), main=list(paste("t-SNE with seed ", seed, sep=""), cex=1.5))
-dat0 <- K_res1[which(d.data$tau<21),]
-points(dat0, col="green",pch=20)
-dat0 <- K_res1[which(d.data$tau<17),]
-points(dat0, col="red",pch=20)
-legend("bottomleft", c("tau>=21", "17<=tau<21", "tau<17 (sports car)"), col=c("blue", "green", "red"), lty=c(-1,-1,-1), lwd=c(-1,-1,-1), pch=c(20,20,20))
+perp = c(10,20,30,40,50,60) #困惑度
+par(mfrow=c(2,3))
+for (i in 1:6){
+    set.seed(100)
+    tsne = tsne(X, k=2, initial_dim=ncol(X), perplexity=perp[i])
+    tsne1 = tsne[,c(2,1)]
+    plot(tsne1,col="blue",pch=20,
+         ylab="component 1",xlab="component 2",
+         main=list(paste("t-SNE with perplexity ", perp[i], sep="")))
+    points(tsne1[which(d.data$tau<21),], col="green",pch=20)
+    points(tsne1[which(d.data$tau<17),], col="red",pch=20)
+}
 ```
+
+```{r t-SNE,echo=F, fig.align='center', fig.cap="t-SNE", out.width="80%"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/5/t-SNE.png")
+```
+图\@ref(fig:t-SNE)展示了困惑度（10-60）对降维结果的影响，可以看出，困惑度为30时，降维的效果最佳。
 
 ## UMAP
 
 **简介**
 
 **统一流形逼近与投影**(UMAP, Uniform Manifold Approximation and Projection)是建立在黎曼几何和代数拓扑理论框架上的新的降维**流形学习技术**。在可视化质量方面，UMAP算法与t-SNE具有竞争优势，但是它保留了更多全局结构、具有优越的运行性能、更好的可扩展性。
+```{r manifold,echo=F, fig.align='center', fig.cap="manifold", out.width="60%"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/5/manifold.png")
+```
+图\@ref(fig:manifold)中两个黑点，若考虑直线距离，那么这两个黑点之间距离很相近；如果放到流形学上，那么这两个点距离就得沿着图中曲线绕两圈。
 
 **基本原理**
 
@@ -962,31 +966,39 @@ verbose| FALSE|控制工作日志，防止存储过多
 umap_learn_args| NA|调用python基于umap-learn训练好的参数
 
 ```{r umap, eval=F}
-kNeighbors <- 15     # default is 15
-seed <- 100
-set.seed(seed)
-min_dist <- .1
-umap.param <- umap.defaults
-umap.param$n_components <- 2
-umap.param$n_neighbors <- kNeighbors  
-umap.param$random_state <- seed 
-umap.param$min_dist <- min_dist 
-{t1 <- proc.time()
-   (K_res <- umap(X, config=umap.param, method="naive"))
-proc.time()-t1}
-i1 <- 2
-i2 <- 1
-sign0 <- 1
-K_res1 <- K_res$layout[,c(i1,i2)]
-K_res1 <- sign0 * K_res1
-plot(K_res1, pch=20, col="blue", cex.lab=1.5, ylab=paste("component ", i2, paste=""), xlab=paste("component ", i1, paste=""), main=list(paste("UMAP (k=", kNeighbors, " NN and min_dist=", min_dist,")", sep=""), cex=1.5))
-dat0 <- K_res1[which(d.data$tau<21),]
-points(dat0, col="green",pch=20)
-dat0 <- K_res1[which(d.data$tau<17),]
-points(dat0, col="red",pch=20)
-legend("bottomright", c("tau>=21", "17<=tau<21", "tau<17 (sports car)"), col=c("blue", "green", "red"), lty=c(-1,-1,-1), lwd=c(-1,-1,-1), pch=c(20,20,20))
+library(umap)
+min_dist = c(0.1,0.5,0.9)
+k = c(15,50,75,100)
+sign = matrix(c(1,-1,-1,1,1,1,-1,-1),4,2,byrow = F)
+par(mfrow=c(3,4))
+for (i in 1:3){
+    for (j in 1:4){
+        umap.param = umap.defaults
+        umap.param$n_components = 2
+        umap.param$random_state = 100
+        umap.param$min_dist = min_dist[i]
+        umap.param$n_neighbors = k[j]
+        umap = umap(X, config=umap.param, method="naive")
+        umap1 = matrix()
+        umap$layout[,1] = sign[j,1]*umap$layout[,1]
+        umap$layout[,2] = sign[j,2]*umap$layout[,2]
+        umap1 = umap$layout[,c(2,1)]
+        plot(umap1,col="blue",pch=20,
+             ylab="component 1", xlab="component 2",
+             main=list(paste("UMAP (k=",k[j],", min_dist= ",min_dist[i], ")",sep="")))
+        points(umap1[which(d.data$tau<21),], col="green",pch=20)
+        points(umap1[which(d.data$tau<17),], col="red",pch=20)
+    }
+}
 ```
 
+```{r UMAP,echo=F, fig.align='center', fig.cap="UMAP", out.width="80%"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/5/UMAP.png")
+```
+图\@ref(fig:UMAP)展示了降维结果以及两参数`k`和`min_dist`对降维结果的影响\
+- 竖看：`min_dist`越大，图形中的点分散地越均匀\
+- 横看：`k`越小，数据的流行结构显示地越明显
 
 ## SOM
 
@@ -999,7 +1011,13 @@ knitr::include_graphics("./plots/5/som.png")
 ```
 
 - **输入层**神经元的数量由输入向量的维度决定，一个神经元对应一个特征
-- **竞争层**的常见结构：矩形(Rectangular)、六边形(Hexagonal) 竞争层神经元的数量决定了最终模型的粒度与规模，对最终模型的准确性与泛化能力影响很大。\
+
+- **竞争层**的常见结构：矩形(Rectangular)、六边形(Hexagonal)，参见图\@ref(fig:SOM-com)。
+```{r SOM-com,echo=F,out.width="80%",fig.align = 'center',fig.cap="SOM-com"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/5/som-com.png")
+```
+    竞争层神经元的数量决定了最终模型的粒度与规模，对最终模型的准确性与泛化能力影响很大。\
 经验公式：$N\ge5\sqrt{m}$，$m$为训练样本数
 
 **基本原理**
@@ -1033,16 +1051,29 @@ $$
 5. **迭代**：返回第二步，迭代至收敛或达到设定次数
 
 ```{r som, eval=F}
-n1 <- 2
-n2 <- 10
+library(kohonen)
+p = ceiling(sqrt(5*sqrt(nrow(X)))) #根据经验公式确定正方形的边长
 set.seed(100)
-{t1 <- proc.time()
- som.X <- som(as.matrix(X), grid = somgrid(xdim=n1, ydim=n2, topo="rectangular"), 
-                            rlen= 100, dist.fcts="sumofsquares")
-proc.time()-t1}
-summary(som.X)
-plot(som.X,c("changes"), main=list("training progress", cex=1.5), col="blue", cex.lab=1.5)            # training progress
-plot(som.X,c("counts"), main="allocation counts to neurons", cex.lab=1.5)
-d.data$tau2 <- d.data$sports_car+as.integer(d.data$tau<21)+1
-plot(som.X,c("mapping"), classif=predict(som.X), col=c("blue","green","red")[d.data$tau2], pch=19, main="allocation of cases to neurons")
+som1 = som(as.matrix(X),grid=somgrid(xdim=p,ydim=p,topo="rectangular"),rlen=500,dist.fcts="euclidean")
+summary(som1)
+head(som1$unit.classif,100) #各数据点的获胜神经元
+tail(som1$codes[[1]]) #连接权重向量
+set.seed(100)
+som2 = som(as.matrix(X),grid=somgrid(xdim=p,ydim=p,topo="hexagonal"),rlen=500,dist.fcts="euclidean")
+par(mfrow=c(2,3))
+plot(som1,c("changes"))
+plot(som1,c("counts"), main="allocation counts to neurons")
+d.data$tau2 = d.data$sports_car+as.integer(d.data$tau<21)+1
+plot(som1,c("mapping"),classif=predict(som1),col=c("blue","green","red")[d.data$tau2], pch=19, main="allocation of cases to neurons")
+plot(som2,c("changes"))
+plot(som2,c("counts"), main="allocation counts to neurons")
+d.data$tau2 = d.data$sports_car+as.integer(d.data$tau<21)+1
+plot(som2,c("mapping"),classif=predict(som2),col=c("blue","green","red")[d.data$tau2], pch=19, main="allocation of cases to neurons")
 ```
+
+```{r SOM,echo=F,out.width="80%",fig.align = 'center',fig.cap="SOM"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/5/som2.png")
+```
+
+图\@ref(fig:SOM)的第一行展示的是矩形竞争层输出的降维结果，第二行展示的是六边形竞争层输出的降维结果，sports cars（红色）可以被较为明显地区分开来。

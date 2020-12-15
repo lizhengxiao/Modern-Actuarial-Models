@@ -9,7 +9,13 @@ fig:gda
 fig:bnns
 fig:BPcamparison
 fig:cluster-results
+fig:tdist
+fig:t-SNE
+fig:manifold
+fig:UMAP
 fig:som-ill
+fig:SOM-com
+fig:SOM
 fig:heatplot
 pre
 常用链接
