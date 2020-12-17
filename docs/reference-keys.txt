@@ -17,6 +17,14 @@ fig:som-ill
 fig:SOM-com
 fig:SOM
 fig:heatplot
+fig:kt
+fig:unnamed-chunk-1
+fig:loss1
+fig:loss2
+fig:kt2
+fig:kt3
+fig:Box
+fig:unnamed-chunk-2
 pre
 常用链接
 克隆代码
@@ -121,8 +129,11 @@ time-distributed-layer
 gates
 neuron-activations
 案例分析case-study
+数据描述-1
 死亡率热力图
 lee-carter-模型
 初试rnn
 rnn-1
 引入性别协变量
+稳健性
+预测结果图
