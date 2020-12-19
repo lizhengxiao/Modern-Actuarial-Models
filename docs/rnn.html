@@ -544,7 +544,7 @@ for network parameters <span class="math inline">\(W^{\top} \in \mathbb{R}^{\tau
 <li><p>图中位于2000年的垂直黑线表示对于训练数据<span class="math inline">\(\mathcal{T}\)</span>和验证数据<span class="math inline">\(\mathcal{V}\)</span>的划分:后续模型将使用日历年<span class="math inline">\(t=1950, \ldots, 1999\)</span>作为训练数据<span class="math inline">\(\mathcal{T}\)</span>进行学习，用<span class="math inline">\(2000, \ldots, 2016\)</span>作为验证数据<span class="math inline">\(\mathcal{V}\)</span>对死亡率做样本外验证。</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:heatplot"></span>
-<img src="plots/6/heat.PNG" alt="瑞士男女性死亡率热力图" width="60%" />
+<img src="plots/6/heat.png" alt="瑞士男女性死亡率热力图" width="60%" />
 <p class="caption">
 Figure 6.1: 瑞士男女性死亡率热力图
 </p>
@@ -594,7 +594,7 @@ Figure 6.1: 瑞士男女性死亡率热力图
 <span id="cb84-40"><a href="rnn.html#cb84-40"></a><span class="kw">round</span>(<span class="kw">c</span>((<span class="kw">mean</span>((train<span class="op">$</span>mx<span class="op">-</span>train<span class="op">$</span>pred_LC_svd)<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">10</span><span class="op">^</span><span class="dv">4</span>) , (<span class="kw">mean</span>((vali<span class="op">$</span>mx<span class="op">-</span>vali<span class="op">$</span>pred_LC_svd)<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">10</span><span class="op">^</span><span class="dv">4</span>)),<span class="dv">4</span>)</span></code></pre></div>
 <p>用带漂移项的随机游走预测<span class="math inline">\(t \in \mathcal{V}=\{2000, \ldots, 2016\}\)</span>的<span class="math inline">\(\hat{k}_{t}\)</span>，下图说明了结果。</p>
 <div class="figure" style="text-align: center"><span id="fig:kt"></span>
-<img src="plots/6/kt.PNG" alt="瑞士男女性kt的估计与预测值" width="60%"  />
+<img src="plots/6/kt.png" alt="瑞士男女性kt的估计与预测值" width="60%"  />
 <p class="caption">
 Figure 6.2: 瑞士男女性kt的估计与预测值
 </p>
@@ -628,7 +628,7 @@ Figure 6.2: 瑞士男女性kt的估计与预测值
 <li><p>数据如下图所示：</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
-<img src="plots/6/datatoy.PNG" alt="RNN初试中选择的数据" width="60%"  />
+<img src="plots/6/datatoy.png" alt="RNN初试中选择的数据" width="60%"  />
 <p class="caption">
 Figure 6.3: RNN初试中选择的数据
 </p>
@@ -650,7 +650,7 @@ Figure 6.3: RNN初试中选择的数据
 <li><p>下图显示了5个模型的收敛行为</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:loss1"></span>
-<img src="plots/6/loss1.PNG" alt="模型的样本内外损失" width="60%"  />
+<img src="plots/6/loss1.png" alt="模型的样本内外损失" width="60%"  />
 <p class="caption">
 Figure 6.4: 模型的样本内外损失
 </p>
@@ -830,7 +830,7 @@ Figure 6.4: 模型的样本内外损失
 <li><p>下图显示了分别对男性和女性建立两个模型的收敛行为</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:loss2"></span>
-<img src="plots/6/loss2.PNG" alt="模型的样本内外损失" width="60%"  />
+<img src="plots/6/loss2.png" alt="模型的样本内外损失" width="60%"  />
 <p class="caption">
 Figure 6.5: 模型的样本内外损失
 </p>
@@ -870,7 +870,7 @@ Figure 6.5: 模型的样本内外损失
 <li>估计结果如下图所示</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:kt2"></span>
-<img src="plots/6/kt2.PNG" alt="三种模型下kt的估计与预测值" width="60%"  />
+<img src="plots/6/kt2.png" alt="三种模型下kt的估计与预测值" width="60%"  />
 <p class="caption">
 Figure 6.6: 三种模型下kt的估计与预测值
 </p>
@@ -965,7 +965,7 @@ Figure 6.6: 三种模型下kt的估计与预测值
 <li>隐含的漂移项</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:kt3"></span>
-<img src="plots/6/kt3.PNG" alt="引入性别协变量建模的kt的估计与预测值" width="60%"  />
+<img src="plots/6/kt3.png" alt="引入性别协变量建模的kt的估计与预测值" width="60%"  />
 <p class="caption">
 Figure 6.7: 引入性别协变量建模的kt的估计与预测值
 </p>
@@ -1047,7 +1047,7 @@ Figure 6.7: 引入性别协变量建模的kt的估计与预测值
 <p>使用梯度下降法的早期停止解决方案的一个问题是由此产生的校准依赖于算法种子点（起始值）的选择</p>
 <p>下图展示使用相同RNN结构、相同超参数和相同校准策略，针对100个不同种子点的选择所画的损失的箱线图</p>
 <div class="figure" style="text-align: center"><span id="fig:Box"></span>
-<img src="plots/6/Box.PNG" alt="100个不同种子下的损失箱线图" width="60%"  />
+<img src="plots/6/Box.png" alt="100个不同种子下的损失箱线图" width="60%"  />
 <p class="caption">
 Figure 6.8: 100个不同种子下的损失箱线图
 </p>
@@ -1063,24 +1063,24 @@ Figure 6.8: 100个不同种子下的损失箱线图
 <ul>
 <li><strong>改进方法</strong>：将不同种子点下得到的预测值进行平均，结果如下:</li>
 </ul>
-<p>$$
+<p><span class="math display">\[
 \begin{array}{|l|c|cc|c|}
-&amp; {} &amp; {} &amp; {}&amp; {}\
-&amp;  &amp;  &amp;  &amp;  \
-(T=10,(<em>{0}, </em>{1}, <em>{2}, </em>{3})=(5,20,15,10)) &amp; 4.7643 &amp; 0.3402 &amp; 1.1346 &amp; 404 \
-(T=10,(<em>{0}, </em>{1}, <em>{2}, </em>{3})=(5,20,15,10)) &amp; 4.6311 &amp; 0.4646 &amp; 1.2571 &amp; 379  \</p>
-<p> &amp; - &amp; 0.2451 &amp; 1.2093 &amp; 100 404\
- &amp; - &amp; 0.2341&amp; 1.2746 &amp; 100 379  \
- &amp; 6.2841 &amp; 0.6045 &amp;1.8152 &amp; - \
-
+\hline &amp;  {\text { in-sample }} &amp; {\text { out-of-sample }} &amp; {\text { out-of-sample }}&amp;  {\text { run times }}\\
+&amp; \text {both genders} &amp; \text { female } &amp; \text { male } &amp; \text {both genders} \\
+\hline \hline \text { LSTM3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.7643 &amp; 0.3402 &amp; 1.1346 &amp; 404 \mathrm{s}\\
+\text { GRU3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.6311 &amp; 0.4646 &amp; 1.2571 &amp;  379 \mathrm{s} \\
+\hline\hline \text { LSTM3 averaged over 100 different seeds} &amp; - &amp; 0.2451 &amp; 1.2093 &amp; 100 \cdot 404\mathrm{s}\\
+\text { GRU3 averaged over 100 different seeds } &amp; - &amp; 0.2341&amp; 1.2746 &amp;  100 \cdot 379 \mathrm{s} \\
+\hline \hline \text { LC model with SVD } &amp; 6.2841 &amp; 0.6045 &amp;1.8152 &amp;  - \\
+\hline
 \end{array}
-$$</p>
+\]</span></p>
 <p>能够看到，平均之后得到了更稳健的解决方案，预测结果也很好，箱线图中绿色水平线表示的就是平均之后的预测损失，显示仅有极少数的在绿色水平线之下的种子点的选择在单独进行校准时效果会更好。</p>
 </div>
 <div id="预测结果图" class="section level3">
 <h3><span class="header-section-number">6.5.8</span> 预测结果图</h3>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="plots/6/mortality.PNG" alt="对数死亡率的观察与预测值" width="60%"  />
+<img src="plots/6/mortality.png" alt="对数死亡率的观察与预测值" width="60%"  />
 <p class="caption">
 Figure 6.9: 对数死亡率的观察与预测值
 </p>
