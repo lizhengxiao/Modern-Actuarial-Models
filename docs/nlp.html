@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>现代精算统计模型</title>
+  <title>7 自然语言处理 | 现代精算统计模型</title>
   <meta name="description" content="The output format is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="现代精算统计模型" />
+  <meta property="og:title" content="7 自然语言处理 | 现代精算统计模型" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="现代精算统计模型" />
+  <meta name="twitter:title" content="7 自然语言处理 | 现代精算统计模型" />
   
   <meta name="twitter:description" content="The output format is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="rnn.html"/>
 
-<link rel="next" href="intro.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -306,62 +306,143 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">现代精算统计模型</h1>
-<p class="author"><em>Modern Actuarial Models</em></p>
-<p class="date"><em>2020-12-23 16:45:40</em></p>
+<div id="nlp" class="section level1">
+<h1><span class="header-section-number">7</span> 自然语言处理</h1>
+<p><em>陈美昆、蒋慧华、高光远</em></p>
+<div class="figure" style="text-align: center"><span id="fig:history"></span>
+<img src="plots/7/history.png" alt="NLP历史（2000年以后）" width="70%" />
+<p class="caption">
+Figure 7.1: NLP历史（2000年以后）
+</p>
 </div>
-<div id="欢迎" class="section level1 unnumbered">
-<h1>👨‍🏫 欢迎</h1>
-<p>《现代精算统计模型》主要讲述如何使用统计学习和机器学习算法，提升传统的精算统计模型或者解决新的精算问题。这门课主要参考瑞士精算师协会发布的<a href="https://actuarialdatascience.org">“精算数据科学”</a>，该教程的主要目的是“为精算师提供一个对数据科学全面且易懂的介绍”，该教程提供了多篇方法性文章并开源代码，这样“读者可以相对容易地把这些数据科学方法用在自己的数据上”。</p>
-<p>我们建议大家仔细阅读以下文献，尝试并理解<a href="https://github.com/JSchelldorfer/ActuarialDataScience">所有代码</a>。此网站将作为该课程的辅助，为大家答疑，总结文献，并对文献中的方法做扩展。该网站由授课老师高光远和助教张玮钰管理，欢迎大家反馈意见到助教、微信群、或邮箱 <a href="mailto:guangyuan.gao@ruc.edu.cn" class="email">guangyuan.gao@ruc.edu.cn</a>。</p>
-<div id="答疑" class="section level2 unnumbered">
-<h2>🤔 答疑</h2>
-<p>我定期把同学们的普遍疑问在这里解答，欢迎提问！</p>
-<p><strong>👉 随机种子数</strong>(2020/11/20)</p>
-<p>输入<code>RNGversion("3.5.0"); set.seed(100)</code>，使得你的随机种子数和paper的相同，模型结果相近。</p>
-<p><strong>👉 MAC OS, Linux, WIN</strong> (2020/11/16)</p>
-<p>据观察，在MAC OS和Linux系统下安装<code>keras</code>成功的比例较高。WIN系统下，Python各个包的依赖以及和R包的匹配有一定的问题，今天是通过更换镜像源解决了R中无法加载<code>tensorflow.keras</code>模块的问题，推测是TUNA源中WIN包依赖关系没有及时更新。</p>
-<p>为了解决镜像源更新延迟、或者tensorflow版本过低的问题，这里共享WIN下经测试的<a href="https://www.jianguoyun.com/p/DcwPgUgQ3cTHBhi1-s0D">conda环境</a>配置。下载该文档，从该文档所在文件夹启动命令行，使用命令<code>conda env create --name &lt;env&gt; --file filename.yaml</code>，安装该conda环境。在R中使用<code>reticulate::use_condaenv("&lt;env&gt;",required=T)</code>关联该环境。</p>
-<p>另外，可下载MAC OS系统下经测试的<a href="https://www.jianguoyun.com/p/DYethK4Q3cTHBhjr4s0D">conda环境</a>配置。可通过<code>conda env create --name &lt;env&gt; --file filename.yaml</code>安装。</p>
-<p><strong>👉 CASdatasets</strong> (2020/11/13)</p>
-<p>源文件在<a href="http://cas.uqam.ca/" class="uri">http://cas.uqam.ca/</a>，但下载速度很慢，我把它放在<a href="https://www.jianguoyun.com/p/DdFyh74Q3cTHBhio2M0D">坚果云共享</a>。下载后选择install from local archive file。</p>
-<p><strong>👉 微信群</strong> (2020/11/08)</p>
-<p><img src="plots/wechat.png" width="30%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span id="fig:frisbee"></span>
+<img src="plots/7/frisbee.png" alt="扔飞盘" width="70%"  />
+<p class="caption">
+Figure 7.2: 扔飞盘
+</p>
 </div>
-<div id="课程安排" class="section level2 unnumbered">
-<h2>🗓️ 课程安排</h2>
-<p><img src="plots/plan.png" width="90%"  style="display: block; margin: auto;" /></p>
-<p>以下安排为初步计划，根据大家的需求和背景，我们可能要花更多的时间在某些重要的方法及其在精算上的应用。</p>
+<p>在保险业，大量的书面证据，如保单合同或索赔通知，以及客户与企业对话助理互动的记录，为数据科学家和精算师提供了越来越多的可供分析的文本信息。</p>
+<p>NLP在保险行业中的应用：</p>
 <ul>
-<li><p>第10周：</p>
-<p>准备工作。</p></li>
-<li><p>第11周:</p>
-<p>1 - French Motor Third-Party Liability Claims</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3164764" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3164764</a></p></li>
-<li><p>机动</p>
-<p>2 - Inisghts from Inside Neural Networks</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3226852" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3226852</a></p>
-<p>3 - Nesting Classical Actuarial Models into Neural Networks</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3320525" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3320525</a></p></li>
-<li><p>第12周：</p>
-<p>4 - On Boosting: Theory and Applications</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3402687" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3402687</a></p></li>
-<li><p>第13周：</p>
-<p>5 - Unsupervised Learning: What is a Sports Car</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3439358" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3439358</a></p></li>
-<li><p>第14周：</p>
-<p>6 - Lee and Carter go Machine Learning: Recurrent Neural Networks</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3441030" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3441030</a></p></li>
-<li><p>第15周：</p>
-<p>7 - The Art of Natural Language Processing: Classical, Modern and Contemporary Approaches to Text Document Classification</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547887" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547887</a></p></li>
-<li><p>第16周：</p>
-<p>8 - Peeking into the Black Box: An Actuarial Case Study for Interpretable Machine Learning</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3595944" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3595944</a></p></li>
-<li><p>第17周：</p>
-<p>9 - Convolutional neural network case studies: (1) Anomalies in Mortality Rates (2) Image Recognition</p>
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3656210" class="uri">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3656210</a></p></li>
+<li><p>根据文字描述的索赔类型和严重程度对索赔进行分类</p></li>
+<li><p>对电子邮件、保单、合同的分类</p></li>
+<li><p>从文本数据中识别欺诈案例等</p></li>
+</ul>
+<div id="预处理" class="section level2">
+<h2><span class="header-section-number">7.1</span> 预处理</h2>
+<ol style="list-style-type: decimal">
+<li><p>输入原始文本和格式</p></li>
+<li><p>将文本转化为小写</p></li>
+<li><p>分词（ tokenization ）</p></li>
+<li><p>删除停用词（ stopwords ）</p></li>
+<li><p>词性标注（ part-of-speech (POS) tagging ）?? 或者 bag of words?</p></li>
+<li><p>词干提取或词形还原（Stemming or Lemmatization）</p></li>
+</ol>
+</div>
+<div id="bag-of-words" class="section level2">
+<h2><span class="header-section-number">7.2</span> Bag of words</h2>
+</div>
+<div id="bag-of-part-of-speech" class="section level2">
+<h2><span class="header-section-number">7.3</span> Bag of part-of-speech</h2>
+</div>
+<div id="word-embeddings" class="section level2">
+<h2><span class="header-section-number">7.4</span> Word embeddings</h2>
+<div id="neural-probabilistic-language-model" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Neural probabilistic language model</h3>
+</div>
+<div id="word2vec" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> word2vec</h3>
+</div>
+<div id="global-vectors-for-word-representation" class="section level3">
+<h3><span class="header-section-number">7.4.3</span> Global vectors for word representation</h3>
+</div>
+</div>
+<div id="pre-trained-word-embeddings" class="section level2">
+<h2><span class="header-section-number">7.5</span> Pre-trained word embeddings</h2>
+</div>
+<div id="神经网络" class="section level2">
+<h2><span class="header-section-number">7.6</span> 神经网络</h2>
+<div id="lstm" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> LSTM</h3>
+</div>
+<div id="gru" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> GRU</h3>
+</div>
+</div>
+<div id="case-study-1" class="section level2">
+<h2><span class="header-section-number">7.7</span> Case study</h2>
+<div class="figure" style="text-align: center"><span id="fig:files"></span>
+<img src="plots/7/files.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.3: 文档结构
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:procedure"></span>
+<img src="plots/7/procedure.png" alt="nlp4class_exercise步骤" width="70%"  />
+<p class="caption">
+Figure 7.4: nlp4class_exercise步骤
+</p>
+</div>
+<ul>
+<li><p>任务描述：根据电影评论文本判断该评论是“好评”还是“差评”</p></li>
+<li><p>数据来源： Internet Movie Database (IMDb)</p></li>
+<li><p>数据量：案例中共有5000条含分类信息（pos/neg）的原始数据，从计算资源是运行时间考虑，我们从原始数据中随机抽取了1%，即500条数据进行测试，测试数据在toymdb文件夹下，文件结构和原始数据一致（需要注意的是， toymdb文件夹包含train和test两个文件，但并不是实际处理时的“训练集”和“测试集”，实际训练时读取所有数据并重新划分“训练集”和“测试集” ，所以实际上train和test中的文件没有区别，只是沿袭了原始数据的存储结构）。</p></li>
+<li><p>数据结构：评论位置代表类别，一个txt存储一个评论数据。</p></li>
+</ul>
+<div id="函数说明" class="section level3">
+<h3><span class="header-section-number">7.7.1</span> 函数说明</h3>
+</div>
+<div id="可能遇到的问题" class="section level3">
+<h3><span class="header-section-number">7.7.2</span> 可能遇到的问题</h3>
+<ul>
+<li>词性标注</li>
+</ul>
+<pre><code>  import nltk
+  from nltk import pos_tag, word_tokenize
+  出现LookupError</code></pre>
+<pre><code>  解决方法：把&#39;nltk_data.zip&#39;里的文件全部拷贝至&#39;/Users/huihuajiang/nltk_data/&#39;         
+  用以下命令可以查看你的 nltk_data 文件夹路径：             import nltk             
+  print(nltk.data.path)</code></pre>
+<ul>
+<li>词嵌入</li>
+</ul>
+<pre><code>  import spacy
+nlp = spacy.load(‘en_core_web_sm’) 
+错误1：OSError: [E050] Can&#39;t find model &#39;en_core_web_sm&#39;.
+错误2：numpy.core.multiarray failed to import</code></pre>
+<pre><code>  错误1解决方法1（可能不行）：
+  命令行运行命令”python -m spacy download en_core_web_sm”
+  错误1解决方法2：把模型下载到本地进行安装
+  具体操作请参考 https://www.freesion.com/article/73801416523/
+  错误2解决方法：重启一下终端</code></pre>
+</div>
+<div id="结果比较" class="section level3">
+<h3><span class="header-section-number">7.7.3</span> 结果比较</h3>
+<p><em>以下仅为表例</em></p>
+<p><span class="math display">\[
+\begin{array}{|l|c|cc|c|}
+\hline &amp;  {\text { in-sample }} &amp; {\text { out-of-sample }} &amp; {\text { out-of-sample }}&amp;  {\text { run times }}\\
+&amp; \text {both genders} &amp; \text { female } &amp; \text { male } &amp; \text {both genders} \\
+\hline \hline \text { LSTM3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.7643 &amp; 0.3402 &amp; 1.1346 &amp; 404 \mathrm{s}\\
+\text { GRU3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.6311 &amp; 0.4646 &amp; 1.2571 &amp;  379 \mathrm{s} \\
+\hline\hline \text { LSTM3 averaged over 100 different seeds} &amp; - &amp; 0.2451 &amp; 1.2093 &amp; 100 \cdot 404\mathrm{s}\\
+\text { GRU3 averaged over 100 different seeds } &amp; - &amp; 0.2341&amp; 1.2746 &amp;  100 \cdot 379 \mathrm{s} \\
+\hline \hline \text { LC model with SVD } &amp; 6.2841 &amp; 0.6045 &amp;1.8152 &amp;  - \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+</div>
+<div id="结论-1" class="section level2">
+<h2><span class="header-section-number">7.8</span> 结论</h2>
+<p>我们用bag of words, bag of POS, word embeddings三种NLP模型对评论文本进行了向量化，并用ADA, RF, XGB三种机器学习方法对文档进行了分类，为此，我们引入了NLP管道来预处理文本数据 。最后，还采用RNN模型对文档进行了分类。</p>
+<p>实验结果表明，</p>
+<ul>
+<li><p>bag of words总体上变现更好， bag of POS的表现不佳。</p></li>
+<li><p>与bag of words相比， word embedding模型的效率更高。</p></li>
+<li><p>Deep LSTM模型表现要比Single LSTM和更好。</p></li>
+<li><p>与NLP模型相比，RNN模型性能更好，达到相同标准的时间更短。</p></li>
+<li><p>如果用RNN的输入数据来拟合Ml模型，精度远不及RNN模型，可见RNN模型在该任务上能利用更少的信息实现更准确的分类。</p></li>
 </ul>
 
 </div>
@@ -371,8 +452,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
+<a href="rnn.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

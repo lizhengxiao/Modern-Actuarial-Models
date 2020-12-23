@@ -6,5 +6,6 @@ language:
 delete_merged_file: true
 output_dir: "docs"
 rmd_files: ["index.Rmd","00-introduction.Rmd","01-env-set-up.Rmd",
-"02-french.Rmd","03-nn.Rmd","04-boosting.Rmd","05-unsupervised.Rmd","06-rnn-copy.Rmd"] 
+"02-french.Rmd","03-nn.Rmd","04-boosting.Rmd","05-unsupervised.Rmd",
+"06-rnn.Rmd","07-nlp.Rmd"] 
 

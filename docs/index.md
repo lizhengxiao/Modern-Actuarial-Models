@@ -1,7 +1,7 @@
 --- 
 title: "现代精算统计模型"
 author: "Modern Actuarial Models"
-date: "2020-12-19 11:42:27"
+date: "2020-12-23 16:45:40"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
