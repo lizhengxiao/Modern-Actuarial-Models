@@ -309,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">现代精算统计模型</h1>
 <p class="author"><em>Modern Actuarial Models</em></p>
-<p class="date"><em>2020-12-23 16:45:40</em></p>
+<p class="date"><em>2020-12-25 00:13:31</em></p>
 </div>
 <div id="欢迎" class="section level1 unnumbered">
 <h1>👨‍🏫 欢迎</h1>
@@ -318,7 +318,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="答疑" class="section level2 unnumbered">
 <h2>🤔 答疑</h2>
 <p>我定期把同学们的普遍疑问在这里解答，欢迎提问！</p>
-<p><strong>👉 随机种子数</strong>(2020/11/20)</p>
+<p><strong>👉 Tensorflow for Apple M1</strong> (2020/12/23)</p>
+<p>购买Apple M1的同学需要用这个<a href="https://github.com/apple/tensorflow_macos">pre-release tensorflow</a>，从pypi下载的tensorflow暂不支持Apple M1</p>
+<p><strong>👉 NLP</strong> (2020/12/18)</p>
+<p>数据</p>
+<p><img src="plots/7/data.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>这个数据第<span class="math inline">\(i\)</span>行<span class="math inline">\(j\)</span>列表示，在第<span class="math inline">\(i\)</span>个评论中第<span class="math inline">\(j\)</span>个词的排名(依照总出现频率)，所以每一行还保持了句子中词语的先后顺序。每一行都是一个时间序列数据（样本）。</p>
+<p>LSTM</p>
+<p><img src="plots/7/lstm.png" width="50%"  style="display: block; margin: auto;" /></p>
+<ul>
+<li><p><code>input</code>维度是<code>batch size * length * 1</code>，即以上所示的.csv矩阵文档。</p></li>
+<li><p><code>embedding_3</code> 作用就是把<code>input</code>的最后一个维度爆炸到256，参数个数为<code>vocab_size* embedding dimension</code>，可以看作把400个高频词映射到256维空间。</p></li>
+<li><p><code>embedding_3</code>和<code>lstm_2</code>输出维度中，有两个<code>none</code>,其中第一个表示<code>batch size</code>, 第二个表示<code>sequence length</code>。因为LSTM在时间维度上循环使用参数，所以<code>sequence length</code>不影响参数的个数。</p></li>
+<li><p><code>sequence length</code>不影响参数个数，对于不同的句子长度如100或者150，该模型都不需要调整，(应该)可以直接载入数据训练。</p></li>
+<li><p><code>lstm_3</code> 只有一个<code>none</code>, 表示<code>batch size</code>, 我们要求<code>lstm_3</code>不返回整个sequence只看最近的状态。</p></li>
+</ul>
+<p><strong>👉 Reproducible results using Keras</strong> (2020/12/11)</p>
+<p>使用Keras复现结果的方法。</p>
+<p><a href="https://cran.r-project.org/web/packages/keras/vignettes/faq.html" class="uri">https://cran.r-project.org/web/packages/keras/vignettes/faq.html</a></p>
+<p><img src="plots/reproducible.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><strong>👉 为什么不直接用relu解决vanishing gradient 而设计复杂的lstm gru</strong> (2020/12/11)</p>
+<ul>
+<li><p>relu值域在0到无穷，不如tanh和sigmoid稳健，后两种可以认为把极大极小值都截断了。</p></li>
+<li><p>relu是线性变换，可能描述不了非线性效应。我最常用tanh。</p></li>
+<li><p>当然，使用relu会明显提升计算速度，因为relu的导数容易计算。</p></li>
+</ul>
+<p>另参见<a href="https://datascience.stackexchange.com/questions/61358/relu-for-combating-the-problem-of-vanishing-gradient-in-rnn#:~:text=For%20solving%20the%20problem%20of%20vanishing%20gradients%20in,In%20both%20of%20these%2C%20activation%20function%20is%20tanh.">stackexchange</a></p>
+<p><strong>👉 xaringan</strong> (2020/12/06)</p>
+<p>html格式的slides：
+<a href="https://slides.yihui.org/xaringan/zh-CN.html#1" class="uri">https://slides.yihui.org/xaringan/zh-CN.html#1</a></p>
+<p><strong>👉 samme.r</strong> (2020/11/27)</p>
+<p>关于samme.r算法, 请参考下面文章中的exponential loss function.
+<a href="https://web.stanford.edu/~hastie/Papers/samme.pdf" class="uri">https://web.stanford.edu/~hastie/Papers/samme.pdf</a></p>
+<p>算法samme.r仅在以上draft中出现，正式发表时samme.r被删掉了，推测审稿人有异议。正式文章参考
+<a href="http://ww.web.stanford.edu/~hastie/Papers/SII-2-3-A8-Zhu.pdf" class="uri">http://ww.web.stanford.edu/~hastie/Papers/SII-2-3-A8-Zhu.pdf</a></p>
+<p><strong>👉 随机种子数</strong> (2020/11/20)</p>
 <p>输入<code>RNGversion("3.5.0"); set.seed(100)</code>，使得你的随机种子数和paper的相同，模型结果相近。</p>
 <p><strong>👉 MAC OS, Linux, WIN</strong> (2020/11/16)</p>
 <p>据观察，在MAC OS和Linux系统下安装<code>keras</code>成功的比例较高。WIN系统下，Python各个包的依赖以及和R包的匹配有一定的问题，今天是通过更换镜像源解决了R中无法加载<code>tensorflow.keras</code>模块的问题，推测是TUNA源中WIN包依赖关系没有及时更新。</p>
@@ -327,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>👉 CASdatasets</strong> (2020/11/13)</p>
 <p>源文件在<a href="http://cas.uqam.ca/" class="uri">http://cas.uqam.ca/</a>，但下载速度很慢，我把它放在<a href="https://www.jianguoyun.com/p/DdFyh74Q3cTHBhio2M0D">坚果云共享</a>。下载后选择install from local archive file。</p>
 <p><strong>👉 微信群</strong> (2020/11/08)</p>
-<p><img src="plots/wechat.png" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="plots/wechat.png" width="30%"  style="display: block; margin: auto;" /></p>
 </div>
 <div id="课程安排" class="section level2 unnumbered">
 <h2>🗓️ 课程安排</h2>

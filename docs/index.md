@@ -1,7 +1,7 @@
 --- 
 title: "现代精算统计模型"
 author: "Modern Actuarial Models"
-date: "2020-12-23 16:45:40"
+date: "2020-12-25 00:13:31"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -24,7 +24,64 @@ editor_options:
 
 我定期把同学们的普遍疑问在这里解答，欢迎提问！
 
-**👉 随机种子数**(2020/11/20)
+**👉 Tensorflow for Apple M1**  (2020/12/23)
+
+购买Apple M1的同学需要用这个[pre-release tensorflow](https://github.com/apple/tensorflow_macos)，从pypi下载的tensorflow暂不支持Apple M1
+
+**👉 NLP**  (2020/12/18)
+
+数据
+
+<img src="./plots/7/data.png" width="50%" style="display: block; margin: auto;" />
+
+这个数据第$i$行$j$列表示，在第$i$个评论中第$j$个词的排名(依照总出现频率)，所以每一行还保持了句子中词语的先后顺序。每一行都是一个时间序列数据（样本）。
+
+LSTM
+
+<img src="./plots/7/lstm.png" width="50%"  style="display: block; margin: auto;" />
+
+- `input`维度是`batch size * length * 1`，即以上所示的.csv矩阵文档。
+
+- `embedding_3` 作用就是把`input`的最后一个维度爆炸到256，参数个数为`vocab_size* embedding dimension`，可以看作把400个高频词映射到256维空间。
+
+- `embedding_3`和`lstm_2`输出维度中，有两个`none`,其中第一个表示`batch size`, 第二个表示`sequence length`。因为LSTM在时间维度上循环使用参数，所以`sequence length`不影响参数的个数。
+
+- `sequence length`不影响参数个数，对于不同的句子长度如100或者150，该模型都不需要调整，(应该)可以直接载入数据训练。
+
+- `lstm_3` 只有一个`none`, 表示`batch size`, 我们要求`lstm_3`不返回整个sequence只看最近的状态。
+
+**👉 Reproducible results using Keras** (2020/12/11)
+
+使用Keras复现结果的方法。
+
+<https://cran.r-project.org/web/packages/keras/vignettes/faq.html>
+
+<img src="./plots/reproducible.png" width="50%"  style="display: block; margin: auto;" />
+
+**👉 为什么不直接用relu解决vanishing gradient 而设计复杂的lstm gru** (2020/12/11)
+
+- relu值域在0到无穷，不如tanh和sigmoid稳健，后两种可以认为把极大极小值都截断了。
+
+- relu是线性变换，可能描述不了非线性效应。我最常用tanh。
+
+- 当然，使用relu会明显提升计算速度，因为relu的导数容易计算。
+
+另参见[stackexchange](https://datascience.stackexchange.com/questions/61358/relu-for-combating-the-problem-of-vanishing-gradient-in-rnn#:~:text=For%20solving%20the%20problem%20of%20vanishing%20gradients%20in,In%20both%20of%20these%2C%20activation%20function%20is%20tanh.)
+
+**👉 xaringan** (2020/12/06)
+
+html格式的slides：
+<https://slides.yihui.org/xaringan/zh-CN.html#1>
+
+**👉 samme.r** (2020/11/27)
+
+关于samme.r算法, 请参考下面文章中的exponential loss function.
+<https://web.stanford.edu/~hastie/Papers/samme.pdf>
+
+算法samme.r仅在以上draft中出现，正式发表时samme.r被删掉了，推测审稿人有异议。正式文章参考
+<http://ww.web.stanford.edu/~hastie/Papers/SII-2-3-A8-Zhu.pdf>
+
+**👉 随机种子数** (2020/11/20)
 
 输入`RNGversion("3.5.0"); set.seed(100)`，使得你的随机种子数和paper的相同，模型结果相近。
 
@@ -42,7 +99,7 @@ editor_options:
 
 **👉  微信群** (2020/11/08)
 
-<img src="./plots/wechat.png" width="30%" style="display: block; margin: auto;" />
+<img src="./plots/wechat.png" width="30%"  style="display: block; margin: auto;" />
 
 ## 🗓️ 课程安排 {-}
 

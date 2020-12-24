@@ -1,0 +1,225 @@
+---
+title: "K-means & K_medoids & GMM"
+output: html_document
+---
+## 导入相关包
+```{r}
+library(MASS)
+library(plyr)
+library(stringr)
+library(plotrix)
+library(matrixStats)
+library(cluster)
+library(ClusterR)
+```
+
+## 导入数据(475个观测值;13个变量)，重新设计5个变量
+```{r}
+dat1 <- read.table("/Users/harper/Desktop/SportsCars.csv", header=TRUE, sep=";")
+str(dat1)
+#设计变量
+dat2 <- dat1   
+dat2$x1 <- log(dat2$weight/dat2$max_power)
+dat2$x2 <- log(dat2$max_power/dat2$cubic_capacity)
+dat2$x3 <- log(dat2$max_torque)
+dat2$x4 <- log(dat2$max_engine_speed)
+dat2$x5 <- log(dat2$cubic_capacity)
+dat2 <- dat2[, c("x1","x2","x3","x4","x5")]
+#5个变量z-score标准化
+X01 <- dat2-colMeans(dat2)[col(dat2)]
+X <- X01/sqrt(colMeans(X01^2))[col(X01)]
+```
+
+## K_means结果演示
+```{r}
+#执行K=2时K_means算法（初始聚类中心随机指定）
+K_means <- kmeans(X, 2)#欧式距离
+#聚类结果
+(K_means$cluster)
+#聚类中心
+(K_means$centers)
+#类内离差平方和
+(K_means$withinss)
+#类内离差平方和总和
+(K_means$tot.withinss)
+```
+## K_medoids结果演示
+```{r}
+#执行K=2时K_medoids算法（初始聚类中心随机指定）
+K_medoids <- pam(X, k=2, metric="manhattan")#曼哈顿距离
+#聚类结果
+(K_medoids$clustering)
+#聚类中心
+(K_medoids$medoids)
+#聚类中心（样本点）所在位置
+(K_medoids$id.med)
+```
+
+## GMM结果演示
+```{r}
+#执行K=2时EM算法（初始聚类中心随机指定）
+K_gmm <- GMM(X, 
+             gaussian_comps=2, 
+             dist_mode="eucl_dist", 
+             seed_mode="random_subset",
+             em_iter=5,
+             seed=100)#欧式距离，EM最多迭代5次
+#各个高斯成分的均值
+(K_gmm$centroids)
+#各高斯成分的协方差阵
+(K_gmm$covariance_matrices)
+#各个样本的似然函数值
+likelihood <- K_gmm$Log_likelihood
+#2个类的权重
+weights <- K_gmm$weights
+#聚类结果
+clust <- predict_GMM(X, K_gmm$centroids, K_gmm$covariance_matrices, K_gmm$weights)$cluster_labels
+clust#注意到是0,1表示2类
+```
+
+## K_means优化算法(以k=3为例)
+```{r}
+#k=2时执行k_means算法（此时初始聚类中心是随机指定的）
+K_means2 <- kmeans(X,2)
+#设定k=3时的聚类中心
+#生成3*5的数组
+K_centers <- array(NA, c(3, ncol(X)))
+#第一行和第二行是k=2时的类内均值
+K_centers[1:2,] <- K_means2$centers 
+#第三行设定为变量列均值
+K_centers[3,] <- colMeans(X)
+#k=3时执行k_means算法
+K_means3 <- kmeans(X,K_centers)
+```
+
+## 执行k=2,...,10的k_means算法
+```{r}
+#类的个数
+K0 <- 10
+#变量列均值
+Kaverage <- colMeans(X)
+#10*475，全部填充为1，第一行就是k=1时的分类结果
+Classifier <- array(1, c(K0, nrow(X)))
+#TWCD(1*10)包含k=1,...,10时的类内离差平方和总和
+TWCD <- array(NA, c(K0))  
+#TWCD第一个数值为k=1时的类内离差平方和
+TWCD[1] <- sum(colSums(as.matrix(X^2)))
+set.seed(100)
+for (K in 2:K0){ 
+   if (K==2){(K_means <- kmeans(X,K) )}
+   if (K>2){(K_means  <- kmeans(X,K_centers) )}
+   TWCD[K] <- K_means$tot.withinss
+   Classifier[K,] <- K_means$cluster
+   K_centers <- array(NA, c(K+1, ncol(X)))
+   K_centers[K+1,] <- Kaverage
+   K_centers[1:K,] <- K_means$centers 
+}
+#绘制肘部图
+par(family="Kai")
+plot(x=c(1:K0), y=TWCD, ylim=c(0, max(TWCD)), col="black", cex=1.5, pch=20, ylab="类内离差平方和总和", xlab="分类个数K", cex.lab=1.5)
+lines(x=c(1:K0), y=TWCD, col="black", lty=1)
+text(4,1050,"拐点",col="red",cex=1.5)
+```
+
+## 进行主成分分析，将变量投影到二维空间
+```{r}
+#主成分分析
+SVD <- svd(as.matrix(X))
+SVD$v#特征向量
+pca <- c(1,2)
+dat3 <- dat1
+#计算各样本第一和第二个主成分得分
+dat3$v1 <- as.matrix(X) %*% SVD$v[,pca[1]]
+dat3$v2 <- as.matrix(X) %*% SVD$v[,pca[2]]
+```
+
+## 执行K-means(欧式距离)，K-medoids(曼哈顿距离)和GMM(欧式距离)
+```{r}
+set.seed(100)
+#执行k=4时的K-means算法
+K_means <- kmeans(X, 4)
+#执行k=4时的K-medoids算法
+K_medoids <- pam(X, k=4, metric="manhattan")
+#执行k=4时的GMM算法
+K_gmm <- GMM(X, gaussian_comps=4, dist_mode="eucl_dist", seed_mode="random_subset", em_iter=5,seed=100)
+clust <- predict_GMM(X, K_gmm$centroids, K_gmm$covariance_matrices, K_gmm$weights)$cluster_labels
+#计算K_means算最终聚类中心对应的两个主成分v1，v2
+c <- as.matrix(K_means$centers)
+d1 <-as.matrix(SVD$v[,pca[1]])
+x <- c%*%d1
+d2 <-as.matrix(SVD$v[,pca[2]])
+y <- c%*%d2
+#计算K-medoids算法最终聚类中心对应的两个主成分v1，v2
+x1 <- dat3[K_medoids$id.med,"v1"]
+y1 <- dat3[K_medoids$id.med,"v2"]
+#计算K_means算最终聚类中心对应的两个主成分v1，v2
+c1 <- as.matrix(K_gmm$centroids)
+x2 <- c1%*%d1
+y2 <- c1%*%d2
+```
+##  绘制聚类结果图
+```{r}
+cluster <- c(1:4)
+cars<- function(x) nrow(dat3[which(K_means$cluster==x),])
+sports<- function(x) nrow(dat3[which(K_means$cluster==x & dat3$sports_car==1),])
+k_means <- cbind.data.frame(cluster,
+                            "cars"=c(cars(2),cars(4),cars(3),cars(1)),
+                            "sports cars"=c(sports(2),sports(4),sports(3),sports(1)))
+k_means <- melt(k_means, id = "cluster", variable.name = "type")
+ggplot(k_means,aes(x=cluster,y=value,fill = type))+geom_bar(stat="identity",position = "dodge")+geom_text(aes(label=value),position=position_dodge((1)),vjust=-0.5)+theme(plot.title = element_text(hjust = 0.5),panel.grid.major = element_blank(),panel.grid.minor = element_blank(),panel.background = element_blank())+labs(y="number",title="k_means")
+
+cars<- function(x) nrow(dat3[which(K_medoids$clustering==x),])
+sports<- function(x) nrow(dat3[which(K_medoids$clustering==x & dat3$sports_car==1),])
+k_means <- cbind.data.frame(cluster,
+                            "cars"=c(cars(4),cars(3),cars(2),cars(1)),
+                            "sports cars"=c(sports(4),sports(3),sports(2),sports(1)))
+k_means <- melt(k_means, id = "cluster", variable.name = "type")
+ggplot(k_means,aes(x=cluster,y=value,fill = type))+geom_bar(stat="identity",position = "dodge")+geom_text(aes(label=value),position=position_dodge((1)),vjust=-0.5)+theme(plot.title = element_text(hjust = 0.5),panel.grid.major = element_blank(),panel.grid.minor = element_blank(),panel.background = element_blank())+labs(y="number",title="k_medoids")
+
+cars<- function(x) nrow(dat3[which(clust==x),])
+sports<- function(x) nrow(dat3[which(clust==x & dat3$sports_car==1),])
+k_means <- cbind.data.frame(cluster,
+                            "number of cars"=c(cars(0),cars(3),cars(1),cars(2)),
+                            "sports cars"=c(sports(0),sports(3),sports(1),sports(2)))
+k_means <- melt(k_means, id = "cluster", variable.name = "type")
+ggplot(k_means,aes(x=cluster,y=value,fill = type))+geom_bar(stat="identity",position = "dodge")+geom_text(aes(label=value),position=position_dodge((1)),vjust=-0.5)+theme(plot.title = element_text(hjust = 0.5),panel.grid.major = element_blank(),panel.grid.minor = element_blank(),panel.background = element_blank())+labs(title="GMMs")
+```
+
+
+
+##  K-means，K-medoids和GMM算法结果对比
+```{r}
+lim0 <- 7
+# plot K-means versus PCA
+plot(x=dat3$v1, y=dat3$v2, col="orange",pch=20, ylim=c(-lim0,lim0), xlim=c(-lim0,lim0), ylab=paste("V", pca[2], sep=""),xlab=paste("V", pca[1], sep=""), main=list("K-means vs. PCA (Euclidean distance )", cex=1.5), cex.lab=1.5)
+dat0 <- dat3[which(K_means$cluster==2),]
+points(x=dat0$v1, y=dat0$v2, col="red",pch=20)
+dat0 <- dat3[which(K_means$cluster==4),]
+points(x=dat0$v1, y=dat0$v2, col="blue",pch=20)
+dat0 <- dat3[which(K_means$cluster==3),]
+points(x=dat0$v1, y=dat0$v2, col="magenta",pch=20)
+points(x=x,y=y, col="black",pch=20, cex=2)
+legend("bottomleft", c("cluster 1", "cluster 2", "cluster 3", "cluster 4"), col=c("red", "orange", "magenta", "blue"), lty=c(-1,-1,-1,-1), lwd=c(-1,-1,-1,-1), pch=c(20,20,20,20))
+# plot K-medoids versus PCA
+plot(x=dat3$v1, y=dat3$v2, col="orange",pch=20, ylim=c(-lim0,lim0), xlim=c(-lim0,lim0), ylab=paste("V", pca[2], sep=""),xlab=paste("V", pca[1], sep=""),, main=list("K-medoids vs. PCA (Manhattan distance)", cex=1.5), cex.lab=1.5)
+dat0 <- dat3[which(K_medoids$cluster==4),]
+points(x=dat0$v1, y=dat0$v2, col="red",pch=20)
+dat0 <- dat3[which(K_medoids$cluster==3),]
+points(x=dat0$v1, y=dat0$v2, col="blue",pch=20)
+dat0 <- dat3[which(K_medoids$cluster==2),]
+points(x=dat0$v1, y=dat0$v2, col="magenta",pch=20)
+points(x=x1,y=y1, col="black",pch=20, cex=2)
+legend("bottomleft", c("cluster 1", "cluster 2", "cluster 3", "cluster 4"), col=c("red", "orange", "magenta", "blue"), lty=c(-1,-1,-1,-1), lwd=c(-1,-1,-1,-1), pch=c(20,20,20,20))
+# plot GMM versus PCA
+plot(x=dat3$v1, y=dat3$v2, col="orange",pch=20, ylim=c(-lim0,lim0), xlim=c(-lim0,lim0), ylab=paste("V", pca[2], sep=""),xlab=paste("V", pca[1], sep=""),, main=list("GMM(diagonal) vs. PCA", cex=1.5), cex.lab=1.5)
+dat0 <- dat3[which(clust==0),]
+points(x=dat0$v1, y=dat0$v2, col="red",pch=20)
+dat0 <- dat3[which(clust==3),]
+points(x=dat0$v1, y=dat0$v2, col="blue",pch=20)
+dat0 <- dat3[which(clust==1),]
+points(x=dat0$v1, y=dat0$v2, col="magenta",pch=20)
+points(x=x2,y=y2, col="black",pch=20, cex=2)
+legend("bottomleft", c("cluster 1", "cluster 2", "cluster 3", "cluster 4"), col=c("red", "orange", "magenta", "blue"), lty=c(-1,-1,-1,-1), lwd=c(-1,-1,-1,-1), pch=c(20,20,20,20))
+```
+
+
