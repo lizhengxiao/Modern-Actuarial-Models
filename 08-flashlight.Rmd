@@ -1,0 +1,247 @@
+#  {#nlp}
+
+*龚齐翔、张谦、段诗悦、高光远*
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = F)
+```
+
+> the blackness of a model box seems no longer to be caused by the obscurity of the model itself but rather depends on the modeler switching on the light of the box.
+
+**目的**：从精算的角度基于有监督的机器学习讲述了解释性机器学习和解释性人工智能一些方法的应用。
+
+1.使我们更相信所使用的模型
+
+2.发现模型的局限性
+
+3.改进现有的模型
+
+4.使模型不仅可以用来预测，还可以提供信息和验证模型假设
+
+**主要内容**
+
+1. 变量重要性
+
+2. 边缘效应（主效应）、交互效应
+
+3. 每个特征对单一预测值的贡献
+
+## 数据
+
+数据集划分：80%训练集，20%测试集。有着相同`group_id`的数据会被同时划分到训练集或者测试集中以减少偏差和选择合适的参数。
+
+## 模型
+
+以下考虑三种模型：GLM，XGBoost，Neural Network。这三种模型最具有代表性，GLM是保险损失预测中最经典的模型，XGBoost是在数据分析竞赛中常用的机器学习方法，它不容易过拟合，神经网络包含了很多种layer，在图像识别、自然语言处理中发挥了巨大的作用。
+
+### GLM
+
+GLM的优点:
+
+- 解释性强，统计检验识别参数显著性。
+
+- 比较灵活，可以加入交互项、变形后的解释变量、可以用非线性结构（样条曲线平滑）。
+
+考虑不带交叉项的泊松GLM模型：`VehAge`和`DrivAge`都用了自然三次样条进行平滑。
+
+$$N_i \sim \text{Poi} (e_i\lambda(\boldsymbol{x_i}))$$
+有两种等价建模方式：
+
+1. 把$\ln e_i$的系数固定为1。`glm (N ~ x + offset (log (e)), family = poisson (link=log) )`
+
+2. 把$N_i/e_i$当作因变量，每个样本的权重为$e_i$。`glm ( I(N/e) ~ x, weights = e, family = poisson (link=log) )`
+
+### XGBoost
+
+用训练集上五折交叉验证来选择超参数。
+
+### 神经网络
+
+选取的神经网络有以下结构：
+
+- 前馈全连接神经网络，含有三个隐藏层，神经元数量$20-15-10$，双曲正切激活函数。
+
+- 输出神经元（索赔频率）的激活函数使用幂函数，即使用泊松模型中的规范连接函数（canonical link function）。
+
+- 训练模型的参数使用Nesterov Adam optimizer，选择`batch sizes=10000, epochs=300，learning rate=0.002`。
+
+- 为了消除在训练集上的总体索赔频率偏差（portfolio unbiased），在最后第三个隐藏层的10个神经元上建立Poisson-GLM模型。由于Poisson-GLM的参数估计为极大似然，其总体预测索赔频率等于样本的总经验索赔频率。
+
+## 模型整体表现
+
+单位泊松偏差的加权平均：
+On testing data:
+yi ≥0 is the observed response Freq
+𝑦 ̂_𝑖 > 0 为预测值
+wi ≥0 is the weight Exposure
+
+Pseudo 𝑅^2:
+偏差的相对减少，衡量了可以被模型解释的偏差比例
+a null model consisting only of the exposure weighted 𝑦 ̅
+
+Variable importance
+
+
+它提供了额外的信息，从而使我们能更深入的了解模型。
+可以通过删掉对模型不重要的变量从而简化模型。
+可以发现数据结构中的问题：如果一个协变量显示出非常相关而其他变量非常不相关，这可能是因为响应变量发生了信息泄露。
+
+permutation importance：对于一个协变量X，它在数据集中的值被随机置换，然后计算相对于评分函数的性能下降。随机置换后使模型性能下降最大的协变量为最重要的变量。
+
+GLM模型——似然比检验统计量（R function drop1）、标准化的系数绝对值
+基于树的模型——基于变量的拆分数量、split gains（基尼系数减少的最大者）
+
+对于大量数据，一次置换后结果差不多平稳；对于少量数据需要置换多次并计算平均。
+
+Eﬀects
+
+如何衡量具有复杂非线性项和高阶相互作用的GLM模型，或像增强树或神经网络这样的黑箱模型中变量X对响应变量的影响效果？
+
+
+Individual conditional expectations（ICE）
+
+如何衡量具有复杂非线性项和高阶相互作用的GLM模型，或像增强树或神经网络这样的黑箱模型中变量X对响应变量的影响效果？
+
+
+显示当输入变量X在其范围滑动时，观测值i的预测值是如何反应的。
+
+Notes:
+只要变量X是以相加的模式在模型中（无交叉项），则不同观测值关于X的ICE图像应该是平行的
+X的交叉效应越强，不同观测值的ICE图像形状越不一致。（但不揭示它与哪个变量有交叉项）
+ICE图像有时会垂直移动以在一个点重合，这样更好识别交叉效应
+
+Remark：
+一些主要的boosting算法如XGBoost、LightGBM或者CatBoost提供了单调性约束，隐含地保证了ICE图像的单调增加或减少。这样可以增加模型的可解释性，比如更高的免赔额不会导致更高的索赔频率。
+
+参数： monotone_constraints = c(0,-1,0,0,0,0,0）
+第二个变量DrivAge对响应变量的效应单调递减
+
+Partial dependence proﬁles
+
+如果对许多ICE进行平均，我们可以得到partial dependence proﬁle，这可以看作是变量X在所有交互作用中的主要影响，即变量X的平均效应。
+
+ICE和partial dependence proﬁle都不单单限制在一个变量，也可以考察多个变量系统的同时变动时对响应变量的影响。
+
+研究ICE和partial dependence proﬁle意味着研究所有其他变量保持不变的情况下变量X的效应，但这个假设是不自然的。比如说，在我们的例子中，regional factors可能是有问题的：它取决于政策区域的构建方式，例如如果是按人口密度排序的整数，在保持政策区域固定的同时改变人口密度可能没有意义。
+
+Accumulated local eﬀects proﬁles（ALE）
+
+只考虑了局部效应，因此在存在较强相关性的协变量的情况下能获得更自然、少偏的结果
+
+变量X在xi处的ALE profile计算过程如下：
+
+ALE是对预测的变化进行平均，partial dependence proﬁles对预测本身进行平均
+
+ALE只基于x附近的观测值来估计x的效应
+
+如果变量X与其他协变量的相关性不强，则ALE图会接近于PDP图
+
+Further proﬁle plots
+
+变量——响应变量图：Averages (or boxplots) of responses are plotted against a covariable X.
+变量——预测值图：Averages of predicted values are plotted against a covariable.在可视化X的效应的同时考虑了与X相关的其他变量的影响，所以又叫边际图（marginal plot or M-plot）。
+变量——残差图： Averages (or boxplots) of residuals are plotted against a covariable.平均残差应该充分地接近零，如果平均残差系统的不为零，说明模型拟合的不好。如果训练集上平均残差接近零但测试集上平均残差不为零，则说明有过拟合问题。
+
+4.5 Interaction strength
+
+
+Fiedman’s H-statistic:基于Friedman和Popescu介绍的partial dependence profiles
+
+和partial dependence profiles中使用的固定网格不同，这里从样本中随机抽取的n个观测求和，如对于抽取到的观测i，其第j,k个自变量取值分别为x_𝑗^((𝑖)) 和x_k^((𝑖))，据此计算〖〖𝑃𝐷〗_𝑗𝑘 (x〗_𝑗^((𝑖)),x_k^((𝑖))),〖〖𝑃𝐷〗_𝑗 (x〗_𝑗^((𝑖))), 〖〖𝑃𝐷〗_𝑘 (x〗_𝑘^((𝑖))) 。H^2 度量了X_𝑗 〖与X〗_𝑘 各自主效应没有解释的部分占它们的联合效应的比例。趋近于0说明几乎没有成对的联合效应。也可以用在多于两个的变量交互效应中。
+
+交互效应的绝对度量：
+
+交互效应的可视化有两种基本方法：
+Plot two-dimensional partial dependence or ALE curves
+show partial dependence or ALE curves of one variable stratified by the other
+
+有时基于技术或监管的现实情况，交互项在模型中会被禁用。Keras等也提供这样的安排，例如在神经网络中，不引入交互项的变量作为最后一个隐藏层加入模型，下图显示了在XGBoost中禁止DrivAge的交互效应的效果：
+
+4.6 Global surrogate models 全局代理模型
+
+
+另一种解释黑箱模型截然不同的思路是，对预测值重新使用易于解释的模型进行建模，如使用单棵决策树。然后这个global surrogate model再用来进行解释。为了评判替代模型的近似效果，有学者建议使用R^2。例如用单棵决策树解释神经网络和XGBoost：
+
+5.1 LIME和LIVE
+
+LIME全称Local Interpretable Model-agnostic Explanations，即模型的局部解释器。虽然无法使用线性模型完全“模仿”出SVM、神经网络等模型的“行为”，但可以在某个局部样本点上接近.
+
+构造可解释的数据特征：           是原始用于模型预测的特征，而我们使用                 来表示某个可解释特征是否存在的二元变量。
+
+构造目标函数：
+
+
+
+g为解释器，          ，G是一类可能的解释模型，如线性模型，决策树等。
+Ω(g)为模型的复杂度，如线性模型中非零系数，决策树的深度。f为被被解
+释模型，在分类问题中，f(x)是一个概率值，或一个表示样本是否属于某一
+类的示性函数。          是z到x的相似性度量，即定义x的局部。                
+就是在𝜋_x 所定义的局部下，g在对f进行近似时的可信度。我们希望最大化可信度，同时降低g的复杂度，让它对于人类而言变得可解释。
+
+采样：对x‘进行局部扰动，得到z’，以及相对应的g(z’)，再还原到z，得到f(z)。会抽取到x附近的点，并且通过𝜋_x赋予其高权重，以及远离x的点，通过𝜋_x赋予其低权重。
+
+LIME的优点是原理简单，适用范围广，可解释所有黑箱模型。但也存在一定的问题，例如局部范围大小不同，最终的解释也会不同甚至相悖。
+
+5.2 SHAP(Shapley Additive Explanations)
+
+Shapley值
+Shapley值来自合作博弈论，从不同的合作组合中计算出单个个体的贡献
+度量了单个个体对总体的边际贡献
+SHAP的主要思想来源于Shapley值
+
+Shapley值的计算
+𝜙_𝑗 (𝑣)=∑_(𝑆⊆𝐷\\{𝑗})▒〖|𝑆|!(|𝐷|−|𝑆|−1)!/(|𝐷|!)(𝑣(𝑆∪{𝑗})−𝑣(𝑆))〗
+𝐷为所有特征的集合，𝑆为某个不包含元素𝑗的特征子集，𝑣(𝑆)为𝑆 集合对应的价值， 𝜙_𝑗 (𝑣)为元素𝑗的Shapely值
+
+
+从Shapley值到SHAP
+SHAP的目的：与LIME相似，找到某个样本点上各个特征的重要性
+SHAP对预测的分解：𝑓 ̂(𝑥^∗)=𝜙_0+∑1_(𝑗=1)^(|𝐹|)▒𝜙_𝑗^∗ 
+
+SHAP中特征贡献的计算
+𝜙_𝑗^∗=∑_(𝑆⊆𝐹\\{𝑗})▒〖|𝑆|!(|𝐹|−|𝑆|−1)!/(|𝐹|!)(𝑓_(𝑥^∗ ) (𝑆∪{𝑗})−𝑓_(𝑥^∗ ) (𝑆))〗
+𝐹为特征集合，𝑆为任意不包含特征𝑗的集合
+𝑓_(𝑥^∗ ) (⋅)为模型在样本𝑥^∗上的预测，𝑓_(𝑥^∗ ) (𝑆)=𝐸[𝑓(𝑥)|𝑥_𝑠^∗]是模型𝑓(⋅)基于样本𝑥∗里的𝑆中特征的条件期望输出
+与Shapley值的计算类似，这里Shapley值中的集合价值被替换为特征集𝑆对应的预测值
+
+
+5.3 Breakdown and approximate SHAP
+
+另一种将一个预测值解构为可加的组分的方式是breakdown，对于一组给定进入顺序的变量，解构方法如右。如前所述，结果是和顺序相关的，对于m个变量，有m!种排列方式。一种处理方法是采取少量的排列方式，如20种，取平均。另一种是按照变量重要性降序进入，这里将前者称为approximate SHAP，将后者称为breakdown
+
+5.4 From local to global properties
+
+将多个观察值使用SHAP或breakdown进行分解，也可以得到一些模型的全局性质：
+变量重要性：            的平均数可以用来度量变量Xj的重要性，右图显示Vehage依然是最重要的变量，但其他变量重要性与前面的结果有所不同。
+效应：对变量取值和其贡献值sij画散点图，可以得到不同取值下变量的效应。左图和之前的partial dependence plot形状也是十分相近的。
+
+Improving the GLM by interpretable machine learning
+
+通过之前的结果改进GLM模型：
+
+1.建立简单的GLM模型和调优的ML模型
+2.比较性能，如果GLM模型没有改进空间就停止
+3.研究变量重要性决定保留哪些变量
+4.通过对预测的影响效果，找出最强的预测因素，以调整变量（平方项、样条、删去部分类等）
+5.根据相互作用强度改进交互项
+6.利用以上因素改进GLM，然后回到第二步
+
+根据Variable importance，不删除变量
+根据Partial dependence proﬁles，logDensity用三次样条函数表示
+根据Interaction strength，增加VehAge:VehBrand，VehBrand:VehGas的交互作用
+
+基于以上改进建立新的glm
+
+-模型表现优于原本的GLM
+
+-VehBrand的重要性提高了，这主要应该是交互作用的影响
+
+-logDensity对预测的影响相比GLM更接近xgboost
+
+-建模了一部分交互作用
+
+
+
+
+
+
