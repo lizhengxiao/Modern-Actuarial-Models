@@ -2,9 +2,7 @@
 
 *龚齐翔、张谦、段诗悦、高光远*
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = F)
-```
+
 
 > the blackness of a model box seems no longer to be caused by the obscurity of the model itself but rather depends on the modeler switching on the light of the box. （手电筒的世界没有黑盒子）
 
@@ -195,10 +193,10 @@ LIME和LIVE主要分为以下几步：
 
 LIME的优点是原理简单，适用范围广，可解释所有黑箱模型。但也存在一定的问题，例如局部范围大小不同，最终的解释也会不同甚至相悖。
 
-```{r lime,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="LIME"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/8/lime.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./plots/8/lime.png" alt="LIME" width="50%" />
+<p class="caption">(\#fig:lime)LIME</p>
+</div>
 
 ### SHAP(Shapley Additive Explanations)
 
@@ -269,7 +267,8 @@ SHAP把黑箱中复杂的映射关系表达成一个简单线性映射，便于�
 
 ### 导入包
 
-```{r import, message=FALSE, warning=FALSE}
+
+```r
 library(CASdatasets)      # 1.0.6
 library(dplyr)            # 0.8.5
 library(forcats)          # 0.5.0
@@ -286,8 +285,8 @@ library(flashlight)       # 0.7.2
 
 ### 预处理
 
-```{r prep, message=FALSE, warning=FALSE}
 
+```r
 data(freMTPL2freq)
 
 distinct <- freMTPL2freq %>% 
@@ -318,8 +317,8 @@ w <- "Exposure"
 
 ### 描述性统计
 
-```{r data}
 
+```r
 # Univariate description
 
 melted <- dat[c("Freq", "Exposure", "DrivAge", "VehAge", "VehPower", "logDensity")] %>% 
@@ -380,17 +379,17 @@ dat %>%
   ggplot(aes(x = Region, y = logDensity)) +
   geom_boxplot(outlier.shape = NA, fill = "#E69F00") +
   th
-
 ```
 
-```{r hist,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="LIME"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/8/hist.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./plots/8/hist.png" alt="LIME" width="50%"  />
+<p class="caption">(\#fig:hist)LIME</p>
+</div>
 
 ### 建模
 
-```{r modeling}
+
+```r
 ind <- partition(dat[["group_id"]], p = c(train = 0.8, test = 0.2), 
                  seed = 22, type = "grouped")
 train <- dat[ind$train, ]
@@ -399,18 +398,19 @@ test <- dat[ind$test, ]
 
 #### glm
 
-```{r}
+
+```r
 fit_glm <- glm(Freq ~ VehPower + ns(VehAge, 5) + VehBrand +
                  VehGas + ns(DrivAge, 5) + logDensity + PolicyRegion,
                data = train,
                family = quasipoisson(),
                weights = train[[w]])
-
 ```
 
 #### XGBoost
  
-```{r}
+
+```r
 # Input maker
 prep_xgb <- function(dat, x) {
   data.matrix(dat[, x, drop = FALSE])
@@ -440,13 +440,12 @@ fit_xgb <- xgb.train(params_freq,
                      objective = "count:poisson",
                      watchlist = list(train = dtrain),
                      print_every_n = 10)
-
 ```
 
 #### 为后文训练可变单调性约束和交互项约束的xgboost，使用较小的nrounds
 
-```{r}
 
+```r
 params_freq_constraints <- list(learning_rate = 0.2,
                     max_depth = 5,
                     alpha = 3,
@@ -484,7 +483,8 @@ fit_xgb_interaction_constraints <- xgb.train(params_freq_interaction_constraints
 
 #### 神经网络
 
-```{r}
+
+```r
 prep_nn <- function(dat, x, cat_cols = c("PolicyRegion", "VehBrand")) {
   dense_cols <- setdiff(x, cat_cols)
   c(list(dense1 = data.matrix(dat[, dense_cols])), 
@@ -555,8 +555,8 @@ plot(history)
 
 在最后一个隐藏层的十维输出上训练泊松GLM
 
-```{r}
 
+```r
 # Calibrate by using last hidden layer activations as GLM input encoder
 encoder <- keras_model(inputs = neural_net$input, 
                        outputs = get_layer(neural_net, "dense_2")$output)
@@ -580,7 +580,8 @@ fit_nn <- glm(Freq ~ .,
 
 #### 为模型建立解释器(flashlight)，并将它们组合为multiflashlight
 
-```{r explain}
+
+```r
 set.seed(1)
 
 fillc <- "#E69F00"
@@ -630,12 +631,12 @@ fls_interaction_constraints <- multiflashlight(list(fl_glm, fl_nn, fl_xgb,fl_xgb
 fls_log <- multiflashlight(fls, linkinv = log)
 fls_xgb_interaction_constraints_log <- multiflashlight(fls_xgb_constraints, linkinv = log)
 fls_interaction_constraints_log <- multiflashlight(fls_interaction_constraints, linkinv = log)
-
 ```
 
 #### 对flashlight应用可解释性函数
 
-```{r}
+
+```r
 #模型表现
 
 perf <- light_performance(fls)
@@ -651,8 +652,8 @@ plot(imp, fill = fillc, color = "black")
 
 #### ICE曲线
 
-```{r}
 
+```r
 #driveage基于中心化与非中心化和是否使用对数被解释变量作为预测结果
 
 plot(light_ice(fls, v = "DrivAge", n_max = 200, seed = 3)
@@ -675,8 +676,8 @@ plot(light_ice(fls_xgb_constraints, v = "DrivAge", n_max = 200, seed = 3)
      , alpha = 0.1)
 ```
 
-```{r}
 
+```r
 # Partial dependence curves
 plot(light_profile(fls, v = "VehAge", pd_evaluate_at = 0:20))
 plot(light_profile(fls, v = "DrivAge", n_bins = 25))
@@ -699,11 +700,10 @@ plot(light_profile(fls, v = "VehAge", type = "response"))
 eff_DrivAge <- light_effects(fls, v = "DrivAge", counts_weighted = TRUE)
 p <- plot(eff_DrivAge, show_points = FALSE)
 plot_counts(p, eff_DrivAge, alpha = 0.3)
-
 ```
 
-```{r}
 
+```r
 # Interaction (relative)
 interact_rel <- light_interaction(
   fls_interaction_constraints_log, 
@@ -747,7 +747,8 @@ plot(light_ice(fls_xgb_interaction_constraints, v = "DrivAge", n_max = 200, seed
 
 #### 全局代理模型
 
-```{r}
+
+```r
 surr_nn <- light_global_surrogate(fls_log$NNet, v = x)
 plot(surr_nn)
 
@@ -757,7 +758,8 @@ plot(surr_xgb)
 
 ### 局部性质
 
-```{r}
+
+```r
 #局部性质
 
 new_obs <- test[1, ]
@@ -788,14 +790,15 @@ plot(light_importance(fl_with_shap, v = x, type = "shap"),
 plot(light_scatter(fl_with_shap, v = "DrivAge", type = "shap"), alpha = 0.3)
 ```
 
-```{r age,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="LIME"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/8/age.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./plots/8/age.png" alt="LIME" width="50%"  />
+<p class="caption">(\#fig:age)LIME</p>
+</div>
 
 ### 改进glm
 
-```{r}
+
+```r
 fit_glm2 <- glm(Freq ~ VehPower + VehBrand * VehGas + PolicyRegion + 
                   ns(DrivAge, 5) + VehBrand * ns(VehAge, 5) + 
                   ns(logDensity, 5), 

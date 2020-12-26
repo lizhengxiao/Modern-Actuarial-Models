@@ -9,11 +9,6 @@
 <p class="caption">(\#fig:history)NLP历史（2000年以后）</p>
 </div>
 
-<div class="figure" style="text-align: center">
-<img src="./plots/7/frisbee.png" alt="扔飞盘" width="70%"  />
-<p class="caption">(\#fig:frisbee)扔飞盘</p>
-</div>
-
 在保险业，大量的书面证据，如保单合同或索赔通知，以及客户与企业对话助理互动的记录，为数据科学家和精算师提供了越来越多的可供分析的文本信息。
 
 NLP在保险行业中的应用：
