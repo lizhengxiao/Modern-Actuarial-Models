@@ -149,13 +149,10 @@ nlp
 bag-of-words
 bag-of-part-of-speech
 word-embeddings
-neural-probabilistic-language-model
-word2vec
-global-vectors-for-word-representation
 pre-trained-word-embeddings
+机器学习算法
 神经网络
-lstm
-gru
+数据预处理-4
 case-study-1
 函数说明
 可能遇到的问题

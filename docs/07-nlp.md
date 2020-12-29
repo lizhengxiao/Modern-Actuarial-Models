@@ -19,6 +19,26 @@ NLP在保险行业中的应用：
 
 - 从文本数据中识别欺诈案例等
 
+**传统方法的基本过程**
+
+1. 文本预处理
+
+2. **映射到实数集**: bag-of-words, bag-of-POS, pre-trained word embedding
+
+3. 有监督机器学习算法: AdaBoost, random forest, XGBoost
+
+**循环神经网络的基本过程**
+
+1. 文本预处理
+
+2. 循环神经网络: RNN, GRU, LSTM
+
+**区别**
+
+1. 传统方法非常依赖第二步特征工程的效果,神经网络不需要特征工程,它通过监督学习.进行自动特征工程.
+
+2. 传统方法没有考虑文本的时间序列特征, 循环神经网络考虑了文本的时间序列特征.
+
 ## 预处理
 
 1. 输入原始文本和格式
@@ -29,30 +49,74 @@ NLP在保险行业中的应用：
 
 4. 删除停用词（ stopwords ）
 
-5. 词性标注（ part-of-speech (POS) tagging ）?? 或者 bag of words?
+5. 词性标注（POS tagging, 这步在 bag-of-POS需要, 如果只是 bag-of-words，此步不需要)
 
 6. 词干提取或词形还原（Stemming or Lemmatization）
 
-
 ## Bag of words
+
+Bag-of-words模型是信息检索领域常用的文档表示方法。在信息检索中，BOW模型假定对于一个文档，忽略它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合，文档中每个单词的出现都是独立的，不依赖于其它单词是否出现。也就是说，文档中任意一个位置出现的任何单词，都不受该文档语意影响而独立选择的。例如有如下两个文档：
+
+1. Bob likes to play basketball, Jim likes too.
+
+2. Bob also likes to play football games.
+
+基于这两个文本文档，构造一个词典：
+
+Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also", 7. "football", 8. "games", 9. "Jim", 10. "too"}
+
+这个词典一共包含$10$个不同的单词，利用词典的索引号，上面两个文档每一个都可以用一个$10$维向量表示（用整数数字$0:n$（$n$为正整数）表示某个单词在文档中出现的次数）：
+
+ 1：$[1, 2, 1, 1, 1, 0, 0, 0, 1, 1]$
+
+ 2：$[1, 1, 1, 1 ,0, 1, 1, 1, 0, 0]$
+     
+向量中每个元素表示词典中相关元素在本文本样本中出现的次数。不过，在构造文档向量的过程中可以看到，我们并没有表达单词在原来句子中出现的次序（这是本Bag-of-words模型的缺点之一，不过瑕不掩瑜甚至在此处无关紧要）。    
+
+我们使用`TfidfVectorizer`进行BOW,它不使用词出现的次数,而计算term frequency - inverse document frequency (tf-idf)。研究表明tf-idf更能反映文本的特征。
 
 ## Bag of part-of-speech
 
+相较于BOW，bag of POS仅仅多了一步，即对每个词语进行词性标注，然后使用`TfidfVectorizer`。可知bag of POS可以达到降维的目的，但它散失了原文本的词语的信息，只考虑了词性。
+
 ## Word embeddings
 
-### Neural probabilistic language model
+词嵌入考虑把每个词语映射到用多维实数空间中，有很多预训练的映射可供选择，这些映射通常考虑了词语的先后顺序和同义词反义词等。常用的词嵌入模型包括：
 
-### word2vec
+- Neural probabilistic language model
 
-### Global vectors for word representation
+- word2vec
 
-## Pre-trained word embeddings
+- Global vectors for word representation
+
+### Pre-trained word embeddings
+
+我们使用`en_core_web_sm`进行词嵌入，它可以把任意的词映射到$\mathbb{R}^{96}$。另外，`en_core_web_mb`为更复杂的映射，可以把任意的词映射到$\mathbb{R}^{300}$。对于一个包含多个词语的文本，我们用所有词语的词嵌入平均值来表示这个文本
+
+## 机器学习算法
+
+通过bag-of-words, bag-of-POS，word embedding 我们把每个文本转变为一个向量。这样可以利用如下几种机器学习算法进行文本分类等监督学习。
+
+- AdaBoost
+
+- Random Forest
+
+- XGBoost
+
 
 ## 神经网络
 
-### LSTM
+### 数据预处理
 
-### GRU
+在神经网络中，我们不需要进行以上bag-of-words, bag-of-POS, word embedding等人工特征工程，我们只需要用实数把文本中**词语的顺序**表征出来即可，神经网络可以同步进行特征工程和有监督训练。
+
+在python中可以使用Keras 中的`Tokenizer`模块把词语映射到非负整数上，此方法保持了保持了词语的顺序，是前面几种方法没有达到的。
+
+可以看到，使用神经网络时，我们仅仅需要进行很少的特征工程，词语的意义将由神经网络在监督学习中学到。文本是时间序列数据，常用于时间序列分析的模型包括
+
+- LSTM
+
+- GRU
 
 ## Case study
 
