@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 自然语言处理 | 现代精算统计模型</title>
+  <meta name="description" content="The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 自然语言处理 | 现代精算统计模型" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 自然语言处理 | 现代精算统计模型" />
+  
+  <meta name="twitter:description" content="The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Modern Actuarial Models" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rnn.html"/>
+<link rel="next" href="flashlight.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">现代精算统计模型</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>👨‍🏫 欢迎</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#答疑"><i class="fa fa-check"></i>🤔 答疑</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程安排"><i class="fa fa-check"></i>🗓️ 课程安排</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>简介</a></li>
+<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 准备工作</a><ul>
+<li class="chapter" data-level="1.1" data-path="pre.html"><a href="pre.html#常用链接"><i class="fa fa-check"></i><b>1.1</b> 常用链接</a></li>
+<li class="chapter" data-level="1.2" data-path="pre.html"><a href="pre.html#克隆代码"><i class="fa fa-check"></i><b>1.2</b> 克隆代码</a></li>
+<li class="chapter" data-level="1.3" data-path="pre.html"><a href="pre.html#r-interface-to-keras"><i class="fa fa-check"></i><b>1.3</b> R interface to Keras</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="pre.html"><a href="pre.html#r自动安装"><i class="fa fa-check"></i><b>1.3.1</b> R自动安装</a></li>
+<li class="chapter" data-level="1.3.2" data-path="pre.html"><a href="pre.html#使用reticulate关联conda环境"><i class="fa fa-check"></i><b>1.3.2</b> 使用reticulate关联conda环境</a></li>
+<li class="chapter" data-level="1.3.3" data-path="pre.html"><a href="pre.html#指定conda安装"><i class="fa fa-check"></i><b>1.3.3</b> 指定conda安装</a></li>
+<li class="chapter" data-level="1.3.4" data-path="pre.html"><a href="pre.html#使用reticulate安装"><i class="fa fa-check"></i><b>1.3.4</b> 使用reticulate安装</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="pre.html"><a href="pre.html#r-interface-to-python"><i class="fa fa-check"></i><b>1.4</b> R interface to Python</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="pre.html"><a href="pre.html#reticulate-常见命令"><i class="fa fa-check"></i><b>1.4.1</b> reticulate 常见命令</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pre.html"><a href="pre.html#切换r关联的conda环境"><i class="fa fa-check"></i><b>1.4.2</b> 切换R关联的conda环境</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pre.html"><a href="pre.html#python"><i class="fa fa-check"></i><b>1.5</b> Python</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="pre.html"><a href="pre.html#conda环境"><i class="fa fa-check"></i><b>1.5.1</b> Conda环境</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pre.html"><a href="pre.html#常用的conda命令"><i class="fa fa-check"></i><b>1.5.2</b> 常用的Conda命令</a></li>
+<li class="chapter" data-level="1.5.3" data-path="pre.html"><a href="pre.html#tensorflowpytorch-gpu-version"><i class="fa fa-check"></i><b>1.5.3</b> Tensorflow/Pytorch GPU version</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 车险索赔频率预测</a><ul>
+<li class="chapter" data-level="2.1" data-path="french.html"><a href="french.html#背景介绍"><i class="fa fa-check"></i><b>2.1</b> 背景介绍</a></li>
+<li class="chapter" data-level="2.2" data-path="french.html"><a href="french.html#预测模型概述"><i class="fa fa-check"></i><b>2.2</b> 预测模型概述</a></li>
+<li class="chapter" data-level="2.3" data-path="french.html"><a href="french.html#特征工程"><i class="fa fa-check"></i><b>2.3</b> 特征工程</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="french.html"><a href="french.html#截断"><i class="fa fa-check"></i><b>2.3.1</b> 截断</a></li>
+<li class="chapter" data-level="2.3.2" data-path="french.html"><a href="french.html#离散化"><i class="fa fa-check"></i><b>2.3.2</b> 离散化</a></li>
+<li class="chapter" data-level="2.3.3" data-path="french.html"><a href="french.html#设定基础水平"><i class="fa fa-check"></i><b>2.3.3</b> 设定基础水平</a></li>
+<li class="chapter" data-level="2.3.4" data-path="french.html"><a href="french.html#协变量变形"><i class="fa fa-check"></i><b>2.3.4</b> 协变量变形</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="french.html"><a href="french.html#训练集-验证集-测试集"><i class="fa fa-check"></i><b>2.4</b> 训练集-验证集-测试集</a></li>
+<li class="chapter" data-level="2.5" data-path="french.html"><a href="french.html#泊松偏差损失函数"><i class="fa fa-check"></i><b>2.5</b> 泊松偏差损失函数</a></li>
+<li class="chapter" data-level="2.6" data-path="french.html"><a href="french.html#泊松回归模型"><i class="fa fa-check"></i><b>2.6</b> 泊松回归模型</a></li>
+<li class="chapter" data-level="2.7" data-path="french.html"><a href="french.html#泊松可加模型"><i class="fa fa-check"></i><b>2.7</b> 泊松可加模型</a></li>
+<li class="chapter" data-level="2.8" data-path="french.html"><a href="french.html#泊松回归树"><i class="fa fa-check"></i><b>2.8</b> 泊松回归树</a></li>
+<li class="chapter" data-level="2.9" data-path="french.html"><a href="french.html#随机森林"><i class="fa fa-check"></i><b>2.9</b> 随机森林</a></li>
+<li class="chapter" data-level="2.10" data-path="french.html"><a href="french.html#泊松提升树"><i class="fa fa-check"></i><b>2.10</b> 泊松提升树</a></li>
+<li class="chapter" data-level="2.11" data-path="french.html"><a href="french.html#模型比较"><i class="fa fa-check"></i><b>2.11</b> 模型比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>3</b> 神经网络</a><ul>
+<li class="chapter" data-level="3.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>3.1</b> 建立神经网络的一般步骤</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>3.1.1</b> 明确目标和数据类型</a></li>
+<li class="chapter" data-level="3.1.2" data-path="nn.html"><a href="nn.html#数据预处理"><i class="fa fa-check"></i><b>3.1.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>3.1.3</b> 选取合适的神经网络类型</a></li>
+<li class="chapter" data-level="3.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>3.1.4</b> 建立神经网络（全连接神经网络）</a></li>
+<li class="chapter" data-level="3.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>3.1.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="3.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>3.1.6</b> 调参</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>3.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>3.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
+<li class="chapter" data-level="3.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>3.4</b> 神经网络结构</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>3.4.1</b> 结构参数</a></li>
+<li class="chapter" data-level="3.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>3.4.2</b> 输入层</a></li>
+<li class="chapter" data-level="3.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>3.4.3</b> Embedding layer</a></li>
+<li class="chapter" data-level="3.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>3.4.4</b> 隐藏层</a></li>
+<li class="chapter" data-level="3.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>3.4.5</b> 输出层</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>3.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="3.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>3.6</b> 总结</a></li>
+<li class="chapter" data-level="3.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>3.7</b> 其它模型</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>4</b> 提升方法 (Boosting)</a><ul>
+<li class="chapter" data-level="4.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>4.1</b> AdaBoost</a></li>
+<li class="chapter" data-level="4.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>4.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
+<li class="chapter" data-level="4.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>4.3</b> AdaBoost.M1</a></li>
+<li class="chapter" data-level="4.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>4.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
+<li class="chapter" data-level="4.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>4.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
+<li class="chapter" data-level="4.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>4.6</b> Gradient Boosting</a></li>
+<li class="chapter" data-level="4.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>4.7</b> Newton Boosting</a></li>
+<li class="chapter" data-level="4.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>4.8</b> XGBoost</a></li>
+<li class="chapter" data-level="4.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>4.9</b> Case study</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>4.9.1</b> 数据描述</a></li>
+<li class="chapter" data-level="4.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理-2"><i class="fa fa-check"></i><b>4.9.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>4.9.3</b> 特征工程</a></li>
+<li class="chapter" data-level="4.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>4.9.4</b> 建模流程</a></li>
+<li class="chapter" data-level="4.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>4.9.5</b> 模型度量——Gini系数</a></li>
+<li class="chapter" data-level="4.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>4.9.6</b> 建立AdaBoost模型</a></li>
+<li class="chapter" data-level="4.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>4.9.7</b> 建立XGBoost模型</a></li>
+<li class="chapter" data-level="4.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>4.9.8</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>4.10</b> Appendix: Commonly used Python code (for py-beginners)</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>4.10.1</b> Python标准数据类型</a></li>
+<li class="chapter" data-level="4.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>4.10.2</b> Python内置函数</a></li>
+<li class="chapter" data-level="4.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>4.10.3</b> numpy包</a></li>
+<li class="chapter" data-level="4.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>4.10.4</b> pandas包</a></li>
+<li class="chapter" data-level="4.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>4.10.5</b> Matplotlib包</a></li>
+<li class="chapter" data-level="4.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>4.10.6</b> 常用教程网址</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>5</b> 无监督学习方法</a><ul>
+<li class="chapter" data-level="5.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-3"><i class="fa fa-check"></i><b>5.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="5.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>5.2</b> 主成分分析</a></li>
+<li class="chapter" data-level="5.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>5.3</b> 自编码</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>5.3.1</b> 模型训练</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>5.4</b> K-means clustering</a></li>
+<li class="chapter" data-level="5.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>5.5</b> K-medoids clustering (PAM)</a></li>
+<li class="chapter" data-level="5.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>5.6</b> Gaussian mixture models(GMMs)</a></li>
+<li class="chapter" data-level="5.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>5.7</b> 三种聚类方法评价</a></li>
+<li class="chapter" data-level="5.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>5.8</b> t-SNE</a></li>
+<li class="chapter" data-level="5.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>5.9</b> UMAP</a></li>
+<li class="chapter" data-level="5.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>5.10</b> SOM</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="rnn.html"><a href="rnn.html"><i class="fa fa-check"></i><b>6</b> 循环神经网络与死亡率预测</a><ul>
+<li class="chapter" data-level="6.1" data-path="rnn.html"><a href="rnn.html#lee-carter-model"><i class="fa fa-check"></i><b>6.1</b> Lee-Carter Model</a></li>
+<li class="chapter" data-level="6.2" data-path="rnn.html"><a href="rnn.html#普通循环神经网络recurrent-neural-network"><i class="fa fa-check"></i><b>6.2</b> 普通循环神经网络（recurrent neural network）</a></li>
+<li class="chapter" data-level="6.3" data-path="rnn.html"><a href="rnn.html#长短期记忆神经网络long-short-term-memory"><i class="fa fa-check"></i><b>6.3</b> 长短期记忆神经网络（Long short-term memory）</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="rnn.html"><a href="rnn.html#激活函数activation-functions"><i class="fa fa-check"></i><b>6.3.1</b> 激活函数（Activation functions）</a></li>
+<li class="chapter" data-level="6.3.2" data-path="rnn.html"><a href="rnn.html#gates-and-cell-state"><i class="fa fa-check"></i><b>6.3.2</b> Gates and cell state</a></li>
+<li class="chapter" data-level="6.3.3" data-path="rnn.html"><a href="rnn.html#output-function"><i class="fa fa-check"></i><b>6.3.3</b> Output Function</a></li>
+<li class="chapter" data-level="6.3.4" data-path="rnn.html"><a href="rnn.html#time-distributed-layer"><i class="fa fa-check"></i><b>6.3.4</b> Time-distributed Layer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="rnn.html"><a href="rnn.html#门控循环神经网络gated-recurrent-unit"><i class="fa fa-check"></i><b>6.4</b> 门控循环神经网络（Gated Recurrent Unit）</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="rnn.html"><a href="rnn.html#gates"><i class="fa fa-check"></i><b>6.4.1</b> Gates</a></li>
+<li class="chapter" data-level="6.4.2" data-path="rnn.html"><a href="rnn.html#neuron-activations"><i class="fa fa-check"></i><b>6.4.2</b> Neuron Activations</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="rnn.html"><a href="rnn.html#案例分析case-study"><i class="fa fa-check"></i><b>6.5</b> 案例分析（Case study）</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="rnn.html"><a href="rnn.html#数据描述-1"><i class="fa fa-check"></i><b>6.5.1</b> 数据描述</a></li>
+<li class="chapter" data-level="6.5.2" data-path="rnn.html"><a href="rnn.html#死亡率热力图"><i class="fa fa-check"></i><b>6.5.2</b> 死亡率热力图</a></li>
+<li class="chapter" data-level="6.5.3" data-path="rnn.html"><a href="rnn.html#lee-carter-模型"><i class="fa fa-check"></i><b>6.5.3</b> Lee-Carter 模型</a></li>
+<li class="chapter" data-level="6.5.4" data-path="rnn.html"><a href="rnn.html#初试rnn"><i class="fa fa-check"></i><b>6.5.4</b> 初试RNN</a></li>
+<li class="chapter" data-level="6.5.5" data-path="rnn.html"><a href="rnn.html#rnn-1"><i class="fa fa-check"></i><b>6.5.5</b> RNN</a></li>
+<li class="chapter" data-level="6.5.6" data-path="rnn.html"><a href="rnn.html#引入性别协变量"><i class="fa fa-check"></i><b>6.5.6</b> 引入性别协变量</a></li>
+<li class="chapter" data-level="6.5.7" data-path="rnn.html"><a href="rnn.html#稳健性"><i class="fa fa-check"></i><b>6.5.7</b> 稳健性</a></li>
+<li class="chapter" data-level="6.5.8" data-path="rnn.html"><a href="rnn.html#预测结果图"><i class="fa fa-check"></i><b>6.5.8</b> 预测结果图</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>7</b> 自然语言处理</a><ul>
+<li class="chapter" data-level="7.1" data-path="nlp.html"><a href="nlp.html#预处理"><i class="fa fa-check"></i><b>7.1</b> 预处理</a></li>
+<li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
+<li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
+<li class="chapter" data-level="7.4" data-path="nlp.html"><a href="nlp.html#word-embeddings"><i class="fa fa-check"></i><b>7.4</b> Word embeddings</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.1</b> Pre-trained word embeddings</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
+<li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="nlp.html"><a href="nlp.html#数据预处理-4"><i class="fa fa-check"></i><b>7.6.1</b> 数据预处理</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="nlp.html"><a href="nlp.html#case-study-1"><i class="fa fa-check"></i><b>7.7</b> Case study</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="nlp.html"><a href="nlp.html#函数说明"><i class="fa fa-check"></i><b>7.7.1</b> 函数说明</a></li>
+<li class="chapter" data-level="7.7.2" data-path="nlp.html"><a href="nlp.html#可能遇到的问题"><i class="fa fa-check"></i><b>7.7.2</b> 可能遇到的问题</a></li>
+<li class="chapter" data-level="7.7.3" data-path="nlp.html"><a href="nlp.html#结果比较"><i class="fa fa-check"></i><b>7.7.3</b> 结果比较</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="nlp.html"><a href="nlp.html#结论-1"><i class="fa fa-check"></i><b>7.8</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="flashlight.html"><a href="flashlight.html"><i class="fa fa-check"></i><b>8</b> 通用模型解释方法</a><ul>
+<li class="chapter" data-level="8.1" data-path="flashlight.html"><a href="flashlight.html#数据"><i class="fa fa-check"></i><b>8.1</b> 数据</a></li>
+<li class="chapter" data-level="8.2" data-path="flashlight.html"><a href="flashlight.html#模型"><i class="fa fa-check"></i><b>8.2</b> 模型</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="flashlight.html"><a href="flashlight.html#glm"><i class="fa fa-check"></i><b>8.2.1</b> GLM</a></li>
+<li class="chapter" data-level="8.2.2" data-path="flashlight.html"><a href="flashlight.html#xgboost-1"><i class="fa fa-check"></i><b>8.2.2</b> XGBoost</a></li>
+<li class="chapter" data-level="8.2.3" data-path="flashlight.html"><a href="flashlight.html#神经网络-1"><i class="fa fa-check"></i><b>8.2.3</b> 神经网络</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="flashlight.html"><a href="flashlight.html#模型整体表现-model-performance"><i class="fa fa-check"></i><b>8.3</b> 模型整体表现 （model performance）</a></li>
+<li class="chapter" data-level="8.4" data-path="flashlight.html"><a href="flashlight.html#变量重要性variable-importance"><i class="fa fa-check"></i><b>8.4</b> 变量重要性（variable importance）</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="flashlight.html"><a href="flashlight.html#permutation-importance"><i class="fa fa-check"></i><b>8.4.1</b> Permutation importance</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="flashlight.html"><a href="flashlight.html#边缘效应主效应"><i class="fa fa-check"></i><b>8.5</b> 边缘效应（主效应）</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="flashlight.html"><a href="flashlight.html#individual-conditional-expectationsice"><i class="fa fa-check"></i><b>8.5.1</b> Individual conditional expectations（ICE）</a></li>
+<li class="chapter" data-level="8.5.2" data-path="flashlight.html"><a href="flashlight.html#partial-dependence-profiles"><i class="fa fa-check"></i><b>8.5.2</b> Partial dependence profiles</a></li>
+<li class="chapter" data-level="8.5.3" data-path="flashlight.html"><a href="flashlight.html#accumulated-local-effects-profiles-ale"><i class="fa fa-check"></i><b>8.5.3</b> Accumulated local effects profiles (ALE)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="flashlight.html"><a href="flashlight.html#交互效应"><i class="fa fa-check"></i><b>8.6</b> 交互效应</a></li>
+<li class="chapter" data-level="8.7" data-path="flashlight.html"><a href="flashlight.html#全局代理模型global-surrogate-models"><i class="fa fa-check"></i><b>8.7</b> 全局代理模型（Global surrogate models）</a></li>
+<li class="chapter" data-level="8.8" data-path="flashlight.html"><a href="flashlight.html#局部解释样本解释"><i class="fa fa-check"></i><b>8.8</b> 局部解释（样本解释？）</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="flashlight.html"><a href="flashlight.html#lime和live"><i class="fa fa-check"></i><b>8.8.1</b> LIME和LIVE</a></li>
+<li class="chapter" data-level="8.8.2" data-path="flashlight.html"><a href="flashlight.html#shapshapley-additive-explanations"><i class="fa fa-check"></i><b>8.8.2</b> SHAP(Shapley Additive Explanations)</a></li>
+<li class="chapter" data-level="8.8.3" data-path="flashlight.html"><a href="flashlight.html#breakdown-and-approximate-shap"><i class="fa fa-check"></i><b>8.8.3</b> Breakdown and approximate SHAP</a></li>
+<li class="chapter" data-level="8.8.4" data-path="flashlight.html"><a href="flashlight.html#from-local-to-global-properties"><i class="fa fa-check"></i><b>8.8.4</b> From local to global properties</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="flashlight.html"><a href="flashlight.html#improving-the-glm-by-interpretable-machine-learning"><i class="fa fa-check"></i><b>8.9</b> Improving the GLM by interpretable machine learning</a></li>
+<li class="chapter" data-level="8.10" data-path="flashlight.html"><a href="flashlight.html#案例分析"><i class="fa fa-check"></i><b>8.10</b> 案例分析</a><ul>
+<li class="chapter" data-level="8.10.1" data-path="flashlight.html"><a href="flashlight.html#导入包"><i class="fa fa-check"></i><b>8.10.1</b> 导入包</a></li>
+<li class="chapter" data-level="8.10.2" data-path="flashlight.html"><a href="flashlight.html#预处理-1"><i class="fa fa-check"></i><b>8.10.2</b> 预处理</a></li>
+<li class="chapter" data-level="8.10.3" data-path="flashlight.html"><a href="flashlight.html#描述性统计"><i class="fa fa-check"></i><b>8.10.3</b> 描述性统计</a></li>
+<li class="chapter" data-level="8.10.4" data-path="flashlight.html"><a href="flashlight.html#建模"><i class="fa fa-check"></i><b>8.10.4</b> 建模</a></li>
+<li class="chapter" data-level="8.10.5" data-path="flashlight.html"><a href="flashlight.html#解释"><i class="fa fa-check"></i><b>8.10.5</b> 解释</a></li>
+<li class="chapter" data-level="8.10.6" data-path="flashlight.html"><a href="flashlight.html#局部性质"><i class="fa fa-check"></i><b>8.10.6</b> 局部性质</a></li>
+<li class="chapter" data-level="8.10.7" data-path="flashlight.html"><a href="flashlight.html#改进glm"><i class="fa fa-check"></i><b>8.10.7</b> 改进glm</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
+<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#cnn组件"><i class="fa fa-check"></i><b>9.1</b> CNN组件</a></li>
+<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#案例分析-1"><i class="fa fa-check"></i><b>9.2</b> 案例分析</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="cnn.html"><a href="cnn.html#human-mmortality-database-hmd"><i class="fa fa-check"></i><b>9.2.1</b> <span>Human MMortality Database (HMD)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="cnn.html"><a href="cnn.html#the-modified-national-institute-of-standards-and-technology-mnist-dataset"><i class="fa fa-check"></i><b>9.2.2</b> The Modified National Institute of Standards and Technology (MNIST) dataset</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">现代精算统计模型</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nlp" class="section level1">
+<h1><span class="header-section-number">7</span> 自然语言处理</h1>
+<p><em>陈美昆、蒋慧华、高光远</em></p>
+<div class="figure" style="text-align: center"><span id="fig:history"></span>
+<img src="plots/7/history.png" alt="NLP历史（2000年以后）" width="70%" />
+<p class="caption">
+Figure 7.1: NLP历史（2000年以后）
+</p>
+</div>
+<p>在保险业，大量的书面证据，如保单合同或索赔通知，以及客户与企业对话助理互动的记录，为数据科学家和精算师提供了越来越多的可供分析的文本信息。</p>
+<p>NLP在保险行业中的应用：</p>
+<ul>
+<li><p>根据文字描述的索赔类型和严重程度对索赔进行分类</p></li>
+<li><p>对电子邮件、保单、合同的分类</p></li>
+<li><p>从文本数据中识别欺诈案例等</p></li>
+</ul>
+<p><strong>传统方法的基本过程</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>文本预处理</p></li>
+<li><p><strong>映射到实数集</strong>: bag-of-words, bag-of-POS, pre-trained word embedding</p></li>
+<li><p>有监督机器学习算法: AdaBoost, random forest, XGBoost</p></li>
+</ol>
+<p><strong>循环神经网络的基本过程</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>文本预处理</p></li>
+<li><p>循环神经网络: RNN, GRU, LSTM</p></li>
+</ol>
+<p><strong>区别</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>传统方法非常依赖第二步特征工程的效果,神经网络不需要特征工程,它通过监督学习.进行自动特征工程.</p></li>
+<li><p>传统方法没有考虑文本的时间序列特征, 循环神经网络考虑了文本的时间序列特征.</p></li>
+</ol>
+<div id="预处理" class="section level2">
+<h2><span class="header-section-number">7.1</span> 预处理</h2>
+<ol style="list-style-type: decimal">
+<li><p>输入原始文本和格式</p></li>
+<li><p>将文本转化为小写</p></li>
+<li><p>分词（ tokenization ）</p></li>
+<li><p>删除停用词（ stopwords ）</p></li>
+<li><p>词性标注（POS tagging, 这步在 bag-of-POS需要, 如果只是 bag-of-words，此步不需要)</p></li>
+<li><p>词干提取或词形还原（Stemming or Lemmatization）</p></li>
+</ol>
+</div>
+<div id="bag-of-words" class="section level2">
+<h2><span class="header-section-number">7.2</span> Bag of words</h2>
+<p>Bag-of-words模型是信息检索领域常用的文档表示方法。在信息检索中，BOW模型假定对于一个文档，忽略它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合，文档中每个单词的出现都是独立的，不依赖于其它单词是否出现。也就是说，文档中任意一个位置出现的任何单词，都不受该文档语意影响而独立选择的。例如有如下两个文档：</p>
+<ol style="list-style-type: decimal">
+<li><p>Bob likes to play basketball, Jim likes too.</p></li>
+<li><p>Bob also likes to play football games.</p></li>
+</ol>
+<p>基于这两个文本文档，构造一个词典：</p>
+<p>Dictionary = {1:“Bob”, 2. “like”, 3. “to”, 4. “play”, 5. “basketball”, 6. “also”, 7. “football”, 8. “games”, 9. “Jim”, 10. “too”}</p>
+<p>这个词典一共包含<span class="math inline">\(10\)</span>个不同的单词，利用词典的索引号，上面两个文档每一个都可以用一个<span class="math inline">\(10\)</span>维向量表示（用整数数字<span class="math inline">\(0:n\)</span>（<span class="math inline">\(n\)</span>为正整数）表示某个单词在文档中出现的次数）：</p>
+<p>1：<span class="math inline">\([1, 2, 1, 1, 1, 0, 0, 0, 1, 1]\)</span></p>
+<p>2：<span class="math inline">\([1, 1, 1, 1 ,0, 1, 1, 1, 0, 0]\)</span></p>
+<p>向量中每个元素表示词典中相关元素在本文本样本中出现的次数。不过，在构造文档向量的过程中可以看到，我们并没有表达单词在原来句子中出现的次序（这是本Bag-of-words模型的缺点之一，不过瑕不掩瑜甚至在此处无关紧要）。</p>
+<p>我们使用<code>TfidfVectorizer</code>进行BOW,它不使用词出现的次数,而计算term frequency - inverse document frequency (tf-idf)。研究表明tf-idf更能反映文本的特征。</p>
+</div>
+<div id="bag-of-part-of-speech" class="section level2">
+<h2><span class="header-section-number">7.3</span> Bag of part-of-speech</h2>
+<p>相较于BOW，bag of POS仅仅多了一步，即对每个词语进行词性标注，然后使用<code>TfidfVectorizer</code>。可知bag of POS可以达到降维的目的，但它散失了原文本的词语的信息，只考虑了词性。</p>
+</div>
+<div id="word-embeddings" class="section level2">
+<h2><span class="header-section-number">7.4</span> Word embeddings</h2>
+<p>词嵌入考虑把每个词语映射到用多维实数空间中，有很多预训练的映射可供选择，这些映射通常考虑了词语的先后顺序和同义词反义词等。常用的词嵌入模型包括：</p>
+<ul>
+<li><p>Neural probabilistic language model</p></li>
+<li><p>word2vec</p></li>
+<li><p>Global vectors for word representation</p></li>
+</ul>
+<div id="pre-trained-word-embeddings" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Pre-trained word embeddings</h3>
+<p>我们使用<code>en_core_web_sm</code>进行词嵌入，它可以把任意的词映射到<span class="math inline">\(\mathbb{R}^{96}\)</span>。另外，<code>en_core_web_mb</code>为更复杂的映射，可以把任意的词映射到<span class="math inline">\(\mathbb{R}^{300}\)</span>。对于一个包含多个词语的文本，我们用所有词语的词嵌入平均值来表示这个文本</p>
+</div>
+</div>
+<div id="机器学习算法" class="section level2">
+<h2><span class="header-section-number">7.5</span> 机器学习算法</h2>
+<p>通过bag-of-words, bag-of-POS，word embedding 我们把每个文本转变为一个向量。这样可以利用如下几种机器学习算法进行文本分类等监督学习。</p>
+<ul>
+<li><p>AdaBoost</p></li>
+<li><p>Random Forest</p></li>
+<li><p>XGBoost</p></li>
+</ul>
+</div>
+<div id="神经网络" class="section level2">
+<h2><span class="header-section-number">7.6</span> 神经网络</h2>
+<div id="数据预处理-4" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> 数据预处理</h3>
+<p>在神经网络中，我们不需要进行以上bag-of-words, bag-of-POS, word embedding等人工特征工程，我们只需要用实数把文本中<strong>词语的顺序</strong>表征出来即可，神经网络可以同步进行特征工程和有监督训练。</p>
+<p>在python中可以使用Keras 中的<code>Tokenizer</code>模块把词语映射到非负整数上，此方法保持了保持了词语的顺序，是前面几种方法没有达到的。</p>
+<p>可以看到，使用神经网络时，我们仅仅需要进行很少的特征工程，词语的意义将由神经网络在监督学习中学到。文本是时间序列数据，常用于时间序列分析的模型包括</p>
+<ul>
+<li><p>LSTM</p></li>
+<li><p>GRU</p></li>
+</ul>
+</div>
+</div>
+<div id="case-study-1" class="section level2">
+<h2><span class="header-section-number">7.7</span> Case study</h2>
+<div class="figure" style="text-align: center"><span id="fig:files"></span>
+<img src="plots/7/files.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.2: 文档结构
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:procedure"></span>
+<img src="plots/7/procedure.png" alt="nlp4class_exercise步骤" width="70%"  />
+<p class="caption">
+Figure 7.3: nlp4class_exercise步骤
+</p>
+</div>
+<ul>
+<li><p>任务描述：根据电影评论文本判断该评论是“好评”还是“差评”</p></li>
+<li><p>数据来源： Internet Movie Database (IMDb)</p></li>
+<li><p>数据量：案例中共有5000条含分类信息（pos/neg）的原始数据，从计算资源是运行时间考虑，我们从原始数据中随机抽取了1%，即500条数据进行测试，测试数据在toymdb文件夹下，文件结构和原始数据一致（需要注意的是， toymdb文件夹包含train和test两个文件，但并不是实际处理时的“训练集”和“测试集”，实际训练时读取所有数据并重新划分“训练集”和“测试集” ，所以实际上train和test中的文件没有区别，只是沿袭了原始数据的存储结构）。</p></li>
+<li><p>数据结构：评论位置代表类别，一个txt存储一个评论数据。</p></li>
+</ul>
+<div id="函数说明" class="section level3">
+<h3><span class="header-section-number">7.7.1</span> 函数说明</h3>
+</div>
+<div id="可能遇到的问题" class="section level3">
+<h3><span class="header-section-number">7.7.2</span> 可能遇到的问题</h3>
+<ul>
+<li>词性标注</li>
+</ul>
+<pre><code>  import nltk
+  from nltk import pos_tag, word_tokenize
+  出现LookupError</code></pre>
+<pre><code>  解决方法：把&#39;nltk_data.zip&#39;里的文件全部拷贝至&#39;/Users/huihuajiang/nltk_data/&#39;         
+  用以下命令可以查看你的 nltk_data 文件夹路径：             import nltk             
+  print(nltk.data.path)</code></pre>
+<ul>
+<li>词嵌入</li>
+</ul>
+<pre><code>  import spacy
+nlp = spacy.load(‘en_core_web_sm’) 
+错误1：OSError: [E050] Can&#39;t find model &#39;en_core_web_sm&#39;.
+错误2：numpy.core.multiarray failed to import</code></pre>
+<pre><code>  错误1解决方法1（可能不行）：
+  命令行运行命令”python -m spacy download en_core_web_sm”
+  错误1解决方法2：把模型下载到本地进行安装
+  具体操作请参考 https://www.freesion.com/article/73801416523/
+  错误2解决方法：重启一下终端</code></pre>
+</div>
+<div id="结果比较" class="section level3">
+<h3><span class="header-section-number">7.7.3</span> 结果比较</h3>
+<p><em>以下仅为表例</em></p>
+<p><span class="math display">\[
+\begin{array}{|l|c|cc|c|}
+\hline &amp;  {\text { in-sample }} &amp; {\text { out-of-sample }} &amp; {\text { out-of-sample }}&amp;  {\text { run times }}\\
+&amp; \text {both genders} &amp; \text { female } &amp; \text { male } &amp; \text {both genders} \\
+\hline \hline \text { LSTM3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.7643 &amp; 0.3402 &amp; 1.1346 &amp; 404 \mathrm{s}\\
+\text { GRU3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.6311 &amp; 0.4646 &amp; 1.2571 &amp;  379 \mathrm{s} \\
+\hline\hline \text { LSTM3 averaged over 100 different seeds} &amp; - &amp; 0.2451 &amp; 1.2093 &amp; 100 \cdot 404\mathrm{s}\\
+\text { GRU3 averaged over 100 different seeds } &amp; - &amp; 0.2341&amp; 1.2746 &amp;  100 \cdot 379 \mathrm{s} \\
+\hline \hline \text { LC model with SVD } &amp; 6.2841 &amp; 0.6045 &amp;1.8152 &amp;  - \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+</div>
+<div id="结论-1" class="section level2">
+<h2><span class="header-section-number">7.8</span> 结论</h2>
+<p>我们用bag of words, bag of POS, word embeddings三种NLP模型对评论文本进行了向量化，并用ADA, RF, XGB三种机器学习方法对文档进行了分类，为此，我们引入了NLP管道来预处理文本数据 。最后，还采用RNN模型对文档进行了分类。</p>
+<p>实验结果表明，</p>
+<ul>
+<li><p>bag of words总体上变现更好， bag of POS的表现不佳。</p></li>
+<li><p>与bag of words相比， word embedding模型的效率更高。</p></li>
+<li><p>Deep LSTM模型表现要比Single LSTM和更好。</p></li>
+<li><p>与NLP模型相比，RNN模型性能更好，达到相同标准的时间更短。</p></li>
+<li><p>如果用RNN的输入数据来拟合Ml模型，精度远不及RNN模型，可见RNN模型在该任务上能利用更少的信息实现更准确的分类。</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rnn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="flashlight.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": "github"
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true,
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 神经网络 | 现代精算统计模型</title>
+  <meta name="description" content="The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 神经网络 | 现代精算统计模型" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 神经网络 | 现代精算统计模型" />
+  
+  <meta name="twitter:description" content="The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Modern Actuarial Models" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="french.html"/>
+<link rel="next" href="boosting.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">现代精算统计模型</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>👨‍🏫 欢迎</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#答疑"><i class="fa fa-check"></i>🤔 答疑</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程安排"><i class="fa fa-check"></i>🗓️ 课程安排</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>简介</a></li>
+<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 准备工作</a><ul>
+<li class="chapter" data-level="1.1" data-path="pre.html"><a href="pre.html#常用链接"><i class="fa fa-check"></i><b>1.1</b> 常用链接</a></li>
+<li class="chapter" data-level="1.2" data-path="pre.html"><a href="pre.html#克隆代码"><i class="fa fa-check"></i><b>1.2</b> 克隆代码</a></li>
+<li class="chapter" data-level="1.3" data-path="pre.html"><a href="pre.html#r-interface-to-keras"><i class="fa fa-check"></i><b>1.3</b> R interface to Keras</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="pre.html"><a href="pre.html#r自动安装"><i class="fa fa-check"></i><b>1.3.1</b> R自动安装</a></li>
+<li class="chapter" data-level="1.3.2" data-path="pre.html"><a href="pre.html#使用reticulate关联conda环境"><i class="fa fa-check"></i><b>1.3.2</b> 使用reticulate关联conda环境</a></li>
+<li class="chapter" data-level="1.3.3" data-path="pre.html"><a href="pre.html#指定conda安装"><i class="fa fa-check"></i><b>1.3.3</b> 指定conda安装</a></li>
+<li class="chapter" data-level="1.3.4" data-path="pre.html"><a href="pre.html#使用reticulate安装"><i class="fa fa-check"></i><b>1.3.4</b> 使用reticulate安装</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="pre.html"><a href="pre.html#r-interface-to-python"><i class="fa fa-check"></i><b>1.4</b> R interface to Python</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="pre.html"><a href="pre.html#reticulate-常见命令"><i class="fa fa-check"></i><b>1.4.1</b> reticulate 常见命令</a></li>
+<li class="chapter" data-level="1.4.2" data-path="pre.html"><a href="pre.html#切换r关联的conda环境"><i class="fa fa-check"></i><b>1.4.2</b> 切换R关联的conda环境</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="pre.html"><a href="pre.html#python"><i class="fa fa-check"></i><b>1.5</b> Python</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="pre.html"><a href="pre.html#conda环境"><i class="fa fa-check"></i><b>1.5.1</b> Conda环境</a></li>
+<li class="chapter" data-level="1.5.2" data-path="pre.html"><a href="pre.html#常用的conda命令"><i class="fa fa-check"></i><b>1.5.2</b> 常用的Conda命令</a></li>
+<li class="chapter" data-level="1.5.3" data-path="pre.html"><a href="pre.html#tensorflowpytorch-gpu-version"><i class="fa fa-check"></i><b>1.5.3</b> Tensorflow/Pytorch GPU version</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 车险索赔频率预测</a><ul>
+<li class="chapter" data-level="2.1" data-path="french.html"><a href="french.html#背景介绍"><i class="fa fa-check"></i><b>2.1</b> 背景介绍</a></li>
+<li class="chapter" data-level="2.2" data-path="french.html"><a href="french.html#预测模型概述"><i class="fa fa-check"></i><b>2.2</b> 预测模型概述</a></li>
+<li class="chapter" data-level="2.3" data-path="french.html"><a href="french.html#特征工程"><i class="fa fa-check"></i><b>2.3</b> 特征工程</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="french.html"><a href="french.html#截断"><i class="fa fa-check"></i><b>2.3.1</b> 截断</a></li>
+<li class="chapter" data-level="2.3.2" data-path="french.html"><a href="french.html#离散化"><i class="fa fa-check"></i><b>2.3.2</b> 离散化</a></li>
+<li class="chapter" data-level="2.3.3" data-path="french.html"><a href="french.html#设定基础水平"><i class="fa fa-check"></i><b>2.3.3</b> 设定基础水平</a></li>
+<li class="chapter" data-level="2.3.4" data-path="french.html"><a href="french.html#协变量变形"><i class="fa fa-check"></i><b>2.3.4</b> 协变量变形</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="french.html"><a href="french.html#训练集-验证集-测试集"><i class="fa fa-check"></i><b>2.4</b> 训练集-验证集-测试集</a></li>
+<li class="chapter" data-level="2.5" data-path="french.html"><a href="french.html#泊松偏差损失函数"><i class="fa fa-check"></i><b>2.5</b> 泊松偏差损失函数</a></li>
+<li class="chapter" data-level="2.6" data-path="french.html"><a href="french.html#泊松回归模型"><i class="fa fa-check"></i><b>2.6</b> 泊松回归模型</a></li>
+<li class="chapter" data-level="2.7" data-path="french.html"><a href="french.html#泊松可加模型"><i class="fa fa-check"></i><b>2.7</b> 泊松可加模型</a></li>
+<li class="chapter" data-level="2.8" data-path="french.html"><a href="french.html#泊松回归树"><i class="fa fa-check"></i><b>2.8</b> 泊松回归树</a></li>
+<li class="chapter" data-level="2.9" data-path="french.html"><a href="french.html#随机森林"><i class="fa fa-check"></i><b>2.9</b> 随机森林</a></li>
+<li class="chapter" data-level="2.10" data-path="french.html"><a href="french.html#泊松提升树"><i class="fa fa-check"></i><b>2.10</b> 泊松提升树</a></li>
+<li class="chapter" data-level="2.11" data-path="french.html"><a href="french.html#模型比较"><i class="fa fa-check"></i><b>2.11</b> 模型比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>3</b> 神经网络</a><ul>
+<li class="chapter" data-level="3.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>3.1</b> 建立神经网络的一般步骤</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>3.1.1</b> 明确目标和数据类型</a></li>
+<li class="chapter" data-level="3.1.2" data-path="nn.html"><a href="nn.html#数据预处理"><i class="fa fa-check"></i><b>3.1.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>3.1.3</b> 选取合适的神经网络类型</a></li>
+<li class="chapter" data-level="3.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>3.1.4</b> 建立神经网络（全连接神经网络）</a></li>
+<li class="chapter" data-level="3.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>3.1.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="3.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>3.1.6</b> 调参</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>3.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>3.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
+<li class="chapter" data-level="3.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>3.4</b> 神经网络结构</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>3.4.1</b> 结构参数</a></li>
+<li class="chapter" data-level="3.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>3.4.2</b> 输入层</a></li>
+<li class="chapter" data-level="3.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>3.4.3</b> Embedding layer</a></li>
+<li class="chapter" data-level="3.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>3.4.4</b> 隐藏层</a></li>
+<li class="chapter" data-level="3.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>3.4.5</b> 输出层</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>3.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="3.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>3.6</b> 总结</a></li>
+<li class="chapter" data-level="3.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>3.7</b> 其它模型</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>4</b> 提升方法 (Boosting)</a><ul>
+<li class="chapter" data-level="4.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>4.1</b> AdaBoost</a></li>
+<li class="chapter" data-level="4.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>4.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
+<li class="chapter" data-level="4.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>4.3</b> AdaBoost.M1</a></li>
+<li class="chapter" data-level="4.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>4.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
+<li class="chapter" data-level="4.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>4.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
+<li class="chapter" data-level="4.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>4.6</b> Gradient Boosting</a></li>
+<li class="chapter" data-level="4.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>4.7</b> Newton Boosting</a></li>
+<li class="chapter" data-level="4.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>4.8</b> XGBoost</a></li>
+<li class="chapter" data-level="4.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>4.9</b> Case study</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>4.9.1</b> 数据描述</a></li>
+<li class="chapter" data-level="4.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理-2"><i class="fa fa-check"></i><b>4.9.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>4.9.3</b> 特征工程</a></li>
+<li class="chapter" data-level="4.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>4.9.4</b> 建模流程</a></li>
+<li class="chapter" data-level="4.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>4.9.5</b> 模型度量——Gini系数</a></li>
+<li class="chapter" data-level="4.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>4.9.6</b> 建立AdaBoost模型</a></li>
+<li class="chapter" data-level="4.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>4.9.7</b> 建立XGBoost模型</a></li>
+<li class="chapter" data-level="4.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>4.9.8</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>4.10</b> Appendix: Commonly used Python code (for py-beginners)</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>4.10.1</b> Python标准数据类型</a></li>
+<li class="chapter" data-level="4.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>4.10.2</b> Python内置函数</a></li>
+<li class="chapter" data-level="4.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>4.10.3</b> numpy包</a></li>
+<li class="chapter" data-level="4.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>4.10.4</b> pandas包</a></li>
+<li class="chapter" data-level="4.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>4.10.5</b> Matplotlib包</a></li>
+<li class="chapter" data-level="4.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>4.10.6</b> 常用教程网址</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>5</b> 无监督学习方法</a><ul>
+<li class="chapter" data-level="5.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-3"><i class="fa fa-check"></i><b>5.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="5.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>5.2</b> 主成分分析</a></li>
+<li class="chapter" data-level="5.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>5.3</b> 自编码</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>5.3.1</b> 模型训练</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>5.4</b> K-means clustering</a></li>
+<li class="chapter" data-level="5.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>5.5</b> K-medoids clustering (PAM)</a></li>
+<li class="chapter" data-level="5.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>5.6</b> Gaussian mixture models(GMMs)</a></li>
+<li class="chapter" data-level="5.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>5.7</b> 三种聚类方法评价</a></li>
+<li class="chapter" data-level="5.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>5.8</b> t-SNE</a></li>
+<li class="chapter" data-level="5.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>5.9</b> UMAP</a></li>
+<li class="chapter" data-level="5.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>5.10</b> SOM</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="rnn.html"><a href="rnn.html"><i class="fa fa-check"></i><b>6</b> 循环神经网络与死亡率预测</a><ul>
+<li class="chapter" data-level="6.1" data-path="rnn.html"><a href="rnn.html#lee-carter-model"><i class="fa fa-check"></i><b>6.1</b> Lee-Carter Model</a></li>
+<li class="chapter" data-level="6.2" data-path="rnn.html"><a href="rnn.html#普通循环神经网络recurrent-neural-network"><i class="fa fa-check"></i><b>6.2</b> 普通循环神经网络（recurrent neural network）</a></li>
+<li class="chapter" data-level="6.3" data-path="rnn.html"><a href="rnn.html#长短期记忆神经网络long-short-term-memory"><i class="fa fa-check"></i><b>6.3</b> 长短期记忆神经网络（Long short-term memory）</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="rnn.html"><a href="rnn.html#激活函数activation-functions"><i class="fa fa-check"></i><b>6.3.1</b> 激活函数（Activation functions）</a></li>
+<li class="chapter" data-level="6.3.2" data-path="rnn.html"><a href="rnn.html#gates-and-cell-state"><i class="fa fa-check"></i><b>6.3.2</b> Gates and cell state</a></li>
+<li class="chapter" data-level="6.3.3" data-path="rnn.html"><a href="rnn.html#output-function"><i class="fa fa-check"></i><b>6.3.3</b> Output Function</a></li>
+<li class="chapter" data-level="6.3.4" data-path="rnn.html"><a href="rnn.html#time-distributed-layer"><i class="fa fa-check"></i><b>6.3.4</b> Time-distributed Layer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="rnn.html"><a href="rnn.html#门控循环神经网络gated-recurrent-unit"><i class="fa fa-check"></i><b>6.4</b> 门控循环神经网络（Gated Recurrent Unit）</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="rnn.html"><a href="rnn.html#gates"><i class="fa fa-check"></i><b>6.4.1</b> Gates</a></li>
+<li class="chapter" data-level="6.4.2" data-path="rnn.html"><a href="rnn.html#neuron-activations"><i class="fa fa-check"></i><b>6.4.2</b> Neuron Activations</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="rnn.html"><a href="rnn.html#案例分析case-study"><i class="fa fa-check"></i><b>6.5</b> 案例分析（Case study）</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="rnn.html"><a href="rnn.html#数据描述-1"><i class="fa fa-check"></i><b>6.5.1</b> 数据描述</a></li>
+<li class="chapter" data-level="6.5.2" data-path="rnn.html"><a href="rnn.html#死亡率热力图"><i class="fa fa-check"></i><b>6.5.2</b> 死亡率热力图</a></li>
+<li class="chapter" data-level="6.5.3" data-path="rnn.html"><a href="rnn.html#lee-carter-模型"><i class="fa fa-check"></i><b>6.5.3</b> Lee-Carter 模型</a></li>
+<li class="chapter" data-level="6.5.4" data-path="rnn.html"><a href="rnn.html#初试rnn"><i class="fa fa-check"></i><b>6.5.4</b> 初试RNN</a></li>
+<li class="chapter" data-level="6.5.5" data-path="rnn.html"><a href="rnn.html#rnn-1"><i class="fa fa-check"></i><b>6.5.5</b> RNN</a></li>
+<li class="chapter" data-level="6.5.6" data-path="rnn.html"><a href="rnn.html#引入性别协变量"><i class="fa fa-check"></i><b>6.5.6</b> 引入性别协变量</a></li>
+<li class="chapter" data-level="6.5.7" data-path="rnn.html"><a href="rnn.html#稳健性"><i class="fa fa-check"></i><b>6.5.7</b> 稳健性</a></li>
+<li class="chapter" data-level="6.5.8" data-path="rnn.html"><a href="rnn.html#预测结果图"><i class="fa fa-check"></i><b>6.5.8</b> 预测结果图</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>7</b> 自然语言处理</a><ul>
+<li class="chapter" data-level="7.1" data-path="nlp.html"><a href="nlp.html#预处理"><i class="fa fa-check"></i><b>7.1</b> 预处理</a></li>
+<li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
+<li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
+<li class="chapter" data-level="7.4" data-path="nlp.html"><a href="nlp.html#word-embeddings"><i class="fa fa-check"></i><b>7.4</b> Word embeddings</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.1</b> Pre-trained word embeddings</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
+<li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="nlp.html"><a href="nlp.html#数据预处理-4"><i class="fa fa-check"></i><b>7.6.1</b> 数据预处理</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="nlp.html"><a href="nlp.html#case-study-1"><i class="fa fa-check"></i><b>7.7</b> Case study</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="nlp.html"><a href="nlp.html#函数说明"><i class="fa fa-check"></i><b>7.7.1</b> 函数说明</a></li>
+<li class="chapter" data-level="7.7.2" data-path="nlp.html"><a href="nlp.html#可能遇到的问题"><i class="fa fa-check"></i><b>7.7.2</b> 可能遇到的问题</a></li>
+<li class="chapter" data-level="7.7.3" data-path="nlp.html"><a href="nlp.html#结果比较"><i class="fa fa-check"></i><b>7.7.3</b> 结果比较</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="nlp.html"><a href="nlp.html#结论-1"><i class="fa fa-check"></i><b>7.8</b> 结论</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="flashlight.html"><a href="flashlight.html"><i class="fa fa-check"></i><b>8</b> 通用模型解释方法</a><ul>
+<li class="chapter" data-level="8.1" data-path="flashlight.html"><a href="flashlight.html#数据"><i class="fa fa-check"></i><b>8.1</b> 数据</a></li>
+<li class="chapter" data-level="8.2" data-path="flashlight.html"><a href="flashlight.html#模型"><i class="fa fa-check"></i><b>8.2</b> 模型</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="flashlight.html"><a href="flashlight.html#glm"><i class="fa fa-check"></i><b>8.2.1</b> GLM</a></li>
+<li class="chapter" data-level="8.2.2" data-path="flashlight.html"><a href="flashlight.html#xgboost-1"><i class="fa fa-check"></i><b>8.2.2</b> XGBoost</a></li>
+<li class="chapter" data-level="8.2.3" data-path="flashlight.html"><a href="flashlight.html#神经网络-1"><i class="fa fa-check"></i><b>8.2.3</b> 神经网络</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="flashlight.html"><a href="flashlight.html#模型整体表现-model-performance"><i class="fa fa-check"></i><b>8.3</b> 模型整体表现 （model performance）</a></li>
+<li class="chapter" data-level="8.4" data-path="flashlight.html"><a href="flashlight.html#变量重要性variable-importance"><i class="fa fa-check"></i><b>8.4</b> 变量重要性（variable importance）</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="flashlight.html"><a href="flashlight.html#permutation-importance"><i class="fa fa-check"></i><b>8.4.1</b> Permutation importance</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="flashlight.html"><a href="flashlight.html#边缘效应主效应"><i class="fa fa-check"></i><b>8.5</b> 边缘效应（主效应）</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="flashlight.html"><a href="flashlight.html#individual-conditional-expectationsice"><i class="fa fa-check"></i><b>8.5.1</b> Individual conditional expectations（ICE）</a></li>
+<li class="chapter" data-level="8.5.2" data-path="flashlight.html"><a href="flashlight.html#partial-dependence-profiles"><i class="fa fa-check"></i><b>8.5.2</b> Partial dependence profiles</a></li>
+<li class="chapter" data-level="8.5.3" data-path="flashlight.html"><a href="flashlight.html#accumulated-local-effects-profiles-ale"><i class="fa fa-check"></i><b>8.5.3</b> Accumulated local effects profiles (ALE)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="flashlight.html"><a href="flashlight.html#交互效应"><i class="fa fa-check"></i><b>8.6</b> 交互效应</a></li>
+<li class="chapter" data-level="8.7" data-path="flashlight.html"><a href="flashlight.html#全局代理模型global-surrogate-models"><i class="fa fa-check"></i><b>8.7</b> 全局代理模型（Global surrogate models）</a></li>
+<li class="chapter" data-level="8.8" data-path="flashlight.html"><a href="flashlight.html#局部解释样本解释"><i class="fa fa-check"></i><b>8.8</b> 局部解释（样本解释？）</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="flashlight.html"><a href="flashlight.html#lime和live"><i class="fa fa-check"></i><b>8.8.1</b> LIME和LIVE</a></li>
+<li class="chapter" data-level="8.8.2" data-path="flashlight.html"><a href="flashlight.html#shapshapley-additive-explanations"><i class="fa fa-check"></i><b>8.8.2</b> SHAP(Shapley Additive Explanations)</a></li>
+<li class="chapter" data-level="8.8.3" data-path="flashlight.html"><a href="flashlight.html#breakdown-and-approximate-shap"><i class="fa fa-check"></i><b>8.8.3</b> Breakdown and approximate SHAP</a></li>
+<li class="chapter" data-level="8.8.4" data-path="flashlight.html"><a href="flashlight.html#from-local-to-global-properties"><i class="fa fa-check"></i><b>8.8.4</b> From local to global properties</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="flashlight.html"><a href="flashlight.html#improving-the-glm-by-interpretable-machine-learning"><i class="fa fa-check"></i><b>8.9</b> Improving the GLM by interpretable machine learning</a></li>
+<li class="chapter" data-level="8.10" data-path="flashlight.html"><a href="flashlight.html#案例分析"><i class="fa fa-check"></i><b>8.10</b> 案例分析</a><ul>
+<li class="chapter" data-level="8.10.1" data-path="flashlight.html"><a href="flashlight.html#导入包"><i class="fa fa-check"></i><b>8.10.1</b> 导入包</a></li>
+<li class="chapter" data-level="8.10.2" data-path="flashlight.html"><a href="flashlight.html#预处理-1"><i class="fa fa-check"></i><b>8.10.2</b> 预处理</a></li>
+<li class="chapter" data-level="8.10.3" data-path="flashlight.html"><a href="flashlight.html#描述性统计"><i class="fa fa-check"></i><b>8.10.3</b> 描述性统计</a></li>
+<li class="chapter" data-level="8.10.4" data-path="flashlight.html"><a href="flashlight.html#建模"><i class="fa fa-check"></i><b>8.10.4</b> 建模</a></li>
+<li class="chapter" data-level="8.10.5" data-path="flashlight.html"><a href="flashlight.html#解释"><i class="fa fa-check"></i><b>8.10.5</b> 解释</a></li>
+<li class="chapter" data-level="8.10.6" data-path="flashlight.html"><a href="flashlight.html#局部性质"><i class="fa fa-check"></i><b>8.10.6</b> 局部性质</a></li>
+<li class="chapter" data-level="8.10.7" data-path="flashlight.html"><a href="flashlight.html#改进glm"><i class="fa fa-check"></i><b>8.10.7</b> 改进glm</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
+<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#cnn组件"><i class="fa fa-check"></i><b>9.1</b> CNN组件</a></li>
+<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#案例分析-1"><i class="fa fa-check"></i><b>9.2</b> 案例分析</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="cnn.html"><a href="cnn.html#human-mmortality-database-hmd"><i class="fa fa-check"></i><b>9.2.1</b> <span>Human MMortality Database (HMD)</span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="cnn.html"><a href="cnn.html#the-modified-national-institute-of-standards-and-technology-mnist-dataset"><i class="fa fa-check"></i><b>9.2.2</b> The Modified National Institute of Standards and Technology (MNIST) dataset</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">现代精算统计模型</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nn" class="section level1">
+<h1><span class="header-section-number">3</span> 神经网络</h1>
+<p>正如计算机速度的提升和MCMC方法给贝叶斯统计带来了生机，计算机运算能力的提升和反向传播算法（back propagation）也给神经网络带来了飞速发展。</p>
+<p><code>Tensorflow</code>和<code>Pytorch</code>的更新速度反映了这个领域的热度。</p>
+<div id="建立神经网络的一般步骤" class="section level2">
+<h2><span class="header-section-number">3.1</span> 建立神经网络的一般步骤</h2>
+<div id="明确目标和数据类型" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> 明确目标和数据类型</h3>
+<ul>
+<li><p>神经网络是一种非参非线性回归模型，它可以刻画非线性效应和交互效应。</p></li>
+<li><p>在使用神经网络前，需要理解研究目标和数据结构，有一些特殊的layer，如卷积层，专门为某种任务、或某种数据结构而设立，不是可以用在任何的数据上。</p></li>
+<li><p>神经网络有大量的参数，全局最优解必然会造成过拟合，通常利用验证集损失来判断梯度下降的次数。</p></li>
+</ul>
+</div>
+<div id="数据预处理" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> 数据预处理</h3>
+<ul>
+<li><p>描述性统计分析</p></li>
+<li><p>缺失值、异常值处理</p></li>
+<li><p>连续型变量标准化，主要是为了让梯度下降法更有效地工作。常用的标准化方法有<em>MinMaxScaler</em></p>
+<p><span class="math display">\[x^*=2\frac{x-\min x}{\max x - \min x}-1\]</span></p></li>
+<li><p>分类变量，可以使用dummy coding、one-hot encoding，或者使用神经网络中的embedding layer。第三种办法可以有效地减少参数个数。</p></li>
+<li><p>训练-验证-测试数据分割：训练集用于梯度下降法求解参数，验证集用于判断epoch次数、调整模型结构的超参数，测试集用于比较不同模型的样本外预测能力。</p></li>
+</ul>
+</div>
+<div id="选取合适的神经网络类型" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> 选取合适的神经网络类型</h3>
+<ul>
+<li><p>全连接神经网络：适用于一般的回归问题，如索赔频率预测。信息一直向前传递。参数个数较多。可解释性差。</p></li>
+<li><p>卷积神经网络：适用于数据有空间结构，且相同的模式可能出现在不同的位置，如图像识别。信息一直向前传递。参数个数较少。有可解释性。</p></li>
+<li><p>递归神经网络：适用于数据有时间序列特征，且相同的模式可能出现在不同时间点，如天气预报、语音识别。信息可以返回到前面的神经元。参数个数较多。可解释性差。</p></li>
+</ul>
+</div>
+<div id="建立神经网络全连接神经网络" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> 建立神经网络（全连接神经网络）</h3>
+<p>在建立神经网络时，需要考虑以下几点：</p>
+<ul>
+<li><p>输入层数据类型</p></li>
+<li><p>隐藏层层数，隐藏层性质，神经元个数，激活函数，正则化，dropout</p></li>
+<li><p>输出神经元数据类型，输出神经元激活函数</p></li>
+<li><p>损失函数选择</p></li>
+</ul>
+</div>
+<div id="训练神经网络" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> 训练神经网络</h3>
+<p>在训练神经网络时，需要考虑以下几点</p>
+<ul>
+<li><p>梯度下降法（optimizer）</p></li>
+<li><p>迭代次数（patience）</p></li>
+<li><p>遍历次数（epoch），批量大小（batch size）</p></li>
+</ul>
+</div>
+<div id="调参" class="section level3">
+<h3><span class="header-section-number">3.1.6</span> 调参</h3>
+<p>返回第4步，调整模型结构的超参数（hyper-parameter tuning），观察验证损失的变化，选取最终模型。</p>
+</div>
+</div>
+<div id="数据预处理-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> 数据预处理</h2>
+<pre><code>  &#39;data.frame&#39;: 678013 obs. of  12 variables:
+   $ IDpol     : num  1 3 5 10 11 13 15 17 18 21 ...
+   $ ClaimNb   : &#39;table&#39; num [1:678013(1d)] 1 1 1 1 1 1 1 1 1 1 ...
+   $ Exposure  : num  0.1 0.77 0.75 0.09 0.84 0.52 0.45 0.27 0.71 0.15 ...
+   $ VehPower  : int  5 5 6 7 7 6 6 7 7 7 ...
+   $ VehAge    : int  0 0 2 0 0 2 2 0 0 0 ...
+   $ DrivAge   : int  55 55 52 46 46 38 38 33 33 41 ...
+   $ BonusMalus: int  50 50 50 50 50 50 50 68 68 50 ...
+   $ VehBrand  : Factor w/ 11 levels &quot;B1&quot;,&quot;B10&quot;,&quot;B11&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...
+   $ VehGas    : chr  &quot;Regular&quot; &quot;Regular&quot; &quot;Diesel&quot; &quot;Diesel&quot; ...
+   $ Area      : Factor w/ 6 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 4 4 2 2 2 5 5 3 3 2 ...
+   $ Density   : int  1217 1217 54 76 76 3003 3003 137 137 60 ...
+   $ Region    : Factor w/ 21 levels &quot;Alsace&quot;,&quot;Aquitaine&quot;,..: 21 21 18 2 2 16 16 13 13 17 ...</code></pre>
+<p>在进行下面code之前，需要运行上一章的代码直到Tree之前。</p>
+<ul>
+<li>连续型变量：标准化处理。</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="nn.html#cb24-1"></a>PreProcess.Continuous &lt;-<span class="st"> </span><span class="cf">function</span>(var1, dat1){</span>
+<span id="cb24-2"><a href="nn.html#cb24-2"></a>   <span class="kw">names</span>(dat1)[<span class="kw">names</span>(dat1) <span class="op">==</span><span class="st"> </span>var1]  &lt;-<span class="st"> &quot;V1&quot;</span></span>
+<span id="cb24-3"><a href="nn.html#cb24-3"></a>   dat1<span class="op">$</span>X &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(dat1<span class="op">$</span>V1)</span>
+<span id="cb24-4"><a href="nn.html#cb24-4"></a>   dat1<span class="op">$</span>X &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>(dat1<span class="op">$</span>X<span class="op">-</span><span class="kw">min</span>(dat1<span class="op">$</span>X))<span class="op">/</span>(<span class="kw">max</span>(dat1<span class="op">$</span>X)<span class="op">-</span><span class="kw">min</span>(dat1<span class="op">$</span>X))<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb24-5"><a href="nn.html#cb24-5"></a>   <span class="kw">names</span>(dat1)[<span class="kw">names</span>(dat1) <span class="op">==</span><span class="st"> &quot;V1&quot;</span>]  &lt;-<span class="st"> </span>var1</span>
+<span id="cb24-6"><a href="nn.html#cb24-6"></a>   <span class="kw">names</span>(dat1)[<span class="kw">names</span>(dat1) <span class="op">==</span><span class="st"> &quot;X&quot;</span>]  &lt;-<span class="st"> </span><span class="kw">paste</span>(var1,<span class="st">&quot;X&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb24-7"><a href="nn.html#cb24-7"></a>   dat1</span>
+<span id="cb24-8"><a href="nn.html#cb24-8"></a>   }</span>
+<span id="cb24-9"><a href="nn.html#cb24-9"></a></span>
+<span id="cb24-10"><a href="nn.html#cb24-10"></a>Features.PreProcess &lt;-<span class="st"> </span><span class="cf">function</span>(dat1){</span>
+<span id="cb24-11"><a href="nn.html#cb24-11"></a>   dat1<span class="op">$</span>VehPower &lt;-<span class="st"> </span><span class="kw">pmin</span>(dat1<span class="op">$</span>VehPower,<span class="dv">9</span>)</span>
+<span id="cb24-12"><a href="nn.html#cb24-12"></a>   dat1 &lt;-<span class="st"> </span><span class="kw">PreProcess.Continuous</span>(<span class="st">&quot;VehPower&quot;</span>, dat1)   </span>
+<span id="cb24-13"><a href="nn.html#cb24-13"></a>   dat1<span class="op">$</span>VehAge &lt;-<span class="st"> </span><span class="kw">pmin</span>(dat1<span class="op">$</span>VehAge,<span class="dv">20</span>)</span>
+<span id="cb24-14"><a href="nn.html#cb24-14"></a>   dat1 &lt;-<span class="st"> </span><span class="kw">PreProcess.Continuous</span>(<span class="st">&quot;VehAge&quot;</span>, dat1)   </span>
+<span id="cb24-15"><a href="nn.html#cb24-15"></a>   dat1<span class="op">$</span>DrivAge &lt;-<span class="st"> </span><span class="kw">pmin</span>(dat1<span class="op">$</span>DrivAge,<span class="dv">90</span>)</span>
+<span id="cb24-16"><a href="nn.html#cb24-16"></a>   dat1 &lt;-<span class="st"> </span><span class="kw">PreProcess.Continuous</span>(<span class="st">&quot;DrivAge&quot;</span>, dat1)   </span>
+<span id="cb24-17"><a href="nn.html#cb24-17"></a>   dat1<span class="op">$</span>BonusMalus &lt;-<span class="st"> </span><span class="kw">pmin</span>(dat1<span class="op">$</span>BonusMalus,<span class="dv">150</span>)</span>
+<span id="cb24-18"><a href="nn.html#cb24-18"></a>   dat1 &lt;-<span class="st"> </span><span class="kw">PreProcess.Continuous</span>(<span class="st">&quot;BonusMalus&quot;</span>, dat1)   </span>
+<span id="cb24-19"><a href="nn.html#cb24-19"></a>   dat1<span class="op">$</span>VehBrandX &lt;-<span class="st"> </span><span class="kw">as.integer</span>(dat1<span class="op">$</span>VehBrand)<span class="op">-</span><span class="dv">1</span>  <span class="co"># categorical variable</span></span>
+<span id="cb24-20"><a href="nn.html#cb24-20"></a>   dat1<span class="op">$</span>VehGas &lt;-<span class="st"> </span><span class="kw">as.factor</span>(dat1<span class="op">$</span>VehGas)</span>
+<span id="cb24-21"><a href="nn.html#cb24-21"></a>   dat1<span class="op">$</span>VehGasX &lt;-<span class="st"> </span><span class="kw">as.integer</span>(dat1<span class="op">$</span>VehGas) <span class="op">-</span><span class="st"> </span><span class="fl">1.5</span> <span class="co"># binary: continuous or categorical</span></span>
+<span id="cb24-22"><a href="nn.html#cb24-22"></a>   dat1 &lt;-<span class="st"> </span><span class="kw">PreProcess.Continuous</span>(<span class="st">&quot;Area&quot;</span>, dat1)   </span>
+<span id="cb24-23"><a href="nn.html#cb24-23"></a>   dat1 &lt;-<span class="st"> </span><span class="kw">PreProcess.Continuous</span>(<span class="st">&quot;Density&quot;</span>, dat1)   </span>
+<span id="cb24-24"><a href="nn.html#cb24-24"></a>   dat1<span class="op">$</span>RegionX &lt;-<span class="st"> </span><span class="kw">as.integer</span>(dat1<span class="op">$</span>Region) <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="co"># categorical</span></span>
+<span id="cb24-25"><a href="nn.html#cb24-25"></a>   dat1</span>
+<span id="cb24-26"><a href="nn.html#cb24-26"></a>}</span>
+<span id="cb24-27"><a href="nn.html#cb24-27"></a></span>
+<span id="cb24-28"><a href="nn.html#cb24-28"></a>dat2 &lt;-<span class="st"> </span><span class="kw">Features.PreProcess</span>(freMTPL2freq)   </span>
+<span id="cb24-29"><a href="nn.html#cb24-29"></a><span class="kw">names</span>(dat2)</span>
+<span id="cb24-30"><a href="nn.html#cb24-30"></a>dat2_train&lt;-dat2[index_train,]</span>
+<span id="cb24-31"><a href="nn.html#cb24-31"></a>dat2_valid&lt;-dat2[index_valid,]</span>
+<span id="cb24-32"><a href="nn.html#cb24-32"></a>dat2_test&lt;-dat2[index_test,]</span>
+<span id="cb24-33"><a href="nn.html#cb24-33"></a>dat2_learn&lt;-dat2[index_learn,]</span></code></pre></div>
+<ul>
+<li><p>分类变量： 采用embedding layer。</p></li>
+<li><p>训练集-验证集-测试集：分层抽样。</p></li>
+<li><p>调整数据结构，使其匹配神经网络的输入层及其维度。输入数据集包括<code>Xtrain, Brtain, Retrain, Vtrain</code>，因变量数据集为<code>Ytrain</code>。</p></li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="nn.html#cb25-1"></a>lambda.hom &lt;-<span class="st"> </span><span class="kw">sum</span>(dat2_train<span class="op">$</span>ClaimNb)<span class="op">/</span><span class="kw">sum</span>(dat2_train<span class="op">$</span>Exposure);lambda.hom</span>
+<span id="cb25-2"><a href="nn.html#cb25-2"></a><span class="kw">names</span>(dat2)</span>
+<span id="cb25-3"><a href="nn.html#cb25-3"></a></span>
+<span id="cb25-4"><a href="nn.html#cb25-4"></a><span class="co"># index of continous variables (non-categorical)</span></span>
+<span id="cb25-5"><a href="nn.html#cb25-5"></a></span>
+<span id="cb25-6"><a href="nn.html#cb25-6"></a>features &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">13</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">18</span><span class="op">:</span><span class="dv">20</span>)</span>
+<span id="cb25-7"><a href="nn.html#cb25-7"></a><span class="kw">names</span>(dat2_learn)[features]</span>
+<span id="cb25-8"><a href="nn.html#cb25-8"></a>(q0 &lt;-<span class="st"> </span><span class="kw">length</span>(features))</span>
+<span id="cb25-9"><a href="nn.html#cb25-9"></a></span>
+<span id="cb25-10"><a href="nn.html#cb25-10"></a><span class="co"># training data</span></span>
+<span id="cb25-11"><a href="nn.html#cb25-11"></a></span>
+<span id="cb25-12"><a href="nn.html#cb25-12"></a>Xtrain&lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_train[, features])  <span class="co"># design matrix learning sample</span></span>
+<span id="cb25-13"><a href="nn.html#cb25-13"></a>Brtrain &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_train<span class="op">$</span>VehBrandX)</span>
+<span id="cb25-14"><a href="nn.html#cb25-14"></a>Retrain &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_train<span class="op">$</span>RegionX)</span>
+<span id="cb25-15"><a href="nn.html#cb25-15"></a>Ytrain&lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_train<span class="op">$</span>ClaimNb)</span>
+<span id="cb25-16"><a href="nn.html#cb25-16"></a>Vtrain&lt;-<span class="kw">as.matrix</span>(<span class="kw">log</span>(dat2_train<span class="op">$</span>Exposure<span class="op">*</span>lambda.hom))</span>
+<span id="cb25-17"><a href="nn.html#cb25-17"></a></span>
+<span id="cb25-18"><a href="nn.html#cb25-18"></a><span class="co"># validation data </span></span>
+<span id="cb25-19"><a href="nn.html#cb25-19"></a></span>
+<span id="cb25-20"><a href="nn.html#cb25-20"></a>Xvalid&lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_valid[, features])  <span class="co"># design matrix learning sample</span></span>
+<span id="cb25-21"><a href="nn.html#cb25-21"></a>Brvalid &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_valid<span class="op">$</span>VehBrandX)</span>
+<span id="cb25-22"><a href="nn.html#cb25-22"></a>Revalid &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_valid<span class="op">$</span>RegionX)</span>
+<span id="cb25-23"><a href="nn.html#cb25-23"></a>Yvalid&lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_valid<span class="op">$</span>ClaimNb)</span>
+<span id="cb25-24"><a href="nn.html#cb25-24"></a>Vvalid&lt;-<span class="kw">as.matrix</span>(<span class="kw">log</span>(dat2_valid<span class="op">$</span>Exposure<span class="op">*</span>lambda.hom))</span>
+<span id="cb25-25"><a href="nn.html#cb25-25"></a>xxvalid&lt;-<span class="kw">list</span>(Xvalid,Brvalid,Revalid,Vvalid)</span>
+<span id="cb25-26"><a href="nn.html#cb25-26"></a></span>
+<span id="cb25-27"><a href="nn.html#cb25-27"></a><span class="co"># testing data</span></span>
+<span id="cb25-28"><a href="nn.html#cb25-28"></a></span>
+<span id="cb25-29"><a href="nn.html#cb25-29"></a>Xtest &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_test[, features])    <span class="co"># design matrix test sample</span></span>
+<span id="cb25-30"><a href="nn.html#cb25-30"></a>Brtest &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_test<span class="op">$</span>VehBrandX)</span>
+<span id="cb25-31"><a href="nn.html#cb25-31"></a>Retest &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_test<span class="op">$</span>RegionX)</span>
+<span id="cb25-32"><a href="nn.html#cb25-32"></a>Ytest &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(dat2_test<span class="op">$</span>ClaimNb)</span>
+<span id="cb25-33"><a href="nn.html#cb25-33"></a>Vtest &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">log</span>(dat2_test<span class="op">$</span>Exposure<span class="op">*</span>lambda.hom))</span></code></pre></div>
+</div>
+<div id="神经网络提升模型-combined-actuarial-neural-network" class="section level2">
+<h2><span class="header-section-number">3.3</span> 神经网络提升模型 （combined actuarial neural network）</h2>
+<p>基本结构</p>
+<p><span class="math display">\[\ln \lambda(\mathbf{x})= e\hat{\lambda}^{\text{GAM}}(\mathbf{x})\hat{\lambda}^{\text{NN}}(\mathbf{x})\]</span></p>
+<p>其中，<span class="math inline">\(\hat{\lambda}^{\text{GAM}}\)</span>为广义可加边缘提升模型的索赔频率估计值（参见上一章），<span class="math inline">\(\hat{\lambda}^{\text{NN}}\)</span>为神经网络索赔频率的估计值，第一项在模型训练中保持不变。</p>
+<p>使用上述模型的优点：</p>
+<ul>
+<li><p><span class="math inline">\(\hat{\lambda}^{\text{GAM}}\)</span>的部分可解释性。</p></li>
+<li><p>神经网络从一个相对“较好”的初始状态<span class="math inline">\(e\hat{\lambda}^{\text{GAM}}(\mathbf{x})\)</span>开始训练，很快收敛。</p></li>
+</ul>
+<p>在代码实现中，可以把<span class="math inline">\(e\hat{\lambda}^{\text{GAM}}\)</span>当作伪风险暴露数。</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="nn.html#cb26-1"></a>CANN &lt;-<span class="st"> </span><span class="dv">1</span>  <span class="co"># 0 = normal NN, 1=CANN</span></span>
+<span id="cb26-2"><a href="nn.html#cb26-2"></a><span class="cf">if</span> (CANN<span class="op">==</span><span class="dv">1</span>){</span>
+<span id="cb26-3"><a href="nn.html#cb26-3"></a>     Vtrain &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">log</span>(dat1_train<span class="op">$</span>fitGAM1))</span>
+<span id="cb26-4"><a href="nn.html#cb26-4"></a>     Vvalid&lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">log</span>(dat1_valid<span class="op">$</span>fitGAM1))</span>
+<span id="cb26-5"><a href="nn.html#cb26-5"></a>     Vtest &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">log</span>(dat1_test<span class="op">$</span>fitGAM1))</span>
+<span id="cb26-6"><a href="nn.html#cb26-6"></a>}</span></code></pre></div>
+</div>
+<div id="神经网络结构" class="section level2">
+<h2><span class="header-section-number">3.4</span> 神经网络结构</h2>
+<p><img src="plots/1/nn-structure.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>在构建神经网络时，需要注意以下几点：</p>
+<div id="结构参数" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> 结构参数</h3>
+<ol style="list-style-type: decimal">
+<li>神经网络结构的超参数选择，<code>BrLabel</code>为车型个数，<code>ReLabel</code>为地区个数，<code>q1-q4</code>为四个隐藏层中神经元个数，<code>d</code>为embedding layer中神经元个数。</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="nn.html#cb27-1"></a><span class="co"># hyperparameters of the neural network architecture</span></span>
+<span id="cb27-2"><a href="nn.html#cb27-2"></a></span>
+<span id="cb27-3"><a href="nn.html#cb27-3"></a>(BrLabel &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(dat2_train<span class="op">$</span>VehBrandX)))</span>
+<span id="cb27-4"><a href="nn.html#cb27-4"></a>(ReLabel &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(dat2_train<span class="op">$</span>RegionX)))</span>
+<span id="cb27-5"><a href="nn.html#cb27-5"></a>q1 &lt;-<span class="st"> </span><span class="dv">20</span>   </span>
+<span id="cb27-6"><a href="nn.html#cb27-6"></a>q2 &lt;-<span class="st"> </span><span class="dv">15</span></span>
+<span id="cb27-7"><a href="nn.html#cb27-7"></a>q3 &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb27-8"><a href="nn.html#cb27-8"></a>q4 &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb27-9"><a href="nn.html#cb27-9"></a>d &lt;-<span class="st"> </span><span class="dv">1</span>        <span class="co"># dimensions embedding layers for categorical features</span></span></code></pre></div>
+</div>
+<div id="输入层" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> 输入层</h3>
+<ol start="2" style="list-style-type: decimal">
+<li><p>输入层包括<code>Design, VehBrand, Region, LogVol</code>，其中<code>Design</code>为连续型协变量的输入层，<code>VehBrand, Region</code>为分类变量的输入层，<code>LogVol</code>直接连接到模型输出神经元。</p></li>
+<li><p><code>shape</code>表示输入（输出）维度（神经元个数）,<code>dtype</code>表示数据类型，<code>name</code>表示层名。</p></li>
+<li><p><code>shape=(None, 7)</code> 中<code>None</code>表示样本大小，因为还没有数据进入神经网络，故此时不确定。</p>
+<p>Tensor(“Design_1:0”, shape=(None, 7), dtype=float32)</p></li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="nn.html#cb28-1"></a><span class="co"># input layer</span></span>
+<span id="cb28-2"><a href="nn.html#cb28-2"></a></span>
+<span id="cb28-3"><a href="nn.html#cb28-3"></a>(Design   &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(q0),  <span class="dt">dtype =</span> <span class="st">&#39;float32&#39;</span>, <span class="dt">name =</span> <span class="st">&#39;Design&#39;</span>))</span>
+<span id="cb28-4"><a href="nn.html#cb28-4"></a>(VehBrand &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">1</span>),   <span class="dt">dtype =</span> <span class="st">&#39;int32&#39;</span>, <span class="dt">name =</span> <span class="st">&#39;VehBrand&#39;</span>))</span>
+<span id="cb28-5"><a href="nn.html#cb28-5"></a>(Region   &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">1</span>),   <span class="dt">dtype =</span> <span class="st">&#39;int32&#39;</span>, <span class="dt">name =</span> <span class="st">&#39;Region&#39;</span>))</span>
+<span id="cb28-6"><a href="nn.html#cb28-6"></a>(LogVol   &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">1</span>),   <span class="dt">dtype =</span> <span class="st">&#39;float32&#39;</span>, <span class="dt">name =</span> <span class="st">&#39;LogVol&#39;</span>))</span></code></pre></div>
+</div>
+<div id="embedding-layer" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Embedding layer</h3>
+<ol start="5" style="list-style-type: decimal">
+<li><p>建立一个layer，需要明确输入神经元个数<code>input_dim</code>和输出神经元个数<code>output_dim</code>，通常需要指定输出神经元个数，而输入神经元个数由它的上层输出神经元个数决定。</p></li>
+<li><p>把分类变量用<code>layer_embedding</code>处理，这两个<code>layer_embedding</code>的输出神经元个数为<span class="math inline">\(d\)</span>，即每个水平通过<code>layer_embedding</code>输出<span class="math inline">\(d\)</span>个连续型变量，当<span class="math inline">\(d=1\)</span>，<code>layer_embedding</code>类似于GLM对分类变量的处理。<code>input_length</code>主要用于时间序列数据，如每个样本为多个词组成的一句话，这里一个样本只有一个水平，故<code>input_length = 1</code>。</p></li>
+<li><p><code>layer_flatten</code>用于调整维度，<code>layer_flatten</code>的输入维度是<span class="math inline">\(n\times 1\times d\)</span>，输出维度是<span class="math inline">\(n\times d\)</span>，该层没有参数。该输出维度是<code>layer_dense</code>要求的输入维度。建立神经网络需要注意层间维度匹配。</p></li>
+<li><p><code>BrandEmb</code>建立的映射为<span class="math inline">\(\{1,\ldots,11\}\rightarrow 1\times\mathbf{R}^d\rightarrow\mathbf{R}^d\)</span>. <code>RegionEmb</code>建立的映射为<span class="math inline">\(\{1,\ldots,21\}\rightarrow 1\times\mathbf{R}^d\rightarrow\mathbf{R}^d\)</span></p></li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="nn.html#cb29-1"></a><span class="co"># embedding layer</span></span>
+<span id="cb29-2"><a href="nn.html#cb29-2"></a></span>
+<span id="cb29-3"><a href="nn.html#cb29-3"></a>(<span class="dt">BrandEmb =</span> VehBrand <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb29-4"><a href="nn.html#cb29-4"></a><span class="st">    </span><span class="kw">layer_embedding</span>(<span class="dt">input_dim =</span> BrLabel, <span class="dt">output_dim =</span> d, </span>
+<span id="cb29-5"><a href="nn.html#cb29-5"></a>                    <span class="dt">input_length =</span> <span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&#39;BrandEmb&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb29-6"><a href="nn.html#cb29-6"></a><span class="st">   </span><span class="kw">layer_flatten</span>(<span class="dt">name=</span><span class="st">&#39;Brand_flat&#39;</span>))</span>
+<span id="cb29-7"><a href="nn.html#cb29-7"></a><span class="co"># input_dim is the size of vocabulary; input_length is the length of input sequences</span></span>
+<span id="cb29-8"><a href="nn.html#cb29-8"></a>    </span>
+<span id="cb29-9"><a href="nn.html#cb29-9"></a>(<span class="dt">RegionEmb =</span> Region <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb29-10"><a href="nn.html#cb29-10"></a><span class="st">      </span><span class="kw">layer_embedding</span>(<span class="dt">input_dim =</span> ReLabel, <span class="dt">output_dim =</span> d, </span>
+<span id="cb29-11"><a href="nn.html#cb29-11"></a>                      <span class="dt">input_length =</span> <span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&#39;RegionEmb&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb29-12"><a href="nn.html#cb29-12"></a><span class="st">      </span><span class="kw">layer_flatten</span>(<span class="dt">name=</span><span class="st">&#39;Region_flat&#39;</span>))</span></code></pre></div>
+</div>
+<div id="隐藏层" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> 隐藏层</h3>
+<p>9 <code>Network</code>建立的映射为<span class="math display">\[[-1,1]^{q0}\times\mathbf{R}^d\times\mathbf{R}^d\rightarrow (-1,1)^{q1}\rightarrow (-1,1)^{q2}\\ \rightarrow (-1,1)^{q3}\rightarrow (-1,1)^{q4}\rightarrow\mathbf{R}\]</span></p>
+<ol start="10" style="list-style-type: decimal">
+<li><p><code>layer_concatenate</code>把三个输入层连起来，<code>layer_dropout</code>为防止过拟合，<code>layer_batch_normalization</code>为防止vanishing gradient problem，这三种层内无参数，且不会改变上层的维度。<code>layer_dropout</code>令一定比例的上层神经元为0，正则化方法还包括在<code>layer_dense</code>中使用<span class="math inline">\(L^2\)</span>范数正则化<code>kernel_regularizer = regularizer_l2</code>。<code>layer_batch_normalization</code>把输出神经元映射到<span class="math inline">\((-1,1)\)</span>，通常在激活函数为<code>relu</code>更有用。</p></li>
+<li><p>常用的激活函数为<code>tanh, relu, linear, exponential, softmax, sigmoid</code>。其中，<code>sigmoid, softmax</code>适用于二分类和多分类的输出神经元，<code>exponential</code>适用于因变量为正，如此时的索赔频率预测。此外<code>sigmoid</code>和<code>tanh</code>有线性关系，可以只考虑其中一个。</p></li>
+<li><p><code>layer_dense</code>的映射为<code>output = activation (dot (input, kernal) + bias)</code>，所以每个输出神经元都含有输入神经元的信息。如果考虑多个全连接层，可以刻画协变量的交互效应现。激活函数如果取非线性函数，则可以刻画协变量的非线性效应。</p></li>
+<li><p><code>Network</code>中最后一层的参数设定为0，使得<code>Network</code>初始值为0，这样神经网络初始状态为GAM，梯度下降将从GAM开始。</p></li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="nn.html#cb30-1"></a>Network =<span class="st"> </span><span class="kw">list</span>(Design, BrandEmb, RegionEmb) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">layer_concatenate</span>(<span class="dt">name=</span><span class="st">&#39;concate&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-2"><a href="nn.html#cb30-2"></a><span class="st">          </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>q1, <span class="dt">activation=</span><span class="st">&#39;tanh&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden1&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-3"><a href="nn.html#cb30-3"></a><span class="st">          </span><span class="kw">layer_batch_normalization</span>()<span class="op">%&gt;%</span></span>
+<span id="cb30-4"><a href="nn.html#cb30-4"></a><span class="st">          </span><span class="kw">layer_dropout</span>(<span class="dt">rate =</span><span class="fl">0.05</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-5"><a href="nn.html#cb30-5"></a><span class="st">          </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>q2, <span class="dt">activation=</span><span class="st">&#39;tanh&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden2&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-6"><a href="nn.html#cb30-6"></a><span class="st">          </span><span class="kw">layer_batch_normalization</span>()<span class="op">%&gt;%</span></span>
+<span id="cb30-7"><a href="nn.html#cb30-7"></a><span class="st">          </span><span class="kw">layer_dropout</span>(<span class="dt">rate =</span><span class="fl">0.05</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-8"><a href="nn.html#cb30-8"></a><span class="st">          </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>q3, <span class="dt">activation=</span><span class="st">&#39;tanh&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden3&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-9"><a href="nn.html#cb30-9"></a><span class="st">          </span><span class="kw">layer_batch_normalization</span>()<span class="op">%&gt;%</span></span>
+<span id="cb30-10"><a href="nn.html#cb30-10"></a><span class="st">          </span><span class="kw">layer_dropout</span>(<span class="dt">rate =</span><span class="fl">0.05</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-11"><a href="nn.html#cb30-11"></a><span class="st">          </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>q4, <span class="dt">activation=</span><span class="st">&#39;tanh&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden4&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-12"><a href="nn.html#cb30-12"></a><span class="st">          </span><span class="kw">layer_batch_normalization</span>()<span class="op">%&gt;%</span></span>
+<span id="cb30-13"><a href="nn.html#cb30-13"></a><span class="st">          </span><span class="kw">layer_dropout</span>(<span class="dt">rate =</span><span class="fl">0.05</span>) <span class="op">%&gt;%</span></span>
+<span id="cb30-14"><a href="nn.html#cb30-14"></a><span class="st">          </span><span class="kw">layer_dense</span>(<span class="dt">units=</span><span class="dv">1</span>, <span class="dt">activation=</span><span class="st">&#39;linear&#39;</span>, <span class="dt">name=</span><span class="st">&#39;Network&#39;</span>,</span>
+<span id="cb30-15"><a href="nn.html#cb30-15"></a>                      <span class="dt">weights =</span> <span class="kw">list</span>(<span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(q4,<span class="dv">1</span>)), <span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>))))</span></code></pre></div>
+</div>
+<div id="输出层" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> 输出层</h3>
+<ol start="14" style="list-style-type: decimal">
+<li><p><code>Response</code>建立的映射为<span class="math inline">\(\mathbf{R}\times \mathbf{R}\rightarrow \mathbf{R}^+\)</span>，且要求该映射中的参数不参加梯度下降法。可以看到<code>Network</code>的输出神经元为<span class="math inline">\(\ln \hat{\lambda}^{\text{NN}}(\mathbf{x})\)</span>，输入层<code>LogVol</code>为<span class="math inline">\(\ln e\hat{\lambda}^{\text{GAM}}(\mathbf{x})\)</span>，<code>Response</code>的输出神经元为<span class="math display">\[\exp\left(\ln \hat{\lambda}^{\text{NN}}(\mathbf{x}) + \ln e\hat{\lambda}^{\text{GAM}}(\mathbf{x})\right)=e\hat{\lambda}^{\text{GAM}}(\mathbf{x})\hat{\lambda}^{\text{NN}}(\mathbf{x}).\]</span></p></li>
+<li><p>通过梯度下降法使得输出神经元<span class="math inline">\(e\hat{\lambda}^{\text{GAM}}(\mathbf{x})\hat{\lambda}^{\text{NN}}(\mathbf{x})\)</span>与观察值<span class="math inline">\(N\)</span>最接近（用泊松偏差损失度量），进而训练神经网络<span class="math inline">\(\hat{\lambda}^{\text{NN}}(\mathbf{x})\)</span>中的参数。</p></li>
+<li><p>Keras定义平均泊松偏差损失为</p></li>
+</ol>
+<p><span class="math display">\[\tilde{\mathcal{L}}(\mathbf{N},\mathbf{\hat{N}})=\frac{1}{|\mathbf{N}|}\sum_{i}\left[\hat{N}_i-N_i\ln\left(\hat{N}_i\right)\right]\]</span></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="nn.html#cb31-1"></a>Response =<span class="st"> </span><span class="kw">list</span>(Network, LogVol) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">layer_add</span>(<span class="dt">name=</span><span class="st">&#39;Add&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb31-2"><a href="nn.html#cb31-2"></a><span class="st">           </span><span class="kw">layer_dense</span>(<span class="dt">units=</span><span class="dv">1</span>, <span class="dt">activation=</span>k_exp, <span class="dt">name =</span> <span class="st">&#39;Response&#39;</span>, <span class="dt">trainable=</span><span class="ot">FALSE</span>,</span>
+<span id="cb31-3"><a href="nn.html#cb31-3"></a>                        <span class="dt">weights=</span><span class="kw">list</span>(<span class="kw">array</span>(<span class="dv">1</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)), <span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>))))</span>
+<span id="cb31-4"><a href="nn.html#cb31-4"></a></span>
+<span id="cb31-5"><a href="nn.html#cb31-5"></a>model &lt;-<span class="st"> </span><span class="kw">keras_model</span>(<span class="dt">inputs =</span> <span class="kw">c</span>(Design, VehBrand, Region, LogVol), <span class="dt">outputs =</span> <span class="kw">c</span>(Response))</span>
+<span id="cb31-6"><a href="nn.html#cb31-6"></a>model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">compile</span>(<span class="dt">optimizer =</span> <span class="kw">optimizer_nadam</span>(), <span class="dt">loss =</span> <span class="st">&#39;poisson&#39;</span>)</span>
+<span id="cb31-7"><a href="nn.html#cb31-7"></a><span class="kw">summary</span>(model)</span></code></pre></div>
+<ol start="17" style="list-style-type: decimal">
+<li>下表列出了神经网络的结构，包括层的名称、(层的特性)、输出神经元个数、参数个数、上层的名称。</li>
+</ol>
+<pre><code>Model: &quot;model&quot;
+________________________________________________________________________________________________________________________________
+Layer (type)                              Output Shape                Param #        Connected to                               
+================================================================================================================================
+VehBrand (InputLayer)                     [(None, 1)]                 0                                                         
+________________________________________________________________________________________________________________________________
+Region (InputLayer)                       [(None, 1)]                 0                                                         
+________________________________________________________________________________________________________________________________
+BrandEmb (Embedding)                      (None, 1, 1)                11             VehBrand[0][0]                             
+________________________________________________________________________________________________________________________________
+RegionEmb (Embedding)                     (None, 1, 1)                21             Region[0][0]                               
+________________________________________________________________________________________________________________________________
+Design (InputLayer)                       [(None, 7)]                 0                                                         
+________________________________________________________________________________________________________________________________
+Brand_flat (Flatten)                      (None, 1)                   0              BrandEmb[0][0]                             
+________________________________________________________________________________________________________________________________
+Region_flat (Flatten)                     (None, 1)                   0              RegionEmb[0][0]                            
+________________________________________________________________________________________________________________________________
+concate (Concatenate)                     (None, 9)                   0              Design[0][0]                               
+                                                                                     Brand_flat[0][0]                           
+                                                                                     Region_flat[0][0]                          
+________________________________________________________________________________________________________________________________
+hidden1 (Dense)                           (None, 20)                  200            concate[0][0]                              
+________________________________________________________________________________________________________________________________
+batch_normalization_1 (BatchNormalization (None, 20)                  80             hidden1[0][0]                              
+________________________________________________________________________________________________________________________________
+dropout (Dropout)                         (None, 20)                  0              batch_normalization_1[0][0]                
+________________________________________________________________________________________________________________________________
+hidden2 (Dense)                           (None, 15)                  315            dropout[0][0]                              
+________________________________________________________________________________________________________________________________
+batch_normalization_2 (BatchNormalization (None, 15)                  60             hidden2[0][0]                              
+________________________________________________________________________________________________________________________________
+dropout_1 (Dropout)                       (None, 15)                  0              batch_normalization_2[0][0]                
+________________________________________________________________________________________________________________________________
+hidden3 (Dense)                           (None, 10)                  160            dropout_1[0][0]                            
+________________________________________________________________________________________________________________________________
+batch_normalization_3 (BatchNormalization (None, 10)                  40             hidden3[0][0]                              
+________________________________________________________________________________________________________________________________
+dropout_2 (Dropout)                       (None, 10)                  0              batch_normalization_3[0][0]                
+________________________________________________________________________________________________________________________________
+hidden4 (Dense)                           (None, 5)                   55             dropout_2[0][0]                            
+________________________________________________________________________________________________________________________________
+batch_normalization_4 (BatchNormalization (None, 5)                   20             hidden4[0][0]                              
+________________________________________________________________________________________________________________________________
+dropout_3 (Dropout)                       (None, 5)                   0              batch_normalization_4[0][0]                
+________________________________________________________________________________________________________________________________
+Network (Dense)                           (None, 1)                   6              dropout_3[0][0]                            
+________________________________________________________________________________________________________________________________
+LogVol (InputLayer)                       [(None, 1)]                 0                                                         
+________________________________________________________________________________________________________________________________
+Add (Add)                                 (None, 1)                   0              Network[0][0]                              
+                                                                                     LogVol[0][0]                               
+________________________________________________________________________________________________________________________________
+Response (Dense)                          (None, 1)                   2              Add[0][0]                                  
+================================================================================================================================
+Total params: 970
+Trainable params: 868
+Non-trainable params: 102
+________________________________________________________________________________________________________________________________</code></pre>
+</div>
+</div>
+<div id="训练神经网络-1" class="section level2">
+<h2><span class="header-section-number">3.5</span> 训练神经网络</h2>
+<p>训练神经网络需要注意以下几点：</p>
+<ol style="list-style-type: decimal">
+<li><p>初始化神经网络，将从GAM开始训练神经网络，且GAM预测部分保持不变。</p></li>
+<li><p>当<code>batch_size</code>为全体训练集时，为<em>steepest gradient decent method</em>，参数在一个<code>epoch</code>只迭代一次。</p></li>
+<li><p>当<code>batch_size</code>比全体训练集小时，为<em>stochastic gradient decent method</em>，参数在一个<code>epoch</code>迭代次数约为<code>training size / batch size</code>。</p></li>
+<li><p>梯度下降法常引入<em>momentum</em>，进而提升优化效率，如<code>adam, nadam,rmsprop</code>等，这些算法自动选择<code>learning rate, momentum parameters</code>等。</p></li>
+<li><p><code>callback_early_stopping (monitor = "val_loss", patience =10)</code>表示如果验证集损失在10次内没有提升，那么停止训练，由此可以控制迭代次数。</p></li>
+<li><p>使用<code>predict</code>在测试集上预测。</p></li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="nn.html#cb33-1"></a><span class="co"># fitting the neural network</span></span>
+<span id="cb33-2"><a href="nn.html#cb33-2"></a>early_stop &lt;-<span class="st"> </span><span class="kw">callback_early_stopping</span>(<span class="dt">monitor =</span> <span class="st">&quot;val_loss&quot;</span>, <span class="dt">patience =</span><span class="dv">10</span>)</span>
+<span id="cb33-3"><a href="nn.html#cb33-3"></a><span class="co"># print_dot_callback &lt;- callback_lambda(</span></span>
+<span id="cb33-4"><a href="nn.html#cb33-4"></a><span class="co">#   on_epoch_end = function(epoch, logs) {</span></span>
+<span id="cb33-5"><a href="nn.html#cb33-5"></a><span class="co">#     if (epoch %% 50 == 0) cat(&quot;\n&quot;)</span></span>
+<span id="cb33-6"><a href="nn.html#cb33-6"></a><span class="co">#     cat(&quot;.&quot;)</span></span>
+<span id="cb33-7"><a href="nn.html#cb33-7"></a><span class="co">#   }</span></span>
+<span id="cb33-8"><a href="nn.html#cb33-8"></a><span class="co"># )  </span></span>
+<span id="cb33-9"><a href="nn.html#cb33-9"></a>{t1 &lt;-<span class="st"> </span><span class="kw">proc.time</span>();</span>
+<span id="cb33-10"><a href="nn.html#cb33-10"></a>fit &lt;-<span class="st"> </span>model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fit</span>(<span class="kw">list</span>(Xtrain, Brtrain, Retrain, Vtrain), Ytrain,</span>
+<span id="cb33-11"><a href="nn.html#cb33-11"></a>                     <span class="dt">epochs=</span><span class="dv">500</span>, <span class="dt">batch_size=</span><span class="dv">5000</span>, <span class="dt">verbose=</span><span class="dv">1</span>,</span>
+<span id="cb33-12"><a href="nn.html#cb33-12"></a>                     <span class="dt">validation_data=</span><span class="kw">list</span>(xxvalid,Yvalid),</span>
+<span id="cb33-13"><a href="nn.html#cb33-13"></a>                     <span class="dt">callbacks=</span><span class="kw">list</span>(early_stop));</span>
+<span id="cb33-14"><a href="nn.html#cb33-14"></a>(<span class="kw">proc.time</span>()<span class="op">-</span>t1)}</span>
+<span id="cb33-15"><a href="nn.html#cb33-15"></a></span>
+<span id="cb33-16"><a href="nn.html#cb33-16"></a><span class="co"># png(&quot;./plots/1/nn.png&quot;)</span></span>
+<span id="cb33-17"><a href="nn.html#cb33-17"></a><span class="kw">matplot</span>(<span class="kw">cbind</span>(fit<span class="op">$</span>metrics<span class="op">$</span>loss,fit<span class="op">$</span>metrics<span class="op">$</span>val_loss), <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;epoch&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Keras Poisson Loss&quot;</span>)</span>
+<span id="cb33-18"><a href="nn.html#cb33-18"></a><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;training loss&quot;</span>,<span class="st">&quot;validation loss&quot;</span>),<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</span>
+<span id="cb33-19"><a href="nn.html#cb33-19"></a><span class="co"># dev.off()</span></span>
+<span id="cb33-20"><a href="nn.html#cb33-20"></a></span>
+<span id="cb33-21"><a href="nn.html#cb33-21"></a><span class="co"># calculating the predictions</span></span>
+<span id="cb33-22"><a href="nn.html#cb33-22"></a>dat2_test<span class="op">$</span>fitNN &lt;-<span class="st"> </span><span class="kw">as.vector</span>(model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">predict</span>(<span class="kw">list</span>(Xtest, Brtest, Retest, Vtest)))</span>
+<span id="cb33-23"><a href="nn.html#cb33-23"></a><span class="kw">keras_poisson_dev</span>(dat2_test<span class="op">$</span>fitNN, dat2_test<span class="op">$</span>ClaimNb)</span>
+<span id="cb33-24"><a href="nn.html#cb33-24"></a><span class="kw">Poisson.Deviance</span>(dat2_test<span class="op">$</span>fitNN, dat2_test<span class="op">$</span>ClaimNb)</span></code></pre></div>
+<p><img src="plots/1/nn.png" width="60%"  style="display: block; margin: auto;" /></p>
+</div>
+<div id="总结" class="section level2">
+<h2><span class="header-section-number">3.6</span> 总结</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="nn.html#cb34-1"></a>dev_sum&lt;-<span class="kw">fread</span>(<span class="st">&quot;./plots/1/dev_sum.csv&quot;</span>)[,<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb34-2"><a href="nn.html#cb34-2"></a>AD&lt;-<span class="kw">data.frame</span>(<span class="dt">model=</span><span class="st">&quot;Neural network&quot;</span>,<span class="dt">test_error=</span><span class="dv">0</span>,<span class="dt">test_error_keras=</span><span class="dv">0</span>)</span>
+<span id="cb34-3"><a href="nn.html#cb34-3"></a>dev_sum&lt;-<span class="kw">rbind</span>(dev_sum,AD)</span>
+<span id="cb34-4"><a href="nn.html#cb34-4"></a>dev_sum<span class="op">$</span>test_error[<span class="dv">8</span>]&lt;-<span class="kw">round</span>(<span class="kw">Poisson.Deviance</span>(dat2_test<span class="op">$</span>fitNN, dat2_test<span class="op">$</span>ClaimNb),<span class="dv">4</span>)</span>
+<span id="cb34-5"><a href="nn.html#cb34-5"></a>dev_sum<span class="op">$</span>test_error_keras[<span class="dv">8</span>]&lt;-<span class="kw">round</span>(<span class="kw">keras_poisson_dev</span>(dat2_test<span class="op">$</span>fitNN, dat2_test<span class="op">$</span>ClaimNb),<span class="dv">4</span>)</span>
+<span id="cb34-6"><a href="nn.html#cb34-6"></a><span class="co"># write.csv(dev_sum,&quot;./plots/1/dev_sum.csv&quot;)</span></span></code></pre></div>
+<p><img src="03-nn_files/figure-html/sum%20output-1.png" width="672"  /></p>
+<ul>
+<li><p>Boosting &gt; RF &gt; Tree &gt; NN &gt; GAM &gt; GLM &gt; Homo</p></li>
+<li><p>Boosting, RF, Tree, NN相较于GAM的提升主要在于交互作用；GAM相较于GLM的提升不大，原因是在GLM中进行了合适的特征工程，可以刻画非线性效应。</p></li>
+</ul>
+</div>
+<div id="其它模型" class="section level2">
+<h2><span class="header-section-number">3.7</span> 其它模型</h2>
+<p>通过尝试发现，主要存在两个交互作用：<code>VehPower, VehAge, VehGas, VehBrand</code>和<code>DriAge, BonusMalus</code>，可设立如下简化的神经网络提升模型。</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="nn.html#cb35-1"></a>train.x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">as.matrix</span>(dat2_train[,<span class="kw">c</span>(<span class="st">&quot;VehPowerX&quot;</span>, <span class="st">&quot;VehAgeX&quot;</span>, <span class="st">&quot;VehGasX&quot;</span>)]),</span>
+<span id="cb35-2"><a href="nn.html#cb35-2"></a>                <span class="kw">as.matrix</span>(dat2_train[,<span class="st">&quot;VehBrandX&quot;</span>]),</span>
+<span id="cb35-3"><a href="nn.html#cb35-3"></a>                <span class="kw">as.matrix</span>(dat2_train[,<span class="kw">c</span>(<span class="st">&quot;DrivAgeX&quot;</span>, <span class="st">&quot;BonusMalus&quot;</span>)]),</span>
+<span id="cb35-4"><a href="nn.html#cb35-4"></a>                <span class="kw">as.matrix</span>(<span class="kw">log</span>(dat1_train<span class="op">$</span>fitGAM1)) )</span>
+<span id="cb35-5"><a href="nn.html#cb35-5"></a>valid.x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">as.matrix</span>(dat2_valid[,<span class="kw">c</span>(<span class="st">&quot;VehPowerX&quot;</span>, <span class="st">&quot;VehAgeX&quot;</span>, <span class="st">&quot;VehGasX&quot;</span>)]),</span>
+<span id="cb35-6"><a href="nn.html#cb35-6"></a>                <span class="kw">as.matrix</span>(dat2_valid[,<span class="st">&quot;VehBrandX&quot;</span>]),</span>
+<span id="cb35-7"><a href="nn.html#cb35-7"></a>                <span class="kw">as.matrix</span>(dat2_valid[,<span class="kw">c</span>(<span class="st">&quot;DrivAgeX&quot;</span>, <span class="st">&quot;BonusMalus&quot;</span>)]),</span>
+<span id="cb35-8"><a href="nn.html#cb35-8"></a>                <span class="kw">as.matrix</span>(<span class="kw">log</span>(dat1_valid<span class="op">$</span>fitGAM1)) )</span>
+<span id="cb35-9"><a href="nn.html#cb35-9"></a>test.x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">as.matrix</span>(dat2_test[,<span class="kw">c</span>(<span class="st">&quot;VehPowerX&quot;</span>, <span class="st">&quot;VehAgeX&quot;</span>, <span class="st">&quot;VehGasX&quot;</span>)]),</span>
+<span id="cb35-10"><a href="nn.html#cb35-10"></a>                <span class="kw">as.matrix</span>(dat2_test[,<span class="st">&quot;VehBrandX&quot;</span>]),</span>
+<span id="cb35-11"><a href="nn.html#cb35-11"></a>                <span class="kw">as.matrix</span>(dat2_test[,<span class="kw">c</span>(<span class="st">&quot;DrivAgeX&quot;</span>, <span class="st">&quot;BonusMalus&quot;</span>)]),</span>
+<span id="cb35-12"><a href="nn.html#cb35-12"></a>                <span class="kw">as.matrix</span>(<span class="kw">log</span>(dat1_test<span class="op">$</span>fitGAM1)) )</span>
+<span id="cb35-13"><a href="nn.html#cb35-13"></a></span>
+<span id="cb35-14"><a href="nn.html#cb35-14"></a>neurons &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb35-15"><a href="nn.html#cb35-15"></a></span>
+<span id="cb35-16"><a href="nn.html#cb35-16"></a>model<span class="fl">.2</span>IA &lt;-<span class="st"> </span><span class="cf">function</span>(Brlabel){</span>
+<span id="cb35-17"><a href="nn.html#cb35-17"></a>   Cont1        &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">3</span>), <span class="dt">dtype =</span> <span class="st">&#39;float32&#39;</span>, <span class="dt">name=</span><span class="st">&#39;Cont1&#39;</span>)</span>
+<span id="cb35-18"><a href="nn.html#cb35-18"></a>   Cat1         &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">1</span>), <span class="dt">dtype =</span> <span class="st">&#39;int32&#39;</span>,   <span class="dt">name=</span><span class="st">&#39;Cat1&#39;</span>)</span>
+<span id="cb35-19"><a href="nn.html#cb35-19"></a>   Cont2        &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">2</span>), <span class="dt">dtype =</span> <span class="st">&#39;float32&#39;</span>, <span class="dt">name=</span><span class="st">&#39;Cont2&#39;</span>)</span>
+<span id="cb35-20"><a href="nn.html#cb35-20"></a>   LogExposure  &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">1</span>), <span class="dt">dtype =</span> <span class="st">&#39;float32&#39;</span>, <span class="dt">name =</span> <span class="st">&#39;LogExposure&#39;</span>) </span>
+<span id="cb35-21"><a href="nn.html#cb35-21"></a>   </span>
+<span id="cb35-22"><a href="nn.html#cb35-22"></a>   x.input &lt;-<span class="st"> </span><span class="kw">c</span>(Cont1, Cat1, Cont2, LogExposure)</span>
+<span id="cb35-23"><a href="nn.html#cb35-23"></a>   <span class="co">#</span></span>
+<span id="cb35-24"><a href="nn.html#cb35-24"></a>   Cat1_embed =<span class="st"> </span>Cat1 <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb35-25"><a href="nn.html#cb35-25"></a><span class="st">            </span><span class="kw">layer_embedding</span>(<span class="dt">input_dim =</span> Brlabel, <span class="dt">output_dim =</span> <span class="dv">1</span>, <span class="dt">trainable=</span><span class="ot">TRUE</span>, </span>
+<span id="cb35-26"><a href="nn.html#cb35-26"></a>                    <span class="dt">input_length =</span> <span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&#39;Cat1_embed&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-27"><a href="nn.html#cb35-27"></a><span class="st">                    </span><span class="kw">layer_flatten</span>(<span class="dt">name=</span><span class="st">&#39;Cat1_flat&#39;</span>)</span>
+<span id="cb35-28"><a href="nn.html#cb35-28"></a>   <span class="co">#</span></span>
+<span id="cb35-29"><a href="nn.html#cb35-29"></a>   NNetwork1 =<span class="st"> </span><span class="kw">list</span>(Cont1, Cat1_embed) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">layer_concatenate</span>(<span class="dt">name=</span><span class="st">&#39;cont&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-30"><a href="nn.html#cb35-30"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>neurons[<span class="dv">1</span>], <span class="dt">activation=</span><span class="st">&#39;relu&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden1&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-31"><a href="nn.html#cb35-31"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>neurons[<span class="dv">2</span>], <span class="dt">activation=</span><span class="st">&#39;relu&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden2&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-32"><a href="nn.html#cb35-32"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>neurons[<span class="dv">3</span>], <span class="dt">activation=</span><span class="st">&#39;relu&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden3&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-33"><a href="nn.html#cb35-33"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span><span class="dv">1</span>, <span class="dt">activation=</span><span class="st">&#39;linear&#39;</span>, <span class="dt">name=</span><span class="st">&#39;NNetwork1&#39;</span>, </span>
+<span id="cb35-34"><a href="nn.html#cb35-34"></a>                    <span class="dt">weights=</span><span class="kw">list</span>(<span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(neurons[<span class="dv">3</span>],<span class="dv">1</span>)), <span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>))))</span>
+<span id="cb35-35"><a href="nn.html#cb35-35"></a>   <span class="co">#</span></span>
+<span id="cb35-36"><a href="nn.html#cb35-36"></a>   NNetwork2 =<span class="st"> </span>Cont2 <span class="op">%&gt;%</span></span>
+<span id="cb35-37"><a href="nn.html#cb35-37"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>neurons[<span class="dv">1</span>], <span class="dt">activation=</span><span class="st">&#39;relu&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden4&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-38"><a href="nn.html#cb35-38"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>neurons[<span class="dv">2</span>], <span class="dt">activation=</span><span class="st">&#39;relu&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden5&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-39"><a href="nn.html#cb35-39"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span>neurons[<span class="dv">3</span>], <span class="dt">activation=</span><span class="st">&#39;relu&#39;</span>, <span class="dt">name=</span><span class="st">&#39;hidden6&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-40"><a href="nn.html#cb35-40"></a><span class="st">            </span><span class="kw">layer_dense</span>(<span class="dt">units=</span><span class="dv">1</span>, <span class="dt">activation=</span><span class="st">&#39;linear&#39;</span>, <span class="dt">name=</span><span class="st">&#39;NNetwork2&#39;</span>, </span>
+<span id="cb35-41"><a href="nn.html#cb35-41"></a>                    <span class="dt">weights=</span><span class="kw">list</span>(<span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(neurons[<span class="dv">3</span>],<span class="dv">1</span>)), <span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>))))</span>
+<span id="cb35-42"><a href="nn.html#cb35-42"></a></span>
+<span id="cb35-43"><a href="nn.html#cb35-43"></a>   <span class="co">#</span></span>
+<span id="cb35-44"><a href="nn.html#cb35-44"></a>   NNoutput =<span class="st"> </span><span class="kw">list</span>(NNetwork1, NNetwork2, LogExposure) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">layer_add</span>(<span class="dt">name=</span><span class="st">&#39;Add&#39;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb35-45"><a href="nn.html#cb35-45"></a><span class="st">                 </span><span class="kw">layer_dense</span>(<span class="dt">units=</span><span class="dv">1</span>, <span class="dt">activation=</span>k_exp, <span class="dt">name =</span> <span class="st">&#39;NNoutput&#39;</span>, <span class="dt">trainable=</span><span class="ot">FALSE</span>,</span>
+<span id="cb35-46"><a href="nn.html#cb35-46"></a>                       <span class="dt">weights=</span><span class="kw">list</span>(<span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span>), <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)), <span class="kw">array</span>(<span class="dv">0</span>, <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">1</span>))))</span>
+<span id="cb35-47"><a href="nn.html#cb35-47"></a></span>
+<span id="cb35-48"><a href="nn.html#cb35-48"></a>   model &lt;-<span class="st"> </span><span class="kw">keras_model</span>(<span class="dt">inputs =</span> x.input, <span class="dt">outputs =</span> <span class="kw">c</span>(NNoutput))</span>
+<span id="cb35-49"><a href="nn.html#cb35-49"></a>   model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">compile</span>(<span class="dt">optimizer =</span> <span class="kw">optimizer_nadam</span>(), <span class="dt">loss =</span> <span class="st">&#39;poisson&#39;</span>)        </span>
+<span id="cb35-50"><a href="nn.html#cb35-50"></a>   model</span>
+<span id="cb35-51"><a href="nn.html#cb35-51"></a>   }</span>
+<span id="cb35-52"><a href="nn.html#cb35-52"></a></span>
+<span id="cb35-53"><a href="nn.html#cb35-53"></a>model &lt;-<span class="st"> </span><span class="kw">model.2IA</span>(BrLabel)</span>
+<span id="cb35-54"><a href="nn.html#cb35-54"></a><span class="kw">summary</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="nn.html#cb36-1"></a>early_stop &lt;-<span class="st"> </span><span class="kw">callback_early_stopping</span>(<span class="dt">monitor =</span> <span class="st">&quot;val_loss&quot;</span>, <span class="dt">patience =</span><span class="dv">10</span>)</span>
+<span id="cb36-2"><a href="nn.html#cb36-2"></a><span class="co"># print_dot_callback &lt;- callback_lambda(</span></span>
+<span id="cb36-3"><a href="nn.html#cb36-3"></a><span class="co">#   on_epoch_end = function(epoch, logs) {</span></span>
+<span id="cb36-4"><a href="nn.html#cb36-4"></a><span class="co">#     if (epoch %% 50 == 0) cat(&quot;\n&quot;)</span></span>
+<span id="cb36-5"><a href="nn.html#cb36-5"></a><span class="co">#     cat(&quot;.&quot;)</span></span>
+<span id="cb36-6"><a href="nn.html#cb36-6"></a><span class="co">#   }</span></span>
+<span id="cb36-7"><a href="nn.html#cb36-7"></a><span class="co"># )  </span></span>
+<span id="cb36-8"><a href="nn.html#cb36-8"></a><span class="co"># may take a couple of minutes if epochs is more than 100</span></span>
+<span id="cb36-9"><a href="nn.html#cb36-9"></a>{t1 &lt;-<span class="st"> </span><span class="kw">proc.time</span>()</span>
+<span id="cb36-10"><a href="nn.html#cb36-10"></a>     fit &lt;-<span class="st"> </span>model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fit</span>(train.x, <span class="kw">as.matrix</span>(dat2_train<span class="op">$</span>ClaimNb), </span>
+<span id="cb36-11"><a href="nn.html#cb36-11"></a>                          <span class="dt">epochs=</span><span class="dv">500</span>, <span class="dt">batch_size=</span><span class="dv">10000</span>, <span class="dt">verbose=</span><span class="dv">1</span>,</span>
+<span id="cb36-12"><a href="nn.html#cb36-12"></a>                                       <span class="dt">validation_data=</span><span class="kw">list</span>(valid.x,dat2_valid<span class="op">$</span>ClaimNb),</span>
+<span id="cb36-13"><a href="nn.html#cb36-13"></a>                          <span class="dt">callback=</span><span class="kw">list</span>(early_stop))</span>
+<span id="cb36-14"><a href="nn.html#cb36-14"></a>(<span class="kw">proc.time</span>()<span class="op">-</span>t1)}</span>
+<span id="cb36-15"><a href="nn.html#cb36-15"></a></span>
+<span id="cb36-16"><a href="nn.html#cb36-16"></a><span class="kw">matplot</span>(<span class="kw">cbind</span>(fit<span class="op">$</span>metrics<span class="op">$</span>loss,fit<span class="op">$</span>metrics<span class="op">$</span>val_loss), <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb36-17"><a href="nn.html#cb36-17"></a></span>
+<span id="cb36-18"><a href="nn.html#cb36-18"></a>dat2_test<span class="op">$</span>fitGAMPlus &lt;-<span class="st"> </span><span class="kw">as.vector</span>(model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">predict</span>(test.x))</span>
+<span id="cb36-19"><a href="nn.html#cb36-19"></a><span class="kw">Poisson.Deviance</span>(dat2_test<span class="op">$</span>fitGAMPlus, dat2_test<span class="op">$</span>ClaimNb)</span>
+<span id="cb36-20"><a href="nn.html#cb36-20"></a><span class="kw">keras_poisson_dev</span>(dat2_test<span class="op">$</span>fitGAMPlus, dat2_test<span class="op">$</span>ClaimNb)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="french.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="boosting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": "github"
+},
+"fontsettings": {
+"theme": "sepia",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true,
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

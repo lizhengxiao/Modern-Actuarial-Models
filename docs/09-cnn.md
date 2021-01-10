@@ -2,19 +2,17 @@
 
 *万淇、蔡清扬、高光远*
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = F)
-```
+
 
 深度学习之所以这么热，大部分归功于卷积神经网络在[计算机视觉](https://github.com/search?q=computer+vision&type=)上取得的巨大成功。卷积神经网络还可以用在自然语言处理、时间序列分析、异常检测、可穿戴设备与健康检测、GO。
 
 大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
 也可以应用于迁移学习。
 
-```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Transfer learning"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/9/transfer_learn.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./plots/9/transfer_learn.png" alt="Transfer learning" width="60%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Transfer learning</p>
+</div>
 
 ## 基本组件
 
@@ -71,10 +69,10 @@ W_{i,c,\cdot,\cdot,3}:=&W_{i,c,\cdot,\cdot,1}-W_{i,c,\cdot,\cdot,2}
 \end{aligned}
 $$
 
-```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Mortality Window"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/9/window.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./plots/9/window.png" alt="Mortality Window" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-2)Mortality Window</p>
+</div>
 
 然后分别对三个通道进行正则化, 得到$\boldsymbol{X}_{i,c}\in[0,1]^{10\times10\times3}$. 通过对所有国家进行如上处理, 可以得到大约$4000$张图像.
 

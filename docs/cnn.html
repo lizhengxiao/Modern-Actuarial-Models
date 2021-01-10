@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 卷积神经网络 | 现代精算统计模型</title>
+  <meta name="description" content="The output format is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 卷积神经网络 | 现代精算统计模型" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The output format is bookdown::gitbook." />
+  <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 卷积神经网络 | 现代精算统计模型" />
+  
+  <meta name="twitter:description" content="The output format is bookdown::gitbook." />
+  
+
+<meta name="author" content="Modern Actuarial Models" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">现代精算统计模型</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>👨‍🏫 欢迎</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#答疑"><i class="fa fa-check"></i>🤔 答疑</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程安排"><i class="fa fa-check"></i>🗓️ 课程安排</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>1</b> 卷积神经网络</a><ul>
+<li class="chapter" data-level="1.1" data-path="cnn.html"><a href="cnn.html#基本组件"><i class="fa fa-check"></i><b>1.1</b> 基本组件</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>1.1.1</b> 卷积层 (Convolution)</a></li>
+<li class="chapter" data-level="1.1.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>1.1.2</b> 池化层 (Pooling)</a></li>
+<li class="chapter" data-level="1.1.3" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>1.1.3</b> 全连接层 (Dense)</a></li>
+<li class="chapter" data-level="1.1.4" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>1.1.4</b> 批标准化层 (Batch Normalization)</a></li>
+<li class="chapter" data-level="1.1.5" data-path="cnn.html"><a href="cnn.html#扁平化-flatten"><i class="fa fa-check"></i><b>1.1.5</b> 扁平化 (Flatten)</a></li>
+<li class="chapter" data-level="1.1.6" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>1.1.6</b> 输出神经元</a></li>
+<li class="chapter" data-level="1.1.7" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>1.1.7</b> 激活函数 (Activation)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>1.2</b> 特性</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="cnn.html"><a href="cnn.html#平移不变性-shift-invariant"><i class="fa fa-check"></i><b>1.2.1</b> 平移不变性 (Shift Invariant)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="cnn.html"><a href="cnn.html#旋转"><i class="fa fa-check"></i><b>1.2.2</b> 旋转</a></li>
+<li class="chapter" data-level="1.2.3" data-path="cnn.html"><a href="cnn.html#尺度"><i class="fa fa-check"></i><b>1.2.3</b> 尺度</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="cnn.html"><a href="cnn.html#案例分析"><i class="fa fa-check"></i><b>1.3</b> 案例分析</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>1.3.1</b> <span>Human Mortality Database (HMD)</span></a></li>
+<li class="chapter" data-level="1.3.2" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>1.3.2</b> MNIST dataset</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">现代精算统计模型</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cnn" class="section level1">
+<h1><span class="header-section-number">1</span> 卷积神经网络</h1>
+<p><em>万淇、蔡清扬、高光远</em></p>
+<p>深度学习之所以这么热，大部分归功于卷积神经网络在<a href="https://github.com/search?q=computer+vision&amp;type=">计算机视觉</a>上取得的巨大成功。卷积神经网络还可以用在自然语言处理、时间序列分析、异常检测、可穿戴设备与健康检测、GO。</p>
+<p>大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
+也可以应用于迁移学习。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="plots/9/transfer_learn.png" alt="Transfer learning" width="60%" />
+<p class="caption">
+Figure 1.1: Transfer learning
+</p>
+</div>
+<div id="基本组件" class="section level2">
+<h2><span class="header-section-number">1.1</span> 基本组件</h2>
+<div id="卷积层-convolution" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> 卷积层 (Convolution)</h3>
+</div>
+<div id="池化层-pooling" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> 池化层 (Pooling)</h3>
+</div>
+<div id="全连接层-dense" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> 全连接层 (Dense)</h3>
+</div>
+<div id="批标准化层-batch-normalization" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> 批标准化层 (Batch Normalization)</h3>
+</div>
+<div id="扁平化-flatten" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> 扁平化 (Flatten)</h3>
+</div>
+<div id="输出神经元" class="section level3">
+<h3><span class="header-section-number">1.1.6</span> 输出神经元</h3>
+</div>
+<div id="激活函数-activation" class="section level3">
+<h3><span class="header-section-number">1.1.7</span> 激活函数 (Activation)</h3>
+</div>
+</div>
+<div id="特性" class="section level2">
+<h2><span class="header-section-number">1.2</span> 特性</h2>
+<div id="平移不变性-shift-invariant" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> 平移不变性 (Shift Invariant)</h3>
+</div>
+<div id="旋转" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> 旋转</h3>
+</div>
+<div id="尺度" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> 尺度</h3>
+</div>
+</div>
+<div id="案例分析" class="section level2">
+<h2><span class="header-section-number">1.3</span> 案例分析</h2>
+<div id="human-mortality-database-hmd" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> <a href="https://www.mortality.org">Human Mortality Database (HMD)</a></h3>
+<p><strong>目标</strong>: 根据死亡率表的局部特征(<span class="math inline">\(10\times10\)</span>)，检测该局部异常死亡率强度。</p>
+<p>死亡率<span class="math inline">\(q_{x,t,c,g}\)</span>、人口数量<span class="math inline">\(E_{x,t,c,g}\)</span></p>
+<ul>
+<li><p>年龄<span class="math inline">\(x\)</span>, 日历年<span class="math inline">\(t\)</span>, 国家<span class="math inline">\(c\)</span>, 性别<span class="math inline">\(g\)</span>.</p></li>
+<li><p>由于领土的变化，某些年的数据会出现变更前与变更后的的两个数据，处理方式是取平均值作为最后的研究数据。</p></li>
+<li><p>某些死亡率数据存在缺失：如果相邻(以年龄<span class="math inline">\(x\)</span>和日历年<span class="math inline">\(t\)</span>)值可用，我们线性插补，否则使用最近邻的值进行插补。</p></li>
+<li><p>假定没有人口的迁移以及其他的误差：<span class="math display">\[E_{x,t,c,g}=E_{x-1,t-1,c,g}(1-q_{{x-1},{t-1},c,g})\]</span></p></li>
+<li><p>定义标准化残差: <span class="math display">\[r_{x,t,c,g}=\frac{E_{x,t,c,g}-E_{x-1,t-1,c,g}(1-q_{x-1,t-1,c,g})}{E_{x,t,c,g}}\]</span></p></li>
+<li><p><span class="math inline">\(r_{x,t,c,g}&lt;0\)</span>表明可能有人口迁出或者数据错误， <span class="math inline">\(r_{x,t,c,g}&gt;0\)</span>表明可能有人口迁入或者数据错误。</p></li>
+</ul>
+<p>经过预处理HMD，对每个国家每个性别我们得到一个关于死亡率<span class="math inline">\(q_{x,t,c,g}\)</span>的二维数组，其中行代表不同日历年，列代表不同年龄。为了检测死亡率的异常值，我们考虑死亡率的局部变化特征，使用大小为<span class="math inline">\(10\times10\)</span>的窗口在死亡率二维数组上进行移动，并设置步长为<span class="math inline">\(5\)</span>。可以得到死亡率的局部矩阵<span class="math inline">\((q_{x,t,c,g})_{x_i&lt;x\le x_i+10, t_i&lt;t\le t_i+10}\)</span>, 其中<span class="math inline">\(x_i:=20+5i,t_i=1950+5i\)</span>。我们定义如下(原始)输入特征<span class="math inline">\(W_{i,c}\in\mathbb{R}^{10\times 10\times 3}\)</span>:
+<span class="math display">\[
+\begin{aligned}
+W_{i,c,\cdot,\cdot,1}:=&amp;(\text{logit}(q_{x,t,c,males}))_{x_i&lt;x\le x_i+10, t_i&lt;t\le t_i+10}\\
+W_{i,c,\cdot,\cdot,2}:=&amp;(\text{logit}(q_{x,t,c,females}))_{x_i&lt;x\le x_i+10, t_i&lt;t\le t_i+10}\\
+W_{i,c,\cdot,\cdot,3}:=&amp;W_{i,c,\cdot,\cdot,1}-W_{i,c,\cdot,\cdot,2}
+\end{aligned}
+\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="plots/9/window.png" alt="Mortality Window" width="60%"  />
+<p class="caption">
+Figure 1.2: Mortality Window
+</p>
+</div>
+<p>然后分别对三个通道进行正则化, 得到<span class="math inline">\(\boldsymbol{X}_{i,c}\in[0,1]^{10\times10\times3}\)</span>. 通过对所有国家进行如上处理, 可以得到大约<span class="math inline">\(4000\)</span>张图像.</p>
+<p>接下来, 我们定义每张图的“标签”. 首先, 对<span class="math inline">\(r_{x,t,c,g}\)</span>进行MinMax正则化处理, 得到<span class="math inline">\(\bar{r}_{x,t,c,g}\in[0,1].\)</span> 然后, 定义标签为<strong>异常强度</strong>
+<span class="math display">\[Y_{i,c}:=\underset{x_i&lt;x\le x_i+10, t_i&lt;t\le t_i+10}{\max} \left|\frac{\bar{r}_{x,t,c,males}+\bar{r}_{x,t,c,females}}{2} \right|\in[0,1].\]</span></p>
+<p>我们的目标是基于死亡率在大小为<span class="math inline">\(10\times10\)</span>上的局部特征, 预测该范围内死亡率的异常强度.
+在训练神经网络时, 选取均方误差损失函数<span class="math display">\[\mathcal{L}(Y,\hat{\mu}(\boldsymbol{X});\mathcal{I}):=\frac{1}{|\mathcal{I}|}\sum_{(i,c)\in\mathcal{I}}(Y_{i,c}-\hat{\mu}(\boldsymbol{X}_{i,c}))^2.\]</span></p>
+<p>在评估模型时, 我们通过如下步骤定义二分类AOC指标:</p>
+<ol style="list-style-type: decimal">
+<li><p>定义伯努利随机变量
+<span class="math display">\[
+b_{i,c}:=
+\begin{cases}
+1, Y_{i,c}\geq q_{0.95}(Y), \\
+0, \text{otherwise},
+\end{cases}
+\]</span>
+其中, <span class="math inline">\(q_{0.95}(Y)\)</span>为所有因变量<span class="math inline">\(Y_{i,c}\)</span>的0.95分位数, 即<span class="math inline">\(b_{i,c}\)</span>为“非常异常”指示标量.</p></li>
+<li><p>把神经网络的输出结果<span class="math inline">\(\hat{\mu}(\boldsymbol{X}_{i,c})\)</span>当作概率<span class="math inline">\(\Pr (b_{i,c}=1)\)</span>的预测.</p></li>
+<li><p>画出该二分类问题的receiver operating characteristic curve (ROC), 并计算 area under the curve (AUC).</p></li>
+</ol>
+<p>利用以上模型评估方法, 我们可以对国家按照“异常强度”的相似性进行分类, 具体步骤如下:</p>
+<ol style="list-style-type: decimal">
+<li><p>对每个国家<span class="math inline">\(c\)</span>分别建立CNN模型, 并使用该模型对其他国家<span class="math inline">\(c^*\)</span>的数据进行预测, 计算AUC <span class="math inline">\(A_{c,c^*}\)</span>. 并建立矩阵<span class="math inline">\(A=(A_{c,c^*})_{c,c*\in\mathcal{C}}\)</span>, 其中<span class="math inline">\(\mathcal{C}\)</span>为所有国家的集合.</p></li>
+<li><p>对<span class="math inline">\(A\)</span>进行列标准化, 并进行奇异值分解, 得到前两个主成分<span class="math inline">\(P_{j,c}, j=1,2\)</span>.</p></li>
+<li><p>对主成分<span class="math inline">\(P_{j,c}, j=1,2\)</span>进行聚类, 得到4个簇.</p></li>
+</ol>
+</div>
+<div id="mnist-dataset" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> MNIST dataset</h3>
+<p><strong>目标</strong>: 对手写<span class="math inline">\(0-9\)</span>进行分类。</p>
+<p>MNIST 全称为 Modified National Institute of Standards and Technology. 修改过后的MNIST数据集，它是一个由不同的人的手写体数字组成的图片数据集，包含了<span class="math inline">\(7\)</span>万张关于手写数字<span class="math inline">\(0,1,\ldots,9\)</span>的图像，格式为<span class="math inline">\(28×28\)</span>的灰度像素。</p>
+<p>神经网络的输入为由灰度像素构成的<span class="math inline">\(28\times28\)</span>数组<span class="math inline">\(\boldsymbol{X}\in[0,1]^{28\times28}\)</span>, 输出为在<span class="math inline">\(\{0,1,\ldots,9\}\)</span>上的离散分布<span class="math inline">\((p_0,\ldots,p_9)^T\)</span>, 其中<span class="math inline">\(\sum_{j=0}^9p_j=1\)</span>. 图像的标签为实际数字的one-hot编码<span class="math inline">\(Y\in\{0,1\}^{10}\)</span>.
+损失函数为交叉熵(cross-entropy)
+<span class="math display">\[\mathcal{L}(Y,\hat{p}(\boldsymbol{X});\mathcal{I}):=-\sum_{i\in\mathcal{I}}\sum_{j=0}^9Y_{i,j}\log\hat{p}_j(\boldsymbol{X}_i).\]</span></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": "github"
+},
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true,
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
