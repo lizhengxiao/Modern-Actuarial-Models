@@ -14,25 +14,125 @@
 <p class="caption">(\#fig:unnamed-chunk-1)Transfer learning</p>
 </div>
 
-## 基本组件
+## 卷积层 (Convolution)
 
-### 卷积层 (Convolution)
+作用：特征提取，一般想要多少特征，就设置多少个卷积核(filter)。不同的卷积核相当于不同的特征提取器.
 
-### 池化层 (Pooling)
+计算过程如下图所示：
+<div class="figure" style="text-align: center">
+<img src="./plots/9/cnn.png" alt="Convolution" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-2)Convolution</p>
+</div>
+
+### 超参数
+
+一个卷积层主要有以下超参数
+
+- Channels: 黑白图像一般只有一个通道，彩色图像一般有三个通道，即RGB.
+
+- Filters: 一般想要多少特征，就设置多少个卷积核。不同的卷积核相当于不同的特征提取器.
+
+- Padding: 补零。作用：保持图像大小，使之减小不会太快；还能照顾到边缘特征。
+<div class="figure" style="text-align: center">
+<img src="./plots/9/padding.png" alt="Padding" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-3)Padding</p>
+</div>
+
+- Dilation: 膨胀卷积（Dilated Convolution）也称为空洞卷积（Atrous Convolution）是一种不增加参数数量同时增加输出单元感受野的一种方法。空洞卷积通过给卷积核插入“空洞”来变相地增加其大小
+
+<div class="figure" style="text-align: center">
+<img src="./plots/9/dilated1.png" alt="Dilation" width="40%"  />
+<p class="caption">(\#fig:unnamed-chunk-4-1)Dilation</p>
+</div><div class="figure" style="text-align: center">
+<img src="./plots/9/dilated2.png" alt="Dilation" width="40%"  />
+<p class="caption">(\#fig:unnamed-chunk-4-2)Dilation</p>
+</div>
+- Strides: 步长。卷积核每次滑动的步幅。
+
+
+假设第$k-1$层输出图像的维度为$n_1^{(k-1)}\times n_2^{(k-1)}\times m^{(k-1)}$, 经过第$k$层的卷积运算，得到的图片维度为$n_1^{(k)}\times n_2^{(k)}\times m^{(k)}$。相关超参数总结如下：
+
+| 特征      | 超参数    |
+| :---:   | :----:    |
+| 输入大小| $n_1^{(k-1)}\times n_2^{(k-1)}$ |
+| 输入特征| $m^{(k-1)}$ |
+| 输出特征(卷积核)| $m^{(k)}$ |
+| **补零** | $p_1^{(k)},p_2^{(k)}$ |
+| **膨胀**| $d_1^{(k)},d_2^{(k)}$ |
+| **步长**| $s_1^{(k)},s_2^{(k)}$ |
+| 输出大小| $n_1^{(k)}\times n_2^{(k)}$ |
+
+其中，输出大小$n_1^{(k)}\times n_2^{(k)}$由输入大小$n_1^{(k-1)}\times n_2^{(k-1)}$和补零、膨胀、步长决定。具体计算为？
+
+
+## 池化层 (Pooling)
+
+也称下采样层，其作用是进行特征选择，降低特征数量，从而减少参数数量。在图像中，最主要作用就是压缩图像。池化层一般分为平均池化和最大池化。
+
+<div class="figure" style="text-align: center">
+<img src="./plots/9/pooling.png" alt="Pooling" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-5)Pooling</p>
+</div>
+
+## 批标准化层 (Batch Normalization)
+
+在batch上进行标准化后再送入下一层，它可以防止梯度消失和梯度爆炸问题，加快收敛速度。主要分为两步：
+
+1. 通过训练期间各批次的参数平均值和方差对输入进行移位和缩放。
+
+2. 通过训练期间学习的后两个（可学习）参数进行移位和缩放。
+
+？？Detailed Algorithm
+
+## 其他组件
 
 ### 全连接层 (Dense)
 
-### 批标准化层 (Batch Normalization)
+全连接层中的每个神经元与其前一层的所有神经元进行全连接。
+CNN中因为图像是二维的，所以在进入全连接层的时候需要经过一个Flatten（扁平化）的操作。
+Flatten层作用就是通过重新排列维度并保留所有值的简单变换.
 
-### 扁平化 (Flatten)
+<div class="figure" style="text-align: center">
+<img src="./plots/9/dense.png" alt="Dense layer" width="50%"  />
+<p class="caption">(\#fig:unnamed-chunk-6)Dense layer</p>
+</div>
 
 ### 输出神经元
 
+即我们最后输出的结果，一般接在全连接层后。
+案例一是生存率问题，结果取值在$[0,1]$中，所以使用sigmoid的函数对最后的值进行缩放。案例二是多分类的输出结果，所以使用softmax函数进行输出。
+
+
+<div class="figure" style="text-align: center">
+<img src="./plots/9/sigmoid.png" alt="Activation Functions" width="30%"  />
+<p class="caption">(\#fig:unnamed-chunk-7-1)Activation Functions</p>
+</div><div class="figure" style="text-align: center">
+<img src="./plots/9/tanh.png" alt="Activation Functions" width="30%"  />
+<p class="caption">(\#fig:unnamed-chunk-7-2)Activation Functions</p>
+</div><div class="figure" style="text-align: center">
+<img src="./plots/9/relu.png" alt="Activation Functions" width="30%"  />
+<p class="caption">(\#fig:unnamed-chunk-7-3)Activation Functions</p>
+</div>
+
+
 ### 激活函数 (Activation)
+
+在上面讨论的网络层（卷积层、池化层和全连接层）中，所有的操作其实都是线性的，但只有使用非线性激活，网络建模的全部威力才会发挥出来。常用的非线性激活函数有：ReLU、sigmoid、tanh等
+
+<div class="figure" style="text-align: center">
+<img src="./plots/9/sigmoid.png" alt="Activation Functions" width="30%"  />
+<p class="caption">(\#fig:unnamed-chunk-8-1)Activation Functions</p>
+</div><div class="figure" style="text-align: center">
+<img src="./plots/9/tanh.png" alt="Activation Functions" width="30%"  />
+<p class="caption">(\#fig:unnamed-chunk-8-2)Activation Functions</p>
+</div><div class="figure" style="text-align: center">
+<img src="./plots/9/relu.png" alt="Activation Functions" width="30%"  />
+<p class="caption">(\#fig:unnamed-chunk-8-3)Activation Functions</p>
+</div>
 
 ## 特性
 
-### 平移不变性 (Shift Invariant)
+### 平移
 
 ### 旋转
 
@@ -40,11 +140,12 @@
 
 
 
-## 案例分析
 
-### [Human Mortality Database (HMD)](https://www.mortality.org)
+## [Human Mortality Database (HMD)](https://www.mortality.org)
 
 **目标**: 根据死亡率表的局部特征($10\times10$)，检测该局部异常死亡率强度。
+
+### 输入和标签
 
 死亡率$q_{x,t,c,g}$、人口数量$E_{x,t,c,g}$
 
@@ -67,11 +168,12 @@ W_{i,c,\cdot,\cdot,1}:=&(\text{logit}(q_{x,t,c,males}))_{x_i<x\le x_i+10, t_i<t\
 W_{i,c,\cdot,\cdot,2}:=&(\text{logit}(q_{x,t,c,females}))_{x_i<x\le x_i+10, t_i<t\le t_i+10}\\
 W_{i,c,\cdot,\cdot,3}:=&W_{i,c,\cdot,\cdot,1}-W_{i,c,\cdot,\cdot,2}
 \end{aligned}
-$$
+$$ 
+其中, $\text{logit }q =\log \frac{q}{1-q} $
 
 <div class="figure" style="text-align: center">
 <img src="./plots/9/window.png" alt="Mortality Window" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-2)Mortality Window</p>
+<p class="caption">(\#fig:unnamed-chunk-9)Mortality Window</p>
 </div>
 
 然后分别对三个通道进行正则化, 得到$\boldsymbol{X}_{i,c}\in[0,1]^{10\times10\times3}$. 通过对所有国家进行如上处理, 可以得到大约$4000$张图像.
@@ -81,6 +183,8 @@ $$Y_{i,c}:=\underset{x_i<x\le x_i+10, t_i<t\le t_i+10}{\max} \left|\frac{\bar{r}
 
 我们的目标是基于死亡率在大小为$10\times10$上的局部特征, 预测该范围内死亡率的异常强度.
 在训练神经网络时, 选取均方误差损失函数$$\mathcal{L}(Y,\hat{\mu}(\boldsymbol{X});\mathcal{I}):=\frac{1}{|\mathcal{I}|}\sum_{(i,c)\in\mathcal{I}}(Y_{i,c}-\hat{\mu}(\boldsymbol{X}_{i,c}))^2.$$
+
+### 评估指标
 
 在评估模型时, 我们通过如下步骤定义二分类AOC指标:
 
@@ -106,7 +210,7 @@ $$
 
 3. 对主成分$P_{j,c}, j=1,2$进行聚类, 得到4个簇.
 
-### MNIST dataset
+## MNIST dataset
 
 **目标**: 对手写$0-9$进行分类。
 
