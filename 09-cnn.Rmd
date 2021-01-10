@@ -1,0 +1,49 @@
+# 卷积神经网络 {#cnn}
+
+*万淇、蔡清扬、高光远*
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = F)
+```
+
+深度学习之所以这么热，大部分归功于卷积神经网络在计算机视觉上取得的巨大成功。卷积神经网络还可以用在自然语言处理、时间序列分析、异常检测、可穿戴设备与健康检测、GO。
+
+大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
+也可以应用于迁移学习。
+
+```{r lime,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Transfer learning"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/9/transfer_learn.png")
+```
+
+## CNN组件
+
+
+## 案例分析
+
+目标1: 根据死亡率表的局部发展特征，判断是否有异常死亡率发生。
+
+目标2: 对手写$0-9$进行分类。
+
+### [Human MMortality Database (HMD)](https://www.mortality.org)
+
+死亡率$q_{x,t,c,g}$、人口数量$E_{x,t,c,g}$
+
+- 年龄$x$, 日历年$t$, 国家$c$, 性别$g$.
+
+- 假定没有人口的迁移以及其他的误差：$$E_{x,t,c,g}=E_{x-1,t-1,c,g}(1-q_{{x-1},{t-1},c,g})$$
+
+- 定义标准化残差: $$r_{x,t,c,g}=\frac{E_{x,t,c,g}-E_{x-1,t-1,c,g}(1-q_{x-1,t-1,c,g})}{E_{x,t,c,g}}$$
+
+- 
+
+（x - 年龄、t - 日历年、c - 国家、g - 性别）
+数据预处理
+由于领土的变化，某些年的数据会出现变更前与变更后的的两个数据，处理方式是取平均值作为最后的研究数据
+某些死亡率数据存在缺失：如果相邻(以年龄x和日历年t)值可用，我们线性插补，否则使用最近邻的值进行插补
+
+
+### The Modified National Institute of Standards and Technology (MNIST) dataset
+
+
+
