@@ -270,7 +270,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
 <li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
 <li class="chapter" data-level="7.4" data-path="nlp.html"><a href="nlp.html#word-embeddings"><i class="fa fa-check"></i><b>7.4</b> Word embeddings</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.1</b> Pre-trained word embeddings</a></li>
+<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#neural-probabilistic-language-model"><i class="fa fa-check"></i><b>7.4.1</b> Neural probabilistic language model</a></li>
+<li class="chapter" data-level="7.4.2" data-path="nlp.html"><a href="nlp.html#word2vec"><i class="fa fa-check"></i><b>7.4.2</b> word2vec</a></li>
+<li class="chapter" data-level="7.4.3" data-path="nlp.html"><a href="nlp.html#global-vectors-for-word-representationglove"><i class="fa fa-check"></i><b>7.4.3</b> Global vectors for word representation(Glove)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.4</b> Pre-trained word embeddings</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
 <li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
@@ -319,11 +322,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
-<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#cnn组件"><i class="fa fa-check"></i><b>9.1</b> CNN组件</a></li>
-<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#案例分析-1"><i class="fa fa-check"></i><b>9.2</b> 案例分析</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="cnn.html"><a href="cnn.html#human-mmortality-database-hmd"><i class="fa fa-check"></i><b>9.2.1</b> <span>Human MMortality Database (HMD)</span></a></li>
-<li class="chapter" data-level="9.2.2" data-path="cnn.html"><a href="cnn.html#the-modified-national-institute-of-standards-and-technology-mnist-dataset"><i class="fa fa-check"></i><b>9.2.2</b> The Modified National Institute of Standards and Technology (MNIST) dataset</a></li>
+<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>9.1</b> 卷积层 (Convolution)</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>9.1.1</b> 超参数</a></li>
+<li class="chapter" data-level="9.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>9.1.2</b> 参数个数计算</a></li>
 </ul></li>
+<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>9.2</b> 池化层 (Pooling)</a></li>
+<li class="chapter" data-level="9.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>9.3</b> 批标准化层 (Batch Normalization)</a></li>
+<li class="chapter" data-level="9.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>9.4</b> 其他组件</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>9.4.1</b> 全连接层 (Dense)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>9.4.2</b> 输出神经元</a></li>
+<li class="chapter" data-level="9.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>9.4.3</b> 激活函数 (Activation)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>9.5</b> 特性</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>9.5.1</b> 平移不变性</a></li>
+<li class="chapter" data-level="9.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>9.5.2</b> 旋转不变性</a></li>
+<li class="chapter" data-level="9.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>9.5.3</b> 尺度不变性</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>9.6</b> 隐藏层可视化</a></li>
+<li class="chapter" data-level="9.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>9.7</b> 逆卷积</a></li>
+<li class="chapter" data-level="9.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>9.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
+<li class="chapter" data-level="9.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>9.8.1</b> 输入和标签</a></li>
+<li class="chapter" data-level="9.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>9.8.2</b> 评估指标</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>9.9</b> MNIST dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
@@ -415,14 +436,78 @@ Figure 7.1: NLP历史（2000年以后）
 <li><p>word2vec</p></li>
 <li><p>Global vectors for word representation</p></li>
 </ul>
+<div id="neural-probabilistic-language-model" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Neural probabilistic language model</h3>
+<p>传统的N-grams 模型认为，在第1个词到第t-1个词出现的情况下第t个词出现的条件概率，约等于在第t-n+1个词到第t-1个词出现的情况下第t个词出现的条件概率（N=n-1）。但传统模型没有对“词汇相似性”的概念进行编码，也存在测试时输入的词序列很可能不同于所有用来训练模型的单词序列的问题。为了解决这个问题，引入前馈式神经网络。</p>
+该前馈式神经网络用输入的第t个词前的n-1个词预测第t个词出现的概率，的结构如下：
+<div class="figure" style="text-align: center"><span id="fig:nplm"></span>
+<img src="plots/7/Nplm.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.2: 文档结构
+</p>
+</div>
+<p>使用神经网络的目的是寻找词表V到d维向量空间R的映射，即图中的矩阵C。</p>
+</div>
+<div id="word2vec" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> word2vec</h3>
+<p>word2vec使用了上下文（context）概念。
+词 w 的上下文 C(w) 指 w前面和后面的有限个词。C(w)的长度被定义为非负整数c，2c=|C(w)|。例如：
+‘Koalas and platypuses are mammals living in Australia’,c=2,w=‘are’
+C(w)={‘and’,‘platypuses’,‘mammals’,‘living’}</p>
+Word2vec有两个变体，skip-gram model和the continuous bag of words (CBOW) model。
+前者的思路是给定中心单词w，预测其上下文 C(w)。后者的思路是给定上下文C(w)，预测中心词w。
+两者的结构图如下：
+<div class="figure" style="text-align: center"><span id="fig:w2v"></span>
+<img src="plots/7/skm.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.3: 文档结构
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:w2v-2"></span>
+<img src="plots/7/skm2.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.4: 文档结构
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:w2v-3"></span>
+<img src="plots/7/CBOW.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.5: 文档结构
+</p>
+</div>
+<p>使用word2vec寻找词表V到d维向量空间R的映射，即寻找隐藏层的权重矩阵（skip-gram model第二张结构图中的橙色矩阵）。使用one-hot编码的词向量，乘以隐藏层的权重矩阵后，即得目标word vector。</p>
+</div>
+<div id="global-vectors-for-word-representationglove" class="section level3">
+<h3><span class="header-section-number">7.4.3</span> Global vectors for word representation(Glove)</h3>
+word2vec仅在上下文考虑词与词共现的概率，Glove通过整个语料库计算词-词共现次数矩阵。
+例如，C={‘Cats and koalas are mammals.’,‘Tortoises are not mammals.’,‘I like cats,koalas and tortoises’.}
+其词-词共现次数矩阵为：
+<div class="figure" style="text-align: center"><span id="fig:glove"></span>
+<img src="plots/7/word-word%20co-occurrence.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.6: 文档结构
+</p>
+</div>
+与词-词共现次数或概率相比，词-词共现概率比更能区分相关词和不相关词。
+记Pij为词j出现在词i上下文的概率。Glove的思路是找到一个定义在中心词i的嵌入向量、中心词j的嵌入向量，以及上下文词k的嵌入向量上的一个函数F，使之尽可能等于Pik/Pjk。
+这转化为一个加权最小二乘问题：
+<div class="figure" style="text-align: center"><span id="fig:glove-1"></span>
+<img src="plots/7/glove.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.7: 文档结构
+</p>
+</div>
+<p>其中，g()是权重函数，b是标量偏差，Xik是词i与词k的全局共现数。
+Glove的目标是最小化J，以期求得词的嵌入向量。</p>
+</div>
 <div id="pre-trained-word-embeddings" class="section level3">
-<h3><span class="header-section-number">7.4.1</span> Pre-trained word embeddings</h3>
+<h3><span class="header-section-number">7.4.4</span> Pre-trained word embeddings</h3>
 <p>我们使用<code>en_core_web_sm</code>进行词嵌入，它可以把任意的词映射到<span class="math inline">\(\mathbb{R}^{96}\)</span>。另外，<code>en_core_web_mb</code>为更复杂的映射，可以把任意的词映射到<span class="math inline">\(\mathbb{R}^{300}\)</span>。对于一个包含多个词语的文本，我们用所有词语的词嵌入平均值来表示这个文本</p>
 </div>
 </div>
 <div id="机器学习算法" class="section level2">
 <h2><span class="header-section-number">7.5</span> 机器学习算法</h2>
-<p>通过bag-of-words, bag-of-POS，word embedding 我们把每个文本转变为一个向量。这样可以利用如下几种机器学习算法进行文本分类等监督学习。</p>
+<p>通过bag-of-words, bag-of-POS，word embedding 我们把每个文本转变为一个向量。这样可以利用如下几种机器学习算法进行文本分类等监督学习。（详见第四章提升方法（Boosting））</p>
 <ul>
 <li><p>AdaBoost</p></li>
 <li><p>Random Forest</p></li>
@@ -431,29 +516,91 @@ Figure 7.1: NLP历史（2000年以后）
 </div>
 <div id="神经网络" class="section level2">
 <h2><span class="header-section-number">7.6</span> 神经网络</h2>
+<ul>
+<li>RNN
+<div class="figure" style="text-align: center"><span id="fig:rnn"></span>
+<img src="plots/7/RNN.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.8: 文档结构
+</p>
+</div></li>
+<li>LSTM
+<div class="figure" style="text-align: center"><span id="fig:lstm"></span>
+<img src="plots/7/LSTM_1.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.9: 文档结构
+</p>
+</div></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:lstm-1"></span>
+<img src="plots/7/LSTM_2.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.10: 文档结构
+</p>
+</div>
+<ul>
+<li>GRU
+<div class="figure" style="text-align: center"><span id="fig:gru"></span>
+<img src="plots/7/GRU_1.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.11: 文档结构
+</p>
+</div></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:gru-1"></span>
+<img src="plots/7/GRU_2.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.12: 文档结构
+</p>
+</div>
 <div id="数据预处理-4" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> 数据预处理</h3>
 <p>在神经网络中，我们不需要进行以上bag-of-words, bag-of-POS, word embedding等人工特征工程，我们只需要用实数把文本中<strong>词语的顺序</strong>表征出来即可，神经网络可以同步进行特征工程和有监督训练。</p>
 <p>在python中可以使用Keras 中的<code>Tokenizer</code>模块把词语映射到非负整数上，此方法保持了保持了词语的顺序，是前面几种方法没有达到的。</p>
 <p>可以看到，使用神经网络时，我们仅仅需要进行很少的特征工程，词语的意义将由神经网络在监督学习中学到。文本是时间序列数据，常用于时间序列分析的模型包括</p>
 <ul>
-<li><p>LSTM</p></li>
-<li><p>GRU</p></li>
+<li><p>LSTM</p>
+<ul>
+<li>Shallow LSTM architecture
+<div class="figure" style="text-align: center"><span id="fig:lstm-s"></span>
+<img src="plots/7/Shallow%20LSTM.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.13: 文档结构
+</p>
+</div></li>
+<li>Deep LSTM architecture
+<div class="figure" style="text-align: center"><span id="fig:lstm-d"></span>
+<img src="plots/7/Deep%20LSTM.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.14: 文档结构
+</p>
+</div></li>
+</ul></li>
+<li><p>GRU</p>
+<ul>
+<li>Shallow GRU architecture
+<div class="figure" style="text-align: center"><span id="fig:gru-s"></span>
+<img src="plots/7/Shallow%20GRU.png" alt="文档结构" width="70%"  />
+<p class="caption">
+Figure 7.15: 文档结构
+</p>
+</div></li>
+</ul></li>
 </ul>
 </div>
 </div>
 <div id="case-study-1" class="section level2">
 <h2><span class="header-section-number">7.7</span> Case study</h2>
-<div class="figure" style="text-align: center"><span id="fig:files"></span>
+<div class="figure" style="text-align: center"><span id="fig:case"></span>
 <img src="plots/7/files.png" alt="文档结构" width="70%"  />
 <p class="caption">
-Figure 7.2: 文档结构
+Figure 7.16: 文档结构
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:procedure"></span>
 <img src="plots/7/procedure.png" alt="nlp4class_exercise步骤" width="70%"  />
 <p class="caption">
-Figure 7.3: nlp4class_exercise步骤
+Figure 7.17: nlp4class_exercise步骤
 </p>
 </div>
 <ul>
@@ -464,6 +611,89 @@ Figure 7.3: nlp4class_exercise步骤
 </ul>
 <div id="函数说明" class="section level3">
 <h3><span class="header-section-number">7.7.1</span> 函数说明</h3>
+<ul>
+<li>分词</li>
+</ul>
+<pre><code>import re
+def preprocessor(text):
+    text = re.sub(&#39;&lt;[^&gt;]*&gt;&#39;, &#39;&#39;, text)
+    emoticons = re.findall(&#39;(?::|;|=)(?:-)?(?:\)|\(|D|P)&#39;, text)
+    text = (re.sub(&#39;[\W]+&#39;, &#39; &#39;, text.lower()) +
+            &#39; &#39;.join(emoticons).replace(&#39;-&#39;, &#39;&#39;))
+    return text</code></pre>
+<p>引入Python中的re模块，定义preprocessor函数对文本进行第一步的清理，作用去掉文本中的非字母数字符号，并将所有字母都转化成小写。</p>
+<pre><code>from nltk.tokenize import word_tokenize
+tokens = word_tokenize(text)</code></pre>
+<p>从nltk.tokenize导入word_tokenize函数对清理后的文本进行分词，返回值由单词组成的列表。</p>
+<ul>
+<li>删除停止词</li>
+</ul>
+<pre><code>import nltk
+from nltk.corpus import stopwords
+
+stopwords = list(set(stopwords.words(&#39;english&#39;)))
+filtered_tokens = [word for word in tokens if word not in stopwords]</code></pre>
+<p>导入nltk.corpus中的停用词表，删除列表中出现在停用词表中的所有单词，不改变词序。</p>
+<ul>
+<li>词性标注</li>
+</ul>
+<pre><code>from nltk import pos_tag
+nltk.download(&#39;averaged_perceptron_tagger&#39;)
+
+def pos_tags(text_processed):
+    return &quot;-&quot;.join( tag for (word, tag) in nltk.pos_tag(text_processed))
+
+pos_tag = pos_tags(filtered_tokens)</code></pre>
+<p>导入nltk中的pos_tag函数，该函数的作用是根据训练好的模型给出单词对应的词性，返回值是一个元组，元组中的两个元素分别是原单词和对应的词性标注。
+重新定义词性标注函数pos_tags，最终返回一个由“-”连接的字符串，它按顺序连接了经过预处理的文本中每个单词的词性数据。</p>
+<ul>
+<li>TfidfVectorizer()</li>
+</ul>
+<pre><code>from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+
+tfidf = c(strip_accents=None,
+                        lowercase=False,
+                        preprocessor=None)
+                        
+tfidf_wm = tfidf.fit_transform([pos_tag])
+</code></pre>
+<p>TfidfVectorizer将文本转化为向量； 向量的属性对应词典中的单词(n个)，属性值是每个单词的tfidf值； 每个向量代表一个文本； n个文本构成n*p矩阵；
+TfidfVectorizer.fit_transform的输入值是经过预处理的文本列表时，得到bag of words模型的输入矩阵；当输入值是相应的词性序列列表时，得到bag of POS模型的输入矩阵。</p>
+<ul>
+<li>word embeddings</li>
+</ul>
+<pre><code>import spacy
+nlp = spacy.load(&#39;en_core_web_sm&#39;) 
+
+import numpy as np
+emb = nlp(text_filtered).vector
+</code></pre>
+<p>根据’en_core_web_sm’模型将文本转化为向量，向量的维数是由模型本身决定的。可以根据实际研究需要选择合适的模型。由这样的文本向量构成的矩阵就是word embeddings模型的最终输入。</p>
+<ul>
+<li>RNN的预处理</li>
+</ul>
+<pre><code>from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+vocab_size = 400
+#取前400个最高频词汇作为文本的词序标记，即只对文本中出现在前400个最高频词汇中的单词进行词序映射
+#如某评论为&#39;w1 w2 w3&#39;，其中单词w1、w2和w3对应的频数排名分别为30，405，108，
+#则与该评论对应的词序向量为[30, 108]
+tokenizer = Tokenizer(num_words=vocab_size, 
+                      filters=&#39;!&quot;#$%&amp;()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~\t\n&#39;, # filters out all punctuation other than &#39;
+                      lower=True, # convert to lowercase
+                      split=&#39; &#39;) # split on whitespaces
+tokenizer.fit_on_texts(df[&#39;review&#39;])
+list_tokenized = tokenizer.texts_to_sequences(df[&#39;review&#39;])
+
+sequence_length = 200
+#统一文本的词序向量长度为200
+#若前面生成的词序向量长度大于200（即文本中有超过200个单词出现在我们用于映射的高频词汇表中，此例中为前400），则取后200个元素
+#若前面生成的词序向量长度小于200，则前面用0补足
+sequences = pad_sequences(list_tokenized, maxlen=sequence_length)
+</code></pre>
+<p>在神经网络中，文本向量化不需要用到nlp中事先训练好的模型，文本中的词语替换为该词在词汇表中的索引（即频数排名次序）。</p>
 </div>
 <div id="可能遇到的问题" class="section level3">
 <h3><span class="header-section-number">7.7.2</span> 可能遇到的问题</h3>
@@ -491,19 +721,6 @@ nlp = spacy.load(‘en_core_web_sm’)
 </div>
 <div id="结果比较" class="section level3">
 <h3><span class="header-section-number">7.7.3</span> 结果比较</h3>
-<p><em>以下仅为表例</em></p>
-<p><span class="math display">\[
-\begin{array}{|l|c|cc|c|}
-\hline &amp;  {\text { in-sample }} &amp; {\text { out-of-sample }} &amp; {\text { out-of-sample }}&amp;  {\text { run times }}\\
-&amp; \text {both genders} &amp; \text { female } &amp; \text { male } &amp; \text {both genders} \\
-\hline \hline \text { LSTM3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.7643 &amp; 0.3402 &amp; 1.1346 &amp; 404 \mathrm{s}\\
-\text { GRU3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) &amp; 4.6311 &amp; 0.4646 &amp; 1.2571 &amp;  379 \mathrm{s} \\
-\hline\hline \text { LSTM3 averaged over 100 different seeds} &amp; - &amp; 0.2451 &amp; 1.2093 &amp; 100 \cdot 404\mathrm{s}\\
-\text { GRU3 averaged over 100 different seeds } &amp; - &amp; 0.2341&amp; 1.2746 &amp;  100 \cdot 379 \mathrm{s} \\
-\hline \hline \text { LC model with SVD } &amp; 6.2841 &amp; 0.6045 &amp;1.8152 &amp;  - \\
-\hline
-\end{array}
-\]</span></p>
 </div>
 </div>
 <div id="结论-1" class="section level2">
@@ -552,7 +769,7 @@ gitbook.start({
 "all": "github"
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "serif",
 "size": 2
 },

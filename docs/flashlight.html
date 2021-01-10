@@ -270,7 +270,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
 <li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
 <li class="chapter" data-level="7.4" data-path="nlp.html"><a href="nlp.html#word-embeddings"><i class="fa fa-check"></i><b>7.4</b> Word embeddings</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.1</b> Pre-trained word embeddings</a></li>
+<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#neural-probabilistic-language-model"><i class="fa fa-check"></i><b>7.4.1</b> Neural probabilistic language model</a></li>
+<li class="chapter" data-level="7.4.2" data-path="nlp.html"><a href="nlp.html#word2vec"><i class="fa fa-check"></i><b>7.4.2</b> word2vec</a></li>
+<li class="chapter" data-level="7.4.3" data-path="nlp.html"><a href="nlp.html#global-vectors-for-word-representationglove"><i class="fa fa-check"></i><b>7.4.3</b> Global vectors for word representation(Glove)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.4</b> Pre-trained word embeddings</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
 <li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
@@ -319,11 +322,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
-<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#cnn组件"><i class="fa fa-check"></i><b>9.1</b> CNN组件</a></li>
-<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#案例分析-1"><i class="fa fa-check"></i><b>9.2</b> 案例分析</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="cnn.html"><a href="cnn.html#human-mmortality-database-hmd"><i class="fa fa-check"></i><b>9.2.1</b> <span>Human MMortality Database (HMD)</span></a></li>
-<li class="chapter" data-level="9.2.2" data-path="cnn.html"><a href="cnn.html#the-modified-national-institute-of-standards-and-technology-mnist-dataset"><i class="fa fa-check"></i><b>9.2.2</b> The Modified National Institute of Standards and Technology (MNIST) dataset</a></li>
+<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>9.1</b> 卷积层 (Convolution)</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>9.1.1</b> 超参数</a></li>
+<li class="chapter" data-level="9.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>9.1.2</b> 参数个数计算</a></li>
 </ul></li>
+<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>9.2</b> 池化层 (Pooling)</a></li>
+<li class="chapter" data-level="9.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>9.3</b> 批标准化层 (Batch Normalization)</a></li>
+<li class="chapter" data-level="9.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>9.4</b> 其他组件</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>9.4.1</b> 全连接层 (Dense)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>9.4.2</b> 输出神经元</a></li>
+<li class="chapter" data-level="9.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>9.4.3</b> 激活函数 (Activation)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>9.5</b> 特性</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>9.5.1</b> 平移不变性</a></li>
+<li class="chapter" data-level="9.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>9.5.2</b> 旋转不变性</a></li>
+<li class="chapter" data-level="9.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>9.5.3</b> 尺度不变性</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>9.6</b> 隐藏层可视化</a></li>
+<li class="chapter" data-level="9.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>9.7</b> 逆卷积</a></li>
+<li class="chapter" data-level="9.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>9.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
+<li class="chapter" data-level="9.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>9.8.1</b> 输入和标签</a></li>
+<li class="chapter" data-level="9.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>9.8.2</b> 评估指标</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>9.9</b> MNIST dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
@@ -561,109 +582,109 @@ Figure 8.1: LIME
 <h2><span class="header-section-number">8.10</span> 案例分析</h2>
 <div id="导入包" class="section level3">
 <h3><span class="header-section-number">8.10.1</span> 导入包</h3>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="flashlight.html#cb92-1"></a><span class="kw">library</span>(CASdatasets)      <span class="co"># 1.0.6</span></span>
-<span id="cb92-2"><a href="flashlight.html#cb92-2"></a><span class="kw">library</span>(dplyr)            <span class="co"># 0.8.5</span></span>
-<span id="cb92-3"><a href="flashlight.html#cb92-3"></a><span class="kw">library</span>(forcats)          <span class="co"># 0.5.0</span></span>
-<span id="cb92-4"><a href="flashlight.html#cb92-4"></a><span class="kw">library</span>(reshape2)         <span class="co"># 1.4.3</span></span>
-<span id="cb92-5"><a href="flashlight.html#cb92-5"></a><span class="kw">library</span>(corrplot)         <span class="co"># 0.84</span></span>
-<span id="cb92-6"><a href="flashlight.html#cb92-6"></a><span class="kw">library</span>(ggplot2)          <span class="co"># 3.3.0</span></span>
-<span id="cb92-7"><a href="flashlight.html#cb92-7"></a><span class="kw">library</span>(splines)          <span class="co"># 3.6.3</span></span>
-<span id="cb92-8"><a href="flashlight.html#cb92-8"></a><span class="kw">library</span>(splitTools)       <span class="co"># 0.2.0</span></span>
-<span id="cb92-9"><a href="flashlight.html#cb92-9"></a><span class="kw">library</span>(xgboost)          <span class="co"># 1.0.0.2</span></span>
-<span id="cb92-10"><a href="flashlight.html#cb92-10"></a><span class="kw">library</span>(keras)            <span class="co"># 2.2.5.0</span></span>
-<span id="cb92-11"><a href="flashlight.html#cb92-11"></a><span class="kw">library</span>(MetricsWeighted)  <span class="co"># 0.5.0</span></span>
-<span id="cb92-12"><a href="flashlight.html#cb92-12"></a><span class="kw">library</span>(flashlight)       <span class="co"># 0.7.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="flashlight.html#cb99-1"></a><span class="kw">library</span>(CASdatasets)      <span class="co"># 1.0.6</span></span>
+<span id="cb99-2"><a href="flashlight.html#cb99-2"></a><span class="kw">library</span>(dplyr)            <span class="co"># 0.8.5</span></span>
+<span id="cb99-3"><a href="flashlight.html#cb99-3"></a><span class="kw">library</span>(forcats)          <span class="co"># 0.5.0</span></span>
+<span id="cb99-4"><a href="flashlight.html#cb99-4"></a><span class="kw">library</span>(reshape2)         <span class="co"># 1.4.3</span></span>
+<span id="cb99-5"><a href="flashlight.html#cb99-5"></a><span class="kw">library</span>(corrplot)         <span class="co"># 0.84</span></span>
+<span id="cb99-6"><a href="flashlight.html#cb99-6"></a><span class="kw">library</span>(ggplot2)          <span class="co"># 3.3.0</span></span>
+<span id="cb99-7"><a href="flashlight.html#cb99-7"></a><span class="kw">library</span>(splines)          <span class="co"># 3.6.3</span></span>
+<span id="cb99-8"><a href="flashlight.html#cb99-8"></a><span class="kw">library</span>(splitTools)       <span class="co"># 0.2.0</span></span>
+<span id="cb99-9"><a href="flashlight.html#cb99-9"></a><span class="kw">library</span>(xgboost)          <span class="co"># 1.0.0.2</span></span>
+<span id="cb99-10"><a href="flashlight.html#cb99-10"></a><span class="kw">library</span>(keras)            <span class="co"># 2.2.5.0</span></span>
+<span id="cb99-11"><a href="flashlight.html#cb99-11"></a><span class="kw">library</span>(MetricsWeighted)  <span class="co"># 0.5.0</span></span>
+<span id="cb99-12"><a href="flashlight.html#cb99-12"></a><span class="kw">library</span>(flashlight)       <span class="co"># 0.7.2</span></span></code></pre></div>
 </div>
 <div id="预处理-1" class="section level3">
 <h3><span class="header-section-number">8.10.2</span> 预处理</h3>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="flashlight.html#cb93-1"></a><span class="kw">data</span>(freMTPL2freq)</span>
-<span id="cb93-2"><a href="flashlight.html#cb93-2"></a></span>
-<span id="cb93-3"><a href="flashlight.html#cb93-3"></a>distinct &lt;-<span class="st"> </span>freMTPL2freq <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb93-4"><a href="flashlight.html#cb93-4"></a><span class="st">  </span><span class="kw">distinct_at</span>(<span class="kw">vars</span>(<span class="op">-</span><span class="kw">c</span>(IDpol, Exposure, ClaimNb))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb93-5"><a href="flashlight.html#cb93-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group_id =</span> <span class="kw">row_number</span>())</span>
-<span id="cb93-6"><a href="flashlight.html#cb93-6"></a></span>
-<span id="cb93-7"><a href="flashlight.html#cb93-7"></a>dat &lt;-<span class="st"> </span>freMTPL2freq <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb93-8"><a href="flashlight.html#cb93-8"></a><span class="st">  </span><span class="kw">left_join</span>(distinct) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb93-9"><a href="flashlight.html#cb93-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Exposure =</span> <span class="kw">pmin</span>(<span class="dv">1</span>, Exposure),</span>
-<span id="cb93-10"><a href="flashlight.html#cb93-10"></a>         <span class="dt">Freq =</span> <span class="kw">pmin</span>(<span class="dv">15</span>, ClaimNb <span class="op">/</span><span class="st"> </span>Exposure),</span>
-<span id="cb93-11"><a href="flashlight.html#cb93-11"></a>         <span class="dt">VehPower =</span> <span class="kw">pmin</span>(<span class="dv">12</span>, VehPower),</span>
-<span id="cb93-12"><a href="flashlight.html#cb93-12"></a>         <span class="dt">VehAge =</span> <span class="kw">pmin</span>(<span class="dv">20</span>, VehAge),</span>
-<span id="cb93-13"><a href="flashlight.html#cb93-13"></a>         <span class="dt">VehGas =</span> <span class="kw">factor</span>(VehGas),</span>
-<span id="cb93-14"><a href="flashlight.html#cb93-14"></a>         <span class="dt">DrivAge =</span> <span class="kw">pmin</span>(<span class="dv">85</span>, DrivAge),</span>
-<span id="cb93-15"><a href="flashlight.html#cb93-15"></a>         <span class="dt">logDensity =</span> <span class="kw">log</span>(Density),</span>
-<span id="cb93-16"><a href="flashlight.html#cb93-16"></a>         <span class="dt">VehBrand =</span> <span class="kw">factor</span>(VehBrand, <span class="dt">levels =</span> </span>
-<span id="cb93-17"><a href="flashlight.html#cb93-17"></a>                             <span class="kw">paste0</span>(<span class="st">&quot;B&quot;</span>, <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">14</span>))),</span>
-<span id="cb93-18"><a href="flashlight.html#cb93-18"></a>         <span class="dt">PolicyRegion =</span> <span class="kw">relevel</span>(Region, <span class="st">&quot;Ile-de-France&quot;</span>),</span>
-<span id="cb93-19"><a href="flashlight.html#cb93-19"></a>         <span class="dt">AreaCode =</span> Area)</span>
-<span id="cb93-20"><a href="flashlight.html#cb93-20"></a></span>
-<span id="cb93-21"><a href="flashlight.html#cb93-21"></a><span class="co"># Covariables, Response, Weight</span></span>
-<span id="cb93-22"><a href="flashlight.html#cb93-22"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;VehPower&quot;</span>, <span class="st">&quot;VehAge&quot;</span>,  <span class="st">&quot;VehBrand&quot;</span>, <span class="st">&quot;VehGas&quot;</span>, <span class="st">&quot;DrivAge&quot;</span>,</span>
-<span id="cb93-23"><a href="flashlight.html#cb93-23"></a>       <span class="st">&quot;logDensity&quot;</span>, <span class="st">&quot;PolicyRegion&quot;</span>)</span>
-<span id="cb93-24"><a href="flashlight.html#cb93-24"></a>y &lt;-<span class="st"> &quot;Freq&quot;</span></span>
-<span id="cb93-25"><a href="flashlight.html#cb93-25"></a>w &lt;-<span class="st"> &quot;Exposure&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="flashlight.html#cb100-1"></a><span class="kw">data</span>(freMTPL2freq)</span>
+<span id="cb100-2"><a href="flashlight.html#cb100-2"></a></span>
+<span id="cb100-3"><a href="flashlight.html#cb100-3"></a>distinct &lt;-<span class="st"> </span>freMTPL2freq <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb100-4"><a href="flashlight.html#cb100-4"></a><span class="st">  </span><span class="kw">distinct_at</span>(<span class="kw">vars</span>(<span class="op">-</span><span class="kw">c</span>(IDpol, Exposure, ClaimNb))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb100-5"><a href="flashlight.html#cb100-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">group_id =</span> <span class="kw">row_number</span>())</span>
+<span id="cb100-6"><a href="flashlight.html#cb100-6"></a></span>
+<span id="cb100-7"><a href="flashlight.html#cb100-7"></a>dat &lt;-<span class="st"> </span>freMTPL2freq <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb100-8"><a href="flashlight.html#cb100-8"></a><span class="st">  </span><span class="kw">left_join</span>(distinct) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb100-9"><a href="flashlight.html#cb100-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Exposure =</span> <span class="kw">pmin</span>(<span class="dv">1</span>, Exposure),</span>
+<span id="cb100-10"><a href="flashlight.html#cb100-10"></a>         <span class="dt">Freq =</span> <span class="kw">pmin</span>(<span class="dv">15</span>, ClaimNb <span class="op">/</span><span class="st"> </span>Exposure),</span>
+<span id="cb100-11"><a href="flashlight.html#cb100-11"></a>         <span class="dt">VehPower =</span> <span class="kw">pmin</span>(<span class="dv">12</span>, VehPower),</span>
+<span id="cb100-12"><a href="flashlight.html#cb100-12"></a>         <span class="dt">VehAge =</span> <span class="kw">pmin</span>(<span class="dv">20</span>, VehAge),</span>
+<span id="cb100-13"><a href="flashlight.html#cb100-13"></a>         <span class="dt">VehGas =</span> <span class="kw">factor</span>(VehGas),</span>
+<span id="cb100-14"><a href="flashlight.html#cb100-14"></a>         <span class="dt">DrivAge =</span> <span class="kw">pmin</span>(<span class="dv">85</span>, DrivAge),</span>
+<span id="cb100-15"><a href="flashlight.html#cb100-15"></a>         <span class="dt">logDensity =</span> <span class="kw">log</span>(Density),</span>
+<span id="cb100-16"><a href="flashlight.html#cb100-16"></a>         <span class="dt">VehBrand =</span> <span class="kw">factor</span>(VehBrand, <span class="dt">levels =</span> </span>
+<span id="cb100-17"><a href="flashlight.html#cb100-17"></a>                             <span class="kw">paste0</span>(<span class="st">&quot;B&quot;</span>, <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">14</span>))),</span>
+<span id="cb100-18"><a href="flashlight.html#cb100-18"></a>         <span class="dt">PolicyRegion =</span> <span class="kw">relevel</span>(Region, <span class="st">&quot;Ile-de-France&quot;</span>),</span>
+<span id="cb100-19"><a href="flashlight.html#cb100-19"></a>         <span class="dt">AreaCode =</span> Area)</span>
+<span id="cb100-20"><a href="flashlight.html#cb100-20"></a></span>
+<span id="cb100-21"><a href="flashlight.html#cb100-21"></a><span class="co"># Covariables, Response, Weight</span></span>
+<span id="cb100-22"><a href="flashlight.html#cb100-22"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;VehPower&quot;</span>, <span class="st">&quot;VehAge&quot;</span>,  <span class="st">&quot;VehBrand&quot;</span>, <span class="st">&quot;VehGas&quot;</span>, <span class="st">&quot;DrivAge&quot;</span>,</span>
+<span id="cb100-23"><a href="flashlight.html#cb100-23"></a>       <span class="st">&quot;logDensity&quot;</span>, <span class="st">&quot;PolicyRegion&quot;</span>)</span>
+<span id="cb100-24"><a href="flashlight.html#cb100-24"></a>y &lt;-<span class="st"> &quot;Freq&quot;</span></span>
+<span id="cb100-25"><a href="flashlight.html#cb100-25"></a>w &lt;-<span class="st"> &quot;Exposure&quot;</span></span></code></pre></div>
 </div>
 <div id="描述性统计" class="section level3">
 <h3><span class="header-section-number">8.10.3</span> 描述性统计</h3>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="flashlight.html#cb94-1"></a><span class="co"># Univariate description</span></span>
-<span id="cb94-2"><a href="flashlight.html#cb94-2"></a></span>
-<span id="cb94-3"><a href="flashlight.html#cb94-3"></a>melted &lt;-<span class="st"> </span>dat[<span class="kw">c</span>(<span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Exposure&quot;</span>, <span class="st">&quot;DrivAge&quot;</span>, <span class="st">&quot;VehAge&quot;</span>, <span class="st">&quot;VehPower&quot;</span>, <span class="st">&quot;logDensity&quot;</span>)] <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-4"><a href="flashlight.html#cb94-4"></a><span class="st">  </span><span class="kw">stack</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-5"><a href="flashlight.html#cb94-5"></a><span class="st">  </span><span class="kw">filter</span>(ind <span class="op">!=</span><span class="st"> &quot;Freq&quot;</span> <span class="op">|</span><span class="st"> </span>values <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-6"><a href="flashlight.html#cb94-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ind =</span> <span class="kw">fct_recode</span>(ind, </span>
-<span id="cb94-7"><a href="flashlight.html#cb94-7"></a>                          <span class="st">`</span><span class="dt">Driver&#39;s age</span><span class="st">`</span> =<span class="st"> &quot;DrivAge&quot;</span>, </span>
-<span id="cb94-8"><a href="flashlight.html#cb94-8"></a>                          <span class="st">`</span><span class="dt">Vehicle&#39;s age</span><span class="st">`</span> =<span class="st"> &quot;VehAge&quot;</span>, </span>
-<span id="cb94-9"><a href="flashlight.html#cb94-9"></a>                          <span class="st">`</span><span class="dt">Vehicle power</span><span class="st">`</span> =<span class="st"> &quot;VehPower&quot;</span>, </span>
-<span id="cb94-10"><a href="flashlight.html#cb94-10"></a>                          <span class="st">`</span><span class="dt">Logarithmic density</span><span class="st">`</span> =<span class="st"> &quot;logDensity&quot;</span>))</span>
-<span id="cb94-11"><a href="flashlight.html#cb94-11"></a></span>
-<span id="cb94-12"><a href="flashlight.html#cb94-12"></a><span class="kw">ggplot</span>(melted, <span class="kw">aes</span>(<span class="dt">x=</span>values)) <span class="op">+</span></span>
-<span id="cb94-13"><a href="flashlight.html#cb94-13"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">19</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-14"><a href="flashlight.html#cb94-14"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>ind, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-15"><a href="flashlight.html#cb94-15"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">element_blank</span>(), <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
-<span id="cb94-16"><a href="flashlight.html#cb94-16"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>(),</span>
-<span id="cb94-17"><a href="flashlight.html#cb94-17"></a>        <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),</span>
-<span id="cb94-18"><a href="flashlight.html#cb94-18"></a>        <span class="dt">axis.ticks.y =</span> <span class="kw">element_blank</span>())</span>
-<span id="cb94-19"><a href="flashlight.html#cb94-19"></a></span>
-<span id="cb94-20"><a href="flashlight.html#cb94-20"></a><span class="co"># Bivariate description</span></span>
-<span id="cb94-21"><a href="flashlight.html#cb94-21"></a></span>
-<span id="cb94-22"><a href="flashlight.html#cb94-22"></a>cor_mat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-23"><a href="flashlight.html#cb94-23"></a><span class="st">  </span><span class="kw">select_at</span>(<span class="kw">c</span>(x, <span class="st">&quot;BonusMalus&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-24"><a href="flashlight.html#cb94-24"></a><span class="st">  </span><span class="kw">select_if</span>(is.numeric) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-25"><a href="flashlight.html#cb94-25"></a><span class="st">  </span><span class="kw">cor</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-26"><a href="flashlight.html#cb94-26"></a><span class="st">  </span><span class="kw">round</span>(<span class="dv">2</span>)</span>
-<span id="cb94-27"><a href="flashlight.html#cb94-27"></a><span class="kw">corrplot</span>(cor_mat, <span class="dt">method =</span> <span class="st">&quot;square&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="dt">diag =</span> <span class="ot">FALSE</span>, <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb94-28"><a href="flashlight.html#cb94-28"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">tl.col =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb94-29"><a href="flashlight.html#cb94-29"></a></span>
-<span id="cb94-30"><a href="flashlight.html#cb94-30"></a></span>
-<span id="cb94-31"><a href="flashlight.html#cb94-31"></a><span class="co"># Boxplots</span></span>
-<span id="cb94-32"><a href="flashlight.html#cb94-32"></a>th &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</span>
-<span id="cb94-33"><a href="flashlight.html#cb94-33"></a></span>
-<span id="cb94-34"><a href="flashlight.html#cb94-34"></a><span class="co"># BonusMalus nach DrivAge</span></span>
-<span id="cb94-35"><a href="flashlight.html#cb94-35"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-36"><a href="flashlight.html#cb94-36"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DrivAge =</span> <span class="kw">cut</span>(DrivAge, <span class="kw">c</span>(<span class="dv">17</span><span class="op">:</span><span class="dv">24</span>, <span class="kw">seq</span>(<span class="dv">25</span>, <span class="dv">85</span>, <span class="dv">10</span>)), </span>
-<span id="cb94-37"><a href="flashlight.html#cb94-37"></a>                       <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">25</span>, <span class="st">&quot;26-35&quot;</span>, <span class="st">&quot;36-45&quot;</span>, <span class="st">&quot;46-55&quot;</span>, <span class="st">&quot;56-65&quot;</span>, <span class="st">&quot;66-75&quot;</span>, <span class="st">&quot;76+&quot;</span>),</span>
-<span id="cb94-38"><a href="flashlight.html#cb94-38"></a>                       <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb94-39"><a href="flashlight.html#cb94-39"></a>         <span class="dt">DrivAge =</span> <span class="kw">fct_recode</span>(DrivAge)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-40"><a href="flashlight.html#cb94-40"></a><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> DrivAge, <span class="dt">y =</span> BonusMalus)) <span class="op">+</span></span>
-<span id="cb94-41"><a href="flashlight.html#cb94-41"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-42"><a href="flashlight.html#cb94-42"></a><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">125</span>))</span>
-<span id="cb94-43"><a href="flashlight.html#cb94-43"></a></span>
-<span id="cb94-44"><a href="flashlight.html#cb94-44"></a><span class="co"># Brand/vehicle age</span></span>
-<span id="cb94-45"><a href="flashlight.html#cb94-45"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-46"><a href="flashlight.html#cb94-46"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> VehBrand, <span class="dt">y =</span> VehAge)) <span class="op">+</span></span>
-<span id="cb94-47"><a href="flashlight.html#cb94-47"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-48"><a href="flashlight.html#cb94-48"></a><span class="st">  </span>th</span>
-<span id="cb94-49"><a href="flashlight.html#cb94-49"></a></span>
-<span id="cb94-50"><a href="flashlight.html#cb94-50"></a><span class="co"># Density/Area</span></span>
-<span id="cb94-51"><a href="flashlight.html#cb94-51"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-52"><a href="flashlight.html#cb94-52"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> AreaCode, <span class="dt">y =</span> logDensity)) <span class="op">+</span></span>
-<span id="cb94-53"><a href="flashlight.html#cb94-53"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-54"><a href="flashlight.html#cb94-54"></a><span class="st">  </span>th</span>
-<span id="cb94-55"><a href="flashlight.html#cb94-55"></a></span>
-<span id="cb94-56"><a href="flashlight.html#cb94-56"></a><span class="co"># Density/Region</span></span>
-<span id="cb94-57"><a href="flashlight.html#cb94-57"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb94-58"><a href="flashlight.html#cb94-58"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Region, <span class="dt">y =</span> logDensity)) <span class="op">+</span></span>
-<span id="cb94-59"><a href="flashlight.html#cb94-59"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
-<span id="cb94-60"><a href="flashlight.html#cb94-60"></a><span class="st">  </span>th</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="flashlight.html#cb101-1"></a><span class="co"># Univariate description</span></span>
+<span id="cb101-2"><a href="flashlight.html#cb101-2"></a></span>
+<span id="cb101-3"><a href="flashlight.html#cb101-3"></a>melted &lt;-<span class="st"> </span>dat[<span class="kw">c</span>(<span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Exposure&quot;</span>, <span class="st">&quot;DrivAge&quot;</span>, <span class="st">&quot;VehAge&quot;</span>, <span class="st">&quot;VehPower&quot;</span>, <span class="st">&quot;logDensity&quot;</span>)] <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-4"><a href="flashlight.html#cb101-4"></a><span class="st">  </span><span class="kw">stack</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-5"><a href="flashlight.html#cb101-5"></a><span class="st">  </span><span class="kw">filter</span>(ind <span class="op">!=</span><span class="st"> &quot;Freq&quot;</span> <span class="op">|</span><span class="st"> </span>values <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-6"><a href="flashlight.html#cb101-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ind =</span> <span class="kw">fct_recode</span>(ind, </span>
+<span id="cb101-7"><a href="flashlight.html#cb101-7"></a>                          <span class="st">`</span><span class="dt">Driver&#39;s age</span><span class="st">`</span> =<span class="st"> &quot;DrivAge&quot;</span>, </span>
+<span id="cb101-8"><a href="flashlight.html#cb101-8"></a>                          <span class="st">`</span><span class="dt">Vehicle&#39;s age</span><span class="st">`</span> =<span class="st"> &quot;VehAge&quot;</span>, </span>
+<span id="cb101-9"><a href="flashlight.html#cb101-9"></a>                          <span class="st">`</span><span class="dt">Vehicle power</span><span class="st">`</span> =<span class="st"> &quot;VehPower&quot;</span>, </span>
+<span id="cb101-10"><a href="flashlight.html#cb101-10"></a>                          <span class="st">`</span><span class="dt">Logarithmic density</span><span class="st">`</span> =<span class="st"> &quot;logDensity&quot;</span>))</span>
+<span id="cb101-11"><a href="flashlight.html#cb101-11"></a></span>
+<span id="cb101-12"><a href="flashlight.html#cb101-12"></a><span class="kw">ggplot</span>(melted, <span class="kw">aes</span>(<span class="dt">x=</span>values)) <span class="op">+</span></span>
+<span id="cb101-13"><a href="flashlight.html#cb101-13"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">19</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
+<span id="cb101-14"><a href="flashlight.html#cb101-14"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>ind, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="op">+</span></span>
+<span id="cb101-15"><a href="flashlight.html#cb101-15"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">element_blank</span>(), <span class="dt">y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span></span>
+<span id="cb101-16"><a href="flashlight.html#cb101-16"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>(),</span>
+<span id="cb101-17"><a href="flashlight.html#cb101-17"></a>        <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),</span>
+<span id="cb101-18"><a href="flashlight.html#cb101-18"></a>        <span class="dt">axis.ticks.y =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb101-19"><a href="flashlight.html#cb101-19"></a></span>
+<span id="cb101-20"><a href="flashlight.html#cb101-20"></a><span class="co"># Bivariate description</span></span>
+<span id="cb101-21"><a href="flashlight.html#cb101-21"></a></span>
+<span id="cb101-22"><a href="flashlight.html#cb101-22"></a>cor_mat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-23"><a href="flashlight.html#cb101-23"></a><span class="st">  </span><span class="kw">select_at</span>(<span class="kw">c</span>(x, <span class="st">&quot;BonusMalus&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-24"><a href="flashlight.html#cb101-24"></a><span class="st">  </span><span class="kw">select_if</span>(is.numeric) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-25"><a href="flashlight.html#cb101-25"></a><span class="st">  </span><span class="kw">cor</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-26"><a href="flashlight.html#cb101-26"></a><span class="st">  </span><span class="kw">round</span>(<span class="dv">2</span>)</span>
+<span id="cb101-27"><a href="flashlight.html#cb101-27"></a><span class="kw">corrplot</span>(cor_mat, <span class="dt">method =</span> <span class="st">&quot;square&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;lower&quot;</span>, <span class="dt">diag =</span> <span class="ot">FALSE</span>, <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb101-28"><a href="flashlight.html#cb101-28"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">tl.col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb101-29"><a href="flashlight.html#cb101-29"></a></span>
+<span id="cb101-30"><a href="flashlight.html#cb101-30"></a></span>
+<span id="cb101-31"><a href="flashlight.html#cb101-31"></a><span class="co"># Boxplots</span></span>
+<span id="cb101-32"><a href="flashlight.html#cb101-32"></a>th &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))</span>
+<span id="cb101-33"><a href="flashlight.html#cb101-33"></a></span>
+<span id="cb101-34"><a href="flashlight.html#cb101-34"></a><span class="co"># BonusMalus nach DrivAge</span></span>
+<span id="cb101-35"><a href="flashlight.html#cb101-35"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-36"><a href="flashlight.html#cb101-36"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DrivAge =</span> <span class="kw">cut</span>(DrivAge, <span class="kw">c</span>(<span class="dv">17</span><span class="op">:</span><span class="dv">24</span>, <span class="kw">seq</span>(<span class="dv">25</span>, <span class="dv">85</span>, <span class="dv">10</span>)), </span>
+<span id="cb101-37"><a href="flashlight.html#cb101-37"></a>                       <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">18</span><span class="op">:</span><span class="dv">25</span>, <span class="st">&quot;26-35&quot;</span>, <span class="st">&quot;36-45&quot;</span>, <span class="st">&quot;46-55&quot;</span>, <span class="st">&quot;56-65&quot;</span>, <span class="st">&quot;66-75&quot;</span>, <span class="st">&quot;76+&quot;</span>),</span>
+<span id="cb101-38"><a href="flashlight.html#cb101-38"></a>                       <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb101-39"><a href="flashlight.html#cb101-39"></a>         <span class="dt">DrivAge =</span> <span class="kw">fct_recode</span>(DrivAge)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-40"><a href="flashlight.html#cb101-40"></a><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> DrivAge, <span class="dt">y =</span> BonusMalus)) <span class="op">+</span></span>
+<span id="cb101-41"><a href="flashlight.html#cb101-41"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
+<span id="cb101-42"><a href="flashlight.html#cb101-42"></a><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">125</span>))</span>
+<span id="cb101-43"><a href="flashlight.html#cb101-43"></a></span>
+<span id="cb101-44"><a href="flashlight.html#cb101-44"></a><span class="co"># Brand/vehicle age</span></span>
+<span id="cb101-45"><a href="flashlight.html#cb101-45"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-46"><a href="flashlight.html#cb101-46"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> VehBrand, <span class="dt">y =</span> VehAge)) <span class="op">+</span></span>
+<span id="cb101-47"><a href="flashlight.html#cb101-47"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
+<span id="cb101-48"><a href="flashlight.html#cb101-48"></a><span class="st">  </span>th</span>
+<span id="cb101-49"><a href="flashlight.html#cb101-49"></a></span>
+<span id="cb101-50"><a href="flashlight.html#cb101-50"></a><span class="co"># Density/Area</span></span>
+<span id="cb101-51"><a href="flashlight.html#cb101-51"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-52"><a href="flashlight.html#cb101-52"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> AreaCode, <span class="dt">y =</span> logDensity)) <span class="op">+</span></span>
+<span id="cb101-53"><a href="flashlight.html#cb101-53"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
+<span id="cb101-54"><a href="flashlight.html#cb101-54"></a><span class="st">  </span>th</span>
+<span id="cb101-55"><a href="flashlight.html#cb101-55"></a></span>
+<span id="cb101-56"><a href="flashlight.html#cb101-56"></a><span class="co"># Density/Region</span></span>
+<span id="cb101-57"><a href="flashlight.html#cb101-57"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-58"><a href="flashlight.html#cb101-58"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Region, <span class="dt">y =</span> logDensity)) <span class="op">+</span></span>
+<span id="cb101-59"><a href="flashlight.html#cb101-59"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">fill =</span> <span class="st">&quot;#E69F00&quot;</span>) <span class="op">+</span></span>
+<span id="cb101-60"><a href="flashlight.html#cb101-60"></a><span class="st">  </span>th</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:hist"></span>
 <img src="plots/8/hist.png" alt="LIME" width="50%"  />
 <p class="caption">
@@ -673,365 +694,365 @@ Figure 8.2: LIME
 </div>
 <div id="建模" class="section level3">
 <h3><span class="header-section-number">8.10.4</span> 建模</h3>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="flashlight.html#cb95-1"></a>ind &lt;-<span class="st"> </span><span class="kw">partition</span>(dat[[<span class="st">&quot;group_id&quot;</span>]], <span class="dt">p =</span> <span class="kw">c</span>(<span class="dt">train =</span> <span class="fl">0.8</span>, <span class="dt">test =</span> <span class="fl">0.2</span>), </span>
-<span id="cb95-2"><a href="flashlight.html#cb95-2"></a>                 <span class="dt">seed =</span> <span class="dv">22</span>, <span class="dt">type =</span> <span class="st">&quot;grouped&quot;</span>)</span>
-<span id="cb95-3"><a href="flashlight.html#cb95-3"></a>train &lt;-<span class="st"> </span>dat[ind<span class="op">$</span>train, ]</span>
-<span id="cb95-4"><a href="flashlight.html#cb95-4"></a>test &lt;-<span class="st"> </span>dat[ind<span class="op">$</span>test, ]</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="flashlight.html#cb102-1"></a>ind &lt;-<span class="st"> </span><span class="kw">partition</span>(dat[[<span class="st">&quot;group_id&quot;</span>]], <span class="dt">p =</span> <span class="kw">c</span>(<span class="dt">train =</span> <span class="fl">0.8</span>, <span class="dt">test =</span> <span class="fl">0.2</span>), </span>
+<span id="cb102-2"><a href="flashlight.html#cb102-2"></a>                 <span class="dt">seed =</span> <span class="dv">22</span>, <span class="dt">type =</span> <span class="st">&quot;grouped&quot;</span>)</span>
+<span id="cb102-3"><a href="flashlight.html#cb102-3"></a>train &lt;-<span class="st"> </span>dat[ind<span class="op">$</span>train, ]</span>
+<span id="cb102-4"><a href="flashlight.html#cb102-4"></a>test &lt;-<span class="st"> </span>dat[ind<span class="op">$</span>test, ]</span></code></pre></div>
 <div id="glm-1" class="section level4">
 <h4><span class="header-section-number">8.10.4.1</span> glm</h4>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="flashlight.html#cb96-1"></a>fit_glm &lt;-<span class="st"> </span><span class="kw">glm</span>(Freq <span class="op">~</span><span class="st"> </span>VehPower <span class="op">+</span><span class="st"> </span><span class="kw">ns</span>(VehAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>VehBrand <span class="op">+</span></span>
-<span id="cb96-2"><a href="flashlight.html#cb96-2"></a><span class="st">                 </span>VehGas <span class="op">+</span><span class="st"> </span><span class="kw">ns</span>(DrivAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>logDensity <span class="op">+</span><span class="st"> </span>PolicyRegion,</span>
-<span id="cb96-3"><a href="flashlight.html#cb96-3"></a>               <span class="dt">data =</span> train,</span>
-<span id="cb96-4"><a href="flashlight.html#cb96-4"></a>               <span class="dt">family =</span> <span class="kw">quasipoisson</span>(),</span>
-<span id="cb96-5"><a href="flashlight.html#cb96-5"></a>               <span class="dt">weights =</span> train[[w]])</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="flashlight.html#cb103-1"></a>fit_glm &lt;-<span class="st"> </span><span class="kw">glm</span>(Freq <span class="op">~</span><span class="st"> </span>VehPower <span class="op">+</span><span class="st"> </span><span class="kw">ns</span>(VehAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>VehBrand <span class="op">+</span></span>
+<span id="cb103-2"><a href="flashlight.html#cb103-2"></a><span class="st">                 </span>VehGas <span class="op">+</span><span class="st"> </span><span class="kw">ns</span>(DrivAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>logDensity <span class="op">+</span><span class="st"> </span>PolicyRegion,</span>
+<span id="cb103-3"><a href="flashlight.html#cb103-3"></a>               <span class="dt">data =</span> train,</span>
+<span id="cb103-4"><a href="flashlight.html#cb103-4"></a>               <span class="dt">family =</span> <span class="kw">quasipoisson</span>(),</span>
+<span id="cb103-5"><a href="flashlight.html#cb103-5"></a>               <span class="dt">weights =</span> train[[w]])</span></code></pre></div>
 </div>
 <div id="xgboost-2" class="section level4">
 <h4><span class="header-section-number">8.10.4.2</span> XGBoost</h4>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="flashlight.html#cb97-1"></a><span class="co"># Input maker</span></span>
-<span id="cb97-2"><a href="flashlight.html#cb97-2"></a>prep_xgb &lt;-<span class="st"> </span><span class="cf">function</span>(dat, x) {</span>
-<span id="cb97-3"><a href="flashlight.html#cb97-3"></a>  <span class="kw">data.matrix</span>(dat[, x, <span class="dt">drop =</span> <span class="ot">FALSE</span>])</span>
-<span id="cb97-4"><a href="flashlight.html#cb97-4"></a>}</span>
-<span id="cb97-5"><a href="flashlight.html#cb97-5"></a></span>
-<span id="cb97-6"><a href="flashlight.html#cb97-6"></a><span class="co"># Data interface to XGBoost</span></span>
-<span id="cb97-7"><a href="flashlight.html#cb97-7"></a>dtrain &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(<span class="kw">prep_xgb</span>(train, x), </span>
-<span id="cb97-8"><a href="flashlight.html#cb97-8"></a>                      <span class="dt">label =</span> train[[y]], </span>
-<span id="cb97-9"><a href="flashlight.html#cb97-9"></a>                      <span class="dt">weight =</span> train[[w]])</span>
-<span id="cb97-10"><a href="flashlight.html#cb97-10"></a></span>
-<span id="cb97-11"><a href="flashlight.html#cb97-11"></a><span class="co"># Parameters chosen by 5-fold grouped CV</span></span>
-<span id="cb97-12"><a href="flashlight.html#cb97-12"></a>params_freq &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learning_rate =</span> <span class="fl">0.2</span>,</span>
-<span id="cb97-13"><a href="flashlight.html#cb97-13"></a>                    <span class="dt">max_depth =</span> <span class="dv">5</span>,</span>
-<span id="cb97-14"><a href="flashlight.html#cb97-14"></a>                    <span class="dt">alpha =</span> <span class="dv">3</span>, <span class="co">#权重的l1正则项</span></span>
-<span id="cb97-15"><a href="flashlight.html#cb97-15"></a>                    <span class="dt">lambda =</span> <span class="fl">0.5</span>, <span class="co">#权重的l2正则项</span></span>
-<span id="cb97-16"><a href="flashlight.html#cb97-16"></a>                    <span class="dt">max_delta_step =</span> <span class="dv">2</span>, <span class="co">#权重改变最大步长，default为0</span></span>
-<span id="cb97-17"><a href="flashlight.html#cb97-17"></a>                    <span class="dt">min_split_loss =</span> <span class="dv">0</span>, <span class="co">#节点分裂所需的最小损失函数下降值，default为0</span></span>
-<span id="cb97-18"><a href="flashlight.html#cb97-18"></a>                    <span class="dt">colsample_bytree =</span> <span class="dv">1</span>, <span class="co">#控制每棵随机采样的列数的占比(每一列是一个特征)，default为1</span></span>
-<span id="cb97-19"><a href="flashlight.html#cb97-19"></a>                    <span class="dt">subsample =</span> <span class="fl">0.9</span> <span class="co">#控制树的每级的每次分裂，对列数的采样的占比,default为1,和colsample_bytree功能重叠</span></span>
-<span id="cb97-20"><a href="flashlight.html#cb97-20"></a>                    )</span>
-<span id="cb97-21"><a href="flashlight.html#cb97-21"></a></span>
-<span id="cb97-22"><a href="flashlight.html#cb97-22"></a><span class="co"># Fit</span></span>
-<span id="cb97-23"><a href="flashlight.html#cb97-23"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb97-24"><a href="flashlight.html#cb97-24"></a>fit_xgb &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(params_freq, </span>
-<span id="cb97-25"><a href="flashlight.html#cb97-25"></a>                     <span class="dt">data =</span> dtrain,</span>
-<span id="cb97-26"><a href="flashlight.html#cb97-26"></a>                     <span class="dt">nrounds =</span> <span class="dv">580</span>,</span>
-<span id="cb97-27"><a href="flashlight.html#cb97-27"></a>                     <span class="dt">objective =</span> <span class="st">&quot;count:poisson&quot;</span>,</span>
-<span id="cb97-28"><a href="flashlight.html#cb97-28"></a>                     <span class="dt">watchlist =</span> <span class="kw">list</span>(<span class="dt">train =</span> dtrain),</span>
-<span id="cb97-29"><a href="flashlight.html#cb97-29"></a>                     <span class="dt">print_every_n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="flashlight.html#cb104-1"></a><span class="co"># Input maker</span></span>
+<span id="cb104-2"><a href="flashlight.html#cb104-2"></a>prep_xgb &lt;-<span class="st"> </span><span class="cf">function</span>(dat, x) {</span>
+<span id="cb104-3"><a href="flashlight.html#cb104-3"></a>  <span class="kw">data.matrix</span>(dat[, x, <span class="dt">drop =</span> <span class="ot">FALSE</span>])</span>
+<span id="cb104-4"><a href="flashlight.html#cb104-4"></a>}</span>
+<span id="cb104-5"><a href="flashlight.html#cb104-5"></a></span>
+<span id="cb104-6"><a href="flashlight.html#cb104-6"></a><span class="co"># Data interface to XGBoost</span></span>
+<span id="cb104-7"><a href="flashlight.html#cb104-7"></a>dtrain &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(<span class="kw">prep_xgb</span>(train, x), </span>
+<span id="cb104-8"><a href="flashlight.html#cb104-8"></a>                      <span class="dt">label =</span> train[[y]], </span>
+<span id="cb104-9"><a href="flashlight.html#cb104-9"></a>                      <span class="dt">weight =</span> train[[w]])</span>
+<span id="cb104-10"><a href="flashlight.html#cb104-10"></a></span>
+<span id="cb104-11"><a href="flashlight.html#cb104-11"></a><span class="co"># Parameters chosen by 5-fold grouped CV</span></span>
+<span id="cb104-12"><a href="flashlight.html#cb104-12"></a>params_freq &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learning_rate =</span> <span class="fl">0.2</span>,</span>
+<span id="cb104-13"><a href="flashlight.html#cb104-13"></a>                    <span class="dt">max_depth =</span> <span class="dv">5</span>,</span>
+<span id="cb104-14"><a href="flashlight.html#cb104-14"></a>                    <span class="dt">alpha =</span> <span class="dv">3</span>, <span class="co">#权重的l1正则项</span></span>
+<span id="cb104-15"><a href="flashlight.html#cb104-15"></a>                    <span class="dt">lambda =</span> <span class="fl">0.5</span>, <span class="co">#权重的l2正则项</span></span>
+<span id="cb104-16"><a href="flashlight.html#cb104-16"></a>                    <span class="dt">max_delta_step =</span> <span class="dv">2</span>, <span class="co">#权重改变最大步长，default为0</span></span>
+<span id="cb104-17"><a href="flashlight.html#cb104-17"></a>                    <span class="dt">min_split_loss =</span> <span class="dv">0</span>, <span class="co">#节点分裂所需的最小损失函数下降值，default为0</span></span>
+<span id="cb104-18"><a href="flashlight.html#cb104-18"></a>                    <span class="dt">colsample_bytree =</span> <span class="dv">1</span>, <span class="co">#控制每棵随机采样的列数的占比(每一列是一个特征)，default为1</span></span>
+<span id="cb104-19"><a href="flashlight.html#cb104-19"></a>                    <span class="dt">subsample =</span> <span class="fl">0.9</span> <span class="co">#控制树的每级的每次分裂，对列数的采样的占比,default为1,和colsample_bytree功能重叠</span></span>
+<span id="cb104-20"><a href="flashlight.html#cb104-20"></a>                    )</span>
+<span id="cb104-21"><a href="flashlight.html#cb104-21"></a></span>
+<span id="cb104-22"><a href="flashlight.html#cb104-22"></a><span class="co"># Fit</span></span>
+<span id="cb104-23"><a href="flashlight.html#cb104-23"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb104-24"><a href="flashlight.html#cb104-24"></a>fit_xgb &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(params_freq, </span>
+<span id="cb104-25"><a href="flashlight.html#cb104-25"></a>                     <span class="dt">data =</span> dtrain,</span>
+<span id="cb104-26"><a href="flashlight.html#cb104-26"></a>                     <span class="dt">nrounds =</span> <span class="dv">580</span>,</span>
+<span id="cb104-27"><a href="flashlight.html#cb104-27"></a>                     <span class="dt">objective =</span> <span class="st">&quot;count:poisson&quot;</span>,</span>
+<span id="cb104-28"><a href="flashlight.html#cb104-28"></a>                     <span class="dt">watchlist =</span> <span class="kw">list</span>(<span class="dt">train =</span> dtrain),</span>
+<span id="cb104-29"><a href="flashlight.html#cb104-29"></a>                     <span class="dt">print_every_n =</span> <span class="dv">10</span>)</span></code></pre></div>
 </div>
 <div id="为后文训练可变单调性约束和交互项约束的xgboost使用较小的nrounds" class="section level4">
 <h4><span class="header-section-number">8.10.4.3</span> 为后文训练可变单调性约束和交互项约束的xgboost，使用较小的nrounds</h4>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="flashlight.html#cb98-1"></a>params_freq_constraints &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learning_rate =</span> <span class="fl">0.2</span>,</span>
-<span id="cb98-2"><a href="flashlight.html#cb98-2"></a>                    <span class="dt">max_depth =</span> <span class="dv">5</span>,</span>
-<span id="cb98-3"><a href="flashlight.html#cb98-3"></a>                    <span class="dt">alpha =</span> <span class="dv">3</span>,</span>
-<span id="cb98-4"><a href="flashlight.html#cb98-4"></a>                    <span class="dt">lambda =</span> <span class="fl">0.5</span>,</span>
-<span id="cb98-5"><a href="flashlight.html#cb98-5"></a>                    <span class="dt">max_delta_step =</span> <span class="dv">2</span>,</span>
-<span id="cb98-6"><a href="flashlight.html#cb98-6"></a>                    <span class="dt">min_split_loss =</span> <span class="dv">0</span>,</span>
-<span id="cb98-7"><a href="flashlight.html#cb98-7"></a>                    <span class="dt">monotone_constraints =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="co">#可变单调性的约束</span></span>
-<span id="cb98-8"><a href="flashlight.html#cb98-8"></a>                    <span class="dt">colsample_bytree =</span> <span class="dv">1</span>,</span>
-<span id="cb98-9"><a href="flashlight.html#cb98-9"></a>                    <span class="dt">subsample =</span> <span class="fl">0.9</span>)</span>
-<span id="cb98-10"><a href="flashlight.html#cb98-10"></a></span>
-<span id="cb98-11"><a href="flashlight.html#cb98-11"></a>fit_xgb_constraints &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(params_freq_constraints, </span>
-<span id="cb98-12"><a href="flashlight.html#cb98-12"></a>                     <span class="dt">data =</span> dtrain,</span>
-<span id="cb98-13"><a href="flashlight.html#cb98-13"></a>                     <span class="dt">nrounds =</span> <span class="dv">80</span>,</span>
-<span id="cb98-14"><a href="flashlight.html#cb98-14"></a>                     <span class="dt">objective =</span> <span class="st">&quot;count:poisson&quot;</span>,</span>
-<span id="cb98-15"><a href="flashlight.html#cb98-15"></a>                     <span class="dt">watchlist =</span> <span class="kw">list</span>(<span class="dt">train =</span> dtrain),</span>
-<span id="cb98-16"><a href="flashlight.html#cb98-16"></a>                     <span class="dt">print_every_n =</span> <span class="dv">10</span>)</span>
-<span id="cb98-17"><a href="flashlight.html#cb98-17"></a></span>
-<span id="cb98-18"><a href="flashlight.html#cb98-18"></a>params_freq_interaction_constraints &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learning_rate =</span> <span class="fl">0.2</span>,</span>
-<span id="cb98-19"><a href="flashlight.html#cb98-19"></a>                    <span class="dt">max_depth =</span> <span class="dv">5</span>,</span>
-<span id="cb98-20"><a href="flashlight.html#cb98-20"></a>                    <span class="dt">alpha =</span> <span class="dv">3</span>,</span>
-<span id="cb98-21"><a href="flashlight.html#cb98-21"></a>                    <span class="dt">lambda =</span> <span class="fl">0.5</span>,</span>
-<span id="cb98-22"><a href="flashlight.html#cb98-22"></a>                    <span class="dt">max_delta_step =</span> <span class="dv">2</span>,</span>
-<span id="cb98-23"><a href="flashlight.html#cb98-23"></a>                    <span class="dt">min_split_loss =</span> <span class="dv">0</span>,</span>
-<span id="cb98-24"><a href="flashlight.html#cb98-24"></a>                    <span class="dt">interaction_constraints =</span> <span class="kw">list</span>(<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>)), <span class="co">#交互项约束，约束以嵌套列表的形式指定</span></span>
-<span id="cb98-25"><a href="flashlight.html#cb98-25"></a>                    <span class="dt">colsample_bytree =</span> <span class="dv">1</span>,</span>
-<span id="cb98-26"><a href="flashlight.html#cb98-26"></a>                    <span class="dt">subsample =</span> <span class="fl">0.9</span>)</span>
-<span id="cb98-27"><a href="flashlight.html#cb98-27"></a></span>
-<span id="cb98-28"><a href="flashlight.html#cb98-28"></a>fit_xgb_interaction_constraints &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(params_freq_interaction_constraints, </span>
-<span id="cb98-29"><a href="flashlight.html#cb98-29"></a>                     <span class="dt">data =</span> dtrain,</span>
-<span id="cb98-30"><a href="flashlight.html#cb98-30"></a>                     <span class="dt">nrounds =</span> <span class="dv">80</span>,</span>
-<span id="cb98-31"><a href="flashlight.html#cb98-31"></a>                     <span class="dt">objective =</span> <span class="st">&quot;count:poisson&quot;</span>,</span>
-<span id="cb98-32"><a href="flashlight.html#cb98-32"></a>                     <span class="dt">watchlist =</span> <span class="kw">list</span>(<span class="dt">train =</span> dtrain),</span>
-<span id="cb98-33"><a href="flashlight.html#cb98-33"></a>                     <span class="dt">print_every_n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="flashlight.html#cb105-1"></a>params_freq_constraints &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learning_rate =</span> <span class="fl">0.2</span>,</span>
+<span id="cb105-2"><a href="flashlight.html#cb105-2"></a>                    <span class="dt">max_depth =</span> <span class="dv">5</span>,</span>
+<span id="cb105-3"><a href="flashlight.html#cb105-3"></a>                    <span class="dt">alpha =</span> <span class="dv">3</span>,</span>
+<span id="cb105-4"><a href="flashlight.html#cb105-4"></a>                    <span class="dt">lambda =</span> <span class="fl">0.5</span>,</span>
+<span id="cb105-5"><a href="flashlight.html#cb105-5"></a>                    <span class="dt">max_delta_step =</span> <span class="dv">2</span>,</span>
+<span id="cb105-6"><a href="flashlight.html#cb105-6"></a>                    <span class="dt">min_split_loss =</span> <span class="dv">0</span>,</span>
+<span id="cb105-7"><a href="flashlight.html#cb105-7"></a>                    <span class="dt">monotone_constraints =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="co">#可变单调性的约束</span></span>
+<span id="cb105-8"><a href="flashlight.html#cb105-8"></a>                    <span class="dt">colsample_bytree =</span> <span class="dv">1</span>,</span>
+<span id="cb105-9"><a href="flashlight.html#cb105-9"></a>                    <span class="dt">subsample =</span> <span class="fl">0.9</span>)</span>
+<span id="cb105-10"><a href="flashlight.html#cb105-10"></a></span>
+<span id="cb105-11"><a href="flashlight.html#cb105-11"></a>fit_xgb_constraints &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(params_freq_constraints, </span>
+<span id="cb105-12"><a href="flashlight.html#cb105-12"></a>                     <span class="dt">data =</span> dtrain,</span>
+<span id="cb105-13"><a href="flashlight.html#cb105-13"></a>                     <span class="dt">nrounds =</span> <span class="dv">80</span>,</span>
+<span id="cb105-14"><a href="flashlight.html#cb105-14"></a>                     <span class="dt">objective =</span> <span class="st">&quot;count:poisson&quot;</span>,</span>
+<span id="cb105-15"><a href="flashlight.html#cb105-15"></a>                     <span class="dt">watchlist =</span> <span class="kw">list</span>(<span class="dt">train =</span> dtrain),</span>
+<span id="cb105-16"><a href="flashlight.html#cb105-16"></a>                     <span class="dt">print_every_n =</span> <span class="dv">10</span>)</span>
+<span id="cb105-17"><a href="flashlight.html#cb105-17"></a></span>
+<span id="cb105-18"><a href="flashlight.html#cb105-18"></a>params_freq_interaction_constraints &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learning_rate =</span> <span class="fl">0.2</span>,</span>
+<span id="cb105-19"><a href="flashlight.html#cb105-19"></a>                    <span class="dt">max_depth =</span> <span class="dv">5</span>,</span>
+<span id="cb105-20"><a href="flashlight.html#cb105-20"></a>                    <span class="dt">alpha =</span> <span class="dv">3</span>,</span>
+<span id="cb105-21"><a href="flashlight.html#cb105-21"></a>                    <span class="dt">lambda =</span> <span class="fl">0.5</span>,</span>
+<span id="cb105-22"><a href="flashlight.html#cb105-22"></a>                    <span class="dt">max_delta_step =</span> <span class="dv">2</span>,</span>
+<span id="cb105-23"><a href="flashlight.html#cb105-23"></a>                    <span class="dt">min_split_loss =</span> <span class="dv">0</span>,</span>
+<span id="cb105-24"><a href="flashlight.html#cb105-24"></a>                    <span class="dt">interaction_constraints =</span> <span class="kw">list</span>(<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>)), <span class="co">#交互项约束，约束以嵌套列表的形式指定</span></span>
+<span id="cb105-25"><a href="flashlight.html#cb105-25"></a>                    <span class="dt">colsample_bytree =</span> <span class="dv">1</span>,</span>
+<span id="cb105-26"><a href="flashlight.html#cb105-26"></a>                    <span class="dt">subsample =</span> <span class="fl">0.9</span>)</span>
+<span id="cb105-27"><a href="flashlight.html#cb105-27"></a></span>
+<span id="cb105-28"><a href="flashlight.html#cb105-28"></a>fit_xgb_interaction_constraints &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(params_freq_interaction_constraints, </span>
+<span id="cb105-29"><a href="flashlight.html#cb105-29"></a>                     <span class="dt">data =</span> dtrain,</span>
+<span id="cb105-30"><a href="flashlight.html#cb105-30"></a>                     <span class="dt">nrounds =</span> <span class="dv">80</span>,</span>
+<span id="cb105-31"><a href="flashlight.html#cb105-31"></a>                     <span class="dt">objective =</span> <span class="st">&quot;count:poisson&quot;</span>,</span>
+<span id="cb105-32"><a href="flashlight.html#cb105-32"></a>                     <span class="dt">watchlist =</span> <span class="kw">list</span>(<span class="dt">train =</span> dtrain),</span>
+<span id="cb105-33"><a href="flashlight.html#cb105-33"></a>                     <span class="dt">print_every_n =</span> <span class="dv">10</span>)</span></code></pre></div>
 </div>
 <div id="神经网络-2" class="section level4">
 <h4><span class="header-section-number">8.10.4.4</span> 神经网络</h4>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="flashlight.html#cb99-1"></a>prep_nn &lt;-<span class="st"> </span><span class="cf">function</span>(dat, x, <span class="dt">cat_cols =</span> <span class="kw">c</span>(<span class="st">&quot;PolicyRegion&quot;</span>, <span class="st">&quot;VehBrand&quot;</span>)) {</span>
-<span id="cb99-2"><a href="flashlight.html#cb99-2"></a>  dense_cols &lt;-<span class="st"> </span><span class="kw">setdiff</span>(x, cat_cols)</span>
-<span id="cb99-3"><a href="flashlight.html#cb99-3"></a>  <span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">dense1 =</span> <span class="kw">data.matrix</span>(dat[, dense_cols])), </span>
-<span id="cb99-4"><a href="flashlight.html#cb99-4"></a>    <span class="kw">lapply</span>(dat[, cat_cols], <span class="cf">function</span>(z) <span class="kw">as.integer</span>(z) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))</span>
-<span id="cb99-5"><a href="flashlight.html#cb99-5"></a>}</span>
-<span id="cb99-6"><a href="flashlight.html#cb99-6"></a></span>
-<span id="cb99-7"><a href="flashlight.html#cb99-7"></a><span class="co"># Initialize neural net</span></span>
-<span id="cb99-8"><a href="flashlight.html#cb99-8"></a>new_neural_net &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb99-9"><a href="flashlight.html#cb99-9"></a>  <span class="kw">k_clear_session</span>()</span>
-<span id="cb99-10"><a href="flashlight.html#cb99-10"></a>  <span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb99-11"><a href="flashlight.html#cb99-11"></a>  <span class="cf">if</span> (<span class="st">&quot;set_seed&quot;</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(tensorflow<span class="op">::</span>tf<span class="op">$</span>random)) {</span>
-<span id="cb99-12"><a href="flashlight.html#cb99-12"></a>    tensorflow<span class="op">::</span>tf<span class="op">$</span>random<span class="op">$</span><span class="kw">set_seed</span>(<span class="dv">0</span>)</span>
-<span id="cb99-13"><a href="flashlight.html#cb99-13"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;set_random_seed&quot;</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(tensorflow<span class="op">::</span>tf<span class="op">$</span>random)) {</span>
-<span id="cb99-14"><a href="flashlight.html#cb99-14"></a>    tensorflow<span class="op">::</span>tf<span class="op">$</span>random<span class="op">$</span><span class="kw">set_random_seed</span>(<span class="dv">0</span>)</span>
-<span id="cb99-15"><a href="flashlight.html#cb99-15"></a>  } <span class="cf">else</span> {</span>
-<span id="cb99-16"><a href="flashlight.html#cb99-16"></a>    <span class="kw">print</span>(<span class="st">&quot;Check tf version&quot;</span>)</span>
-<span id="cb99-17"><a href="flashlight.html#cb99-17"></a>  }</span>
-<span id="cb99-18"><a href="flashlight.html#cb99-18"></a>  </span>
-<span id="cb99-19"><a href="flashlight.html#cb99-19"></a>  <span class="co"># Model architecture</span></span>
-<span id="cb99-20"><a href="flashlight.html#cb99-20"></a>  dense_input &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dv">5</span>, <span class="dt">name =</span> <span class="st">&quot;dense1&quot;</span>, <span class="dt">dtype =</span> <span class="st">&quot;float32&quot;</span>)</span>
-<span id="cb99-21"><a href="flashlight.html#cb99-21"></a>  PolicyRegion_input &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&quot;PolicyRegion&quot;</span>, <span class="dt">dtype =</span> <span class="st">&quot;int8&quot;</span>)</span>
-<span id="cb99-22"><a href="flashlight.html#cb99-22"></a>  VehBrand_input &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&quot;VehBrand&quot;</span>, <span class="dt">dtype =</span> <span class="st">&quot;int8&quot;</span>)</span>
-<span id="cb99-23"><a href="flashlight.html#cb99-23"></a></span>
-<span id="cb99-24"><a href="flashlight.html#cb99-24"></a>  PolicyRegion_emb &lt;-<span class="st"> </span>PolicyRegion_input <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-25"><a href="flashlight.html#cb99-25"></a><span class="st">    </span><span class="kw">layer_embedding</span>(<span class="dv">22</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-26"><a href="flashlight.html#cb99-26"></a><span class="st">    </span><span class="kw">layer_flatten</span>()</span>
-<span id="cb99-27"><a href="flashlight.html#cb99-27"></a>  </span>
-<span id="cb99-28"><a href="flashlight.html#cb99-28"></a>  VehBrand_emb &lt;-<span class="st"> </span>VehBrand_input <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-29"><a href="flashlight.html#cb99-29"></a><span class="st">    </span><span class="kw">layer_embedding</span>(<span class="dv">11</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-30"><a href="flashlight.html#cb99-30"></a><span class="st">    </span><span class="kw">layer_flatten</span>()</span>
-<span id="cb99-31"><a href="flashlight.html#cb99-31"></a></span>
-<span id="cb99-32"><a href="flashlight.html#cb99-32"></a>  outputs &lt;-<span class="st"> </span><span class="kw">list</span>(dense_input, PolicyRegion_emb, VehBrand_emb) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-33"><a href="flashlight.html#cb99-33"></a><span class="st">    </span><span class="kw">layer_concatenate</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-34"><a href="flashlight.html#cb99-34"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">20</span>, <span class="dt">activation =</span> <span class="st">&quot;tanh&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb99-35"><a href="flashlight.html#cb99-35"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">15</span>, <span class="dt">activation =</span> <span class="st">&quot;tanh&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb99-36"><a href="flashlight.html#cb99-36"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">10</span>, <span class="dt">activation =</span> <span class="st">&quot;tanh&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-37"><a href="flashlight.html#cb99-37"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">1</span>, <span class="dt">activation =</span> <span class="st">&quot;exponential&quot;</span>)</span>
-<span id="cb99-38"><a href="flashlight.html#cb99-38"></a>  </span>
-<span id="cb99-39"><a href="flashlight.html#cb99-39"></a>  inputs &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">dense1 =</span> dense_input, </span>
-<span id="cb99-40"><a href="flashlight.html#cb99-40"></a>                 <span class="dt">PolicyRegion =</span> PolicyRegion_input, </span>
-<span id="cb99-41"><a href="flashlight.html#cb99-41"></a>                 <span class="dt">VehBrand =</span> VehBrand_input)</span>
-<span id="cb99-42"><a href="flashlight.html#cb99-42"></a>  </span>
-<span id="cb99-43"><a href="flashlight.html#cb99-43"></a>  model &lt;-<span class="st"> </span><span class="kw">keras_model</span>(inputs, outputs)</span>
-<span id="cb99-44"><a href="flashlight.html#cb99-44"></a>  </span>
-<span id="cb99-45"><a href="flashlight.html#cb99-45"></a>  model <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-46"><a href="flashlight.html#cb99-46"></a><span class="st">    </span><span class="kw">compile</span>(<span class="dt">loss =</span> loss_poisson,</span>
-<span id="cb99-47"><a href="flashlight.html#cb99-47"></a>            <span class="dt">optimizer =</span> <span class="kw">optimizer_nadam</span>(),</span>
-<span id="cb99-48"><a href="flashlight.html#cb99-48"></a>            <span class="dt">weighted_metrics =</span> <span class="st">&quot;poisson&quot;</span>)</span>
-<span id="cb99-49"><a href="flashlight.html#cb99-49"></a>  </span>
-<span id="cb99-50"><a href="flashlight.html#cb99-50"></a>  <span class="kw">return</span>(model)</span>
-<span id="cb99-51"><a href="flashlight.html#cb99-51"></a>}</span>
-<span id="cb99-52"><a href="flashlight.html#cb99-52"></a></span>
-<span id="cb99-53"><a href="flashlight.html#cb99-53"></a>neural_net &lt;-<span class="st"> </span><span class="kw">new_neural_net</span>()</span>
-<span id="cb99-54"><a href="flashlight.html#cb99-54"></a></span>
-<span id="cb99-55"><a href="flashlight.html#cb99-55"></a>neural_net <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-56"><a href="flashlight.html#cb99-56"></a><span class="st">  </span><span class="kw">summary</span>()</span>
-<span id="cb99-57"><a href="flashlight.html#cb99-57"></a></span>
-<span id="cb99-58"><a href="flashlight.html#cb99-58"></a>history &lt;-<span class="st"> </span>neural_net <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb99-59"><a href="flashlight.html#cb99-59"></a><span class="st">  </span><span class="kw">fit</span>(<span class="dt">x =</span> <span class="kw">prep_nn</span>(train, x), </span>
-<span id="cb99-60"><a href="flashlight.html#cb99-60"></a>      <span class="dt">y =</span> train[, y], </span>
-<span id="cb99-61"><a href="flashlight.html#cb99-61"></a>      <span class="dt">sample_weight =</span> train[, w],</span>
-<span id="cb99-62"><a href="flashlight.html#cb99-62"></a>      <span class="dt">batch_size =</span> <span class="fl">1e4</span>, </span>
-<span id="cb99-63"><a href="flashlight.html#cb99-63"></a>      <span class="dt">epochs =</span> <span class="dv">300</span>,</span>
-<span id="cb99-64"><a href="flashlight.html#cb99-64"></a>      <span class="dt">verbose =</span> <span class="dv">2</span>)  </span>
-<span id="cb99-65"><a href="flashlight.html#cb99-65"></a>    </span>
-<span id="cb99-66"><a href="flashlight.html#cb99-66"></a><span class="kw">plot</span>(history)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="flashlight.html#cb106-1"></a>prep_nn &lt;-<span class="st"> </span><span class="cf">function</span>(dat, x, <span class="dt">cat_cols =</span> <span class="kw">c</span>(<span class="st">&quot;PolicyRegion&quot;</span>, <span class="st">&quot;VehBrand&quot;</span>)) {</span>
+<span id="cb106-2"><a href="flashlight.html#cb106-2"></a>  dense_cols &lt;-<span class="st"> </span><span class="kw">setdiff</span>(x, cat_cols)</span>
+<span id="cb106-3"><a href="flashlight.html#cb106-3"></a>  <span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">dense1 =</span> <span class="kw">data.matrix</span>(dat[, dense_cols])), </span>
+<span id="cb106-4"><a href="flashlight.html#cb106-4"></a>    <span class="kw">lapply</span>(dat[, cat_cols], <span class="cf">function</span>(z) <span class="kw">as.integer</span>(z) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))</span>
+<span id="cb106-5"><a href="flashlight.html#cb106-5"></a>}</span>
+<span id="cb106-6"><a href="flashlight.html#cb106-6"></a></span>
+<span id="cb106-7"><a href="flashlight.html#cb106-7"></a><span class="co"># Initialize neural net</span></span>
+<span id="cb106-8"><a href="flashlight.html#cb106-8"></a>new_neural_net &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb106-9"><a href="flashlight.html#cb106-9"></a>  <span class="kw">k_clear_session</span>()</span>
+<span id="cb106-10"><a href="flashlight.html#cb106-10"></a>  <span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb106-11"><a href="flashlight.html#cb106-11"></a>  <span class="cf">if</span> (<span class="st">&quot;set_seed&quot;</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(tensorflow<span class="op">::</span>tf<span class="op">$</span>random)) {</span>
+<span id="cb106-12"><a href="flashlight.html#cb106-12"></a>    tensorflow<span class="op">::</span>tf<span class="op">$</span>random<span class="op">$</span><span class="kw">set_seed</span>(<span class="dv">0</span>)</span>
+<span id="cb106-13"><a href="flashlight.html#cb106-13"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="st">&quot;set_random_seed&quot;</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(tensorflow<span class="op">::</span>tf<span class="op">$</span>random)) {</span>
+<span id="cb106-14"><a href="flashlight.html#cb106-14"></a>    tensorflow<span class="op">::</span>tf<span class="op">$</span>random<span class="op">$</span><span class="kw">set_random_seed</span>(<span class="dv">0</span>)</span>
+<span id="cb106-15"><a href="flashlight.html#cb106-15"></a>  } <span class="cf">else</span> {</span>
+<span id="cb106-16"><a href="flashlight.html#cb106-16"></a>    <span class="kw">print</span>(<span class="st">&quot;Check tf version&quot;</span>)</span>
+<span id="cb106-17"><a href="flashlight.html#cb106-17"></a>  }</span>
+<span id="cb106-18"><a href="flashlight.html#cb106-18"></a>  </span>
+<span id="cb106-19"><a href="flashlight.html#cb106-19"></a>  <span class="co"># Model architecture</span></span>
+<span id="cb106-20"><a href="flashlight.html#cb106-20"></a>  dense_input &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dv">5</span>, <span class="dt">name =</span> <span class="st">&quot;dense1&quot;</span>, <span class="dt">dtype =</span> <span class="st">&quot;float32&quot;</span>)</span>
+<span id="cb106-21"><a href="flashlight.html#cb106-21"></a>  PolicyRegion_input &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&quot;PolicyRegion&quot;</span>, <span class="dt">dtype =</span> <span class="st">&quot;int8&quot;</span>)</span>
+<span id="cb106-22"><a href="flashlight.html#cb106-22"></a>  VehBrand_input &lt;-<span class="st"> </span><span class="kw">layer_input</span>(<span class="dv">1</span>, <span class="dt">name =</span> <span class="st">&quot;VehBrand&quot;</span>, <span class="dt">dtype =</span> <span class="st">&quot;int8&quot;</span>)</span>
+<span id="cb106-23"><a href="flashlight.html#cb106-23"></a></span>
+<span id="cb106-24"><a href="flashlight.html#cb106-24"></a>  PolicyRegion_emb &lt;-<span class="st"> </span>PolicyRegion_input <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-25"><a href="flashlight.html#cb106-25"></a><span class="st">    </span><span class="kw">layer_embedding</span>(<span class="dv">22</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-26"><a href="flashlight.html#cb106-26"></a><span class="st">    </span><span class="kw">layer_flatten</span>()</span>
+<span id="cb106-27"><a href="flashlight.html#cb106-27"></a>  </span>
+<span id="cb106-28"><a href="flashlight.html#cb106-28"></a>  VehBrand_emb &lt;-<span class="st"> </span>VehBrand_input <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-29"><a href="flashlight.html#cb106-29"></a><span class="st">    </span><span class="kw">layer_embedding</span>(<span class="dv">11</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-30"><a href="flashlight.html#cb106-30"></a><span class="st">    </span><span class="kw">layer_flatten</span>()</span>
+<span id="cb106-31"><a href="flashlight.html#cb106-31"></a></span>
+<span id="cb106-32"><a href="flashlight.html#cb106-32"></a>  outputs &lt;-<span class="st"> </span><span class="kw">list</span>(dense_input, PolicyRegion_emb, VehBrand_emb) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-33"><a href="flashlight.html#cb106-33"></a><span class="st">    </span><span class="kw">layer_concatenate</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-34"><a href="flashlight.html#cb106-34"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">20</span>, <span class="dt">activation =</span> <span class="st">&quot;tanh&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb106-35"><a href="flashlight.html#cb106-35"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">15</span>, <span class="dt">activation =</span> <span class="st">&quot;tanh&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb106-36"><a href="flashlight.html#cb106-36"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">10</span>, <span class="dt">activation =</span> <span class="st">&quot;tanh&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-37"><a href="flashlight.html#cb106-37"></a><span class="st">    </span><span class="kw">layer_dense</span>(<span class="dv">1</span>, <span class="dt">activation =</span> <span class="st">&quot;exponential&quot;</span>)</span>
+<span id="cb106-38"><a href="flashlight.html#cb106-38"></a>  </span>
+<span id="cb106-39"><a href="flashlight.html#cb106-39"></a>  inputs &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">dense1 =</span> dense_input, </span>
+<span id="cb106-40"><a href="flashlight.html#cb106-40"></a>                 <span class="dt">PolicyRegion =</span> PolicyRegion_input, </span>
+<span id="cb106-41"><a href="flashlight.html#cb106-41"></a>                 <span class="dt">VehBrand =</span> VehBrand_input)</span>
+<span id="cb106-42"><a href="flashlight.html#cb106-42"></a>  </span>
+<span id="cb106-43"><a href="flashlight.html#cb106-43"></a>  model &lt;-<span class="st"> </span><span class="kw">keras_model</span>(inputs, outputs)</span>
+<span id="cb106-44"><a href="flashlight.html#cb106-44"></a>  </span>
+<span id="cb106-45"><a href="flashlight.html#cb106-45"></a>  model <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-46"><a href="flashlight.html#cb106-46"></a><span class="st">    </span><span class="kw">compile</span>(<span class="dt">loss =</span> loss_poisson,</span>
+<span id="cb106-47"><a href="flashlight.html#cb106-47"></a>            <span class="dt">optimizer =</span> <span class="kw">optimizer_nadam</span>(),</span>
+<span id="cb106-48"><a href="flashlight.html#cb106-48"></a>            <span class="dt">weighted_metrics =</span> <span class="st">&quot;poisson&quot;</span>)</span>
+<span id="cb106-49"><a href="flashlight.html#cb106-49"></a>  </span>
+<span id="cb106-50"><a href="flashlight.html#cb106-50"></a>  <span class="kw">return</span>(model)</span>
+<span id="cb106-51"><a href="flashlight.html#cb106-51"></a>}</span>
+<span id="cb106-52"><a href="flashlight.html#cb106-52"></a></span>
+<span id="cb106-53"><a href="flashlight.html#cb106-53"></a>neural_net &lt;-<span class="st"> </span><span class="kw">new_neural_net</span>()</span>
+<span id="cb106-54"><a href="flashlight.html#cb106-54"></a></span>
+<span id="cb106-55"><a href="flashlight.html#cb106-55"></a>neural_net <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-56"><a href="flashlight.html#cb106-56"></a><span class="st">  </span><span class="kw">summary</span>()</span>
+<span id="cb106-57"><a href="flashlight.html#cb106-57"></a></span>
+<span id="cb106-58"><a href="flashlight.html#cb106-58"></a>history &lt;-<span class="st"> </span>neural_net <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb106-59"><a href="flashlight.html#cb106-59"></a><span class="st">  </span><span class="kw">fit</span>(<span class="dt">x =</span> <span class="kw">prep_nn</span>(train, x), </span>
+<span id="cb106-60"><a href="flashlight.html#cb106-60"></a>      <span class="dt">y =</span> train[, y], </span>
+<span id="cb106-61"><a href="flashlight.html#cb106-61"></a>      <span class="dt">sample_weight =</span> train[, w],</span>
+<span id="cb106-62"><a href="flashlight.html#cb106-62"></a>      <span class="dt">batch_size =</span> <span class="fl">1e4</span>, </span>
+<span id="cb106-63"><a href="flashlight.html#cb106-63"></a>      <span class="dt">epochs =</span> <span class="dv">300</span>,</span>
+<span id="cb106-64"><a href="flashlight.html#cb106-64"></a>      <span class="dt">verbose =</span> <span class="dv">2</span>)  </span>
+<span id="cb106-65"><a href="flashlight.html#cb106-65"></a>    </span>
+<span id="cb106-66"><a href="flashlight.html#cb106-66"></a><span class="kw">plot</span>(history)</span></code></pre></div>
 <p>在最后一个隐藏层的十维输出上训练泊松GLM</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="flashlight.html#cb100-1"></a><span class="co"># Calibrate by using last hidden layer activations as GLM input encoder</span></span>
-<span id="cb100-2"><a href="flashlight.html#cb100-2"></a>encoder &lt;-<span class="st"> </span><span class="kw">keras_model</span>(<span class="dt">inputs =</span> neural_net<span class="op">$</span>input, </span>
-<span id="cb100-3"><a href="flashlight.html#cb100-3"></a>                       <span class="dt">outputs =</span> <span class="kw">get_layer</span>(neural_net, <span class="st">&quot;dense_2&quot;</span>)<span class="op">$</span>output)</span>
-<span id="cb100-4"><a href="flashlight.html#cb100-4"></a></span>
-<span id="cb100-5"><a href="flashlight.html#cb100-5"></a><span class="co"># Creates input for calibration GLM (extends prep_nn)</span></span>
-<span id="cb100-6"><a href="flashlight.html#cb100-6"></a>prep_nn_calib &lt;-<span class="st"> </span><span class="cf">function</span>(dat, x, <span class="dt">cat_cols =</span> <span class="kw">c</span>(<span class="st">&quot;PolicyRegion&quot;</span>, <span class="st">&quot;VehBrand&quot;</span>), </span>
-<span id="cb100-7"><a href="flashlight.html#cb100-7"></a>                          <span class="dt">enc =</span> encoder) {</span>
-<span id="cb100-8"><a href="flashlight.html#cb100-8"></a>  <span class="kw">prep_nn</span>(dat, x, cat_cols) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb100-9"><a href="flashlight.html#cb100-9"></a><span class="st">    </span><span class="kw">predict</span>(enc, ., <span class="dt">batch_size =</span> <span class="fl">1e4</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb100-10"><a href="flashlight.html#cb100-10"></a><span class="st">    </span><span class="kw">data.frame</span>()</span>
-<span id="cb100-11"><a href="flashlight.html#cb100-11"></a>}</span>
-<span id="cb100-12"><a href="flashlight.html#cb100-12"></a></span>
-<span id="cb100-13"><a href="flashlight.html#cb100-13"></a><span class="co"># Calibration GLM</span></span>
-<span id="cb100-14"><a href="flashlight.html#cb100-14"></a>fit_nn &lt;-<span class="st"> </span><span class="kw">glm</span>(Freq <span class="op">~</span><span class="st"> </span>.,</span>
-<span id="cb100-15"><a href="flashlight.html#cb100-15"></a>              <span class="dt">data =</span> <span class="kw">cbind</span>(train[<span class="st">&quot;Freq&quot;</span>], <span class="kw">prep_nn_calib</span>(train, x)), </span>
-<span id="cb100-16"><a href="flashlight.html#cb100-16"></a>              <span class="dt">family =</span> <span class="kw">quasipoisson</span>(), </span>
-<span id="cb100-17"><a href="flashlight.html#cb100-17"></a>              <span class="dt">weights =</span> train[[w]])</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="flashlight.html#cb107-1"></a><span class="co"># Calibrate by using last hidden layer activations as GLM input encoder</span></span>
+<span id="cb107-2"><a href="flashlight.html#cb107-2"></a>encoder &lt;-<span class="st"> </span><span class="kw">keras_model</span>(<span class="dt">inputs =</span> neural_net<span class="op">$</span>input, </span>
+<span id="cb107-3"><a href="flashlight.html#cb107-3"></a>                       <span class="dt">outputs =</span> <span class="kw">get_layer</span>(neural_net, <span class="st">&quot;dense_2&quot;</span>)<span class="op">$</span>output)</span>
+<span id="cb107-4"><a href="flashlight.html#cb107-4"></a></span>
+<span id="cb107-5"><a href="flashlight.html#cb107-5"></a><span class="co"># Creates input for calibration GLM (extends prep_nn)</span></span>
+<span id="cb107-6"><a href="flashlight.html#cb107-6"></a>prep_nn_calib &lt;-<span class="st"> </span><span class="cf">function</span>(dat, x, <span class="dt">cat_cols =</span> <span class="kw">c</span>(<span class="st">&quot;PolicyRegion&quot;</span>, <span class="st">&quot;VehBrand&quot;</span>), </span>
+<span id="cb107-7"><a href="flashlight.html#cb107-7"></a>                          <span class="dt">enc =</span> encoder) {</span>
+<span id="cb107-8"><a href="flashlight.html#cb107-8"></a>  <span class="kw">prep_nn</span>(dat, x, cat_cols) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb107-9"><a href="flashlight.html#cb107-9"></a><span class="st">    </span><span class="kw">predict</span>(enc, ., <span class="dt">batch_size =</span> <span class="fl">1e4</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb107-10"><a href="flashlight.html#cb107-10"></a><span class="st">    </span><span class="kw">data.frame</span>()</span>
+<span id="cb107-11"><a href="flashlight.html#cb107-11"></a>}</span>
+<span id="cb107-12"><a href="flashlight.html#cb107-12"></a></span>
+<span id="cb107-13"><a href="flashlight.html#cb107-13"></a><span class="co"># Calibration GLM</span></span>
+<span id="cb107-14"><a href="flashlight.html#cb107-14"></a>fit_nn &lt;-<span class="st"> </span><span class="kw">glm</span>(Freq <span class="op">~</span><span class="st"> </span>.,</span>
+<span id="cb107-15"><a href="flashlight.html#cb107-15"></a>              <span class="dt">data =</span> <span class="kw">cbind</span>(train[<span class="st">&quot;Freq&quot;</span>], <span class="kw">prep_nn_calib</span>(train, x)), </span>
+<span id="cb107-16"><a href="flashlight.html#cb107-16"></a>              <span class="dt">family =</span> <span class="kw">quasipoisson</span>(), </span>
+<span id="cb107-17"><a href="flashlight.html#cb107-17"></a>              <span class="dt">weights =</span> train[[w]])</span></code></pre></div>
 </div>
 </div>
 <div id="解释" class="section level3">
 <h3><span class="header-section-number">8.10.5</span> 解释</h3>
 <div id="为模型建立解释器flashlight并将它们组合为multiflashlight" class="section level4">
 <h4><span class="header-section-number">8.10.5.1</span> 为模型建立解释器(flashlight)，并将它们组合为multiflashlight</h4>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="flashlight.html#cb101-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb101-2"><a href="flashlight.html#cb101-2"></a></span>
-<span id="cb101-3"><a href="flashlight.html#cb101-3"></a>fillc &lt;-<span class="st"> &quot;#E69F00&quot;</span></span>
-<span id="cb101-4"><a href="flashlight.html#cb101-4"></a></span>
-<span id="cb101-5"><a href="flashlight.html#cb101-5"></a>fl_glm &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
-<span id="cb101-6"><a href="flashlight.html#cb101-6"></a>  <span class="dt">model =</span> fit_glm, <span class="dt">label =</span> <span class="st">&quot;GLM&quot;</span>, </span>
-<span id="cb101-7"><a href="flashlight.html#cb101-7"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, X, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb101-8"><a href="flashlight.html#cb101-8"></a>)</span>
-<span id="cb101-9"><a href="flashlight.html#cb101-9"></a></span>
-<span id="cb101-10"><a href="flashlight.html#cb101-10"></a>fl_nn &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
-<span id="cb101-11"><a href="flashlight.html#cb101-11"></a>  <span class="dt">model =</span> fit_nn, <span class="dt">label =</span> <span class="st">&quot;NNet&quot;</span>, </span>
-<span id="cb101-12"><a href="flashlight.html#cb101-12"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) </span>
-<span id="cb101-13"><a href="flashlight.html#cb101-13"></a>    <span class="kw">predict</span>(fit, <span class="kw">prep_nn_calib</span>(X, x), <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb101-14"><a href="flashlight.html#cb101-14"></a>)</span>
-<span id="cb101-15"><a href="flashlight.html#cb101-15"></a></span>
-<span id="cb101-16"><a href="flashlight.html#cb101-16"></a>fl_xgb &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
-<span id="cb101-17"><a href="flashlight.html#cb101-17"></a>  <span class="dt">model =</span> fit_xgb, <span class="dt">label =</span> <span class="st">&quot;XGBoost&quot;</span>, </span>
-<span id="cb101-18"><a href="flashlight.html#cb101-18"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, <span class="kw">prep_xgb</span>(X, x))</span>
-<span id="cb101-19"><a href="flashlight.html#cb101-19"></a>)</span>
-<span id="cb101-20"><a href="flashlight.html#cb101-20"></a></span>
-<span id="cb101-21"><a href="flashlight.html#cb101-21"></a>fl_xgb_constraints &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
-<span id="cb101-22"><a href="flashlight.html#cb101-22"></a>  <span class="dt">model =</span> fit_xgb_constraints, <span class="dt">label =</span> <span class="st">&quot;XGBoost_constraints&quot;</span>, </span>
-<span id="cb101-23"><a href="flashlight.html#cb101-23"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, <span class="kw">prep_xgb</span>(X, x))</span>
-<span id="cb101-24"><a href="flashlight.html#cb101-24"></a>)</span>
-<span id="cb101-25"><a href="flashlight.html#cb101-25"></a></span>
-<span id="cb101-26"><a href="flashlight.html#cb101-26"></a>fl_xgb_interaction_constraints &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
-<span id="cb101-27"><a href="flashlight.html#cb101-27"></a>  <span class="dt">model =</span> fit_xgb_interaction_constraints, <span class="dt">label =</span> <span class="st">&quot;XGBoost_interaction_constraints&quot;</span>, </span>
-<span id="cb101-28"><a href="flashlight.html#cb101-28"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, <span class="kw">prep_xgb</span>(X, x))</span>
-<span id="cb101-29"><a href="flashlight.html#cb101-29"></a>)</span>
-<span id="cb101-30"><a href="flashlight.html#cb101-30"></a></span>
-<span id="cb101-31"><a href="flashlight.html#cb101-31"></a><span class="co"># Combine them and add common elements like reference data</span></span>
-<span id="cb101-32"><a href="flashlight.html#cb101-32"></a>metrics &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">`</span><span class="dt">Average deviance</span><span class="st">`</span> =<span class="st"> </span>deviance_poisson, </span>
-<span id="cb101-33"><a href="flashlight.html#cb101-33"></a>                <span class="st">`</span><span class="dt">Relative deviance reduction</span><span class="st">`</span> =<span class="st"> </span>r_squared_poisson)</span>
-<span id="cb101-34"><a href="flashlight.html#cb101-34"></a>fls &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_glm, fl_nn, fl_xgb), <span class="dt">data =</span> test, </span>
-<span id="cb101-35"><a href="flashlight.html#cb101-35"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
-<span id="cb101-36"><a href="flashlight.html#cb101-36"></a></span>
-<span id="cb101-37"><a href="flashlight.html#cb101-37"></a>fls_xgb_constraints &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_xgb,fl_xgb_constraints), <span class="dt">data =</span> test, </span>
-<span id="cb101-38"><a href="flashlight.html#cb101-38"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
-<span id="cb101-39"><a href="flashlight.html#cb101-39"></a></span>
-<span id="cb101-40"><a href="flashlight.html#cb101-40"></a>fls_xgb_interaction_constraints &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_xgb_interaction_constraints), <span class="dt">data =</span> test, </span>
-<span id="cb101-41"><a href="flashlight.html#cb101-41"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
-<span id="cb101-42"><a href="flashlight.html#cb101-42"></a></span>
-<span id="cb101-43"><a href="flashlight.html#cb101-43"></a>fls_interaction_constraints &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_glm, fl_nn, fl_xgb,fl_xgb_interaction_constraints), <span class="dt">data =</span> test, </span>
-<span id="cb101-44"><a href="flashlight.html#cb101-44"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
-<span id="cb101-45"><a href="flashlight.html#cb101-45"></a></span>
-<span id="cb101-46"><a href="flashlight.html#cb101-46"></a><span class="co"># Version on canonical scale</span></span>
-<span id="cb101-47"><a href="flashlight.html#cb101-47"></a>fls_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls, <span class="dt">linkinv =</span> log)</span>
-<span id="cb101-48"><a href="flashlight.html#cb101-48"></a>fls_xgb_interaction_constraints_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls_xgb_constraints, <span class="dt">linkinv =</span> log)</span>
-<span id="cb101-49"><a href="flashlight.html#cb101-49"></a>fls_interaction_constraints_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls_interaction_constraints, <span class="dt">linkinv =</span> log)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="flashlight.html#cb108-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb108-2"><a href="flashlight.html#cb108-2"></a></span>
+<span id="cb108-3"><a href="flashlight.html#cb108-3"></a>fillc &lt;-<span class="st"> &quot;#E69F00&quot;</span></span>
+<span id="cb108-4"><a href="flashlight.html#cb108-4"></a></span>
+<span id="cb108-5"><a href="flashlight.html#cb108-5"></a>fl_glm &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
+<span id="cb108-6"><a href="flashlight.html#cb108-6"></a>  <span class="dt">model =</span> fit_glm, <span class="dt">label =</span> <span class="st">&quot;GLM&quot;</span>, </span>
+<span id="cb108-7"><a href="flashlight.html#cb108-7"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, X, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb108-8"><a href="flashlight.html#cb108-8"></a>)</span>
+<span id="cb108-9"><a href="flashlight.html#cb108-9"></a></span>
+<span id="cb108-10"><a href="flashlight.html#cb108-10"></a>fl_nn &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
+<span id="cb108-11"><a href="flashlight.html#cb108-11"></a>  <span class="dt">model =</span> fit_nn, <span class="dt">label =</span> <span class="st">&quot;NNet&quot;</span>, </span>
+<span id="cb108-12"><a href="flashlight.html#cb108-12"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) </span>
+<span id="cb108-13"><a href="flashlight.html#cb108-13"></a>    <span class="kw">predict</span>(fit, <span class="kw">prep_nn_calib</span>(X, x), <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb108-14"><a href="flashlight.html#cb108-14"></a>)</span>
+<span id="cb108-15"><a href="flashlight.html#cb108-15"></a></span>
+<span id="cb108-16"><a href="flashlight.html#cb108-16"></a>fl_xgb &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
+<span id="cb108-17"><a href="flashlight.html#cb108-17"></a>  <span class="dt">model =</span> fit_xgb, <span class="dt">label =</span> <span class="st">&quot;XGBoost&quot;</span>, </span>
+<span id="cb108-18"><a href="flashlight.html#cb108-18"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, <span class="kw">prep_xgb</span>(X, x))</span>
+<span id="cb108-19"><a href="flashlight.html#cb108-19"></a>)</span>
+<span id="cb108-20"><a href="flashlight.html#cb108-20"></a></span>
+<span id="cb108-21"><a href="flashlight.html#cb108-21"></a>fl_xgb_constraints &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
+<span id="cb108-22"><a href="flashlight.html#cb108-22"></a>  <span class="dt">model =</span> fit_xgb_constraints, <span class="dt">label =</span> <span class="st">&quot;XGBoost_constraints&quot;</span>, </span>
+<span id="cb108-23"><a href="flashlight.html#cb108-23"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, <span class="kw">prep_xgb</span>(X, x))</span>
+<span id="cb108-24"><a href="flashlight.html#cb108-24"></a>)</span>
+<span id="cb108-25"><a href="flashlight.html#cb108-25"></a></span>
+<span id="cb108-26"><a href="flashlight.html#cb108-26"></a>fl_xgb_interaction_constraints &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
+<span id="cb108-27"><a href="flashlight.html#cb108-27"></a>  <span class="dt">model =</span> fit_xgb_interaction_constraints, <span class="dt">label =</span> <span class="st">&quot;XGBoost_interaction_constraints&quot;</span>, </span>
+<span id="cb108-28"><a href="flashlight.html#cb108-28"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, <span class="kw">prep_xgb</span>(X, x))</span>
+<span id="cb108-29"><a href="flashlight.html#cb108-29"></a>)</span>
+<span id="cb108-30"><a href="flashlight.html#cb108-30"></a></span>
+<span id="cb108-31"><a href="flashlight.html#cb108-31"></a><span class="co"># Combine them and add common elements like reference data</span></span>
+<span id="cb108-32"><a href="flashlight.html#cb108-32"></a>metrics &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">`</span><span class="dt">Average deviance</span><span class="st">`</span> =<span class="st"> </span>deviance_poisson, </span>
+<span id="cb108-33"><a href="flashlight.html#cb108-33"></a>                <span class="st">`</span><span class="dt">Relative deviance reduction</span><span class="st">`</span> =<span class="st"> </span>r_squared_poisson)</span>
+<span id="cb108-34"><a href="flashlight.html#cb108-34"></a>fls &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_glm, fl_nn, fl_xgb), <span class="dt">data =</span> test, </span>
+<span id="cb108-35"><a href="flashlight.html#cb108-35"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
+<span id="cb108-36"><a href="flashlight.html#cb108-36"></a></span>
+<span id="cb108-37"><a href="flashlight.html#cb108-37"></a>fls_xgb_constraints &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_xgb,fl_xgb_constraints), <span class="dt">data =</span> test, </span>
+<span id="cb108-38"><a href="flashlight.html#cb108-38"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
+<span id="cb108-39"><a href="flashlight.html#cb108-39"></a></span>
+<span id="cb108-40"><a href="flashlight.html#cb108-40"></a>fls_xgb_interaction_constraints &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_xgb_interaction_constraints), <span class="dt">data =</span> test, </span>
+<span id="cb108-41"><a href="flashlight.html#cb108-41"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
+<span id="cb108-42"><a href="flashlight.html#cb108-42"></a></span>
+<span id="cb108-43"><a href="flashlight.html#cb108-43"></a>fls_interaction_constraints &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_glm, fl_nn, fl_xgb,fl_xgb_interaction_constraints), <span class="dt">data =</span> test, </span>
+<span id="cb108-44"><a href="flashlight.html#cb108-44"></a>                       <span class="dt">y =</span> y, <span class="dt">w =</span> w, <span class="dt">metrics =</span> metrics)</span>
+<span id="cb108-45"><a href="flashlight.html#cb108-45"></a></span>
+<span id="cb108-46"><a href="flashlight.html#cb108-46"></a><span class="co"># Version on canonical scale</span></span>
+<span id="cb108-47"><a href="flashlight.html#cb108-47"></a>fls_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls, <span class="dt">linkinv =</span> log)</span>
+<span id="cb108-48"><a href="flashlight.html#cb108-48"></a>fls_xgb_interaction_constraints_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls_xgb_constraints, <span class="dt">linkinv =</span> log)</span>
+<span id="cb108-49"><a href="flashlight.html#cb108-49"></a>fls_interaction_constraints_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls_interaction_constraints, <span class="dt">linkinv =</span> log)</span></code></pre></div>
 </div>
 <div id="对flashlight应用可解释性函数" class="section level4">
 <h4><span class="header-section-number">8.10.5.2</span> 对flashlight应用可解释性函数</h4>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="flashlight.html#cb102-1"></a><span class="co">#模型表现</span></span>
-<span id="cb102-2"><a href="flashlight.html#cb102-2"></a></span>
-<span id="cb102-3"><a href="flashlight.html#cb102-3"></a>perf &lt;-<span class="st"> </span><span class="kw">light_performance</span>(fls)</span>
-<span id="cb102-4"><a href="flashlight.html#cb102-4"></a>perf</span>
-<span id="cb102-5"><a href="flashlight.html#cb102-5"></a><span class="kw">plot</span>(perf, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="op">+</span></span>
-<span id="cb102-6"><a href="flashlight.html#cb102-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">element_blank</span>(), <span class="dt">y =</span> <span class="kw">element_blank</span>())</span>
-<span id="cb102-7"><a href="flashlight.html#cb102-7"></a></span>
-<span id="cb102-8"><a href="flashlight.html#cb102-8"></a><span class="co">#变量重要性</span></span>
-<span id="cb102-9"><a href="flashlight.html#cb102-9"></a></span>
-<span id="cb102-10"><a href="flashlight.html#cb102-10"></a>imp &lt;-<span class="st"> </span><span class="kw">light_importance</span>(fls, <span class="dt">v =</span> x)</span>
-<span id="cb102-11"><a href="flashlight.html#cb102-11"></a><span class="kw">plot</span>(imp, <span class="dt">fill =</span> fillc, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="flashlight.html#cb109-1"></a><span class="co">#模型表现</span></span>
+<span id="cb109-2"><a href="flashlight.html#cb109-2"></a></span>
+<span id="cb109-3"><a href="flashlight.html#cb109-3"></a>perf &lt;-<span class="st"> </span><span class="kw">light_performance</span>(fls)</span>
+<span id="cb109-4"><a href="flashlight.html#cb109-4"></a>perf</span>
+<span id="cb109-5"><a href="flashlight.html#cb109-5"></a><span class="kw">plot</span>(perf, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="op">+</span></span>
+<span id="cb109-6"><a href="flashlight.html#cb109-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">element_blank</span>(), <span class="dt">y =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb109-7"><a href="flashlight.html#cb109-7"></a></span>
+<span id="cb109-8"><a href="flashlight.html#cb109-8"></a><span class="co">#变量重要性</span></span>
+<span id="cb109-9"><a href="flashlight.html#cb109-9"></a></span>
+<span id="cb109-10"><a href="flashlight.html#cb109-10"></a>imp &lt;-<span class="st"> </span><span class="kw">light_importance</span>(fls, <span class="dt">v =</span> x)</span>
+<span id="cb109-11"><a href="flashlight.html#cb109-11"></a><span class="kw">plot</span>(imp, <span class="dt">fill =</span> fillc, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 </div>
 <div id="ice曲线" class="section level4">
 <h4><span class="header-section-number">8.10.5.3</span> ICE曲线</h4>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="flashlight.html#cb103-1"></a><span class="co">#driveage基于中心化与非中心化和是否使用对数被解释变量作为预测结果</span></span>
-<span id="cb103-2"><a href="flashlight.html#cb103-2"></a></span>
-<span id="cb103-3"><a href="flashlight.html#cb103-3"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
-<span id="cb103-4"><a href="flashlight.html#cb103-4"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span>
-<span id="cb103-5"><a href="flashlight.html#cb103-5"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>, <span class="dt">center =</span> <span class="st">&quot;middle&quot;</span>)</span>
-<span id="cb103-6"><a href="flashlight.html#cb103-6"></a>     , <span class="dt">alpha =</span> <span class="fl">0.03</span>)</span>
-<span id="cb103-7"><a href="flashlight.html#cb103-7"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_log, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
-<span id="cb103-8"><a href="flashlight.html#cb103-8"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span>
-<span id="cb103-9"><a href="flashlight.html#cb103-9"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_log, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>, <span class="dt">center =</span> <span class="st">&quot;middle&quot;</span>)</span>
-<span id="cb103-10"><a href="flashlight.html#cb103-10"></a>     , <span class="dt">alpha =</span> <span class="fl">0.03</span>)</span>
-<span id="cb103-11"><a href="flashlight.html#cb103-11"></a></span>
-<span id="cb103-12"><a href="flashlight.html#cb103-12"></a><span class="co">#考虑单调性约束的xgboost</span></span>
-<span id="cb103-13"><a href="flashlight.html#cb103-13"></a></span>
-<span id="cb103-14"><a href="flashlight.html#cb103-14"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_constraints, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
-<span id="cb103-15"><a href="flashlight.html#cb103-15"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span>
-<span id="cb103-16"><a href="flashlight.html#cb103-16"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_constraints, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>, <span class="dt">center =</span> <span class="st">&quot;middle&quot;</span>)</span>
-<span id="cb103-17"><a href="flashlight.html#cb103-17"></a>     , <span class="dt">alpha =</span> <span class="fl">0.03</span>)</span>
-<span id="cb103-18"><a href="flashlight.html#cb103-18"></a></span>
-<span id="cb103-19"><a href="flashlight.html#cb103-19"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_constraints, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
-<span id="cb103-20"><a href="flashlight.html#cb103-20"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="flashlight.html#cb104-1"></a><span class="co"># Partial dependence curves</span></span>
-<span id="cb104-2"><a href="flashlight.html#cb104-2"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">pd_evaluate_at =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span>))</span>
-<span id="cb104-3"><a href="flashlight.html#cb104-3"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_bins =</span> <span class="dv">25</span>))</span>
-<span id="cb104-4"><a href="flashlight.html#cb104-4"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;logDensity&quot;</span>))</span>
-<span id="cb104-5"><a href="flashlight.html#cb104-5"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehGas&quot;</span>))</span>
-<span id="cb104-6"><a href="flashlight.html#cb104-6"></a></span>
-<span id="cb104-7"><a href="flashlight.html#cb104-7"></a><span class="co"># ALE versus partial dependence</span></span>
-<span id="cb104-8"><a href="flashlight.html#cb104-8"></a>ale_DrivAge &lt;-<span class="st"> </span><span class="kw">light_effects</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">counts_weighted =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb104-9"><a href="flashlight.html#cb104-9"></a>                             <span class="dt">v_labels =</span> <span class="ot">FALSE</span>, <span class="dt">n_bins =</span> <span class="dv">20</span>, <span class="dt">cut_type =</span> <span class="st">&quot;quantile&quot;</span>)</span>
-<span id="cb104-10"><a href="flashlight.html#cb104-10"></a><span class="kw">plot</span>(ale_DrivAge, <span class="dt">use =</span> <span class="kw">c</span>(<span class="st">&quot;pd&quot;</span>, <span class="st">&quot;ale&quot;</span>), <span class="dt">show_points =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb104-11"><a href="flashlight.html#cb104-11"></a></span>
-<span id="cb104-12"><a href="flashlight.html#cb104-12"></a><span class="co"># Classic diagnostic plots</span></span>
-<span id="cb104-13"><a href="flashlight.html#cb104-13"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;predicted&quot;</span>))</span>
-<span id="cb104-14"><a href="flashlight.html#cb104-14"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;residual&quot;</span>)) <span class="op">+</span></span>
-<span id="cb104-15"><a href="flashlight.html#cb104-15"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</span>
-<span id="cb104-16"><a href="flashlight.html#cb104-16"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>))</span>
-<span id="cb104-17"><a href="flashlight.html#cb104-17"></a></span>
-<span id="cb104-18"><a href="flashlight.html#cb104-18"></a></span>
-<span id="cb104-19"><a href="flashlight.html#cb104-19"></a><span class="co"># Multiple aspects combined</span></span>
-<span id="cb104-20"><a href="flashlight.html#cb104-20"></a>eff_DrivAge &lt;-<span class="st"> </span><span class="kw">light_effects</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">counts_weighted =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb104-21"><a href="flashlight.html#cb104-21"></a>p &lt;-<span class="st"> </span><span class="kw">plot</span>(eff_DrivAge, <span class="dt">show_points =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb104-22"><a href="flashlight.html#cb104-22"></a><span class="kw">plot_counts</span>(p, eff_DrivAge, <span class="dt">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="flashlight.html#cb105-1"></a><span class="co"># Interaction (relative)</span></span>
-<span id="cb105-2"><a href="flashlight.html#cb105-2"></a>interact_rel &lt;-<span class="st"> </span><span class="kw">light_interaction</span>(</span>
-<span id="cb105-3"><a href="flashlight.html#cb105-3"></a>  fls_interaction_constraints_log, </span>
-<span id="cb105-4"><a href="flashlight.html#cb105-4"></a>  <span class="dt">v =</span> <span class="kw">most_important</span>(imp, <span class="dv">4</span>), </span>
-<span id="cb105-5"><a href="flashlight.html#cb105-5"></a>  <span class="dt">take_sqrt =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb105-6"><a href="flashlight.html#cb105-6"></a>  <span class="dt">pairwise =</span> <span class="ot">TRUE</span>, </span>
-<span id="cb105-7"><a href="flashlight.html#cb105-7"></a>  <span class="dt">use_linkinv =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb105-8"><a href="flashlight.html#cb105-8"></a>  <span class="dt">seed =</span> <span class="dv">61</span></span>
-<span id="cb105-9"><a href="flashlight.html#cb105-9"></a>)</span>
-<span id="cb105-10"><a href="flashlight.html#cb105-10"></a><span class="kw">plot</span>(interact_rel, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> fillc, <span class="dt">rotate_x =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb105-11"><a href="flashlight.html#cb105-11"></a></span>
-<span id="cb105-12"><a href="flashlight.html#cb105-12"></a><span class="co"># Interaction (absolute)</span></span>
-<span id="cb105-13"><a href="flashlight.html#cb105-13"></a>interact_abs &lt;-<span class="st"> </span><span class="kw">light_interaction</span>(</span>
-<span id="cb105-14"><a href="flashlight.html#cb105-14"></a>  fls_interaction_constraints_log, </span>
-<span id="cb105-15"><a href="flashlight.html#cb105-15"></a>  <span class="dt">v =</span> <span class="kw">most_important</span>(imp, <span class="dv">4</span>), </span>
-<span id="cb105-16"><a href="flashlight.html#cb105-16"></a>  <span class="dt">normalize =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb105-17"><a href="flashlight.html#cb105-17"></a>  <span class="dt">pairwise =</span> <span class="ot">TRUE</span>, </span>
-<span id="cb105-18"><a href="flashlight.html#cb105-18"></a>  <span class="dt">use_linkinv =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb105-19"><a href="flashlight.html#cb105-19"></a>  <span class="dt">seed =</span> <span class="dv">61</span></span>
-<span id="cb105-20"><a href="flashlight.html#cb105-20"></a>)</span>
-<span id="cb105-21"><a href="flashlight.html#cb105-21"></a><span class="kw">plot</span>(interact_abs, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> fillc, <span class="dt">rotate_x =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb105-22"><a href="flashlight.html#cb105-22"></a></span>
-<span id="cb105-23"><a href="flashlight.html#cb105-23"></a><span class="co"># Filter on largest three brands</span></span>
-<span id="cb105-24"><a href="flashlight.html#cb105-24"></a>sub_data &lt;-<span class="st"> </span>test <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb105-25"><a href="flashlight.html#cb105-25"></a><span class="st">  </span><span class="kw">filter</span>(VehBrand <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>, <span class="st">&quot;B2&quot;</span>, <span class="st">&quot;B12&quot;</span>))</span>
-<span id="cb105-26"><a href="flashlight.html#cb105-26"></a></span>
-<span id="cb105-27"><a href="flashlight.html#cb105-27"></a><span class="co"># Strong interaction</span></span>
-<span id="cb105-28"><a href="flashlight.html#cb105-28"></a>pdp_vehAge_Brand &lt;-<span class="st"> </span><span class="kw">light_profile</span>(fls_interaction_constraints_log, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">by =</span> <span class="st">&quot;VehBrand&quot;</span>, </span>
-<span id="cb105-29"><a href="flashlight.html#cb105-29"></a>                                  <span class="dt">pd_seed =</span> <span class="dv">50</span>, <span class="dt">data =</span> sub_data)</span>
-<span id="cb105-30"><a href="flashlight.html#cb105-30"></a><span class="kw">plot</span>(pdp_vehAge_Brand)</span>
-<span id="cb105-31"><a href="flashlight.html#cb105-31"></a></span>
-<span id="cb105-32"><a href="flashlight.html#cb105-32"></a><span class="co"># Weak interaction</span></span>
-<span id="cb105-33"><a href="flashlight.html#cb105-33"></a>pdp_DrivAge_Gas &lt;-<span class="st"> </span><span class="kw">light_profile</span>(fls_interaction_constraints_log, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, </span>
-<span id="cb105-34"><a href="flashlight.html#cb105-34"></a>                                 <span class="dt">by =</span> <span class="st">&quot;VehGas&quot;</span>, <span class="dt">pd_seed =</span> <span class="dv">50</span>)</span>
-<span id="cb105-35"><a href="flashlight.html#cb105-35"></a><span class="kw">plot</span>(pdp_DrivAge_Gas)</span>
-<span id="cb105-36"><a href="flashlight.html#cb105-36"></a></span>
-<span id="cb105-37"><a href="flashlight.html#cb105-37"></a></span>
-<span id="cb105-38"><a href="flashlight.html#cb105-38"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_interaction_constraints, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
-<span id="cb105-39"><a href="flashlight.html#cb105-39"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="flashlight.html#cb110-1"></a><span class="co">#driveage基于中心化与非中心化和是否使用对数被解释变量作为预测结果</span></span>
+<span id="cb110-2"><a href="flashlight.html#cb110-2"></a></span>
+<span id="cb110-3"><a href="flashlight.html#cb110-3"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
+<span id="cb110-4"><a href="flashlight.html#cb110-4"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span>
+<span id="cb110-5"><a href="flashlight.html#cb110-5"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>, <span class="dt">center =</span> <span class="st">&quot;middle&quot;</span>)</span>
+<span id="cb110-6"><a href="flashlight.html#cb110-6"></a>     , <span class="dt">alpha =</span> <span class="fl">0.03</span>)</span>
+<span id="cb110-7"><a href="flashlight.html#cb110-7"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_log, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
+<span id="cb110-8"><a href="flashlight.html#cb110-8"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span>
+<span id="cb110-9"><a href="flashlight.html#cb110-9"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_log, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>, <span class="dt">center =</span> <span class="st">&quot;middle&quot;</span>)</span>
+<span id="cb110-10"><a href="flashlight.html#cb110-10"></a>     , <span class="dt">alpha =</span> <span class="fl">0.03</span>)</span>
+<span id="cb110-11"><a href="flashlight.html#cb110-11"></a></span>
+<span id="cb110-12"><a href="flashlight.html#cb110-12"></a><span class="co">#考虑单调性约束的xgboost</span></span>
+<span id="cb110-13"><a href="flashlight.html#cb110-13"></a></span>
+<span id="cb110-14"><a href="flashlight.html#cb110-14"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_constraints, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
+<span id="cb110-15"><a href="flashlight.html#cb110-15"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span>
+<span id="cb110-16"><a href="flashlight.html#cb110-16"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_constraints, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>, <span class="dt">center =</span> <span class="st">&quot;middle&quot;</span>)</span>
+<span id="cb110-17"><a href="flashlight.html#cb110-17"></a>     , <span class="dt">alpha =</span> <span class="fl">0.03</span>)</span>
+<span id="cb110-18"><a href="flashlight.html#cb110-18"></a></span>
+<span id="cb110-19"><a href="flashlight.html#cb110-19"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_constraints, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
+<span id="cb110-20"><a href="flashlight.html#cb110-20"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="flashlight.html#cb111-1"></a><span class="co"># Partial dependence curves</span></span>
+<span id="cb111-2"><a href="flashlight.html#cb111-2"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">pd_evaluate_at =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span>))</span>
+<span id="cb111-3"><a href="flashlight.html#cb111-3"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_bins =</span> <span class="dv">25</span>))</span>
+<span id="cb111-4"><a href="flashlight.html#cb111-4"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;logDensity&quot;</span>))</span>
+<span id="cb111-5"><a href="flashlight.html#cb111-5"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehGas&quot;</span>))</span>
+<span id="cb111-6"><a href="flashlight.html#cb111-6"></a></span>
+<span id="cb111-7"><a href="flashlight.html#cb111-7"></a><span class="co"># ALE versus partial dependence</span></span>
+<span id="cb111-8"><a href="flashlight.html#cb111-8"></a>ale_DrivAge &lt;-<span class="st"> </span><span class="kw">light_effects</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">counts_weighted =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb111-9"><a href="flashlight.html#cb111-9"></a>                             <span class="dt">v_labels =</span> <span class="ot">FALSE</span>, <span class="dt">n_bins =</span> <span class="dv">20</span>, <span class="dt">cut_type =</span> <span class="st">&quot;quantile&quot;</span>)</span>
+<span id="cb111-10"><a href="flashlight.html#cb111-10"></a><span class="kw">plot</span>(ale_DrivAge, <span class="dt">use =</span> <span class="kw">c</span>(<span class="st">&quot;pd&quot;</span>, <span class="st">&quot;ale&quot;</span>), <span class="dt">show_points =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb111-11"><a href="flashlight.html#cb111-11"></a></span>
+<span id="cb111-12"><a href="flashlight.html#cb111-12"></a><span class="co"># Classic diagnostic plots</span></span>
+<span id="cb111-13"><a href="flashlight.html#cb111-13"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;predicted&quot;</span>))</span>
+<span id="cb111-14"><a href="flashlight.html#cb111-14"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;residual&quot;</span>)) <span class="op">+</span></span>
+<span id="cb111-15"><a href="flashlight.html#cb111-15"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>)</span>
+<span id="cb111-16"><a href="flashlight.html#cb111-16"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>))</span>
+<span id="cb111-17"><a href="flashlight.html#cb111-17"></a></span>
+<span id="cb111-18"><a href="flashlight.html#cb111-18"></a></span>
+<span id="cb111-19"><a href="flashlight.html#cb111-19"></a><span class="co"># Multiple aspects combined</span></span>
+<span id="cb111-20"><a href="flashlight.html#cb111-20"></a>eff_DrivAge &lt;-<span class="st"> </span><span class="kw">light_effects</span>(fls, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">counts_weighted =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb111-21"><a href="flashlight.html#cb111-21"></a>p &lt;-<span class="st"> </span><span class="kw">plot</span>(eff_DrivAge, <span class="dt">show_points =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb111-22"><a href="flashlight.html#cb111-22"></a><span class="kw">plot_counts</span>(p, eff_DrivAge, <span class="dt">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="flashlight.html#cb112-1"></a><span class="co"># Interaction (relative)</span></span>
+<span id="cb112-2"><a href="flashlight.html#cb112-2"></a>interact_rel &lt;-<span class="st"> </span><span class="kw">light_interaction</span>(</span>
+<span id="cb112-3"><a href="flashlight.html#cb112-3"></a>  fls_interaction_constraints_log, </span>
+<span id="cb112-4"><a href="flashlight.html#cb112-4"></a>  <span class="dt">v =</span> <span class="kw">most_important</span>(imp, <span class="dv">4</span>), </span>
+<span id="cb112-5"><a href="flashlight.html#cb112-5"></a>  <span class="dt">take_sqrt =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb112-6"><a href="flashlight.html#cb112-6"></a>  <span class="dt">pairwise =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb112-7"><a href="flashlight.html#cb112-7"></a>  <span class="dt">use_linkinv =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb112-8"><a href="flashlight.html#cb112-8"></a>  <span class="dt">seed =</span> <span class="dv">61</span></span>
+<span id="cb112-9"><a href="flashlight.html#cb112-9"></a>)</span>
+<span id="cb112-10"><a href="flashlight.html#cb112-10"></a><span class="kw">plot</span>(interact_rel, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> fillc, <span class="dt">rotate_x =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb112-11"><a href="flashlight.html#cb112-11"></a></span>
+<span id="cb112-12"><a href="flashlight.html#cb112-12"></a><span class="co"># Interaction (absolute)</span></span>
+<span id="cb112-13"><a href="flashlight.html#cb112-13"></a>interact_abs &lt;-<span class="st"> </span><span class="kw">light_interaction</span>(</span>
+<span id="cb112-14"><a href="flashlight.html#cb112-14"></a>  fls_interaction_constraints_log, </span>
+<span id="cb112-15"><a href="flashlight.html#cb112-15"></a>  <span class="dt">v =</span> <span class="kw">most_important</span>(imp, <span class="dv">4</span>), </span>
+<span id="cb112-16"><a href="flashlight.html#cb112-16"></a>  <span class="dt">normalize =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb112-17"><a href="flashlight.html#cb112-17"></a>  <span class="dt">pairwise =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb112-18"><a href="flashlight.html#cb112-18"></a>  <span class="dt">use_linkinv =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb112-19"><a href="flashlight.html#cb112-19"></a>  <span class="dt">seed =</span> <span class="dv">61</span></span>
+<span id="cb112-20"><a href="flashlight.html#cb112-20"></a>)</span>
+<span id="cb112-21"><a href="flashlight.html#cb112-21"></a><span class="kw">plot</span>(interact_abs, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> fillc, <span class="dt">rotate_x =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb112-22"><a href="flashlight.html#cb112-22"></a></span>
+<span id="cb112-23"><a href="flashlight.html#cb112-23"></a><span class="co"># Filter on largest three brands</span></span>
+<span id="cb112-24"><a href="flashlight.html#cb112-24"></a>sub_data &lt;-<span class="st"> </span>test <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb112-25"><a href="flashlight.html#cb112-25"></a><span class="st">  </span><span class="kw">filter</span>(VehBrand <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>, <span class="st">&quot;B2&quot;</span>, <span class="st">&quot;B12&quot;</span>))</span>
+<span id="cb112-26"><a href="flashlight.html#cb112-26"></a></span>
+<span id="cb112-27"><a href="flashlight.html#cb112-27"></a><span class="co"># Strong interaction</span></span>
+<span id="cb112-28"><a href="flashlight.html#cb112-28"></a>pdp_vehAge_Brand &lt;-<span class="st"> </span><span class="kw">light_profile</span>(fls_interaction_constraints_log, <span class="dt">v =</span> <span class="st">&quot;VehAge&quot;</span>, <span class="dt">by =</span> <span class="st">&quot;VehBrand&quot;</span>, </span>
+<span id="cb112-29"><a href="flashlight.html#cb112-29"></a>                                  <span class="dt">pd_seed =</span> <span class="dv">50</span>, <span class="dt">data =</span> sub_data)</span>
+<span id="cb112-30"><a href="flashlight.html#cb112-30"></a><span class="kw">plot</span>(pdp_vehAge_Brand)</span>
+<span id="cb112-31"><a href="flashlight.html#cb112-31"></a></span>
+<span id="cb112-32"><a href="flashlight.html#cb112-32"></a><span class="co"># Weak interaction</span></span>
+<span id="cb112-33"><a href="flashlight.html#cb112-33"></a>pdp_DrivAge_Gas &lt;-<span class="st"> </span><span class="kw">light_profile</span>(fls_interaction_constraints_log, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, </span>
+<span id="cb112-34"><a href="flashlight.html#cb112-34"></a>                                 <span class="dt">by =</span> <span class="st">&quot;VehGas&quot;</span>, <span class="dt">pd_seed =</span> <span class="dv">50</span>)</span>
+<span id="cb112-35"><a href="flashlight.html#cb112-35"></a><span class="kw">plot</span>(pdp_DrivAge_Gas)</span>
+<span id="cb112-36"><a href="flashlight.html#cb112-36"></a></span>
+<span id="cb112-37"><a href="flashlight.html#cb112-37"></a></span>
+<span id="cb112-38"><a href="flashlight.html#cb112-38"></a><span class="kw">plot</span>(<span class="kw">light_ice</span>(fls_xgb_interaction_constraints, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">n_max =</span> <span class="dv">200</span>, <span class="dt">seed =</span> <span class="dv">3</span>)</span>
+<span id="cb112-39"><a href="flashlight.html#cb112-39"></a>     , <span class="dt">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 </div>
 <div id="全局代理模型" class="section level4">
 <h4><span class="header-section-number">8.10.5.4</span> 全局代理模型</h4>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="flashlight.html#cb106-1"></a>surr_nn &lt;-<span class="st"> </span><span class="kw">light_global_surrogate</span>(fls_log<span class="op">$</span>NNet, <span class="dt">v =</span> x)</span>
-<span id="cb106-2"><a href="flashlight.html#cb106-2"></a><span class="kw">plot</span>(surr_nn)</span>
-<span id="cb106-3"><a href="flashlight.html#cb106-3"></a></span>
-<span id="cb106-4"><a href="flashlight.html#cb106-4"></a>surr_xgb &lt;-<span class="st"> </span><span class="kw">light_global_surrogate</span>(fls_log<span class="op">$</span>XGBoost, <span class="dt">v =</span> x)</span>
-<span id="cb106-5"><a href="flashlight.html#cb106-5"></a><span class="kw">plot</span>(surr_xgb)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="flashlight.html#cb113-1"></a>surr_nn &lt;-<span class="st"> </span><span class="kw">light_global_surrogate</span>(fls_log<span class="op">$</span>NNet, <span class="dt">v =</span> x)</span>
+<span id="cb113-2"><a href="flashlight.html#cb113-2"></a><span class="kw">plot</span>(surr_nn)</span>
+<span id="cb113-3"><a href="flashlight.html#cb113-3"></a></span>
+<span id="cb113-4"><a href="flashlight.html#cb113-4"></a>surr_xgb &lt;-<span class="st"> </span><span class="kw">light_global_surrogate</span>(fls_log<span class="op">$</span>XGBoost, <span class="dt">v =</span> x)</span>
+<span id="cb113-5"><a href="flashlight.html#cb113-5"></a><span class="kw">plot</span>(surr_xgb)</span></code></pre></div>
 </div>
 </div>
 <div id="局部性质" class="section level3">
 <h3><span class="header-section-number">8.10.6</span> 局部性质</h3>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="flashlight.html#cb107-1"></a><span class="co">#局部性质</span></span>
-<span id="cb107-2"><a href="flashlight.html#cb107-2"></a></span>
-<span id="cb107-3"><a href="flashlight.html#cb107-3"></a>new_obs &lt;-<span class="st"> </span>test[<span class="dv">1</span>, ]</span>
-<span id="cb107-4"><a href="flashlight.html#cb107-4"></a>new_obs[, x]</span>
-<span id="cb107-5"><a href="flashlight.html#cb107-5"></a><span class="kw">unlist</span>(<span class="kw">predict</span>(fls, <span class="dt">data =</span> new_obs))</span>
-<span id="cb107-6"><a href="flashlight.html#cb107-6"></a></span>
-<span id="cb107-7"><a href="flashlight.html#cb107-7"></a><span class="co"># Breakdown</span></span>
-<span id="cb107-8"><a href="flashlight.html#cb107-8"></a>bd &lt;-<span class="st"> </span><span class="kw">light_breakdown</span>(fls<span class="op">$</span>XGBoost, <span class="dt">new_obs =</span> new_obs, </span>
-<span id="cb107-9"><a href="flashlight.html#cb107-9"></a>                      <span class="dt">v =</span> x, <span class="dt">n_max =</span> <span class="dv">1000</span>, <span class="dt">seed =</span> <span class="dv">20</span>)</span>
-<span id="cb107-10"><a href="flashlight.html#cb107-10"></a><span class="kw">plot</span>(bd)</span>
-<span id="cb107-11"><a href="flashlight.html#cb107-11"></a></span>
-<span id="cb107-12"><a href="flashlight.html#cb107-12"></a><span class="co"># Extract same order of variables for visualization only</span></span>
-<span id="cb107-13"><a href="flashlight.html#cb107-13"></a>v &lt;-<span class="st"> </span><span class="kw">setdiff</span>(bd<span class="op">$</span>data<span class="op">$</span>variable, <span class="kw">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</span>
-<span id="cb107-14"><a href="flashlight.html#cb107-14"></a></span>
-<span id="cb107-15"><a href="flashlight.html#cb107-15"></a><span class="co"># Approximate SHAP</span></span>
-<span id="cb107-16"><a href="flashlight.html#cb107-16"></a>shap &lt;-<span class="st"> </span><span class="kw">light_breakdown</span>(fls<span class="op">$</span>XGBoost, new_obs, </span>
-<span id="cb107-17"><a href="flashlight.html#cb107-17"></a>                        <span class="dt">visit_strategy =</span> <span class="st">&quot;permutation&quot;</span>,</span>
-<span id="cb107-18"><a href="flashlight.html#cb107-18"></a>                        <span class="dt">v =</span> v, <span class="dt">n_max =</span> <span class="dv">1000</span>, <span class="dt">seed =</span> <span class="dv">20</span>)</span>
-<span id="cb107-19"><a href="flashlight.html#cb107-19"></a><span class="kw">plot</span>(shap)</span>
-<span id="cb107-20"><a href="flashlight.html#cb107-20"></a></span>
-<span id="cb107-21"><a href="flashlight.html#cb107-21"></a>fl_with_shap &lt;-<span class="st"> </span><span class="kw">add_shap</span>(fls<span class="op">$</span>XGBoost, <span class="dt">v =</span> x, <span class="dt">n_shap =</span> <span class="dv">500</span>, </span>
-<span id="cb107-22"><a href="flashlight.html#cb107-22"></a>                         <span class="dt">n_perm =</span> <span class="dv">12</span>, <span class="dt">n_max =</span> <span class="dv">1000</span>, <span class="dt">seed =</span> <span class="dv">100</span>)</span>
-<span id="cb107-23"><a href="flashlight.html#cb107-23"></a></span>
-<span id="cb107-24"><a href="flashlight.html#cb107-24"></a><span class="co">#以局部性质估计模型的全局性质</span></span>
-<span id="cb107-25"><a href="flashlight.html#cb107-25"></a></span>
-<span id="cb107-26"><a href="flashlight.html#cb107-26"></a><span class="kw">plot</span>(<span class="kw">light_importance</span>(fl_with_shap, <span class="dt">v =</span> x, <span class="dt">type =</span> <span class="st">&quot;shap&quot;</span>), </span>
-<span id="cb107-27"><a href="flashlight.html#cb107-27"></a>     <span class="dt">fill =</span> fillc, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb107-28"><a href="flashlight.html#cb107-28"></a><span class="kw">plot</span>(<span class="kw">light_scatter</span>(fl_with_shap, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;shap&quot;</span>), <span class="dt">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="flashlight.html#cb114-1"></a><span class="co">#局部性质</span></span>
+<span id="cb114-2"><a href="flashlight.html#cb114-2"></a></span>
+<span id="cb114-3"><a href="flashlight.html#cb114-3"></a>new_obs &lt;-<span class="st"> </span>test[<span class="dv">1</span>, ]</span>
+<span id="cb114-4"><a href="flashlight.html#cb114-4"></a>new_obs[, x]</span>
+<span id="cb114-5"><a href="flashlight.html#cb114-5"></a><span class="kw">unlist</span>(<span class="kw">predict</span>(fls, <span class="dt">data =</span> new_obs))</span>
+<span id="cb114-6"><a href="flashlight.html#cb114-6"></a></span>
+<span id="cb114-7"><a href="flashlight.html#cb114-7"></a><span class="co"># Breakdown</span></span>
+<span id="cb114-8"><a href="flashlight.html#cb114-8"></a>bd &lt;-<span class="st"> </span><span class="kw">light_breakdown</span>(fls<span class="op">$</span>XGBoost, <span class="dt">new_obs =</span> new_obs, </span>
+<span id="cb114-9"><a href="flashlight.html#cb114-9"></a>                      <span class="dt">v =</span> x, <span class="dt">n_max =</span> <span class="dv">1000</span>, <span class="dt">seed =</span> <span class="dv">20</span>)</span>
+<span id="cb114-10"><a href="flashlight.html#cb114-10"></a><span class="kw">plot</span>(bd)</span>
+<span id="cb114-11"><a href="flashlight.html#cb114-11"></a></span>
+<span id="cb114-12"><a href="flashlight.html#cb114-12"></a><span class="co"># Extract same order of variables for visualization only</span></span>
+<span id="cb114-13"><a href="flashlight.html#cb114-13"></a>v &lt;-<span class="st"> </span><span class="kw">setdiff</span>(bd<span class="op">$</span>data<span class="op">$</span>variable, <span class="kw">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</span>
+<span id="cb114-14"><a href="flashlight.html#cb114-14"></a></span>
+<span id="cb114-15"><a href="flashlight.html#cb114-15"></a><span class="co"># Approximate SHAP</span></span>
+<span id="cb114-16"><a href="flashlight.html#cb114-16"></a>shap &lt;-<span class="st"> </span><span class="kw">light_breakdown</span>(fls<span class="op">$</span>XGBoost, new_obs, </span>
+<span id="cb114-17"><a href="flashlight.html#cb114-17"></a>                        <span class="dt">visit_strategy =</span> <span class="st">&quot;permutation&quot;</span>,</span>
+<span id="cb114-18"><a href="flashlight.html#cb114-18"></a>                        <span class="dt">v =</span> v, <span class="dt">n_max =</span> <span class="dv">1000</span>, <span class="dt">seed =</span> <span class="dv">20</span>)</span>
+<span id="cb114-19"><a href="flashlight.html#cb114-19"></a><span class="kw">plot</span>(shap)</span>
+<span id="cb114-20"><a href="flashlight.html#cb114-20"></a></span>
+<span id="cb114-21"><a href="flashlight.html#cb114-21"></a>fl_with_shap &lt;-<span class="st"> </span><span class="kw">add_shap</span>(fls<span class="op">$</span>XGBoost, <span class="dt">v =</span> x, <span class="dt">n_shap =</span> <span class="dv">500</span>, </span>
+<span id="cb114-22"><a href="flashlight.html#cb114-22"></a>                         <span class="dt">n_perm =</span> <span class="dv">12</span>, <span class="dt">n_max =</span> <span class="dv">1000</span>, <span class="dt">seed =</span> <span class="dv">100</span>)</span>
+<span id="cb114-23"><a href="flashlight.html#cb114-23"></a></span>
+<span id="cb114-24"><a href="flashlight.html#cb114-24"></a><span class="co">#以局部性质估计模型的全局性质</span></span>
+<span id="cb114-25"><a href="flashlight.html#cb114-25"></a></span>
+<span id="cb114-26"><a href="flashlight.html#cb114-26"></a><span class="kw">plot</span>(<span class="kw">light_importance</span>(fl_with_shap, <span class="dt">v =</span> x, <span class="dt">type =</span> <span class="st">&quot;shap&quot;</span>), </span>
+<span id="cb114-27"><a href="flashlight.html#cb114-27"></a>     <span class="dt">fill =</span> fillc, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb114-28"><a href="flashlight.html#cb114-28"></a><span class="kw">plot</span>(<span class="kw">light_scatter</span>(fl_with_shap, <span class="dt">v =</span> <span class="st">&quot;DrivAge&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;shap&quot;</span>), <span class="dt">alpha =</span> <span class="fl">0.3</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:age"></span>
 <img src="plots/8/age.png" alt="LIME" width="50%"  />
 <p class="caption">
@@ -1041,32 +1062,32 @@ Figure 8.3: LIME
 </div>
 <div id="改进glm" class="section level3">
 <h3><span class="header-section-number">8.10.7</span> 改进glm</h3>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="flashlight.html#cb108-1"></a>fit_glm2 &lt;-<span class="st"> </span><span class="kw">glm</span>(Freq <span class="op">~</span><span class="st"> </span>VehPower <span class="op">+</span><span class="st"> </span>VehBrand <span class="op">*</span><span class="st"> </span>VehGas <span class="op">+</span><span class="st"> </span>PolicyRegion <span class="op">+</span><span class="st"> </span></span>
-<span id="cb108-2"><a href="flashlight.html#cb108-2"></a><span class="st">                  </span><span class="kw">ns</span>(DrivAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>VehBrand <span class="op">*</span><span class="st"> </span><span class="kw">ns</span>(VehAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb108-3"><a href="flashlight.html#cb108-3"></a><span class="st">                  </span><span class="kw">ns</span>(logDensity, <span class="dv">5</span>), </span>
-<span id="cb108-4"><a href="flashlight.html#cb108-4"></a>                <span class="dt">data =</span> train, </span>
-<span id="cb108-5"><a href="flashlight.html#cb108-5"></a>                <span class="dt">family =</span> <span class="kw">quasipoisson</span>(), </span>
-<span id="cb108-6"><a href="flashlight.html#cb108-6"></a>                <span class="dt">weights =</span> train[[w]])</span>
-<span id="cb108-7"><a href="flashlight.html#cb108-7"></a></span>
-<span id="cb108-8"><a href="flashlight.html#cb108-8"></a><span class="co"># Setting up expainers</span></span>
-<span id="cb108-9"><a href="flashlight.html#cb108-9"></a>fl_glm2 &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
-<span id="cb108-10"><a href="flashlight.html#cb108-10"></a>  <span class="dt">model =</span> fit_glm2, <span class="dt">label =</span> <span class="st">&quot;Improved GLM&quot;</span>, </span>
-<span id="cb108-11"><a href="flashlight.html#cb108-11"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, X, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb108-12"><a href="flashlight.html#cb108-12"></a>)</span>
-<span id="cb108-13"><a href="flashlight.html#cb108-13"></a></span>
-<span id="cb108-14"><a href="flashlight.html#cb108-14"></a><span class="co"># Combine them and add common elements like reference data</span></span>
-<span id="cb108-15"><a href="flashlight.html#cb108-15"></a>fls2 &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_glm, fl_glm2, fl_nn, fl_xgb), </span>
-<span id="cb108-16"><a href="flashlight.html#cb108-16"></a>                        <span class="dt">metrics =</span> metrics, <span class="dt">data =</span> test, <span class="dt">y =</span> y, <span class="dt">w =</span> w)</span>
-<span id="cb108-17"><a href="flashlight.html#cb108-17"></a>fls2_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls2, <span class="dt">linkinv =</span> log)</span>
-<span id="cb108-18"><a href="flashlight.html#cb108-18"></a></span>
-<span id="cb108-19"><a href="flashlight.html#cb108-19"></a><span class="co"># Some results</span></span>
-<span id="cb108-20"><a href="flashlight.html#cb108-20"></a><span class="kw">plot</span>(<span class="kw">light_performance</span>(fls2), <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="dt">rotate_x =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb108-21"><a href="flashlight.html#cb108-21"></a><span class="kw">plot</span>(<span class="kw">light_importance</span>(fls2, <span class="dt">v =</span> x), <span class="dt">fill =</span> fillc, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">top_m =</span> <span class="dv">4</span>)</span>
-<span id="cb108-22"><a href="flashlight.html#cb108-22"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls2, <span class="dt">v =</span> <span class="st">&quot;logDensity&quot;</span>))</span>
-<span id="cb108-23"><a href="flashlight.html#cb108-23"></a>interact_rel_improved &lt;-<span class="st"> </span><span class="kw">light_interaction</span>(</span>
-<span id="cb108-24"><a href="flashlight.html#cb108-24"></a>  fls2_log, <span class="dt">v =</span> <span class="kw">most_important</span>(imp, <span class="dv">4</span>), <span class="dt">take_sqrt =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb108-25"><a href="flashlight.html#cb108-25"></a>  <span class="dt">pairwise =</span> <span class="ot">TRUE</span>,  <span class="dt">use_linkinv =</span> <span class="ot">TRUE</span>, <span class="dt">seed =</span> <span class="dv">61</span>)</span>
-<span id="cb108-26"><a href="flashlight.html#cb108-26"></a><span class="kw">plot</span>(interact_rel_improved, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> fillc, <span class="dt">top_m =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="flashlight.html#cb115-1"></a>fit_glm2 &lt;-<span class="st"> </span><span class="kw">glm</span>(Freq <span class="op">~</span><span class="st"> </span>VehPower <span class="op">+</span><span class="st"> </span>VehBrand <span class="op">*</span><span class="st"> </span>VehGas <span class="op">+</span><span class="st"> </span>PolicyRegion <span class="op">+</span><span class="st"> </span></span>
+<span id="cb115-2"><a href="flashlight.html#cb115-2"></a><span class="st">                  </span><span class="kw">ns</span>(DrivAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span>VehBrand <span class="op">*</span><span class="st"> </span><span class="kw">ns</span>(VehAge, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb115-3"><a href="flashlight.html#cb115-3"></a><span class="st">                  </span><span class="kw">ns</span>(logDensity, <span class="dv">5</span>), </span>
+<span id="cb115-4"><a href="flashlight.html#cb115-4"></a>                <span class="dt">data =</span> train, </span>
+<span id="cb115-5"><a href="flashlight.html#cb115-5"></a>                <span class="dt">family =</span> <span class="kw">quasipoisson</span>(), </span>
+<span id="cb115-6"><a href="flashlight.html#cb115-6"></a>                <span class="dt">weights =</span> train[[w]])</span>
+<span id="cb115-7"><a href="flashlight.html#cb115-7"></a></span>
+<span id="cb115-8"><a href="flashlight.html#cb115-8"></a><span class="co"># Setting up expainers</span></span>
+<span id="cb115-9"><a href="flashlight.html#cb115-9"></a>fl_glm2 &lt;-<span class="st"> </span><span class="kw">flashlight</span>(</span>
+<span id="cb115-10"><a href="flashlight.html#cb115-10"></a>  <span class="dt">model =</span> fit_glm2, <span class="dt">label =</span> <span class="st">&quot;Improved GLM&quot;</span>, </span>
+<span id="cb115-11"><a href="flashlight.html#cb115-11"></a>  <span class="dt">predict_function =</span> <span class="cf">function</span>(fit, X) <span class="kw">predict</span>(fit, X, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb115-12"><a href="flashlight.html#cb115-12"></a>)</span>
+<span id="cb115-13"><a href="flashlight.html#cb115-13"></a></span>
+<span id="cb115-14"><a href="flashlight.html#cb115-14"></a><span class="co"># Combine them and add common elements like reference data</span></span>
+<span id="cb115-15"><a href="flashlight.html#cb115-15"></a>fls2 &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(<span class="kw">list</span>(fl_glm, fl_glm2, fl_nn, fl_xgb), </span>
+<span id="cb115-16"><a href="flashlight.html#cb115-16"></a>                        <span class="dt">metrics =</span> metrics, <span class="dt">data =</span> test, <span class="dt">y =</span> y, <span class="dt">w =</span> w)</span>
+<span id="cb115-17"><a href="flashlight.html#cb115-17"></a>fls2_log &lt;-<span class="st"> </span><span class="kw">multiflashlight</span>(fls2, <span class="dt">linkinv =</span> log)</span>
+<span id="cb115-18"><a href="flashlight.html#cb115-18"></a></span>
+<span id="cb115-19"><a href="flashlight.html#cb115-19"></a><span class="co"># Some results</span></span>
+<span id="cb115-20"><a href="flashlight.html#cb115-20"></a><span class="kw">plot</span>(<span class="kw">light_performance</span>(fls2), <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="dt">rotate_x =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb115-21"><a href="flashlight.html#cb115-21"></a><span class="kw">plot</span>(<span class="kw">light_importance</span>(fls2, <span class="dt">v =</span> x), <span class="dt">fill =</span> fillc, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">top_m =</span> <span class="dv">4</span>)</span>
+<span id="cb115-22"><a href="flashlight.html#cb115-22"></a><span class="kw">plot</span>(<span class="kw">light_profile</span>(fls2, <span class="dt">v =</span> <span class="st">&quot;logDensity&quot;</span>))</span>
+<span id="cb115-23"><a href="flashlight.html#cb115-23"></a>interact_rel_improved &lt;-<span class="st"> </span><span class="kw">light_interaction</span>(</span>
+<span id="cb115-24"><a href="flashlight.html#cb115-24"></a>  fls2_log, <span class="dt">v =</span> <span class="kw">most_important</span>(imp, <span class="dv">4</span>), <span class="dt">take_sqrt =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb115-25"><a href="flashlight.html#cb115-25"></a>  <span class="dt">pairwise =</span> <span class="ot">TRUE</span>,  <span class="dt">use_linkinv =</span> <span class="ot">TRUE</span>, <span class="dt">seed =</span> <span class="dv">61</span>)</span>
+<span id="cb115-26"><a href="flashlight.html#cb115-26"></a><span class="kw">plot</span>(interact_rel_improved, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> fillc, <span class="dt">top_m =</span> <span class="dv">4</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -1103,7 +1124,7 @@ gitbook.start({
 "all": "github"
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "serif",
 "size": 2
 },

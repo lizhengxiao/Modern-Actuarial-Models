@@ -270,7 +270,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
 <li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
 <li class="chapter" data-level="7.4" data-path="nlp.html"><a href="nlp.html#word-embeddings"><i class="fa fa-check"></i><b>7.4</b> Word embeddings</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.1</b> Pre-trained word embeddings</a></li>
+<li class="chapter" data-level="7.4.1" data-path="nlp.html"><a href="nlp.html#neural-probabilistic-language-model"><i class="fa fa-check"></i><b>7.4.1</b> Neural probabilistic language model</a></li>
+<li class="chapter" data-level="7.4.2" data-path="nlp.html"><a href="nlp.html#word2vec"><i class="fa fa-check"></i><b>7.4.2</b> word2vec</a></li>
+<li class="chapter" data-level="7.4.3" data-path="nlp.html"><a href="nlp.html#global-vectors-for-word-representationglove"><i class="fa fa-check"></i><b>7.4.3</b> Global vectors for word representation(Glove)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="nlp.html"><a href="nlp.html#pre-trained-word-embeddings"><i class="fa fa-check"></i><b>7.4.4</b> Pre-trained word embeddings</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
 <li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
@@ -319,11 +322,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
-<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#cnn组件"><i class="fa fa-check"></i><b>9.1</b> CNN组件</a></li>
-<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#案例分析-1"><i class="fa fa-check"></i><b>9.2</b> 案例分析</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="cnn.html"><a href="cnn.html#human-mmortality-database-hmd"><i class="fa fa-check"></i><b>9.2.1</b> <span>Human MMortality Database (HMD)</span></a></li>
-<li class="chapter" data-level="9.2.2" data-path="cnn.html"><a href="cnn.html#the-modified-national-institute-of-standards-and-technology-mnist-dataset"><i class="fa fa-check"></i><b>9.2.2</b> The Modified National Institute of Standards and Technology (MNIST) dataset</a></li>
+<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>9.1</b> 卷积层 (Convolution)</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>9.1.1</b> 超参数</a></li>
+<li class="chapter" data-level="9.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>9.1.2</b> 参数个数计算</a></li>
 </ul></li>
+<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>9.2</b> 池化层 (Pooling)</a></li>
+<li class="chapter" data-level="9.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>9.3</b> 批标准化层 (Batch Normalization)</a></li>
+<li class="chapter" data-level="9.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>9.4</b> 其他组件</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>9.4.1</b> 全连接层 (Dense)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>9.4.2</b> 输出神经元</a></li>
+<li class="chapter" data-level="9.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>9.4.3</b> 激活函数 (Activation)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>9.5</b> 特性</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>9.5.1</b> 平移不变性</a></li>
+<li class="chapter" data-level="9.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>9.5.2</b> 旋转不变性</a></li>
+<li class="chapter" data-level="9.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>9.5.3</b> 尺度不变性</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>9.6</b> 隐藏层可视化</a></li>
+<li class="chapter" data-level="9.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>9.7</b> 逆卷积</a></li>
+<li class="chapter" data-level="9.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>9.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
+<li class="chapter" data-level="9.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>9.8.1</b> 输入和标签</a></li>
+<li class="chapter" data-level="9.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>9.8.2</b> 评估指标</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>9.9</b> MNIST dataset</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
@@ -1049,7 +1070,7 @@ gitbook.start({
 "all": "github"
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "serif",
 "size": 2
 },

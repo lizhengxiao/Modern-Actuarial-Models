@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # 卷积神经网络 {#cnn}
 
 *万淇、蔡清扬、高光远*
@@ -7,6 +12,13 @@ knitr::opts_chunk$set(eval = F)
 ```
 
 深度学习之所以这么热，大部分归功于卷积神经网络在[计算机视觉](https://github.com/search?q=computer+vision&type=)上取得的巨大成功。卷积神经网络还可以用在自然语言处理、时间序列分析、异常检测、可穿戴设备与健康检测、GO。
+
+校门口的人脸识别可以快速识别出学生老师校外人员，通常是否戴口罩、靠左靠右、离的远近等不会影响结果，但歪头经常难以被识别，这些和下面卷积神经网络的特性密切相关。
+
+```{r,echo=F, eval=T, out.width="20%",fig.align = 'center',fig.cap="Entrace to Renmin"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/9/me.png")
+```
 
 大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
 也可以应用于迁移学习。
@@ -41,8 +53,7 @@ knitr::include_graphics("./plots/9/padding.png")
 ```
 
 - Dilation: 膨胀卷积（Dilated Convolution）也称为空洞卷积（Atrous Convolution）是一种不增加参数数量同时增加输出单元感受野的一种方法。空洞卷积通过给卷积核插入“空洞”来变相地增加其大小
-
-```{r,echo=F, eval=T, out.width="40%",fig.align = 'center',fig.cap="Dilation"}
+```{r,echo=F, eval=T, out.width="40%",fig.align = 'center',fig.cap="Dilation kernal"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/9/dilated1.png")
 knitr::include_graphics("./plots/9/dilated2.png")
@@ -62,8 +73,18 @@ knitr::include_graphics("./plots/9/dilated2.png")
 | **步长**| $s_1^{(k)},s_2^{(k)}$ |
 | 输出大小| $n_1^{(k)}\times n_2^{(k)}$ |
 
-其中，输出大小$n_1^{(k)}\times n_2^{(k)}$由输入大小$n_1^{(k-1)}\times n_2^{(k-1)}$和补零、膨胀、步长决定。具体计算为？
+其中，输出大小$n_1^{(k)}\times n_2^{(k)}$由输入大小$n_1^{(k-1)}\times n_2^{(k-1)}$和补零、膨胀、步长决定。
 
+### 参数个数计算
+
+下图为案例1中神经网络参数个数的计算。
+
+```{r,echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="Number of Parameters"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/9/cnn1_structure.png")
+```
+
+如：？？
 
 ## 池化层 (Pooling)
 
@@ -103,33 +124,47 @@ knitr::include_graphics("./plots/9/dense.png")
 案例一是生存率问题，结果取值在$[0,1]$中，所以使用sigmoid的函数对最后的值进行缩放。案例二是多分类的输出结果，所以使用softmax函数进行输出。
 
 
-```{r,echo=F, eval=T, out.width="30%",fig.align = 'center',fig.cap="Activation Functions"}
-#knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/9/sigmoid.png");knitr::include_graphics("./plots/9/tanh.png");knitr::include_graphics("./plots/9/relu.png")
-```
-
-
 ### 激活函数 (Activation)
 
 在上面讨论的网络层（卷积层、池化层和全连接层）中，所有的操作其实都是线性的，但只有使用非线性激活，网络建模的全部威力才会发挥出来。常用的非线性激活函数有：ReLU、sigmoid、tanh等
 
-```{r,echo=F, eval=T, out.width="30%",fig.align = 'center',fig.cap="Activation Functions"}
-knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/9/sigmoid.png")
-knitr::include_graphics("./plots/9/tanh.png")
-knitr::include_graphics("./plots/9/relu.png")
+```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Activation Functions"}
+x<-seq(-3,3,0.1)
+y1<-function(x) 1/(1+exp(-x))
+y2<-function(x) tanh(x)
+y3<-function(x) pmax(0,x)
+par(mfrow=c(1,1),pty="s")
+matplot(x,cbind(y1(x),y2(x)),type="l",lwd=2,lty=1:2,col=1,xlab="x",ylab="activation")
+lines(x,y3(x),lwd=2,lty=3)
+abline(h=c(-1,1,0),lty=2,lwd=.5)
+abline(v=0,lty=2,lwd=.5)
+legend("bottomright",c("sigmoid","tanh","relu"),lty=1:3,lwd=c(2,2,2))
 ```
 
 ## 特性
 
-### 平移
+在校门口
 
-### 旋转
+### 平移不变性
 
-### 尺度
+由于卷积核对于特定的特征才会有较大激活值，且应用到不同的位置，所以不论上一层特征图谱（feature map）中的某一特征平移到何处，卷积核都会找到该特征并在此处呈现较大的激活值。这就是“等变性”
 
+```{r,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="Shift invariance"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/9/shift.png")
+```
 
+### 旋转不变性
 
+旋转不变性常见于卫星图像识别中，如桥梁定位、洪水面积估计等。但在手写识别中，旋转不变性不满足。
+
+### 尺度不变性
+
+在手写识别中，尺度不变性满足。
+
+## 隐藏层可视化
+
+## 逆卷积
 
 ## [Human Mortality Database (HMD)](https://www.mortality.org)
 

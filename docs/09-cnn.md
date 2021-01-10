@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # 卷积神经网络 {#cnn}
 
 *万淇、蔡清扬、高光远*
@@ -6,12 +11,19 @@
 
 深度学习之所以这么热，大部分归功于卷积神经网络在[计算机视觉](https://github.com/search?q=computer+vision&type=)上取得的巨大成功。卷积神经网络还可以用在自然语言处理、时间序列分析、异常检测、可穿戴设备与健康检测、GO。
 
+校门口的人脸识别可以快速识别出学生老师校外人员，通常是否戴口罩、靠左靠右、离的远近等不会影响结果，但歪头经常难以被识别，这些和下面卷积神经网络的特性密切相关。
+
+<div class="figure" style="text-align: center">
+<img src="./plots/9/me.png" alt="Entrace to Renmin" width="20%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Entrace to Renmin</p>
+</div>
+
 大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
 也可以应用于迁移学习。
 
 <div class="figure" style="text-align: center">
-<img src="./plots/9/transfer_learn.png" alt="Transfer learning" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Transfer learning</p>
+<img src="./plots/9/transfer_learn.png" alt="Transfer learning" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-2)Transfer learning</p>
 </div>
 
 ## 卷积层 (Convolution)
@@ -21,7 +33,7 @@
 计算过程如下图所示：
 <div class="figure" style="text-align: center">
 <img src="./plots/9/cnn.png" alt="Convolution" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-2)Convolution</p>
+<p class="caption">(\#fig:unnamed-chunk-3)Convolution</p>
 </div>
 
 ### 超参数
@@ -35,17 +47,16 @@
 - Padding: 补零。作用：保持图像大小，使之减小不会太快；还能照顾到边缘特征。
 <div class="figure" style="text-align: center">
 <img src="./plots/9/padding.png" alt="Padding" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-3)Padding</p>
+<p class="caption">(\#fig:unnamed-chunk-4)Padding</p>
 </div>
 
 - Dilation: 膨胀卷积（Dilated Convolution）也称为空洞卷积（Atrous Convolution）是一种不增加参数数量同时增加输出单元感受野的一种方法。空洞卷积通过给卷积核插入“空洞”来变相地增加其大小
-
 <div class="figure" style="text-align: center">
-<img src="./plots/9/dilated1.png" alt="Dilation" width="40%"  />
-<p class="caption">(\#fig:unnamed-chunk-4-1)Dilation</p>
+<img src="./plots/9/dilated1.png" alt="Dilation kernal" width="40%"  />
+<p class="caption">(\#fig:unnamed-chunk-5-1)Dilation kernal</p>
 </div><div class="figure" style="text-align: center">
-<img src="./plots/9/dilated2.png" alt="Dilation" width="40%"  />
-<p class="caption">(\#fig:unnamed-chunk-4-2)Dilation</p>
+<img src="./plots/9/dilated2.png" alt="Dilation kernal" width="40%"  />
+<p class="caption">(\#fig:unnamed-chunk-5-2)Dilation kernal</p>
 </div>
 - Strides: 步长。卷积核每次滑动的步幅。
 
@@ -62,8 +73,18 @@
 | **步长**| $s_1^{(k)},s_2^{(k)}$ |
 | 输出大小| $n_1^{(k)}\times n_2^{(k)}$ |
 
-其中，输出大小$n_1^{(k)}\times n_2^{(k)}$由输入大小$n_1^{(k-1)}\times n_2^{(k-1)}$和补零、膨胀、步长决定。具体计算为？
+其中，输出大小$n_1^{(k)}\times n_2^{(k)}$由输入大小$n_1^{(k-1)}\times n_2^{(k-1)}$和补零、膨胀、步长决定。
 
+### 参数个数计算
+
+下图为案例1中神经网络参数个数的计算。
+
+<div class="figure" style="text-align: center">
+<img src="./plots/9/cnn1_structure.png" alt="Number of Parameters" width="70%"  />
+<p class="caption">(\#fig:unnamed-chunk-6)Number of Parameters</p>
+</div>
+
+如：？？
 
 ## 池化层 (Pooling)
 
@@ -71,7 +92,7 @@
 
 <div class="figure" style="text-align: center">
 <img src="./plots/9/pooling.png" alt="Pooling" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-5)Pooling</p>
+<p class="caption">(\#fig:unnamed-chunk-7)Pooling</p>
 </div>
 
 ## 批标准化层 (Batch Normalization)
@@ -94,7 +115,7 @@ Flatten层作用就是通过重新排列维度并保留所有值的简单变换.
 
 <div class="figure" style="text-align: center">
 <img src="./plots/9/dense.png" alt="Dense layer" width="50%"  />
-<p class="caption">(\#fig:unnamed-chunk-6)Dense layer</p>
+<p class="caption">(\#fig:unnamed-chunk-8)Dense layer</p>
 </div>
 
 ### 输出神经元
@@ -103,43 +124,39 @@ Flatten层作用就是通过重新排列维度并保留所有值的简单变换.
 案例一是生存率问题，结果取值在$[0,1]$中，所以使用sigmoid的函数对最后的值进行缩放。案例二是多分类的输出结果，所以使用softmax函数进行输出。
 
 
-<div class="figure" style="text-align: center">
-<img src="./plots/9/sigmoid.png" alt="Activation Functions" width="30%"  />
-<p class="caption">(\#fig:unnamed-chunk-7-1)Activation Functions</p>
-</div><div class="figure" style="text-align: center">
-<img src="./plots/9/tanh.png" alt="Activation Functions" width="30%"  />
-<p class="caption">(\#fig:unnamed-chunk-7-2)Activation Functions</p>
-</div><div class="figure" style="text-align: center">
-<img src="./plots/9/relu.png" alt="Activation Functions" width="30%"  />
-<p class="caption">(\#fig:unnamed-chunk-7-3)Activation Functions</p>
-</div>
-
-
 ### 激活函数 (Activation)
 
 在上面讨论的网络层（卷积层、池化层和全连接层）中，所有的操作其实都是线性的，但只有使用非线性激活，网络建模的全部威力才会发挥出来。常用的非线性激活函数有：ReLU、sigmoid、tanh等
 
 <div class="figure" style="text-align: center">
-<img src="./plots/9/sigmoid.png" alt="Activation Functions" width="30%"  />
-<p class="caption">(\#fig:unnamed-chunk-8-1)Activation Functions</p>
-</div><div class="figure" style="text-align: center">
-<img src="./plots/9/tanh.png" alt="Activation Functions" width="30%"  />
-<p class="caption">(\#fig:unnamed-chunk-8-2)Activation Functions</p>
-</div><div class="figure" style="text-align: center">
-<img src="./plots/9/relu.png" alt="Activation Functions" width="30%"  />
-<p class="caption">(\#fig:unnamed-chunk-8-3)Activation Functions</p>
+<img src="09-cnn_files/figure-html/unnamed-chunk-9-1.png" alt="Activation Functions" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-9)Activation Functions</p>
 </div>
 
 ## 特性
 
-### 平移
+在校门口
 
-### 旋转
+### 平移不变性
 
-### 尺度
+由于卷积核对于特定的特征才会有较大激活值，且应用到不同的位置，所以不论上一层特征图谱（feature map）中的某一特征平移到何处，卷积核都会找到该特征并在此处呈现较大的激活值。这就是“等变性”
 
+<div class="figure" style="text-align: center">
+<img src="./plots/9/shift.png" alt="Shift invariance" width="50%"  />
+<p class="caption">(\#fig:unnamed-chunk-10)Shift invariance</p>
+</div>
 
+### 旋转不变性
 
+旋转不变性常见于卫星图像识别中，如桥梁定位、洪水面积估计等。但在手写识别中，旋转不变性不满足。
+
+### 尺度不变性
+
+在手写识别中，尺度不变性满足。
+
+## 隐藏层可视化
+
+## 逆卷积
 
 ## [Human Mortality Database (HMD)](https://www.mortality.org)
 
@@ -173,7 +190,7 @@ $$
 
 <div class="figure" style="text-align: center">
 <img src="./plots/9/window.png" alt="Mortality Window" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-9)Mortality Window</p>
+<p class="caption">(\#fig:unnamed-chunk-11)Mortality Window</p>
 </div>
 
 然后分别对三个通道进行正则化, 得到$\boldsymbol{X}_{i,c}\in[0,1]^{10\times10\times3}$. 通过对所有国家进行如上处理, 可以得到大约$4000$张图像.

@@ -89,13 +89,72 @@ Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also"
 
 - Global vectors for word representation
 
+### Neural probabilistic language model
+
+传统的N-grams 模型认为，在第1个词到第t-1个词出现的情况下第t个词出现的条件概率，约等于在第t-n+1个词到第t-1个词出现的情况下第t个词出现的条件概率（N=n-1）。但传统模型没有对“词汇相似性”的概念进行编码，也存在测试时输入的词序列很可能不同于所有用来训练模型的单词序列的问题。为了解决这个问题，引入前馈式神经网络。
+
+该前馈式神经网络用输入的第t个词前的n-1个词预测第t个词出现的概率，的结构如下：
+<div class="figure" style="text-align: center">
+<img src="./plots/7/Nplm.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:nplm)文档结构</p>
+</div>
+
+使用神经网络的目的是寻找词表V到d维向量空间R的映射，即图中的矩阵C。
+
+### word2vec
+
+word2vec使用了上下文（context）概念。
+词 w 的上下文 C(w) 指 w前面和后面的有限个词。C(w)的长度被定义为非负整数c，2c=|C(w)|。例如：
+'Koalas and platypuses are mammals living in Australia',c=2,w='are'
+C(w)={'and','platypuses','mammals','living'}
+
+Word2vec有两个变体，skip-gram model和the continuous bag of words (CBOW) model。
+前者的思路是给定中心单词w，预测其上下文 C(w)。后者的思路是给定上下文C(w)，预测中心词w。
+两者的结构图如下：
+<div class="figure" style="text-align: center">
+<img src="./plots/7/skm.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:w2v)文档结构</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="./plots/7/skm2.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:w2v-2)文档结构</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="./plots/7/CBOW.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:w2v-3)文档结构</p>
+</div>
+
+使用word2vec寻找词表V到d维向量空间R的映射，即寻找隐藏层的权重矩阵（skip-gram model第二张结构图中的橙色矩阵）。使用one-hot编码的词向量，乘以隐藏层的权重矩阵后，即得目标word vector。
+
+### Global vectors for word representation(Glove)
+
+word2vec仅在上下文考虑词与词共现的概率，Glove通过整个语料库计算词-词共现次数矩阵。
+例如，C={'Cats and koalas are mammals.','Tortoises are not mammals.','I like cats,koalas and tortoises'.}
+其词-词共现次数矩阵为：
+<div class="figure" style="text-align: center">
+<img src="./plots/7/word-word co-occurrence.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:glove)文档结构</p>
+</div>
+
+与词-词共现次数或概率相比，词-词共现概率比更能区分相关词和不相关词。
+记Pij为词j出现在词i上下文的概率。Glove的思路是找到一个定义在中心词i的嵌入向量、中心词j的嵌入向量，以及上下文词k的嵌入向量上的一个函数F，使之尽可能等于Pik/Pjk。
+这转化为一个加权最小二乘问题：
+<div class="figure" style="text-align: center">
+<img src="./plots/7/glove.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:glove-1)文档结构</p>
+</div>
+其中，g()是权重函数，b是标量偏差，Xik是词i与词k的全局共现数。
+Glove的目标是最小化J，以期求得词的嵌入向量。
+
 ### Pre-trained word embeddings
 
 我们使用`en_core_web_sm`进行词嵌入，它可以把任意的词映射到$\mathbb{R}^{96}$。另外，`en_core_web_mb`为更复杂的映射，可以把任意的词映射到$\mathbb{R}^{300}$。对于一个包含多个词语的文本，我们用所有词语的词嵌入平均值来表示这个文本
 
 ## 机器学习算法
 
-通过bag-of-words, bag-of-POS，word embedding 我们把每个文本转变为一个向量。这样可以利用如下几种机器学习算法进行文本分类等监督学习。
+通过bag-of-words, bag-of-POS，word embedding 我们把每个文本转变为一个向量。这样可以利用如下几种机器学习算法进行文本分类等监督学习。（详见第四章提升方法（Boosting））
 
 - AdaBoost
 
@@ -105,6 +164,34 @@ Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also"
 
 
 ## 神经网络
+
+- RNN
+<div class="figure" style="text-align: center">
+<img src="./plots/7/RNN.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:rnn)文档结构</p>
+</div>
+
+- LSTM
+<div class="figure" style="text-align: center">
+<img src="./plots/7/LSTM_1.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:lstm)文档结构</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="./plots/7/LSTM_2.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:lstm-1)文档结构</p>
+</div>
+
+- GRU
+<div class="figure" style="text-align: center">
+<img src="./plots/7/GRU_1.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:gru)文档结构</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="./plots/7/GRU_2.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:gru-1)文档结构</p>
+</div>
 
 ### 数据预处理
 
@@ -116,13 +203,31 @@ Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also"
 
 - LSTM
 
+  - Shallow LSTM architecture
+<div class="figure" style="text-align: center">
+<img src="./plots/7/Shallow LSTM.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:lstm-s)文档结构</p>
+</div>
+
+  - Deep LSTM architecture
+<div class="figure" style="text-align: center">
+<img src="./plots/7/Deep LSTM.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:lstm-d)文档结构</p>
+</div>
+
 - GRU
+
+  - Shallow GRU architecture
+<div class="figure" style="text-align: center">
+<img src="./plots/7/Shallow GRU.png" alt="文档结构" width="70%"  />
+<p class="caption">(\#fig:gru-s)文档结构</p>
+</div>
 
 ## Case study
 
 <div class="figure" style="text-align: center">
 <img src="./plots/7/files.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:files)文档结构</p>
+<p class="caption">(\#fig:case)文档结构</p>
 </div>
 
 <div class="figure" style="text-align: center">
@@ -139,6 +244,111 @@ Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also"
 - 数据结构：评论位置代表类别，一个txt存储一个评论数据。 
 
 ### 函数说明
+
+- 分词
+
+```
+import re
+def preprocessor(text):
+    text = re.sub('<[^>]*>', '', text)
+    emoticons = re.findall('(?::|;|=)(?:-)?(?:\)|\(|D|P)', text)
+    text = (re.sub('[\W]+', ' ', text.lower()) +
+            ' '.join(emoticons).replace('-', ''))
+    return text
+```
+
+引入Python中的re模块，定义preprocessor函数对文本进行第一步的清理，作用去掉文本中的非字母数字符号，并将所有字母都转化成小写。
+
+```
+from nltk.tokenize import word_tokenize
+tokens = word_tokenize(text)
+```
+
+从nltk.tokenize导入word_tokenize函数对清理后的文本进行分词，返回值由单词组成的列表。
+
+- 删除停止词
+
+```
+import nltk
+from nltk.corpus import stopwords
+
+stopwords = list(set(stopwords.words('english')))
+filtered_tokens = [word for word in tokens if word not in stopwords]
+```
+
+导入nltk.corpus中的停用词表，删除列表中出现在停用词表中的所有单词，不改变词序。
+
+- 词性标注
+
+```
+from nltk import pos_tag
+nltk.download('averaged_perceptron_tagger')
+
+def pos_tags(text_processed):
+    return "-".join( tag for (word, tag) in nltk.pos_tag(text_processed))
+
+pos_tag = pos_tags(filtered_tokens)
+```
+
+导入nltk中的pos_tag函数，该函数的作用是根据训练好的模型给出单词对应的词性，返回值是一个元组，元组中的两个元素分别是原单词和对应的词性标注。
+重新定义词性标注函数pos_tags，最终返回一个由“-”连接的字符串，它按顺序连接了经过预处理的文本中每个单词的词性数据。
+
+- TfidfVectorizer()
+
+```
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+
+tfidf = c(strip_accents=None,
+                        lowercase=False,
+                        preprocessor=None)
+                        
+tfidf_wm = tfidf.fit_transform([pos_tag])
+
+```
+
+TfidfVectorizer将文本转化为向量； 向量的属性对应词典中的单词(n个)，属性值是每个单词的tfidf值； 每个向量代表一个文本； n个文本构成n*p矩阵； 
+TfidfVectorizer.fit_transform的输入值是经过预处理的文本列表时，得到bag of words模型的输入矩阵；当输入值是相应的词性序列列表时，得到bag of POS模型的输入矩阵。
+
+- word embeddings
+
+```
+import spacy
+nlp = spacy.load('en_core_web_sm') 
+
+import numpy as np
+emb = nlp(text_filtered).vector
+
+```
+
+根据'en_core_web_sm'模型将文本转化为向量，向量的维数是由模型本身决定的。可以根据实际研究需要选择合适的模型。由这样的文本向量构成的矩阵就是word embeddings模型的最终输入。
+
+- RNN的预处理
+
+```
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+vocab_size = 400
+#取前400个最高频词汇作为文本的词序标记，即只对文本中出现在前400个最高频词汇中的单词进行词序映射
+#如某评论为'w1 w2 w3'，其中单词w1、w2和w3对应的频数排名分别为30，405，108，
+#则与该评论对应的词序向量为[30, 108]
+tokenizer = Tokenizer(num_words=vocab_size, 
+                      filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', # filters out all punctuation other than '
+                      lower=True, # convert to lowercase
+                      split=' ') # split on whitespaces
+tokenizer.fit_on_texts(df['review'])
+list_tokenized = tokenizer.texts_to_sequences(df['review'])
+
+sequence_length = 200
+#统一文本的词序向量长度为200
+#若前面生成的词序向量长度大于200（即文本中有超过200个单词出现在我们用于映射的高频词汇表中，此例中为前400），则取后200个元素
+#若前面生成的词序向量长度小于200，则前面用0补足
+sequences = pad_sequences(list_tokenized, maxlen=sequence_length)
+
+```
+
+在神经网络中，文本向量化不需要用到nlp中事先训练好的模型，文本中的词语替换为该词在词汇表中的索引（即频数排名次序）。
 
 ### 可能遇到的问题
 
@@ -174,21 +384,6 @@ nlp = spacy.load(‘en_core_web_sm’)
 ```
 
 ### 结果比较
-
-*以下仅为表例*
-
-$$
-\begin{array}{|l|c|cc|c|}
-\hline &  {\text { in-sample }} & {\text { out-of-sample }} & {\text { out-of-sample }}&  {\text { run times }}\\
-& \text {both genders} & \text { female } & \text { male } & \text {both genders} \\
-\hline \hline \text { LSTM3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) & 4.7643 & 0.3402 & 1.1346 & 404 \mathrm{s}\\
-\text { GRU3 }\left(T=10,\left(\tau_{0}, \tau_{1}, \tau_{2}, \tau_{3}\right)=(5,20,15,10)\right) & 4.6311 & 0.4646 & 1.2571 &  379 \mathrm{s} \\
-\hline\hline \text { LSTM3 averaged over 100 different seeds} & - & 0.2451 & 1.2093 & 100 \cdot 404\mathrm{s}\\
-\text { GRU3 averaged over 100 different seeds } & - & 0.2341& 1.2746 &  100 \cdot 379 \mathrm{s} \\
-\hline \hline \text { LC model with SVD } & 6.2841 & 0.6045 &1.8152 &  - \\
-\hline
-\end{array}
-$$
 
 
 ## 结论
