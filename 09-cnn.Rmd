@@ -11,39 +11,43 @@ knitr::opts_chunk$set(eval = F)
 大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
 也可以应用于迁移学习。
 
-```{r lime,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Transfer learning"}
+```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Transfer learning"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/9/transfer_learn.png")
 ```
 
 ## CNN组件
 
-
 ## 案例分析
 
-目标1: 根据死亡率表的局部发展特征，判断是否有异常死亡率发生。
-
-目标2: 对手写$0-9$进行分类。
-
 ### [Human MMortality Database (HMD)](https://www.mortality.org)
+
+**目标**: 根据死亡率表的局部特征，检测该局部是否有异常死亡率。
 
 死亡率$q_{x,t,c,g}$、人口数量$E_{x,t,c,g}$
 
 - 年龄$x$, 日历年$t$, 国家$c$, 性别$g$.
 
+- 由于领土的变化，某些年的数据会出现变更前与变更后的的两个数据，处理方式是取平均值作为最后的研究数据。
+
+- 某些死亡率数据存在缺失：如果相邻(以年龄$x$和日历年$t$)值可用，我们线性插补，否则使用最近邻的值进行插补。
+
 - 假定没有人口的迁移以及其他的误差：$$E_{x,t,c,g}=E_{x-1,t-1,c,g}(1-q_{{x-1},{t-1},c,g})$$
 
 - 定义标准化残差: $$r_{x,t,c,g}=\frac{E_{x,t,c,g}-E_{x-1,t-1,c,g}(1-q_{x-1,t-1,c,g})}{E_{x,t,c,g}}$$
 
-- 
+- $r_{x,t,c,g}<0$表明可能有人口迁出或者数据错误， $r_{x,t,c,g}>0$表明可能有人口迁入或者数据错误。
 
-（x - 年龄、t - 日历年、c - 国家、g - 性别）
-数据预处理
-由于领土的变化，某些年的数据会出现变更前与变更后的的两个数据，处理方式是取平均值作为最后的研究数据
-某些死亡率数据存在缺失：如果相邻(以年龄x和日历年t)值可用，我们线性插补，否则使用最近邻的值进行插补
+经过预处理HMD，对每个国家每个性别我们得到一个关于死亡率$q_{x,t,c,g}$的二维数组，其中行代表不同日历年，列代表不同年龄。为了检测死亡率的异常值，我们考虑死亡率的局部变化特征，使用大小为$10\times10$的窗口在死亡率二维数组上进行移动，并设置步长为$5$。可以得到死亡率的局部矩阵$(q_{x,t,c,g})_{x_i<x\le x_i+10, t_i<t\le t_i+10}$, 其中$x_i:=20+5i,t_i=1950+5i$。我们定义如下输入特征$W_{i,c}\in\mathbb{R}^{10\times 10\times 3}$:
+\begin{align}
+W_{i,c,\cdot,\cdot,1}:=&(\logit(q_{x,t,c,males}))_{x_i<x\le x_i+10, t_i<t\le t_i+10}\\
+W_{i,c,\cdot,\cdot,2}:=&(\logit(q_{x,t,c,females}))_{x_i<x\le x_i+10, t_i<t\le t_i+10\\
+W_{i,c,\cdot,\cdot,3}:=W_{i,c,\cdot,\cdot,1}-W_{i,c,\cdot,\cdot,2}
+\end{align}
+
 
 
 ### The Modified National Institute of Standards and Technology (MNIST) dataset
 
-
+**目标**: 对手写$0-9$进行分类。
 
