@@ -95,8 +95,8 @@ Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also"
 
 该前馈式神经网络用输入的第t个词前的n-1个词预测第t个词出现的概率，的结构如下：
 <div class="figure" style="text-align: center">
-<img src="./plots/7/Nplm.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:nplm)文档结构</p>
+<img src="./plots/7/Nplm.png" alt="Neural probalilistic language model" width="50%"  />
+<p class="caption">(\#fig:nplm)Neural probalilistic language model</p>
 </div>
 
 使用神经网络的目的是寻找词表V到d维向量空间R的映射，即图中的矩阵C。
@@ -112,18 +112,18 @@ Word2vec有两个变体，skip-gram model和the continuous bag of words (CBOW) m
 前者的思路是给定中心单词w，预测其上下文 C(w)。后者的思路是给定上下文C(w)，预测中心词w。
 两者的结构图如下：
 <div class="figure" style="text-align: center">
-<img src="./plots/7/skm.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:w2v)文档结构</p>
+<img src="./plots/7/skm.png" alt="Skip-gram model" width="30%"  />
+<p class="caption">(\#fig:w2v)Skip-gram model</p>
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="./plots/7/skm2.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:w2v-2)文档结构</p>
+<img src="./plots/7/skm2.png" alt="Skip-gram model" width="90%"  />
+<p class="caption">(\#fig:w2v-2)Skip-gram model</p>
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="./plots/7/CBOW.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:w2v-3)文档结构</p>
+<img src="./plots/7/CBOW.png" alt="Continuous bag of words" width="30%"  />
+<p class="caption">(\#fig:w2v-3)Continuous bag of words</p>
 </div>
 
 使用word2vec寻找词表V到d维向量空间R的映射，即寻找隐藏层的权重矩阵（skip-gram model第二张结构图中的橙色矩阵）。使用one-hot编码的词向量，乘以隐藏层的权重矩阵后，即得目标word vector。
@@ -134,17 +134,14 @@ word2vec仅在上下文考虑词与词共现的概率，Glove通过整个语料�
 例如，C={'Cats and koalas are mammals.','Tortoises are not mammals.','I like cats,koalas and tortoises'.}
 其词-词共现次数矩阵为：
 <div class="figure" style="text-align: center">
-<img src="./plots/7/word-word co-occurrence.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:glove)文档结构</p>
+<img src="./plots/7/word-word co-occurrence.png" alt="词-词共现次数矩阵" width="70%"  />
+<p class="caption">(\#fig:glove)词-词共现次数矩阵</p>
 </div>
 
 与词-词共现次数或概率相比，词-词共现概率比更能区分相关词和不相关词。
 记Pij为词j出现在词i上下文的概率。Glove的思路是找到一个定义在中心词i的嵌入向量、中心词j的嵌入向量，以及上下文词k的嵌入向量上的一个函数F，使之尽可能等于Pik/Pjk。
 这转化为一个加权最小二乘问题：
-<div class="figure" style="text-align: center">
-<img src="./plots/7/glove.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:glove-1)文档结构</p>
-</div>
+<img src="./plots/7/glove.png" width="50%"  style="display: block; margin: auto;" />
 其中，g()是权重函数，b是标量偏差，Xik是词i与词k的全局共现数。
 Glove的目标是最小化J，以期求得词的嵌入向量。
 
@@ -167,31 +164,25 @@ Glove的目标是最小化J，以期求得词的嵌入向量。
 
 - RNN
 <div class="figure" style="text-align: center">
-<img src="./plots/7/RNN.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:rnn)文档结构</p>
+<img src="./plots/7/RNN.png" alt="RNN" width="70%"  />
+<p class="caption">(\#fig:rnn)RNN</p>
 </div>
 
 - LSTM
 <div class="figure" style="text-align: center">
-<img src="./plots/7/LSTM_1.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:lstm)文档结构</p>
+<img src="./plots/7/LSTM_1.png" alt="LSTM" width="70%"  />
+<p class="caption">(\#fig:lstm)LSTM</p>
 </div>
 
-<div class="figure" style="text-align: center">
-<img src="./plots/7/LSTM_2.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:lstm-1)文档结构</p>
-</div>
+<img src="./plots/7/LSTM_2.png" width="70%"  style="display: block; margin: auto;" />
 
 - GRU
 <div class="figure" style="text-align: center">
-<img src="./plots/7/GRU_1.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:gru)文档结构</p>
+<img src="./plots/7/GRU_1.png" alt="GRU" width="70%"  />
+<p class="caption">(\#fig:gru)GRU</p>
 </div>
 
-<div class="figure" style="text-align: center">
-<img src="./plots/7/GRU_2.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:gru-1)文档结构</p>
-</div>
+<img src="./plots/7/GRU_2.png" width="70%"  style="display: block; margin: auto;" />
 
 ### 数据预处理
 
@@ -205,22 +196,22 @@ Glove的目标是最小化J，以期求得词的嵌入向量。
 
   - Shallow LSTM architecture
 <div class="figure" style="text-align: center">
-<img src="./plots/7/Shallow LSTM.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:lstm-s)文档结构</p>
+<img src="./plots/7/Shallow LSTM.png" alt="Shallow LSTM" width="70%"  />
+<p class="caption">(\#fig:lstm-s)Shallow LSTM</p>
 </div>
 
   - Deep LSTM architecture
 <div class="figure" style="text-align: center">
-<img src="./plots/7/Deep LSTM.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:lstm-d)文档结构</p>
+<img src="./plots/7/Deep LSTM.png" alt="Deep LSTM" width="70%"  />
+<p class="caption">(\#fig:lstm-d)Deep LSTM</p>
 </div>
 
 - GRU
 
   - Shallow GRU architecture
 <div class="figure" style="text-align: center">
-<img src="./plots/7/Shallow GRU.png" alt="文档结构" width="70%"  />
-<p class="caption">(\#fig:gru-s)文档结构</p>
+<img src="./plots/7/Shallow GRU.png" alt="Shallow GRU" width="70%"  />
+<p class="caption">(\#fig:gru-s)Shallow GRU</p>
 </div>
 
 ## Case study

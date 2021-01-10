@@ -14,16 +14,16 @@ editor_options:
 校门口的人脸识别可以快速识别出学生老师校外人员，通常是否戴口罩、靠左靠右、离的远近等不会影响结果，但歪头经常难以被识别，这些和下面卷积神经网络的特性密切相关。
 
 <div class="figure" style="text-align: center">
-<img src="./plots/9/me.png" alt="Entrace to Renmin" width="20%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Entrace to Renmin</p>
+<img src="./plots/9/me.png" alt="人大入口" width="20%" />
+<p class="caption">(\#fig:unnamed-chunk-1)人大入口</p>
 </div>
 
 大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
 也可以应用于迁移学习。
 
 <div class="figure" style="text-align: center">
-<img src="./plots/9/transfer_learn.png" alt="Transfer learning" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-2)Transfer learning</p>
+<img src="./plots/9/transfer_learn.png" alt="迁移学习" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-2)迁移学习</p>
 </div>
 
 ## 卷积层 (Convolution)
@@ -32,8 +32,8 @@ editor_options:
 
 计算过程如下图所示：
 <div class="figure" style="text-align: center">
-<img src="./plots/9/cnn.png" alt="Convolution" width="60%"  />
-<p class="caption">(\#fig:unnamed-chunk-3)Convolution</p>
+<img src="./plots/9/cnn.png" alt="卷积运算" width="60%"  />
+<p class="caption">(\#fig:unnamed-chunk-3)卷积运算</p>
 </div>
 
 ### 超参数

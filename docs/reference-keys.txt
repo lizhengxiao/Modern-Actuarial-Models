@@ -31,12 +31,9 @@ fig:w2v
 fig:w2v-2
 fig:w2v-3
 fig:glove
-fig:glove-1
 fig:rnn
 fig:lstm
-fig:lstm-1
 fig:gru
-fig:gru-1
 fig:lstm-s
 fig:lstm-d
 fig:gru-s

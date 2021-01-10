@@ -15,7 +15,7 @@ knitr::opts_chunk$set(eval = F)
 
 校门口的人脸识别可以快速识别出学生老师校外人员，通常是否戴口罩、靠左靠右、离的远近等不会影响结果，但歪头经常难以被识别，这些和下面卷积神经网络的特性密切相关。
 
-```{r,echo=F, eval=T, out.width="20%",fig.align = 'center',fig.cap="Entrace to Renmin"}
+```{r,echo=F, eval=T, out.width="20%",fig.align = 'center',fig.cap="人大入口"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/9/me.png")
 ```
@@ -23,7 +23,7 @@ knitr::include_graphics("./plots/9/me.png")
 大型预先训练的CNNs库可用于图像识别：AlexNet，GoogLeNet，ResNet, Inception, MobileNet,，VGG， DenseNet,，NASNet 等。它们可以直接使用，将某一图像分类至已知的类别之中
 也可以应用于迁移学习。
 
-```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Transfer learning"}
+```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="迁移学习"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/9/transfer_learn.png")
 ```
@@ -33,7 +33,7 @@ knitr::include_graphics("./plots/9/transfer_learn.png")
 作用：特征提取，一般想要多少特征，就设置多少个卷积核(filter)。不同的卷积核相当于不同的特征提取器.
 
 计算过程如下图所示：
-```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Convolution"}
+```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="卷积运算"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/9/cnn.png")
 ```

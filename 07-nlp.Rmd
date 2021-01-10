@@ -96,7 +96,7 @@ Dictionary = {1:"Bob", 2. "like", 3. "to", 4. "play", 5. "basketball", 6. "also"
 传统的N-grams 模型认为，在第1个词到第t-1个词出现的情况下第t个词出现的条件概率，约等于在第t-n+1个词到第t-1个词出现的情况下第t个词出现的条件概率（N=n-1）。但传统模型没有对“词汇相似性”的概念进行编码，也存在测试时输入的词序列很可能不同于所有用来训练模型的单词序列的问题。为了解决这个问题，引入前馈式神经网络。
 
 该前馈式神经网络用输入的第t个词前的n-1个词预测第t个词出现的概率，的结构如下：
-```{r nplm, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r nplm, echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="Neural probalilistic language model"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/Nplm.png")
 ```
@@ -113,17 +113,17 @@ C(w)={'and','platypuses','mammals','living'}
 Word2vec有两个变体，skip-gram model和the continuous bag of words (CBOW) model。
 前者的思路是给定中心单词w，预测其上下文 C(w)。后者的思路是给定上下文C(w)，预测中心词w。
 两者的结构图如下：
-```{r w2v, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r w2v, echo=F, eval=T, out.width="30%",fig.align = 'center',fig.cap="Skip-gram model"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/skm.png")
 ```
 
-```{r w2v-2, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r w2v-2, echo=F, eval=T, out.width="90%",fig.align = 'center',fig.cap="Skip-gram model"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/skm2.png")
 ```
 
-```{r w2v-3, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r w2v-3, echo=F, eval=T, out.width="30%",fig.align = 'center',fig.cap="Continuous bag of words"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/CBOW.png")
 ```
@@ -135,7 +135,7 @@ knitr::include_graphics("./plots/7/CBOW.png")
 word2vec仅在上下文考虑词与词共现的概率，Glove通过整个语料库计算词-词共现次数矩阵。
 例如，C={'Cats and koalas are mammals.','Tortoises are not mammals.','I like cats,koalas and tortoises'.}
 其词-词共现次数矩阵为：
-```{r glove, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r glove, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="词-词共现次数矩阵"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/word-word co-occurrence.png")
 ```
@@ -143,7 +143,7 @@ knitr::include_graphics("./plots/7/word-word co-occurrence.png")
 与词-词共现次数或概率相比，词-词共现概率比更能区分相关词和不相关词。
 记Pij为词j出现在词i上下文的概率。Glove的思路是找到一个定义在中心词i的嵌入向量、中心词j的嵌入向量，以及上下文词k的嵌入向量上的一个函数F，使之尽可能等于Pik/Pjk。
 这转化为一个加权最小二乘问题：
-```{r glove-1, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r glove-1, echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap=""}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/glove.png")
 ```
@@ -168,29 +168,29 @@ Glove的目标是最小化J，以期求得词的嵌入向量。
 ## 神经网络
 
 - RNN
-```{r rnn, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r rnn, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="RNN"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/RNN.png")
 ```
 
 - LSTM
-```{r lstm, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r lstm, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="LSTM"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/LSTM_1.png")
 ```
 
-```{r lstm-1, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r lstm-1, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap=""}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/LSTM_2.png")
 ```
 
 - GRU
-```{r gru, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r gru, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="GRU"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/GRU_1.png")
 ```
 
-```{r gru-1, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r gru-1, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap=""}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/GRU_2.png")
 ```
@@ -206,13 +206,13 @@ knitr::include_graphics("./plots/7/GRU_2.png")
 - LSTM
 
   - Shallow LSTM architecture
-```{r lstm-s, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r lstm-s, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="Shallow LSTM"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/Shallow LSTM.png")
 ```
 
   - Deep LSTM architecture
-```{r lstm-d, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r lstm-d, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="Deep LSTM"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/Deep LSTM.png")
 ```
@@ -220,7 +220,7 @@ knitr::include_graphics("./plots/7/Deep LSTM.png")
 - GRU
 
   - Shallow GRU architecture
-```{r gru-s, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="文档结构"}
+```{r gru-s, echo=F, eval=T, out.width="70%",fig.align = 'center',fig.cap="Shallow GRU"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/7/Shallow GRU.png")
 ```
