@@ -197,7 +197,7 @@ partial-dependence-profiles
 accumulated-local-effects-profiles-ale
 交互效应
 全局代理模型global-surrogate-models
-局部解释样本解释
+局部解释
 lime和live
 shapshapley-additive-explanations
 breakdown-and-approximate-shap

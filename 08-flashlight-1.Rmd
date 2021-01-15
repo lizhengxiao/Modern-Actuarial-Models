@@ -2,7 +2,9 @@
 
 *龚齐翔、张谦、段诗悦、高光远*
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = F)
+```
 
 > the blackness of a model box seems no longer to be caused by the obscurity of the model itself but rather depends on the modeler switching on the light of the box. （手电筒的世界没有黑盒子）
 
@@ -172,37 +174,31 @@ $$H_{kl}=\sqrt{\sum_1^n\left[\bar{f}_{kl}(x_{i,k},x_{i,l})-\bar{f}_{k}(x_{i,k})-
 
 ## 全局代理模型（Global surrogate models） 
 
-对预测值重新使用易于解释的模型进行建模，如使用单棵决策树。首先用黑箱模型对目标数据集进行建模与预测，再用global surrogate model (tree) 来对黑箱模型的预测值进行建模和解释。
+对预测值重新使用易于解释的模型进行建模，如使用单棵决策树。然后再用这个global surrogate model (tree) 来进行解释。
 为了评判替代模型的近似效果，有学者建议使用$R^2$。
 
-## 局部解释
+## 局部解释（样本解释？）
 
-上述模型解释方法都是从整体来解释模型，下面介绍黑箱模型如何得到一个具体的样本预测值，即模型的局部解释。
 以下主要考虑四种model agnostic methods：LIME，LIVE，SHAP，Breakdown。
 
 ### LIME和LIVE
 
 LIME全称Local Interpretable Model-agnostic Explanations，即模型的局部解释器。虽然无法使用线性模型完全“模仿”出SVM、神经网络等模型的“行为”，但可以在某个局部样本点上接近.
 
-<div class="figure" style="text-align: center">
-<img src="./plots/8/lime.png" alt="LIME" width="50%" />
-<p class="caption">(\#fig:lime)LIME</p>
-</div>
-从上图可以对LIME进行直观的理解：浅蓝色和浅红色区域为黑箱模型对二分类问题的预测结果，显然我们难以用一个线性模型来解释它。但对于一个指定的样本点x（加粗红色十字），对其进行局部扰动得到若干个样本点{z}，将其放入黑箱模型中得到分类结果（红色十字和蓝色圆圈），并根据其与x之间的相似程度赋予权重，得到图中所示虚线作为样本点x的局部解释器。
-
 LIME和LIVE主要分为以下几步：
 
-1. 构造可解释的数据特征：$x\in R^d$是原始用于模型预测的特征，如NLP中的词向量，而我们使用$x'\in \{0,1\}^{d'}$来表示某个可解释特征是否存在的二元变量，如NLP中某个词的存在与否。
+1. 构造可解释的数据特征：??是原始用于模型预测的特征，而我们使用??来表示某个可解释特征是否存在的二元变量。
 
 2. 构造目标函数：$$\xi(x)=\underset{g\in G}{\arg\min}~\mathcal{L(f,g,\pi_x)+\Omega(g)}$$
-其中，f为被解释模型，g为解释器，如线性模型，决策树等。$\pi_x(z)$是z到x的相似性度量，即定义x的局部。$\mathcal{L(·)}$为损失函数，$\Omega(g)$为解释器g的复杂度函数，如线性模型中非零系数个数，决策树的深度等。目标函数是损失函数和复杂度函数的和，我们希望其最小化。
 
-3. 采样：对用可解释特征描述的样本点x'进行局部扰动，得到z'，解释器g以可解释特征z'为输入变量，得到g(z')，被解释模型f以原始特征为输入变量，因此将z'还原到z，得到f(z)，并通过$\pi_x$赋予其权重。
-
-4. 求解。
+3. 采样：
 
 LIME的优点是原理简单，适用范围广，可解释所有黑箱模型。但也存在一定的问题，例如局部范围大小不同，最终的解释也会不同甚至相悖。
 
+```{r lime,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="LIME"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/8/lime.png")
+```
 
 ### SHAP(Shapley Additive Explanations)
 
@@ -210,23 +206,15 @@ SHAP的目的：与LIME相似，找到某个样本点上各个特征的重要性
 
 Shapley值来自合作博弈论，从不同的合作组合中计算出单个个体的贡献，它度量了单个个体对总体的边际贡献。SHAP的主要思想来源于Shapley值
 
-Shapley值的计算:$$\phi_j(v)=\sum_{S\in D\backslash\{j\}}\frac{|S|!(|D|-|S|-1)!}{|D|!}(v(S\cup\{j\}-v(S)))$$
-其中，D为所有特征的集合，S为某个不包含元素j的特征子集，v(S)为S集合对应的价值，$\phi_j(v)$为元素j的Shapley值。
-
-这个式子的含义为：              特征j的贡献值与其进入的顺序有关，不同的S代表了特征j的不同进入顺序，如$S={x_1,x_2}$，代表特征j在$x_1,x_2$之后进入，在剩余特征之前进入，此外，特征j在某一位置时，其之前和之后的特征集合内部也存在不同的排序，但这些不同的排序不影响特征j的贡献值，这就是求和项中$\frac{|S|!(|D|-|S|-1)!}{|D|!}$的含义。$(v(S\cup\{j\}-v(S)))$即特征j加入的边际效应。
-
+Shapley值的计算
 
 **从Shapley值到SHAP**
 
-- SHAP对预测的分解：$$\hat{f}(x^*)=\phi_0+\sum^{|F|}_{j=1}\phi^*_j$$
-$\hat{f}(x^*)$为模型给出的预测值，$\phi_0$一般取模型预测均值，$\phi^*_j$为第j个协变量对预测值的贡献。
+- SHAP对预测的分解：
 
 - SHAP中特征贡献的计算
-$$\phi^*_j=\sum_{S\in F\backslash\{j\}}\frac{|S|!(|D|-|S|-1)!}{|D|!}(f_{x^*}(S\cup\{j\}-f_{x^*}(S)))$$
-F为特征集合，$f_{x^*}(·)$为模型在样本$x^*$上的预测，$f_{x^*}(S)=E[f(x)|x^*_S]$是模型f基于样本$x^*$里的S中特征的条件期望输出。计算原理与Shapley相同，这里Shapley值中的集合价值被替换为特征集S对应的预测值。
 
-
-SHAP把黑箱中复杂的映射关系表达成一个简单线性和，便于把保费的构成解释给被保险人。但是，对于不同被保险人，同一个协变量值的效应（SHAP）可能不同，例如同为45岁的被保险人，年龄这一变量的SHAP值却不同，这是变量之间的交互效应造成的。
+SHAP把黑箱中复杂的映射关系表达成一个简单线性映射，便于把保费的构成解释给被保险人。但是，对于不同被保险人，同一个协变量值的效应（SHAP）可能不同，这是SHAP的缺点。（？我不太确定最后一句话）
 
 ### Breakdown and approximate SHAP
 
@@ -246,11 +234,11 @@ SHAP把黑箱中复杂的映射关系表达成一个简单线性和，便于把�
 
 将多个样本使用SHAP或breakdown进行分解，然后也可以得到一些模型的全局性质：
 
-1. 变量重要性：通过求所有样本中$\phi_j^*$的平均数，可以用来度量变量$x_j$的重要性
+1. 变量重要性
 
-2. 主效应：对变量j的取值及其对样本i的贡献值$s_{ij}$画散点图，可以得到不同取值下变量的效应，能够得到与partial dependence plot相似的图像。
+2. 主效应
 
-3. 交互效应：主效应图中，变量j的同一取值水平上，对不同的样本i可能得到不同的贡献度，这体现了变量j可能与其他变量之间存在交互效应。
+3. 交互效应
 
 ## Improving the GLM by interpretable machine learning
 
@@ -281,8 +269,7 @@ SHAP把黑箱中复杂的映射关系表达成一个简单线性和，便于把�
 
 ### 导入包
 
-
-```r
+```{r import, message=FALSE, warning=FALSE}
 library(CASdatasets)      # 1.0.6
 library(dplyr)            # 0.8.5
 library(forcats)          # 0.5.0
@@ -299,8 +286,8 @@ library(flashlight)       # 0.7.2
 
 ### 预处理
 
+```{r prep, message=FALSE, warning=FALSE}
 
-```r
 data(freMTPL2freq)
 
 distinct <- freMTPL2freq %>% 
@@ -331,8 +318,8 @@ w <- "Exposure"
 
 ### 描述性统计
 
+```{r data}
 
-```r
 # Univariate description
 
 melted <- dat[c("Freq", "Exposure", "DrivAge", "VehAge", "VehPower", "logDensity")] %>% 
@@ -393,17 +380,17 @@ dat %>%
   ggplot(aes(x = Region, y = logDensity)) +
   geom_boxplot(outlier.shape = NA, fill = "#E69F00") +
   th
+
 ```
 
-<div class="figure" style="text-align: center">
-<img src="./plots/8/hist.png" alt="LIME" width="50%"  />
-<p class="caption">(\#fig:hist)LIME</p>
-</div>
+```{r hist,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="LIME"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/8/hist.png")
+```
 
 ### 建模
 
-
-```r
+```{r modeling}
 ind <- partition(dat[["group_id"]], p = c(train = 0.8, test = 0.2), 
                  seed = 22, type = "grouped")
 train <- dat[ind$train, ]
@@ -412,19 +399,18 @@ test <- dat[ind$test, ]
 
 #### glm
 
-
-```r
+```{r}
 fit_glm <- glm(Freq ~ VehPower + ns(VehAge, 5) + VehBrand +
                  VehGas + ns(DrivAge, 5) + logDensity + PolicyRegion,
                data = train,
                family = quasipoisson(),
                weights = train[[w]])
+
 ```
 
 #### XGBoost
  
-
-```r
+```{r}
 # Input maker
 prep_xgb <- function(dat, x) {
   data.matrix(dat[, x, drop = FALSE])
@@ -454,12 +440,13 @@ fit_xgb <- xgb.train(params_freq,
                      objective = "count:poisson",
                      watchlist = list(train = dtrain),
                      print_every_n = 10)
+
 ```
 
 #### 为后文训练可变单调性约束和交互项约束的xgboost，使用较小的nrounds
 
+```{r}
 
-```r
 params_freq_constraints <- list(learning_rate = 0.2,
                     max_depth = 5,
                     alpha = 3,
@@ -497,8 +484,7 @@ fit_xgb_interaction_constraints <- xgb.train(params_freq_interaction_constraints
 
 #### 神经网络
 
-
-```r
+```{r}
 prep_nn <- function(dat, x, cat_cols = c("PolicyRegion", "VehBrand")) {
   dense_cols <- setdiff(x, cat_cols)
   c(list(dense1 = data.matrix(dat[, dense_cols])), 
@@ -569,8 +555,8 @@ plot(history)
 
 在最后一个隐藏层的十维输出上训练泊松GLM
 
+```{r}
 
-```r
 # Calibrate by using last hidden layer activations as GLM input encoder
 encoder <- keras_model(inputs = neural_net$input, 
                        outputs = get_layer(neural_net, "dense_2")$output)
@@ -594,8 +580,7 @@ fit_nn <- glm(Freq ~ .,
 
 #### 为模型建立解释器(flashlight)，并将它们组合为multiflashlight
 
-
-```r
+```{r explain}
 set.seed(1)
 
 fillc <- "#E69F00"
@@ -645,12 +630,12 @@ fls_interaction_constraints <- multiflashlight(list(fl_glm, fl_nn, fl_xgb,fl_xgb
 fls_log <- multiflashlight(fls, linkinv = log)
 fls_xgb_interaction_constraints_log <- multiflashlight(fls_xgb_constraints, linkinv = log)
 fls_interaction_constraints_log <- multiflashlight(fls_interaction_constraints, linkinv = log)
+
 ```
 
 #### 对flashlight应用可解释性函数
 
-
-```r
+```{r}
 #模型表现
 
 perf <- light_performance(fls)
@@ -666,8 +651,8 @@ plot(imp, fill = fillc, color = "black")
 
 #### ICE曲线
 
+```{r}
 
-```r
 #driveage基于中心化与非中心化和是否使用对数被解释变量作为预测结果
 
 plot(light_ice(fls, v = "DrivAge", n_max = 200, seed = 3)
@@ -690,8 +675,8 @@ plot(light_ice(fls_xgb_constraints, v = "DrivAge", n_max = 200, seed = 3)
      , alpha = 0.1)
 ```
 
+```{r}
 
-```r
 # Partial dependence curves
 plot(light_profile(fls, v = "VehAge", pd_evaluate_at = 0:20))
 plot(light_profile(fls, v = "DrivAge", n_bins = 25))
@@ -714,10 +699,11 @@ plot(light_profile(fls, v = "VehAge", type = "response"))
 eff_DrivAge <- light_effects(fls, v = "DrivAge", counts_weighted = TRUE)
 p <- plot(eff_DrivAge, show_points = FALSE)
 plot_counts(p, eff_DrivAge, alpha = 0.3)
+
 ```
 
+```{r}
 
-```r
 # Interaction (relative)
 interact_rel <- light_interaction(
   fls_interaction_constraints_log, 
@@ -761,8 +747,7 @@ plot(light_ice(fls_xgb_interaction_constraints, v = "DrivAge", n_max = 200, seed
 
 #### 全局代理模型
 
-
-```r
+```{r}
 surr_nn <- light_global_surrogate(fls_log$NNet, v = x)
 plot(surr_nn)
 
@@ -772,8 +757,7 @@ plot(surr_xgb)
 
 ### 局部性质
 
-
-```r
+```{r}
 #局部性质
 
 new_obs <- test[1, ]
@@ -804,15 +788,14 @@ plot(light_importance(fl_with_shap, v = x, type = "shap"),
 plot(light_scatter(fl_with_shap, v = "DrivAge", type = "shap"), alpha = 0.3)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="./plots/8/age.png" alt="LIME" width="50%"  />
-<p class="caption">(\#fig:age)LIME</p>
-</div>
+```{r age,echo=F, eval=T, out.width="50%",fig.align = 'center',fig.cap="LIME"}
+knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
+knitr::include_graphics("./plots/8/age.png")
+```
 
 ### 改进glm
 
-
-```r
+```{r}
 fit_glm2 <- glm(Freq ~ VehPower + VehBrand * VehGas + PolicyRegion + 
                   ns(DrivAge, 5) + VehBrand * ns(VehAge, 5) + 
                   ns(logDensity, 5), 

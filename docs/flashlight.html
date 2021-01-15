@@ -304,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="flashlight.html"><a href="flashlight.html#交互效应"><i class="fa fa-check"></i><b>8.6</b> 交互效应</a></li>
 <li class="chapter" data-level="8.7" data-path="flashlight.html"><a href="flashlight.html#全局代理模型global-surrogate-models"><i class="fa fa-check"></i><b>8.7</b> 全局代理模型（Global surrogate models）</a></li>
-<li class="chapter" data-level="8.8" data-path="flashlight.html"><a href="flashlight.html#局部解释样本解释"><i class="fa fa-check"></i><b>8.8</b> 局部解释（样本解释？）</a><ul>
+<li class="chapter" data-level="8.8" data-path="flashlight.html"><a href="flashlight.html#局部解释"><i class="fa fa-check"></i><b>8.8</b> 局部解释</a><ul>
 <li class="chapter" data-level="8.8.1" data-path="flashlight.html"><a href="flashlight.html#lime和live"><i class="fa fa-check"></i><b>8.8.1</b> LIME和LIVE</a></li>
 <li class="chapter" data-level="8.8.2" data-path="flashlight.html"><a href="flashlight.html#shapshapley-additive-explanations"><i class="fa fa-check"></i><b>8.8.2</b> SHAP(Shapley Additive Explanations)</a></li>
 <li class="chapter" data-level="8.8.3" data-path="flashlight.html"><a href="flashlight.html#breakdown-and-approximate-shap"><i class="fa fa-check"></i><b>8.8.3</b> Breakdown and approximate SHAP</a></li>
@@ -504,40 +504,49 @@ L(y_i,\hat{y}_i)=2(y_i\ln y_i-y_i\ln\hat{y}_i-y_i+\hat{y}_i). \tag{8.1}
 </div>
 <div id="全局代理模型global-surrogate-models" class="section level2">
 <h2><span class="header-section-number">8.7</span> 全局代理模型（Global surrogate models）</h2>
-<p>对预测值重新使用易于解释的模型进行建模，如使用单棵决策树。然后再用这个global surrogate model (tree) 来进行解释。
+<p>对预测值重新使用易于解释的模型进行建模，如使用单棵决策树。首先用黑箱模型对目标数据集进行建模与预测，再用global surrogate model (tree) 来对黑箱模型的预测值进行建模和解释。
 为了评判替代模型的近似效果，有学者建议使用<span class="math inline">\(R^2\)</span>。</p>
 </div>
-<div id="局部解释样本解释" class="section level2">
-<h2><span class="header-section-number">8.8</span> 局部解释（样本解释？）</h2>
-<p>以下主要考虑四种model agnostic methods：LIME，LIVE，SHAP，Breakdown。</p>
+<div id="局部解释" class="section level2">
+<h2><span class="header-section-number">8.8</span> 局部解释</h2>
+<p>上述模型解释方法都是从整体来解释模型，下面介绍黑箱模型如何得到一个具体的样本预测值，即模型的局部解释。
+以下主要考虑四种model agnostic methods：LIME，LIVE，SHAP，Breakdown。</p>
 <div id="lime和live" class="section level3">
 <h3><span class="header-section-number">8.8.1</span> LIME和LIVE</h3>
 <p>LIME全称Local Interpretable Model-agnostic Explanations，即模型的局部解释器。虽然无法使用线性模型完全“模仿”出SVM、神经网络等模型的“行为”，但可以在某个局部样本点上接近.</p>
-<p>LIME和LIVE主要分为以下几步：</p>
-<ol style="list-style-type: decimal">
-<li><p>构造可解释的数据特征：??是原始用于模型预测的特征，而我们使用??来表示某个可解释特征是否存在的二元变量。</p></li>
-<li><p>构造目标函数：<span class="math display">\[\xi(x)=\underset{g\in G}{\arg\min}~\mathcal{L(f,g,\pi_x)+\Omega(g)}\]</span></p></li>
-<li><p>采样：</p></li>
-</ol>
-<p>LIME的优点是原理简单，适用范围广，可解释所有黑箱模型。但也存在一定的问题，例如局部范围大小不同，最终的解释也会不同甚至相悖。</p>
 <div class="figure" style="text-align: center"><span id="fig:lime"></span>
 <img src="plots/8/lime.png" alt="LIME" width="50%" />
 <p class="caption">
 Figure 8.1: LIME
 </p>
 </div>
+<p>从上图可以对LIME进行直观的理解：浅蓝色和浅红色区域为黑箱模型对二分类问题的预测结果，显然我们难以用一个线性模型来解释它。但对于一个指定的样本点x（加粗红色十字），对其进行局部扰动得到若干个样本点{z}，将其放入黑箱模型中得到分类结果（红色十字和蓝色圆圈），并根据其与x之间的相似程度赋予权重，得到图中所示虚线作为样本点x的局部解释器。</p>
+<p>LIME和LIVE主要分为以下几步：</p>
+<ol style="list-style-type: decimal">
+<li><p>构造可解释的数据特征：<span class="math inline">\(x\in R^d\)</span>是原始用于模型预测的特征，如NLP中的词向量，而我们使用<span class="math inline">\(x&#39;\in \{0,1\}^{d&#39;}\)</span>来表示某个可解释特征是否存在的二元变量，如NLP中某个词的存在与否。</p></li>
+<li><p>构造目标函数：<span class="math display">\[\xi(x)=\underset{g\in G}{\arg\min}~\mathcal{L(f,g,\pi_x)+\Omega(g)}\]</span>
+其中，f为被解释模型，g为解释器，如线性模型，决策树等。<span class="math inline">\(\pi_x(z)\)</span>是z到x的相似性度量，即定义x的局部。<span class="math inline">\(\mathcal{L(·)}\)</span>为损失函数，<span class="math inline">\(\Omega(g)\)</span>为解释器g的复杂度函数，如线性模型中非零系数个数，决策树的深度等。目标函数是损失函数和复杂度函数的和，我们希望其最小化。</p></li>
+<li><p>采样：对用可解释特征描述的样本点x’进行局部扰动，得到z’，解释器g以可解释特征z’为输入变量，得到g(z’)，被解释模型f以原始特征为输入变量，因此将z’还原到z，得到f(z)，并通过<span class="math inline">\(\pi_x\)</span>赋予其权重。</p></li>
+<li><p>求解。</p></li>
+</ol>
+<p>LIME的优点是原理简单，适用范围广，可解释所有黑箱模型。但也存在一定的问题，例如局部范围大小不同，最终的解释也会不同甚至相悖。</p>
 </div>
 <div id="shapshapley-additive-explanations" class="section level3">
 <h3><span class="header-section-number">8.8.2</span> SHAP(Shapley Additive Explanations)</h3>
 <p>SHAP的目的：与LIME相似，找到某个样本点上各个特征的重要性</p>
 <p>Shapley值来自合作博弈论，从不同的合作组合中计算出单个个体的贡献，它度量了单个个体对总体的边际贡献。SHAP的主要思想来源于Shapley值</p>
-<p>Shapley值的计算</p>
+<p>Shapley值的计算:<span class="math display">\[\phi_j(v)=\sum_{S\in D\backslash\{j\}}\frac{|S|!(|D|-|S|-1)!}{|D|!}(v(S\cup\{j\}-v(S)))\]</span>
+其中，D为所有特征的集合，S为某个不包含元素j的特征子集，v(S)为S集合对应的价值，<span class="math inline">\(\phi_j(v)\)</span>为元素j的Shapley值。</p>
+<p>这个式子的含义为： 特征j的贡献值与其进入的顺序有关，不同的S代表了特征j的不同进入顺序，如<span class="math inline">\(S={x_1,x_2}\)</span>，代表特征j在<span class="math inline">\(x_1,x_2\)</span>之后进入，在剩余特征之前进入，此外，特征j在某一位置时，其之前和之后的特征集合内部也存在不同的排序，但这些不同的排序不影响特征j的贡献值，这就是求和项中<span class="math inline">\(\frac{|S|!(|D|-|S|-1)!}{|D|!}\)</span>的含义。<span class="math inline">\((v(S\cup\{j\}-v(S)))\)</span>即特征j加入的边际效应。</p>
 <p><strong>从Shapley值到SHAP</strong></p>
 <ul>
-<li><p>SHAP对预测的分解：</p></li>
-<li><p>SHAP中特征贡献的计算</p></li>
+<li><p>SHAP对预测的分解：<span class="math display">\[\hat{f}(x^*)=\phi_0+\sum^{|F|}_{j=1}\phi^*_j\]</span>
+<span class="math inline">\(\hat{f}(x^*)\)</span>为模型给出的预测值，<span class="math inline">\(\phi_0\)</span>一般取模型预测均值，<span class="math inline">\(\phi^*_j\)</span>为第j个协变量对预测值的贡献。</p></li>
+<li><p>SHAP中特征贡献的计算
+<span class="math display">\[\phi^*_j=\sum_{S\in F\backslash\{j\}}\frac{|S|!(|D|-|S|-1)!}{|D|!}(f_{x^*}(S\cup\{j\}-f_{x^*}(S)))\]</span>
+F为特征集合，<span class="math inline">\(f_{x^*}(·)\)</span>为模型在样本<span class="math inline">\(x^*\)</span>上的预测，<span class="math inline">\(f_{x^*}(S)=E[f(x)|x^*_S]\)</span>是模型f基于样本<span class="math inline">\(x^*\)</span>里的S中特征的条件期望输出。计算原理与Shapley相同，这里Shapley值中的集合价值被替换为特征集S对应的预测值。</p></li>
 </ul>
-<p>SHAP把黑箱中复杂的映射关系表达成一个简单线性映射，便于把保费的构成解释给被保险人。但是，对于不同被保险人，同一个协变量值的效应（SHAP）可能不同，这是SHAP的缺点。（？我不太确定最后一句话）</p>
+<p>SHAP把黑箱中复杂的映射关系表达成一个简单线性和，便于把保费的构成解释给被保险人。但是，对于不同被保险人，同一个协变量值的效应（SHAP）可能不同，例如同为45岁的被保险人，年龄这一变量的SHAP值却不同，这是变量之间的交互效应造成的。</p>
 </div>
 <div id="breakdown-and-approximate-shap" class="section level3">
 <h3><span class="header-section-number">8.8.3</span> Breakdown and approximate SHAP</h3>
@@ -556,9 +565,9 @@ Figure 8.1: LIME
 <h3><span class="header-section-number">8.8.4</span> From local to global properties</h3>
 <p>将多个样本使用SHAP或breakdown进行分解，然后也可以得到一些模型的全局性质：</p>
 <ol style="list-style-type: decimal">
-<li><p>变量重要性</p></li>
-<li><p>主效应</p></li>
-<li><p>交互效应</p></li>
+<li><p>变量重要性：通过求所有样本中<span class="math inline">\(\phi_j^*\)</span>的平均数，可以用来度量变量<span class="math inline">\(x_j\)</span>的重要性</p></li>
+<li><p>主效应：对变量j的取值及其对样本i的贡献值<span class="math inline">\(s_{ij}\)</span>画散点图，可以得到不同取值下变量的效应，能够得到与partial dependence plot相似的图像。</p></li>
+<li><p>交互效应：主效应图中，变量j的同一取值水平上，对不同的样本i可能得到不同的贡献度，这体现了变量j可能与其他变量之间存在交互效应。</p></li>
 </ol>
 </div>
 </div>
