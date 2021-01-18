@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # 卷积神经网络 {#cnn}
 
 *万淇、蔡清扬、高光远*
@@ -84,7 +79,11 @@ knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 knitr::include_graphics("./plots/9/cnn1_structure.png")
 ```
 
-如：？？
+卷积层的输出大小计算公式为：$\frac{{n - f + 2p}}{s} + 1$，其中n为输入矩阵的大小，$f$为卷积核的大小，$p$为padding的大小，$s$为步长
+
+池化层的输出大小计算公式为：$\frac{{n - f}}{s} + 1$，计算公式和卷积层实际上是一样的，只是池化层一般不进行填充，$p$一般为$0$。
+
+参数个数的计算基于对层作用的理解，池化层是映射关系，故该层是没有可学习参数的；批标准化层有两个可学习的参数scale和shift；全连接层需要学习的参数一般为下接神经元的个数加上一个偏置；卷积层的可学习参数比较复杂，图像数据为例，一般为通道数×二维卷积的size×卷积核的个数+偏置个数
 
 ## 池化层 (Pooling)
 
@@ -103,7 +102,16 @@ knitr::include_graphics("./plots/9/pooling.png")
 
 2. 通过训练期间学习的后两个（可学习）参数进行移位和缩放。
 
-？？Detailed Algorithm
+Detailed Algorithm：
+
+第一步仅根据批数据计算出的均值和方差，将数据进行标准化，完全基于批数据计算，故无需要学习的参数。
+
+第一步的基本思想其实相当直观：因为深层神经网络在做非线性变换前的激活输入值会随着网络深度加深或者在训练过程中，其分布逐渐发生偏移或者变动，之所以训练收敛慢，一般是整体分布逐渐往非线性函数的取值区间的上下限两端靠近，所以这导致反向传播时低层神经网络的梯度消失，这是训练深层神经网络收敛越来越慢的本质原因，而BN就是通过一定的规范化手段，把每层神经网络任意神经元这个输入值的分布强行拉回到均值为0方差为1的标准正态分布，使之享受较大的梯度。
+
+第二步是对第一步的改进，对第一步标准化后的x，增加了两个通过网络学习的参数scale和shift，对数据进行平移和缩放，即$y = scale*x + shift$。
+
+设想如果每层都标准化到同一分布，那么数据每次进入网络都会是同一分布，这意味着网络的表达能力下降了，多层的网络的意义就下降了。所以BN为了保证非线性的习得，对变换后的满足均值为$0$方差为$1$的$x$又进行了scale加上shift操作。
+
 
 ## 其他组件
 
@@ -143,8 +151,6 @@ legend("bottomright",c("sigmoid","tanh","relu"),lty=1:3,lwd=c(2,2,2))
 
 ## 特性
 
-在校门口
-
 ### 平移不变性
 
 由于卷积核对于特定的特征才会有较大激活值，且应用到不同的位置，所以不论上一层特征图谱（feature map）中的某一特征平移到何处，卷积核都会找到该特征并在此处呈现较大的激活值。这就是“等变性”
@@ -164,7 +170,12 @@ knitr::include_graphics("./plots/9/shift.png")
 
 ## 隐藏层可视化
 
+神经网络每层提取一个细节特征，一般层数越深，细节特征越不明显，可视化后明显看出前几层特征比较明显，后面的层数就已经看不清数字了。
+
+
 ## 逆卷积
+
+逆卷积相对于卷积在神经网络结构的正向和反向传播中做相反的运算。卷积是提取特征，使图像变小。反卷积可以使得图像可以变大。反卷积的大小是由卷积核大小与滑动步长决定， $in$是输入大小， k是卷积核大小， $s$是滑动步长， $out$是输出大小。计算公式为 $out = (in - 1) * s + k$
 
 ## [Human Mortality Database (HMD)](https://www.mortality.org)
 
@@ -194,7 +205,7 @@ W_{i,c,\cdot,\cdot,2}:=&(\text{logit}(q_{x,t,c,females}))_{x_i<x\le x_i+10, t_i<
 W_{i,c,\cdot,\cdot,3}:=&W_{i,c,\cdot,\cdot,1}-W_{i,c,\cdot,\cdot,2}
 \end{aligned}
 $$ 
-其中, $\text{logit }q =\log \frac{q}{1-q} $
+其中, $\text{logit }q =\log \frac{q}{1-q}$
 
 ```{r,echo=F, eval=T, out.width="60%",fig.align = 'center',fig.cap="Mortality Window"}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
@@ -244,4 +255,3 @@ MNIST 全称为 Modified National Institute of Standards and Technology. 修改�
 神经网络的输入为由灰度像素构成的$28\times28$数组$\boldsymbol{X}\in[0,1]^{28\times28}$, 输出为在$\{0,1,\ldots,9\}$上的离散分布$(p_0,\ldots,p_9)^T$, 其中$\sum_{j=0}^9p_j=1$. 图像的标签为实际数字的one-hot编码$Y\in\{0,1\}^{10}$.
 损失函数为交叉熵(cross-entropy)
 $$\mathcal{L}(Y,\hat{p}(\boldsymbol{X});\mathcal{I}):=-\sum_{i\in\mathcal{I}}\sum_{j=0}^9Y_{i,j}\log\hat{p}_j(\boldsymbol{X}_i).$$
-
