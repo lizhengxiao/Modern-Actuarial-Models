@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 提升方法 (Boosting) | 现代精算统计模型</title>
+  <title>3 提升方法与事故预测 | 现代精算统计模型</title>
   <meta name="description" content="The output format is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 提升方法 (Boosting) | 现代精算统计模型" />
+  <meta property="og:title" content="3 提升方法与事故预测 | 现代精算统计模型" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 提升方法 (Boosting) | 现代精算统计模型" />
+  <meta name="twitter:title" content="3 提升方法与事故预测 | 现代精算统计模型" />
   
   <meta name="twitter:description" content="The output format is bookdown::gitbook." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="nn.html"/>
-<link rel="next" href="unsupervised-learning.html"/>
+<link rel="prev" href="french.html"/>
+<link rel="next" href="nn.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#答疑"><i class="fa fa-check"></i>🤔 答疑</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>简介</a></li>
-<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 准备工作</a><ul>
+<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 计算环境的构建</a><ul>
 <li class="chapter" data-level="1.1" data-path="pre.html"><a href="pre.html#常用链接"><i class="fa fa-check"></i><b>1.1</b> 常用链接</a></li>
 <li class="chapter" data-level="1.2" data-path="pre.html"><a href="pre.html#克隆代码"><i class="fa fa-check"></i><b>1.2</b> 克隆代码</a></li>
 <li class="chapter" data-level="1.3" data-path="pre.html"><a href="pre.html#r-interface-to-keras"><i class="fa fa-check"></i><b>1.3</b> R interface to Keras</a><ul>
@@ -158,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.3" data-path="pre.html"><a href="pre.html#tensorflowpytorch-gpu-version"><i class="fa fa-check"></i><b>1.5.3</b> Tensorflow/Pytorch GPU version</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 车险索赔频率预测</a><ul>
+<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 统计学习与车险定价</a><ul>
 <li class="chapter" data-level="2.1" data-path="french.html"><a href="french.html#背景介绍"><i class="fa fa-check"></i><b>2.1</b> 背景介绍</a></li>
 <li class="chapter" data-level="2.2" data-path="french.html"><a href="french.html#预测模型概述"><i class="fa fa-check"></i><b>2.2</b> 预测模型概述</a></li>
 <li class="chapter" data-level="2.3" data-path="french.html"><a href="french.html#特征工程"><i class="fa fa-check"></i><b>2.3</b> 特征工程</a><ul>
@@ -176,69 +176,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="french.html"><a href="french.html#泊松提升树"><i class="fa fa-check"></i><b>2.10</b> 泊松提升树</a></li>
 <li class="chapter" data-level="2.11" data-path="french.html"><a href="french.html#模型比较"><i class="fa fa-check"></i><b>2.11</b> 模型比较</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>3</b> 神经网络</a><ul>
-<li class="chapter" data-level="3.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>3.1</b> 建立神经网络的一般步骤</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>3.1.1</b> 明确目标和数据类型</a></li>
-<li class="chapter" data-level="3.1.2" data-path="nn.html"><a href="nn.html#数据预处理"><i class="fa fa-check"></i><b>3.1.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="3.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>3.1.3</b> 选取合适的神经网络类型</a></li>
-<li class="chapter" data-level="3.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>3.1.4</b> 建立神经网络（全连接神经网络）</a></li>
-<li class="chapter" data-level="3.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>3.1.5</b> 训练神经网络</a></li>
-<li class="chapter" data-level="3.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>3.1.6</b> 调参</a></li>
+<li class="chapter" data-level="3" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>3</b> 提升方法与事故预测</a><ul>
+<li class="chapter" data-level="3.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>3.1</b> AdaBoost</a></li>
+<li class="chapter" data-level="3.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>3.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
+<li class="chapter" data-level="3.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>3.3</b> AdaBoost.M1</a></li>
+<li class="chapter" data-level="3.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>3.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
+<li class="chapter" data-level="3.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>3.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
+<li class="chapter" data-level="3.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>3.6</b> Gradient Boosting</a></li>
+<li class="chapter" data-level="3.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>3.7</b> Newton Boosting</a></li>
+<li class="chapter" data-level="3.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>3.8</b> XGBoost</a></li>
+<li class="chapter" data-level="3.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>3.9</b> Case study</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>3.9.1</b> 数据描述</a></li>
+<li class="chapter" data-level="3.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理"><i class="fa fa-check"></i><b>3.9.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>3.9.3</b> 特征工程</a></li>
+<li class="chapter" data-level="3.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>3.9.4</b> 建模流程</a></li>
+<li class="chapter" data-level="3.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>3.9.5</b> 模型度量——Gini系数</a></li>
+<li class="chapter" data-level="3.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>3.9.6</b> 建立AdaBoost模型</a></li>
+<li class="chapter" data-level="3.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>3.9.7</b> 建立XGBoost模型</a></li>
+<li class="chapter" data-level="3.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>3.9.8</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>3.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="3.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>3.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
-<li class="chapter" data-level="3.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>3.4</b> 神经网络结构</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>3.4.1</b> 结构参数</a></li>
-<li class="chapter" data-level="3.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>3.4.2</b> 输入层</a></li>
-<li class="chapter" data-level="3.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>3.4.3</b> Embedding layer</a></li>
-<li class="chapter" data-level="3.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>3.4.4</b> 隐藏层</a></li>
-<li class="chapter" data-level="3.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>3.4.5</b> 输出层</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>3.5</b> 训练神经网络</a></li>
-<li class="chapter" data-level="3.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>3.6</b> 总结</a></li>
-<li class="chapter" data-level="3.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>3.7</b> 其它模型</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>4</b> 提升方法 (Boosting)</a><ul>
-<li class="chapter" data-level="4.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>4.1</b> AdaBoost</a></li>
-<li class="chapter" data-level="4.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>4.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
-<li class="chapter" data-level="4.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>4.3</b> AdaBoost.M1</a></li>
-<li class="chapter" data-level="4.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>4.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
-<li class="chapter" data-level="4.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>4.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
-<li class="chapter" data-level="4.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>4.6</b> Gradient Boosting</a></li>
-<li class="chapter" data-level="4.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>4.7</b> Newton Boosting</a></li>
-<li class="chapter" data-level="4.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>4.8</b> XGBoost</a></li>
-<li class="chapter" data-level="4.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>4.9</b> Case study</a><ul>
-<li class="chapter" data-level="4.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>4.9.1</b> 数据描述</a></li>
-<li class="chapter" data-level="4.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理-2"><i class="fa fa-check"></i><b>4.9.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="4.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>4.9.3</b> 特征工程</a></li>
-<li class="chapter" data-level="4.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>4.9.4</b> 建模流程</a></li>
-<li class="chapter" data-level="4.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>4.9.5</b> 模型度量——Gini系数</a></li>
-<li class="chapter" data-level="4.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>4.9.6</b> 建立AdaBoost模型</a></li>
-<li class="chapter" data-level="4.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>4.9.7</b> 建立XGBoost模型</a></li>
-<li class="chapter" data-level="4.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>4.9.8</b> 结论</a></li>
-</ul></li>
-<li class="chapter" data-level="4.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>4.10</b> Appendix: Commonly used Python code (for py-beginners)</a><ul>
-<li class="chapter" data-level="4.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>4.10.1</b> Python标准数据类型</a></li>
-<li class="chapter" data-level="4.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>4.10.2</b> Python内置函数</a></li>
-<li class="chapter" data-level="4.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>4.10.3</b> numpy包</a></li>
-<li class="chapter" data-level="4.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>4.10.4</b> pandas包</a></li>
-<li class="chapter" data-level="4.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>4.10.5</b> Matplotlib包</a></li>
-<li class="chapter" data-level="4.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>4.10.6</b> 常用教程网址</a></li>
+<li class="chapter" data-level="3.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>3.10</b> Appendix: Commonly used Python code (for py-beginners)</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>3.10.1</b> Python标准数据类型</a></li>
+<li class="chapter" data-level="3.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>3.10.2</b> Python内置函数</a></li>
+<li class="chapter" data-level="3.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>3.10.3</b> numpy包</a></li>
+<li class="chapter" data-level="3.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>3.10.4</b> pandas包</a></li>
+<li class="chapter" data-level="3.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>3.10.5</b> Matplotlib包</a></li>
+<li class="chapter" data-level="3.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>3.10.6</b> 常用教程网址</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>5</b> 无监督学习方法</a><ul>
-<li class="chapter" data-level="5.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-3"><i class="fa fa-check"></i><b>5.1</b> 数据预处理</a></li>
-<li class="chapter" data-level="5.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>5.2</b> 主成分分析</a></li>
-<li class="chapter" data-level="5.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>5.3</b> 自编码</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>5.3.1</b> 模型训练</a></li>
+<li class="chapter" data-level="4" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>4</b> 深度学习与索赔频率预测</a><ul>
+<li class="chapter" data-level="4.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>4.1</b> 建立神经网络的一般步骤</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>4.1.1</b> 明确目标和数据类型</a></li>
+<li class="chapter" data-level="4.1.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>4.1.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>4.1.3</b> 选取合适的神经网络类型</a></li>
+<li class="chapter" data-level="4.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>4.1.4</b> 建立神经网络（全连接神经网络）</a></li>
+<li class="chapter" data-level="4.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>4.1.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="4.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>4.1.6</b> 调参</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>5.4</b> K-means clustering</a></li>
-<li class="chapter" data-level="5.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>5.5</b> K-medoids clustering (PAM)</a></li>
-<li class="chapter" data-level="5.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>5.6</b> Gaussian mixture models(GMMs)</a></li>
-<li class="chapter" data-level="5.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>5.7</b> 三种聚类方法评价</a></li>
-<li class="chapter" data-level="5.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>5.8</b> t-SNE</a></li>
-<li class="chapter" data-level="5.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>5.9</b> UMAP</a></li>
-<li class="chapter" data-level="5.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>5.10</b> SOM</a></li>
+<li class="chapter" data-level="4.2" data-path="nn.html"><a href="nn.html#数据预处理-2"><i class="fa fa-check"></i><b>4.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>4.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
+<li class="chapter" data-level="4.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>4.4</b> 神经网络结构</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>4.4.1</b> 结构参数</a></li>
+<li class="chapter" data-level="4.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>4.4.2</b> 输入层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>4.4.3</b> Embedding layer</a></li>
+<li class="chapter" data-level="4.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>4.4.4</b> 隐藏层</a></li>
+<li class="chapter" data-level="4.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>4.4.5</b> 输出层</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>4.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="4.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>4.7</b> 其它模型</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>5</b> 卷积神经网络与车联网数据分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>5.1</b> 卷积层 (Convolution)</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>5.1.1</b> 超参数</a></li>
+<li class="chapter" data-level="5.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>5.1.2</b> 参数个数计算</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>5.2</b> 池化层 (Pooling)</a></li>
+<li class="chapter" data-level="5.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>5.3</b> 批标准化层 (Batch Normalization)</a></li>
+<li class="chapter" data-level="5.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>5.4</b> 其他组件</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>5.4.1</b> 全连接层 (Dense)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>5.4.2</b> 输出神经元</a></li>
+<li class="chapter" data-level="5.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>5.4.3</b> 激活函数 (Activation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>5.5</b> 特性</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>5.5.1</b> 平移不变性</a></li>
+<li class="chapter" data-level="5.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>5.5.2</b> 旋转不变性</a></li>
+<li class="chapter" data-level="5.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>5.5.3</b> 尺度不变性</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>5.6</b> 隐藏层可视化</a></li>
+<li class="chapter" data-level="5.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>5.7</b> 逆卷积</a></li>
+<li class="chapter" data-level="5.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>5.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
+<li class="chapter" data-level="5.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>5.8.1</b> 输入和标签</a></li>
+<li class="chapter" data-level="5.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>5.8.2</b> 评估指标</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>5.9</b> MNIST dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="rnn.html"><a href="rnn.html"><i class="fa fa-check"></i><b>6</b> 循环神经网络与死亡率预测</a><ul>
 <li class="chapter" data-level="6.1" data-path="rnn.html"><a href="rnn.html#lee-carter-model"><i class="fa fa-check"></i><b>6.1</b> Lee-Carter Model</a></li>
@@ -264,7 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.8" data-path="rnn.html"><a href="rnn.html#预测结果图"><i class="fa fa-check"></i><b>6.5.8</b> 预测结果图</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>7</b> 自然语言处理</a><ul>
+<li class="chapter" data-level="7" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>7</b> 自然语言处理初步</a><ul>
 <li class="chapter" data-level="7.1" data-path="nlp.html"><a href="nlp.html#预处理"><i class="fa fa-check"></i><b>7.1</b> 预处理</a></li>
 <li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
 <li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
@@ -276,7 +287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
 <li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="nlp.html"><a href="nlp.html#数据预处理-4"><i class="fa fa-check"></i><b>7.6.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="7.6.1" data-path="nlp.html"><a href="nlp.html#数据预处理-3"><i class="fa fa-check"></i><b>7.6.1</b> 数据预处理</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="nlp.html"><a href="nlp.html#case-study-1"><i class="fa fa-check"></i><b>7.7</b> Case study</a><ul>
 <li class="chapter" data-level="7.7.1" data-path="nlp.html"><a href="nlp.html#函数说明"><i class="fa fa-check"></i><b>7.7.1</b> 函数说明</a></li>
@@ -320,30 +331,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.10.7" data-path="flashlight.html"><a href="flashlight.html#改进glm"><i class="fa fa-check"></i><b>8.10.7</b> 改进glm</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
-<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>9.1</b> 卷积层 (Convolution)</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>9.1.1</b> 超参数</a></li>
-<li class="chapter" data-level="9.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>9.1.2</b> 参数个数计算</a></li>
+<li class="chapter" data-level="9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>9</b> 无监督学习方法</a><ul>
+<li class="chapter" data-level="9.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-4"><i class="fa fa-check"></i><b>9.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="9.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>9.2</b> 主成分分析</a></li>
+<li class="chapter" data-level="9.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>9.3</b> 自编码</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>9.3.1</b> 模型训练</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>9.2</b> 池化层 (Pooling)</a></li>
-<li class="chapter" data-level="9.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>9.3</b> 批标准化层 (Batch Normalization)</a></li>
-<li class="chapter" data-level="9.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>9.4</b> 其他组件</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>9.4.1</b> 全连接层 (Dense)</a></li>
-<li class="chapter" data-level="9.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>9.4.2</b> 输出神经元</a></li>
-<li class="chapter" data-level="9.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>9.4.3</b> 激活函数 (Activation)</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>9.5</b> 特性</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>9.5.1</b> 平移不变性</a></li>
-<li class="chapter" data-level="9.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>9.5.2</b> 旋转不变性</a></li>
-<li class="chapter" data-level="9.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>9.5.3</b> 尺度不变性</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>9.6</b> 隐藏层可视化</a></li>
-<li class="chapter" data-level="9.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>9.7</b> 逆卷积</a></li>
-<li class="chapter" data-level="9.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>9.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
-<li class="chapter" data-level="9.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>9.8.1</b> 输入和标签</a></li>
-<li class="chapter" data-level="9.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>9.8.2</b> 评估指标</a></li>
-</ul></li>
-<li class="chapter" data-level="9.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>9.9</b> MNIST dataset</a></li>
+<li class="chapter" data-level="9.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>9.4</b> K-means clustering</a></li>
+<li class="chapter" data-level="9.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>9.5</b> K-medoids clustering (PAM)</a></li>
+<li class="chapter" data-level="9.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>9.6</b> Gaussian mixture models(GMMs)</a></li>
+<li class="chapter" data-level="9.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>9.7</b> 三种聚类方法评价</a></li>
+<li class="chapter" data-level="9.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>9.8</b> t-SNE</a></li>
+<li class="chapter" data-level="9.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>9.9</b> UMAP</a></li>
+<li class="chapter" data-level="9.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>9.10</b> SOM</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
@@ -366,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="boosting" class="section level1">
-<h1><span class="header-section-number">4</span> 提升方法 (Boosting)</h1>
+<h1><span class="header-section-number">3</span> 提升方法与事故预测</h1>
 <!-- *范雨文、毛雪婷、高光远* -->
 <blockquote>
 <p>Breiman called <strong>AdaBoost</strong> the <strong>‘best off-the-shelf classifier in the world’</strong> (NIPS Workshop 1996).</p>
@@ -408,7 +408,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li><p>XGBoost: Chen and Guestrin (2016)</p></li>
 </ul>
 <div id="adaboost" class="section level2">
-<h2><span class="header-section-number">4.1</span> AdaBoost</h2>
+<h2><span class="header-section-number">3.1</span> AdaBoost</h2>
 <p><span class="math inline">\(Y\in\{0,1\}\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>初始权重 <span class="math inline">\(\omega^{(0)}_i=\frac{1}{n}\)</span>.</p></li>
@@ -430,7 +430,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ol>
 </div>
 <div id="logit-boost-real-discrete-gentle-adaboost" class="section level2">
-<h2><span class="header-section-number">4.2</span> Logit Boost (real, discrete, gentle AdaBoost)</h2>
+<h2><span class="header-section-number">3.2</span> Logit Boost (real, discrete, gentle AdaBoost)</h2>
 <p><span class="math inline">\(Y\in\{-1,1\}\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>初始弱学习机 <span class="math inline">\(T^{(0)}=0, C^{(0)}=0\)</span>.</p></li>
@@ -443,7 +443,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ol>
 </div>
 <div id="adaboost.m1" class="section level2">
-<h2><span class="header-section-number">4.3</span> AdaBoost.M1</h2>
+<h2><span class="header-section-number">3.3</span> AdaBoost.M1</h2>
 <p><span class="math inline">\(Y\in\{1,\ldots,K\}\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>初始权重 <span class="math inline">\(\omega^{(0)}_i=\frac{1}{n}\)</span>.</p></li>
@@ -455,7 +455,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ol>
 </div>
 <div id="samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function" class="section level2">
-<h2><span class="header-section-number">4.4</span> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</h2>
+<h2><span class="header-section-number">3.4</span> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</h2>
 <p><span class="math inline">\(Y\in \{1,\ldots,K\}\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>初始权重 <span class="math inline">\(\omega^{(0)}_i=\frac{1}{n}\)</span>.</p></li>
@@ -467,7 +467,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ol>
 </div>
 <div id="samme.r-multi-class-real-adaboost" class="section level2">
-<h2><span class="header-section-number">4.5</span> SAMME.R (multi-class real AdaBoost)</h2>
+<h2><span class="header-section-number">3.5</span> SAMME.R (multi-class real AdaBoost)</h2>
 <p>见<a href="https://web.stanford.edu/~hastie/Papers/samme.pdf" class="uri">https://web.stanford.edu/~hastie/Papers/samme.pdf</a></p>
 <p><span class="math inline">\(Y\in \{1,\ldots,K\},\mathbf{Z}=(Z_1,\ldots,Z_k)&#39;\in\{1,-1/(K-1)\}^K\)</span>, 建立映射<span class="math inline">\(\{1,\ldots,K\}\rightarrow \{1,-1/(K-1)\}^K, Y\mapsto \mathbf{Z}(Y)\)</span>, 其中<span class="math inline">\(Z_k(k)=1\)</span>, 且<span class="math inline">\(Z_{k&#39;}(k)=-1/(K-1), k&#39;\neq k\)</span></p>
 <ol style="list-style-type: decimal">
@@ -481,7 +481,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <p>参考<code>Multiclass exponential loss</code> <span class="math display">\[L(Z,f)=\exp\left(-\frac{1}{K}Z^Tf\right)\]</span></p>
 </div>
 <div id="gradient-boosting" class="section level2">
-<h2><span class="header-section-number">4.6</span> Gradient Boosting</h2>
+<h2><span class="header-section-number">3.6</span> Gradient Boosting</h2>
 <p><span class="math inline">\(Y\in\{-1,1\}\)</span>，设定学习率<span class="math inline">\(\eta\in(0,1]\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>初始弱学习器
@@ -495,7 +495,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ol>
 </div>
 <div id="newton-boosting" class="section level2">
-<h2><span class="header-section-number">4.7</span> Newton Boosting</h2>
+<h2><span class="header-section-number">3.7</span> Newton Boosting</h2>
 <p><span class="math inline">\(Y\in\{-1,1\}\)</span>，设定学习率<span class="math inline">\(\eta\in(0,1]\)</span></p>
 <ol style="list-style-type: decimal">
 <li><p>初始弱学习器<span class="math display">\[f_0(\mathbf{x})= \underset{\theta\in\mathbb{R}}{\arg \min} \sum_{i=1}^n L(Y_i, \theta)\]</span></p></li>
@@ -509,7 +509,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ol>
 </div>
 <div id="xgboost" class="section level2">
-<h2><span class="header-section-number">4.8</span> XGBoost</h2>
+<h2><span class="header-section-number">3.8</span> XGBoost</h2>
 <ol style="list-style-type: decimal">
 <li><p>objective function:
 <span class="math display">\[\mathcal{L} =\sum_{i=1}^n L(\hat{y_i},y_i) + \sum_{m=1}^M\Omega(f_m)\]</span> where <span class="math inline">\(L(\hat{y_i},y_i)\)</span> is a differential convex loss function and <span class="math inline">\(\Omega(f_m) = \gamma T + \frac{1}{2}\lambda||\omega||^2\)</span> is a regularization term to penalize model complexity (including number of leaves <span class="math inline">\(T\)</span> and <span class="math inline">\(L^2\)</span>-norm of leaf scores <span class="math inline">\(\omega\)</span>)</p></li>
@@ -520,11 +520,11 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <p><img src="plots/4/summary.png" width="60%"  style="display: block; margin: auto;" /></p>
 </div>
 <div id="case-study" class="section level2">
-<h2><span class="header-section-number">4.9</span> Case study</h2>
+<h2><span class="header-section-number">3.9</span> Case study</h2>
 <p>本案例的数据来源于Kaggle上的比赛“Porto Seguro’s Safe Driver Prediction Competition”。</p>
 <p>比赛的目标是预测未来一年司机是否会发生交通事故，是一个<strong>二分类</strong>问题。此案例中，所有的数据都经过了匿名化处理。</p>
 <div id="数据描述" class="section level3">
-<h3><span class="header-section-number">4.9.1</span> 数据描述</h3>
+<h3><span class="header-section-number">3.9.1</span> 数据描述</h3>
 <p>数据包含595212条记录，59个变量。</p>
 <p>变量包含三类：</p>
 <ul>
@@ -535,8 +535,8 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <p>此案例中，缺失值用-1表示。</p>
 <p><img src="plots/4/%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0.png" width="60%"  style="display: block; margin: auto;" /></p>
 </div>
-<div id="数据预处理-2" class="section level3">
-<h3><span class="header-section-number">4.9.2</span> 数据预处理</h3>
+<div id="数据预处理" class="section level3">
+<h3><span class="header-section-number">3.9.2</span> 数据预处理</h3>
 <ol style="list-style-type: decimal">
 <li>统计缺失值</li>
 </ol>
@@ -552,9 +552,9 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li><p>数值型变量，作直方图</p></li>
 </ul>
 <p>对于目标变量，我们发现它的取值非常不平衡。</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="boosting.html#cb37-1"></a><span class="co"># levels for the target variable </span></span>
-<span id="cb37-2"><a href="boosting.html#cb37-2"></a>lev_target <span class="op">=</span> ( pd.crosstab(index <span class="op">=</span> data[<span class="st">&#39;target&#39;</span>], columns <span class="op">=</span> <span class="st">&#39;Frequency&#39;</span>) <span class="op">/</span> data.shape[<span class="dv">0</span>] ) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb37-3"><a href="boosting.html#cb37-3"></a>lev_target.<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="boosting.html#cb23-1"></a><span class="co"># levels for the target variable </span></span>
+<span id="cb23-2"><a href="boosting.html#cb23-2"></a>lev_target <span class="op">=</span> ( pd.crosstab(index <span class="op">=</span> data[<span class="st">&#39;target&#39;</span>], columns <span class="op">=</span> <span class="st">&#39;Frequency&#39;</span>) <span class="op">/</span> data.shape[<span class="dv">0</span>] ) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb23-3"><a href="boosting.html#cb23-3"></a>lev_target.<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
 <p>通常来说，处理<strong>不平衡</strong>的分类数据，我们可以采取如下方法：</p>
 <ul>
 <li><p>SMOTE（Synthetic Minority Oversampling Technique）</p></li>
@@ -570,36 +570,36 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <ul>
 <li>相关系数矩阵热图</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="boosting.html#cb38-1"></a><span class="co"># Pearson correlation matrix: computation and visualization</span></span>
-<span id="cb38-2"><a href="boosting.html#cb38-2"></a></span>
-<span id="cb38-3"><a href="boosting.html#cb38-3"></a><span class="co"># use method=&#39;pearson&#39; resp. method=&#39;spearman&#39; to compute Pearson resp. Spearman correlations</span></span>
-<span id="cb38-4"><a href="boosting.html#cb38-4"></a><span class="kw">def</span> corr_heatmap(v):</span>
-<span id="cb38-5"><a href="boosting.html#cb38-5"></a>    correlations <span class="op">=</span> data[v].corr(method<span class="op">=</span><span class="st">&#39;pearson&#39;</span>)</span>
-<span id="cb38-6"><a href="boosting.html#cb38-6"></a>    fig <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
-<span id="cb38-7"><a href="boosting.html#cb38-7"></a></span>
-<span id="cb38-8"><a href="boosting.html#cb38-8"></a>    sns.heatmap(correlations,  center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">&#39;.2f&#39;</span>, cbar<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb38-9"><a href="boosting.html#cb38-9"></a>                square<span class="op">=</span><span class="va">True</span>, linewidths<span class="op">=</span><span class="dv">1</span>, annot<span class="op">=</span><span class="va">True</span>,  cmap<span class="op">=</span><span class="st">&quot;YlGnBu&quot;</span>)</span>
-<span id="cb38-10"><a href="boosting.html#cb38-10"></a>    plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>) </span>
-<span id="cb38-11"><a href="boosting.html#cb38-11"></a>    plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb38-12"><a href="boosting.html#cb38-12"></a>    plt.show()</span>
-<span id="cb38-13"><a href="boosting.html#cb38-13"></a></span>
-<span id="cb38-14"><a href="boosting.html#cb38-14"></a><span class="co"># one applies the corr_heatmap function on the interval features    </span></span>
-<span id="cb38-15"><a href="boosting.html#cb38-15"></a>v <span class="op">=</span> meta[(meta.level <span class="op">==</span> <span class="st">&#39;interval&#39;</span>) <span class="op">&amp;</span> (meta.keep)].index</span>
-<span id="cb38-16"><a href="boosting.html#cb38-16"></a>corr_heatmap(v)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="boosting.html#cb24-1"></a><span class="co"># Pearson correlation matrix: computation and visualization</span></span>
+<span id="cb24-2"><a href="boosting.html#cb24-2"></a></span>
+<span id="cb24-3"><a href="boosting.html#cb24-3"></a><span class="co"># use method=&#39;pearson&#39; resp. method=&#39;spearman&#39; to compute Pearson resp. Spearman correlations</span></span>
+<span id="cb24-4"><a href="boosting.html#cb24-4"></a><span class="kw">def</span> corr_heatmap(v):</span>
+<span id="cb24-5"><a href="boosting.html#cb24-5"></a>    correlations <span class="op">=</span> data[v].corr(method<span class="op">=</span><span class="st">&#39;pearson&#39;</span>)</span>
+<span id="cb24-6"><a href="boosting.html#cb24-6"></a>    fig <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb24-7"><a href="boosting.html#cb24-7"></a></span>
+<span id="cb24-8"><a href="boosting.html#cb24-8"></a>    sns.heatmap(correlations,  center<span class="op">=</span><span class="dv">0</span>, fmt<span class="op">=</span><span class="st">&#39;.2f&#39;</span>, cbar<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb24-9"><a href="boosting.html#cb24-9"></a>                square<span class="op">=</span><span class="va">True</span>, linewidths<span class="op">=</span><span class="dv">1</span>, annot<span class="op">=</span><span class="va">True</span>,  cmap<span class="op">=</span><span class="st">&quot;YlGnBu&quot;</span>)</span>
+<span id="cb24-10"><a href="boosting.html#cb24-10"></a>    plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>) </span>
+<span id="cb24-11"><a href="boosting.html#cb24-11"></a>    plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>) </span>
+<span id="cb24-12"><a href="boosting.html#cb24-12"></a>    plt.show()</span>
+<span id="cb24-13"><a href="boosting.html#cb24-13"></a></span>
+<span id="cb24-14"><a href="boosting.html#cb24-14"></a><span class="co"># one applies the corr_heatmap function on the interval features    </span></span>
+<span id="cb24-15"><a href="boosting.html#cb24-15"></a>v <span class="op">=</span> meta[(meta.level <span class="op">==</span> <span class="st">&#39;interval&#39;</span>) <span class="op">&amp;</span> (meta.keep)].index</span>
+<span id="cb24-16"><a href="boosting.html#cb24-16"></a>corr_heatmap(v)</span></code></pre></div>
 <p><img src="plots/4/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E7%9F%A9%E9%98%B5%E7%83%AD%E5%9B%BE.png" width="60%"  style="display: block; margin: auto;" /></p>
 <ul>
 <li>散点图矩阵</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="boosting.html#cb39-1"></a><span class="co"># scatterplot high correlation interval variables</span></span>
-<span id="cb39-2"><a href="boosting.html#cb39-2"></a><span class="im">import</span> seaborn</span>
-<span id="cb39-3"><a href="boosting.html#cb39-3"></a>high <span class="op">=</span> pd.Index([<span class="st">&#39;ps_reg_01&#39;</span>, <span class="st">&#39;ps_reg_02&#39;</span>, <span class="st">&#39;ps_reg_03&#39;</span>, <span class="st">&#39;ps_car_12&#39;</span>, <span class="st">&#39;ps_car_13&#39;</span>, <span class="st">&#39;ps_car_15&#39;</span>])</span>
-<span id="cb39-4"><a href="boosting.html#cb39-4"></a>pd.plotting.scatter_matrix(data[high], alpha <span class="op">=</span> <span class="fl">0.2</span>, figsize <span class="op">=</span> (<span class="dv">40</span>, <span class="dv">40</span>), diagonal <span class="op">=</span> <span class="st">&#39;kde&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="boosting.html#cb25-1"></a><span class="co"># scatterplot high correlation interval variables</span></span>
+<span id="cb25-2"><a href="boosting.html#cb25-2"></a><span class="im">import</span> seaborn</span>
+<span id="cb25-3"><a href="boosting.html#cb25-3"></a>high <span class="op">=</span> pd.Index([<span class="st">&#39;ps_reg_01&#39;</span>, <span class="st">&#39;ps_reg_02&#39;</span>, <span class="st">&#39;ps_reg_03&#39;</span>, <span class="st">&#39;ps_car_12&#39;</span>, <span class="st">&#39;ps_car_13&#39;</span>, <span class="st">&#39;ps_car_15&#39;</span>])</span>
+<span id="cb25-4"><a href="boosting.html#cb25-4"></a>pd.plotting.scatter_matrix(data[high], alpha <span class="op">=</span> <span class="fl">0.2</span>, figsize <span class="op">=</span> (<span class="dv">40</span>, <span class="dv">40</span>), diagonal <span class="op">=</span> <span class="st">&#39;kde&#39;</span>)</span></code></pre></div>
 <p><img src="plots/4/%E6%95%A3%E7%82%B9%E5%9B%BE%E7%9F%A9%E9%98%B5.png" width="80%"  style="display: block; margin: auto;" /></p>
 <p>在解释变量和目标变量之间，我们可以作散点图、箱线图、条形图等。</p>
 <p><img src="plots/4/target_vs_features.png" width="80%"  style="display: block; margin: auto;" /></p>
 </div>
 <div id="特征工程-1" class="section level3">
-<h3><span class="header-section-number">4.9.3</span> 特征工程</h3>
+<h3><span class="header-section-number">3.9.3</span> 特征工程</h3>
 <ol style="list-style-type: decimal">
 <li>删除变量</li>
 </ol>
@@ -613,40 +613,40 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li><p>均值插补连续型变量<code>ps_reg_03</code>，<code>ps_car_12</code>和<code>ps_car_14</code></p></li>
 <li><p>众数插补分类变量<code>ps_car_11</code></p></li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="boosting.html#cb40-1"></a><span class="co"># dropping &#39;ps_car_03_cat&#39;, &#39;ps_car_05_cat&#39; and updating meta information</span></span>
-<span id="cb40-2"><a href="boosting.html#cb40-2"></a>vars_to_drop <span class="op">=</span> [<span class="st">&#39;ps_car_03_cat&#39;</span>, <span class="st">&#39;ps_car_05_cat&#39;</span>]</span>
-<span id="cb40-3"><a href="boosting.html#cb40-3"></a>data.drop(vars_to_drop, inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb40-4"><a href="boosting.html#cb40-4"></a>meta.loc[(vars_to_drop), <span class="st">&#39;keep&#39;</span>] <span class="op">=</span> <span class="va">False</span>  </span>
-<span id="cb40-5"><a href="boosting.html#cb40-5"></a></span>
-<span id="cb40-6"><a href="boosting.html#cb40-6"></a><span class="co"># imputing with the mean or mode using Imputer from sklearn.preprocessing</span></span>
-<span id="cb40-7"><a href="boosting.html#cb40-7"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> Imputer</span>
-<span id="cb40-8"><a href="boosting.html#cb40-8"></a></span>
-<span id="cb40-9"><a href="boosting.html#cb40-9"></a>mean_imp <span class="op">=</span> Imputer(missing_values <span class="op">=</span> <span class="dv">-1</span>, strategy <span class="op">=</span> <span class="st">&#39;mean&#39;</span>, axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb40-10"><a href="boosting.html#cb40-10"></a>mode_imp <span class="op">=</span> Imputer(missing_values <span class="op">=</span> <span class="dv">-1</span>, strategy <span class="op">=</span> <span class="st">&#39;most_frequent&#39;</span>, axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb40-11"><a href="boosting.html#cb40-11"></a></span>
-<span id="cb40-12"><a href="boosting.html#cb40-12"></a>data[<span class="st">&#39;ps_reg_03&#39;</span>] <span class="op">=</span> mean_imp.fit_transform(data[[<span class="st">&#39;ps_reg_03&#39;</span>]]).ravel()</span>
-<span id="cb40-13"><a href="boosting.html#cb40-13"></a>data[<span class="st">&#39;ps_car_12&#39;</span>] <span class="op">=</span> mean_imp.fit_transform(data[[<span class="st">&#39;ps_car_12&#39;</span>]]).ravel()</span>
-<span id="cb40-14"><a href="boosting.html#cb40-14"></a>data[<span class="st">&#39;ps_car_14&#39;</span>] <span class="op">=</span> mean_imp.fit_transform(data[[<span class="st">&#39;ps_car_14&#39;</span>]]).ravel()</span>
-<span id="cb40-15"><a href="boosting.html#cb40-15"></a>data[<span class="st">&#39;ps_car_11&#39;</span>] <span class="op">=</span> mode_imp.fit_transform(data[[<span class="st">&#39;ps_car_11&#39;</span>]]).ravel()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="boosting.html#cb26-1"></a><span class="co"># dropping &#39;ps_car_03_cat&#39;, &#39;ps_car_05_cat&#39; and updating meta information</span></span>
+<span id="cb26-2"><a href="boosting.html#cb26-2"></a>vars_to_drop <span class="op">=</span> [<span class="st">&#39;ps_car_03_cat&#39;</span>, <span class="st">&#39;ps_car_05_cat&#39;</span>]</span>
+<span id="cb26-3"><a href="boosting.html#cb26-3"></a>data.drop(vars_to_drop, inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="boosting.html#cb26-4"></a>meta.loc[(vars_to_drop), <span class="st">&#39;keep&#39;</span>] <span class="op">=</span> <span class="va">False</span>  </span>
+<span id="cb26-5"><a href="boosting.html#cb26-5"></a></span>
+<span id="cb26-6"><a href="boosting.html#cb26-6"></a><span class="co"># imputing with the mean or mode using Imputer from sklearn.preprocessing</span></span>
+<span id="cb26-7"><a href="boosting.html#cb26-7"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> Imputer</span>
+<span id="cb26-8"><a href="boosting.html#cb26-8"></a></span>
+<span id="cb26-9"><a href="boosting.html#cb26-9"></a>mean_imp <span class="op">=</span> Imputer(missing_values <span class="op">=</span> <span class="dv">-1</span>, strategy <span class="op">=</span> <span class="st">&#39;mean&#39;</span>, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb26-10"><a href="boosting.html#cb26-10"></a>mode_imp <span class="op">=</span> Imputer(missing_values <span class="op">=</span> <span class="dv">-1</span>, strategy <span class="op">=</span> <span class="st">&#39;most_frequent&#39;</span>, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb26-11"><a href="boosting.html#cb26-11"></a></span>
+<span id="cb26-12"><a href="boosting.html#cb26-12"></a>data[<span class="st">&#39;ps_reg_03&#39;</span>] <span class="op">=</span> mean_imp.fit_transform(data[[<span class="st">&#39;ps_reg_03&#39;</span>]]).ravel()</span>
+<span id="cb26-13"><a href="boosting.html#cb26-13"></a>data[<span class="st">&#39;ps_car_12&#39;</span>] <span class="op">=</span> mean_imp.fit_transform(data[[<span class="st">&#39;ps_car_12&#39;</span>]]).ravel()</span>
+<span id="cb26-14"><a href="boosting.html#cb26-14"></a>data[<span class="st">&#39;ps_car_14&#39;</span>] <span class="op">=</span> mean_imp.fit_transform(data[[<span class="st">&#39;ps_car_14&#39;</span>]]).ravel()</span>
+<span id="cb26-15"><a href="boosting.html#cb26-15"></a>data[<span class="st">&#39;ps_car_11&#39;</span>] <span class="op">=</span> mode_imp.fit_transform(data[[<span class="st">&#39;ps_car_11&#39;</span>]]).ravel()</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>生成哑变量</li>
 </ol>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="boosting.html#cb41-1"></a><span class="co"># creating dummy variables</span></span>
-<span id="cb41-2"><a href="boosting.html#cb41-2"></a>data <span class="op">=</span> pd.get_dummies(data, columns <span class="op">=</span> v, drop_first <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb41-3"><a href="boosting.html#cb41-3"></a><span class="bu">print</span>(<span class="st">&#39;After dummification we have </span><span class="sc">{}</span><span class="st"> variables in data&#39;</span>.<span class="bu">format</span>(data.shape[<span class="dv">1</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="boosting.html#cb27-1"></a><span class="co"># creating dummy variables</span></span>
+<span id="cb27-2"><a href="boosting.html#cb27-2"></a>data <span class="op">=</span> pd.get_dummies(data, columns <span class="op">=</span> v, drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb27-3"><a href="boosting.html#cb27-3"></a><span class="bu">print</span>(<span class="st">&#39;After dummification we have </span><span class="sc">{}</span><span class="st"> variables in data&#39;</span>.<span class="bu">format</span>(data.shape[<span class="dv">1</span>]))</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>划分学习集和测试集</li>
 </ol>
 <p>以80:20的比例划分学习集和测试集，分别记作<code>(X_train, y_train)</code>和<code>(X_test, y_test)</code>。</p>
 <p>经过划分，学习集有476169条记录，测试集有119043条记录。模型将会在学习集上训练，然后在测试集上分析其表现。</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="boosting.html#cb42-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data.drop([<span class="st">&#39;id&#39;</span>, <span class="st">&#39;target&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>), </span>
-<span id="cb42-2"><a href="boosting.html#cb42-2"></a>                                                    data[<span class="st">&#39;target&#39;</span>], </span>
-<span id="cb42-3"><a href="boosting.html#cb42-3"></a>                                                    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
-<span id="cb42-4"><a href="boosting.html#cb42-4"></a>                                                    random_state<span class="op">=</span>random_state</span>
-<span id="cb42-5"><a href="boosting.html#cb42-5"></a>                                                   )</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="boosting.html#cb28-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data.drop([<span class="st">&#39;id&#39;</span>, <span class="st">&#39;target&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>), </span>
+<span id="cb28-2"><a href="boosting.html#cb28-2"></a>                                                    data[<span class="st">&#39;target&#39;</span>], </span>
+<span id="cb28-3"><a href="boosting.html#cb28-3"></a>                                                    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb28-4"><a href="boosting.html#cb28-4"></a>                                                    random_state<span class="op">=</span>random_state</span>
+<span id="cb28-5"><a href="boosting.html#cb28-5"></a>                                                   )</span></code></pre></div>
 </div>
 <div id="建模流程" class="section level3">
-<h3><span class="header-section-number">4.9.4</span> 建模流程</h3>
+<h3><span class="header-section-number">3.9.4</span> 建模流程</h3>
 <table>
 <colgroup>
 <col width="20%" />
@@ -675,7 +675,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </table>
 </div>
 <div id="模型度量gini系数" class="section level3">
-<h3><span class="header-section-number">4.9.5</span> 模型度量——Gini系数</h3>
+<h3><span class="header-section-number">3.9.5</span> 模型度量——Gini系数</h3>
 <ol style="list-style-type: decimal">
 <li>Gini系数</li>
 </ol>
@@ -692,33 +692,33 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li>Gini系数代码</li>
 </ol>
 <p>在python中，我们可以用如下代码来定义Gini系数。</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="boosting.html#cb43-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> make_scorer</span>
-<span id="cb43-2"><a href="boosting.html#cb43-2"></a></span>
-<span id="cb43-3"><a href="boosting.html#cb43-3"></a><span class="co"># Gini coefficient</span></span>
-<span id="cb43-4"><a href="boosting.html#cb43-4"></a><span class="kw">def</span> gini(actual, pred):</span>
-<span id="cb43-5"><a href="boosting.html#cb43-5"></a>    </span>
-<span id="cb43-6"><a href="boosting.html#cb43-6"></a>    <span class="co"># a structural check</span></span>
-<span id="cb43-7"><a href="boosting.html#cb43-7"></a>    <span class="cf">assert</span> (<span class="bu">len</span>(actual) <span class="op">==</span> <span class="bu">len</span>(pred))</span>
-<span id="cb43-8"><a href="boosting.html#cb43-8"></a>    </span>
-<span id="cb43-9"><a href="boosting.html#cb43-9"></a>    <span class="co"># introducing an array called all</span></span>
-<span id="cb43-10"><a href="boosting.html#cb43-10"></a>    <span class="bu">all</span> <span class="op">=</span> np.asarray(np.c_[actual, pred, np.arange(<span class="bu">len</span>(actual))], dtype<span class="op">=</span>np.<span class="bu">float</span>)  <span class="co">#slicing along second axis</span></span>
-<span id="cb43-11"><a href="boosting.html#cb43-11"></a>    </span>
-<span id="cb43-12"><a href="boosting.html#cb43-12"></a>    <span class="co"># sorting the array along predicted probabilities (descending order) and along the index axis all[:, 2] in case of ties</span></span>
-<span id="cb43-13"><a href="boosting.html#cb43-13"></a>    <span class="bu">all</span> <span class="op">=</span> <span class="bu">all</span>[np.lexsort((<span class="bu">all</span>[:, <span class="dv">2</span>], <span class="dv">-1</span> <span class="op">*</span> <span class="bu">all</span>[:, <span class="dv">1</span>]))]                             <span class="co">#</span></span>
-<span id="cb43-14"><a href="boosting.html#cb43-14"></a></span>
-<span id="cb43-15"><a href="boosting.html#cb43-15"></a>    <span class="co"># towards the Gini coefficient</span></span>
-<span id="cb43-16"><a href="boosting.html#cb43-16"></a>    totalLosses <span class="op">=</span> <span class="bu">all</span>[:, <span class="dv">0</span>].<span class="bu">sum</span>()</span>
-<span id="cb43-17"><a href="boosting.html#cb43-17"></a>    giniSum <span class="op">=</span> <span class="bu">all</span>[:, <span class="dv">0</span>].cumsum().<span class="bu">sum</span>() <span class="op">/</span> totalLosses</span>
-<span id="cb43-18"><a href="boosting.html#cb43-18"></a></span>
-<span id="cb43-19"><a href="boosting.html#cb43-19"></a>    giniSum <span class="op">-=</span> (<span class="bu">len</span>(actual) <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="fl">2.</span></span>
-<span id="cb43-20"><a href="boosting.html#cb43-20"></a>    <span class="cf">return</span> giniSum <span class="op">/</span> <span class="bu">len</span>(actual)</span>
-<span id="cb43-21"><a href="boosting.html#cb43-21"></a></span>
-<span id="cb43-22"><a href="boosting.html#cb43-22"></a><span class="co"># normalized Gini coefficient</span></span>
-<span id="cb43-23"><a href="boosting.html#cb43-23"></a><span class="kw">def</span> gini_normalized_score(actual, pred):</span>
-<span id="cb43-24"><a href="boosting.html#cb43-24"></a>    <span class="cf">return</span> gini(actual, pred) <span class="op">/</span> gini(actual, actual)</span>
-<span id="cb43-25"><a href="boosting.html#cb43-25"></a></span>
-<span id="cb43-26"><a href="boosting.html#cb43-26"></a><span class="co"># score using the normalized Gini</span></span>
-<span id="cb43-27"><a href="boosting.html#cb43-27"></a>score_gini <span class="op">=</span> make_scorer(gini_normalized_score, greater_is_better<span class="op">=</span><span class="va">True</span>, needs_threshold <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="boosting.html#cb29-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> make_scorer</span>
+<span id="cb29-2"><a href="boosting.html#cb29-2"></a></span>
+<span id="cb29-3"><a href="boosting.html#cb29-3"></a><span class="co"># Gini coefficient</span></span>
+<span id="cb29-4"><a href="boosting.html#cb29-4"></a><span class="kw">def</span> gini(actual, pred):</span>
+<span id="cb29-5"><a href="boosting.html#cb29-5"></a>    </span>
+<span id="cb29-6"><a href="boosting.html#cb29-6"></a>    <span class="co"># a structural check</span></span>
+<span id="cb29-7"><a href="boosting.html#cb29-7"></a>    <span class="cf">assert</span> (<span class="bu">len</span>(actual) <span class="op">==</span> <span class="bu">len</span>(pred))</span>
+<span id="cb29-8"><a href="boosting.html#cb29-8"></a>    </span>
+<span id="cb29-9"><a href="boosting.html#cb29-9"></a>    <span class="co"># introducing an array called all</span></span>
+<span id="cb29-10"><a href="boosting.html#cb29-10"></a>    <span class="bu">all</span> <span class="op">=</span> np.asarray(np.c_[actual, pred, np.arange(<span class="bu">len</span>(actual))], dtype<span class="op">=</span>np.<span class="bu">float</span>)  <span class="co">#slicing along second axis</span></span>
+<span id="cb29-11"><a href="boosting.html#cb29-11"></a>    </span>
+<span id="cb29-12"><a href="boosting.html#cb29-12"></a>    <span class="co"># sorting the array along predicted probabilities (descending order) and along the index axis all[:, 2] in case of ties</span></span>
+<span id="cb29-13"><a href="boosting.html#cb29-13"></a>    <span class="bu">all</span> <span class="op">=</span> <span class="bu">all</span>[np.lexsort((<span class="bu">all</span>[:, <span class="dv">2</span>], <span class="dv">-1</span> <span class="op">*</span> <span class="bu">all</span>[:, <span class="dv">1</span>]))]                             <span class="co">#</span></span>
+<span id="cb29-14"><a href="boosting.html#cb29-14"></a></span>
+<span id="cb29-15"><a href="boosting.html#cb29-15"></a>    <span class="co"># towards the Gini coefficient</span></span>
+<span id="cb29-16"><a href="boosting.html#cb29-16"></a>    totalLosses <span class="op">=</span> <span class="bu">all</span>[:, <span class="dv">0</span>].<span class="bu">sum</span>()</span>
+<span id="cb29-17"><a href="boosting.html#cb29-17"></a>    giniSum <span class="op">=</span> <span class="bu">all</span>[:, <span class="dv">0</span>].cumsum().<span class="bu">sum</span>() <span class="op">/</span> totalLosses</span>
+<span id="cb29-18"><a href="boosting.html#cb29-18"></a></span>
+<span id="cb29-19"><a href="boosting.html#cb29-19"></a>    giniSum <span class="op">-=</span> (<span class="bu">len</span>(actual) <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="fl">2.</span></span>
+<span id="cb29-20"><a href="boosting.html#cb29-20"></a>    <span class="cf">return</span> giniSum <span class="op">/</span> <span class="bu">len</span>(actual)</span>
+<span id="cb29-21"><a href="boosting.html#cb29-21"></a></span>
+<span id="cb29-22"><a href="boosting.html#cb29-22"></a><span class="co"># normalized Gini coefficient</span></span>
+<span id="cb29-23"><a href="boosting.html#cb29-23"></a><span class="kw">def</span> gini_normalized_score(actual, pred):</span>
+<span id="cb29-24"><a href="boosting.html#cb29-24"></a>    <span class="cf">return</span> gini(actual, pred) <span class="op">/</span> gini(actual, actual)</span>
+<span id="cb29-25"><a href="boosting.html#cb29-25"></a></span>
+<span id="cb29-26"><a href="boosting.html#cb29-26"></a><span class="co"># score using the normalized Gini</span></span>
+<span id="cb29-27"><a href="boosting.html#cb29-27"></a>score_gini <span class="op">=</span> make_scorer(gini_normalized_score, greater_is_better<span class="op">=</span><span class="va">True</span>, needs_threshold <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Gini系数与AUC</li>
 </ol>
@@ -727,16 +727,16 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <p>在此例中，Gini系数将用于计算交叉验证中模型在验证集上的表现。</p>
 </div>
 <div id="建立adaboost模型" class="section level3">
-<h3><span class="header-section-number">4.9.6</span> 建立AdaBoost模型</h3>
+<h3><span class="header-section-number">3.9.6</span> 建立AdaBoost模型</h3>
 <div id="st0" class="section level4">
-<h4><span class="header-section-number">4.9.6.1</span> ST0</h4>
+<h4><span class="header-section-number">3.9.6.1</span> ST0</h4>
 <p>选取tree作为基模型，构建SAMME和SAMME.R模型。</p>
 <p>默认参数：<code>n_estimators = 50</code>，<code>learning_rate = 1</code></p>
 <p><img src="plots/4/ada_st0.png" width="80%"  style="display: block; margin: auto;" /></p>
 <p>SAMME.R模型的表现优于SAMME模型。</p>
 </div>
 <div id="st1" class="section level4">
-<h4><span class="header-section-number">4.9.6.2</span> ST1</h4>
+<h4><span class="header-section-number">3.9.6.2</span> ST1</h4>
 <p>构建SAMME.R模型，选取参数<code>n_estimators = 500</code>，<code>learning_rate = 1</code>，观察不同<code>max_depth</code>下外样本测试的AUC。</p>
 <p>左图<code>max_depth = 1</code>，右图<code>max_depth = 3</code>。</p>
 <p><img src="plots/4/ada_st1.png" width="80%"  style="display: block; margin: auto;" /></p>
@@ -746,21 +746,21 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <p>因此，当增加树的最大深度时，容易出现过拟合，这时需要降低学习率以避免过拟合。</p>
 </div>
 <div id="st2" class="section level4">
-<h4><span class="header-section-number">4.9.6.3</span> ST2</h4>
+<h4><span class="header-section-number">3.9.6.3</span> ST2</h4>
 <p>接下来，设置不同的<code>max_depth</code>、<code>learning_rate</code>、<code>n_estimators</code>，构建SAMME.R模型，搜寻外样本测试上AUC最大的模型。</p>
 <p><img src="plots/4/ada_st2.png" width="80%"  style="display: block; margin: auto;" /></p>
 <p>可以看出，最佳模型的参数是<code>max_depth = 1</code>，<code>learning rate = 0.1</code>，<code>n_estimators = 400</code>，此时AUC为<strong>0.637</strong>。</p>
 </div>
 </div>
 <div id="建立xgboost模型" class="section level3">
-<h3><span class="header-section-number">4.9.7</span> 建立XGBoost模型</h3>
+<h3><span class="header-section-number">3.9.7</span> 建立XGBoost模型</h3>
 <div id="st0-1" class="section level4">
-<h4><span class="header-section-number">4.9.7.1</span> ST0</h4>
+<h4><span class="header-section-number">3.9.7.1</span> ST0</h4>
 <p>采用默认参数：<code>learning rate = 0.1</code>，<code>max_depth = 3</code>，<code>n_estimators = 100</code>，构建XGBoost模型。</p>
 <p>得出out-of-sample AUC为<strong>0.638</strong>，这已经好于AdaBoost的ST0（0.635）和ST2（0.637），稍差于ST1（0.639）。</p>
 </div>
 <div id="st1-1" class="section level4">
-<h4><span class="header-section-number">4.9.7.2</span> ST1</h4>
+<h4><span class="header-section-number">3.9.7.2</span> ST1</h4>
 <p>设置不同的<code>max_depth</code>、<code>learning_rate</code>、<code>n_estimators</code>，构建XGBoost模型，搜寻外样本测试上AUC最大的模型。</p>
 <p><img src="plots/4/xg_st1.png" width="60%"  style="display: block; margin: auto;" /></p>
 <p>可以看到，在<code>max_depth = 2</code>，<code>learning_rate = 0.1</code>，<code>n_estimators = 500</code>和<code>max_depth = 3</code>，<code>learning_rate = 0.1</code>，<code>n_estimators =  300</code>，AUC都取到了最大为<strong>0.643</strong>。</p>
@@ -769,16 +769,16 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </div>
 </div>
 <div id="结论" class="section level3">
-<h3><span class="header-section-number">4.9.8</span> 结论</h3>
+<h3><span class="header-section-number">3.9.8</span> 结论</h3>
 <p>总的来说，在此数据集上:</p>
 <p>SAMME.R优于SAMME，SAMME.R在单层树、适度的学习率和较大的迭代次数上表现较好；</p>
 <p>XGBoost优于AdaBoost，XGBoost在较浅的树、适度的学习率和较大的迭代次数上表现较好。</p>
 </div>
 </div>
 <div id="appendix-commonly-used-python-code-for-py-beginners" class="section level2">
-<h2><span class="header-section-number">4.10</span> Appendix: Commonly used Python code (for py-beginners)</h2>
+<h2><span class="header-section-number">3.10</span> Appendix: Commonly used Python code (for py-beginners)</h2>
 <div id="python标准数据类型" class="section level3">
-<h3><span class="header-section-number">4.10.1</span> Python标准数据类型</h3>
+<h3><span class="header-section-number">3.10.1</span> Python标准数据类型</h3>
 <ul>
 <li><p>Numbers（数字）：用于存储数值，包括int，long，float和complex。</p></li>
 <li><p>String（字符串）：由数字、字母、下划线组成的一串字符。</p></li>
@@ -786,15 +786,15 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li><p>Tuple（元组）：元组不能二次赋值，相当于“只读”列表。</p></li>
 <li><p>Dictionary（字典）：除列表以外python之中最灵活的内置数据结构类型，与列表的区别在于——列表是有序的对象集合，字典是无序的对象集合，字典当中的元素是通过键来存取的。</p></li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="boosting.html#cb44-1"></a>n <span class="op">=</span> <span class="fl">3.6</span>  <span class="co"># 数字</span></span>
-<span id="cb44-2"><a href="boosting.html#cb44-2"></a>s <span class="op">=</span> <span class="st">&#39;Hello, python!&#39;</span>  <span class="co"># 字符串</span></span>
-<span id="cb44-3"><a href="boosting.html#cb44-3"></a>L <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;a&#39;</span>]  <span class="co"># 列表</span></span>
-<span id="cb44-4"><a href="boosting.html#cb44-4"></a>t <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;a&#39;</span>)  <span class="co"># 元组</span></span>
-<span id="cb44-5"><a href="boosting.html#cb44-5"></a>d <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>}  <span class="co"># 字典</span></span>
-<span id="cb44-6"><a href="boosting.html#cb44-6"></a><span class="bu">print</span>(n, s, L, t, d, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="boosting.html#cb30-1"></a>n <span class="op">=</span> <span class="fl">3.6</span>  <span class="co"># 数字</span></span>
+<span id="cb30-2"><a href="boosting.html#cb30-2"></a>s <span class="op">=</span> <span class="st">&#39;Hello, python!&#39;</span>  <span class="co"># 字符串</span></span>
+<span id="cb30-3"><a href="boosting.html#cb30-3"></a>L <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;a&#39;</span>]  <span class="co"># 列表</span></span>
+<span id="cb30-4"><a href="boosting.html#cb30-4"></a>t <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;a&#39;</span>)  <span class="co"># 元组</span></span>
+<span id="cb30-5"><a href="boosting.html#cb30-5"></a>d <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>}  <span class="co"># 字典</span></span>
+<span id="cb30-6"><a href="boosting.html#cb30-6"></a><span class="bu">print</span>(n, s, L, t, d, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span></code></pre></div>
 </div>
 <div id="python内置函数" class="section level3">
-<h3><span class="header-section-number">4.10.2</span> Python内置函数</h3>
+<h3><span class="header-section-number">3.10.2</span> Python内置函数</h3>
 <ol style="list-style-type: decimal">
 <li>输入输出</li>
 </ol>
@@ -848,301 +848,301 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 </ul>
 </div>
 <div id="numpy包" class="section level3">
-<h3><span class="header-section-number">4.10.3</span> numpy包</h3>
+<h3><span class="header-section-number">3.10.3</span> numpy包</h3>
 <p>NumPy(Numerical Python)是Python的一个扩展程序库，支持大量的维度数组与矩阵运算，它也针对数组运算提供大量的数学函数库。</p>
 <ol style="list-style-type: decimal">
 <li>创建ndarray数组</li>
 </ol>
 <p>ndarray是一种多维数组对象，其中的所有元素必须是相同类型的。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="boosting.html#cb45-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb45-2"><a href="boosting.html#cb45-2"></a>a1 <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])  <span class="co"># 创建数组</span></span>
-<span id="cb45-3"><a href="boosting.html#cb45-3"></a><span class="bu">print</span>(a1)</span>
-<span id="cb45-4"><a href="boosting.html#cb45-4"></a><span class="bu">print</span>(a1.ndim)  <span class="co"># 数组的维度</span></span>
-<span id="cb45-5"><a href="boosting.html#cb45-5"></a><span class="bu">print</span>(a1.shape)  <span class="co"># 数组的形状</span></span>
-<span id="cb45-6"><a href="boosting.html#cb45-6"></a><span class="bu">print</span>(a1.dtype)  <span class="co"># 数组的元素类型</span></span>
-<span id="cb45-7"><a href="boosting.html#cb45-7"></a><span class="bu">print</span>(a1.itemsize)  <span class="co"># 每个元素的字节单位长度</span></span>
-<span id="cb45-8"><a href="boosting.html#cb45-8"></a></span>
-<span id="cb45-9"><a href="boosting.html#cb45-9"></a><span class="co"># 其他创建数组的方法</span></span>
-<span id="cb45-10"><a href="boosting.html#cb45-10"></a>a2 <span class="op">=</span> np.zeros(shape <span class="op">=</span> (<span class="dv">2</span>,<span class="dv">2</span>), dtype <span class="op">=</span> <span class="bu">float</span>)  <span class="co"># 创建元素全是0的数组</span></span>
-<span id="cb45-11"><a href="boosting.html#cb45-11"></a>a3 <span class="op">=</span> np.ones(shape <span class="op">=</span> (<span class="dv">2</span>,<span class="dv">2</span>), dtype <span class="op">=</span> <span class="bu">int</span>)  <span class="co"># 创建元素全是1的数组</span></span>
-<span id="cb45-12"><a href="boosting.html#cb45-12"></a>a4 <span class="op">=</span> np.arange(start <span class="op">=</span> <span class="dv">10</span>, stop <span class="op">=</span> <span class="dv">20</span>, step <span class="op">=</span> <span class="dv">2</span>)  <span class="co"># 创建指定数据范围的数组</span></span>
-<span id="cb45-13"><a href="boosting.html#cb45-13"></a><span class="bu">print</span>(a1, a2, a3, a4, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="boosting.html#cb31-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb31-2"><a href="boosting.html#cb31-2"></a>a1 <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])  <span class="co"># 创建数组</span></span>
+<span id="cb31-3"><a href="boosting.html#cb31-3"></a><span class="bu">print</span>(a1)</span>
+<span id="cb31-4"><a href="boosting.html#cb31-4"></a><span class="bu">print</span>(a1.ndim)  <span class="co"># 数组的维度</span></span>
+<span id="cb31-5"><a href="boosting.html#cb31-5"></a><span class="bu">print</span>(a1.shape)  <span class="co"># 数组的形状</span></span>
+<span id="cb31-6"><a href="boosting.html#cb31-6"></a><span class="bu">print</span>(a1.dtype)  <span class="co"># 数组的元素类型</span></span>
+<span id="cb31-7"><a href="boosting.html#cb31-7"></a><span class="bu">print</span>(a1.itemsize)  <span class="co"># 每个元素的字节单位长度</span></span>
+<span id="cb31-8"><a href="boosting.html#cb31-8"></a></span>
+<span id="cb31-9"><a href="boosting.html#cb31-9"></a><span class="co"># 其他创建数组的方法</span></span>
+<span id="cb31-10"><a href="boosting.html#cb31-10"></a>a2 <span class="op">=</span> np.zeros(shape <span class="op">=</span> (<span class="dv">2</span>,<span class="dv">2</span>), dtype <span class="op">=</span> <span class="bu">float</span>)  <span class="co"># 创建元素全是0的数组</span></span>
+<span id="cb31-11"><a href="boosting.html#cb31-11"></a>a3 <span class="op">=</span> np.ones(shape <span class="op">=</span> (<span class="dv">2</span>,<span class="dv">2</span>), dtype <span class="op">=</span> <span class="bu">int</span>)  <span class="co"># 创建元素全是1的数组</span></span>
+<span id="cb31-12"><a href="boosting.html#cb31-12"></a>a4 <span class="op">=</span> np.arange(start <span class="op">=</span> <span class="dv">10</span>, stop <span class="op">=</span> <span class="dv">20</span>, step <span class="op">=</span> <span class="dv">2</span>)  <span class="co"># 创建指定数据范围的数组</span></span>
+<span id="cb31-13"><a href="boosting.html#cb31-13"></a><span class="bu">print</span>(a1, a2, a3, a4, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>ndarray对象的切片和索引</li>
 </ol>
-<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="boosting.html#cb46-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb46-2"><a href="boosting.html#cb46-2"></a>a <span class="op">=</span> np.arange(<span class="dv">24</span>).reshape((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))  <span class="co"># 创建2维、3行、4列的数组，元素从0-23填充</span></span>
-<span id="cb46-3"><a href="boosting.html#cb46-3"></a><span class="bu">print</span>(a[<span class="dv">0</span>, <span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># 索引第1个数组第1-2行第2-3列</span></span></code></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="boosting.html#cb47-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb47-2"><a href="boosting.html#cb47-2"></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)  <span class="co"># 创建元素为0-9的一维数组</span></span>
-<span id="cb47-3"><a href="boosting.html#cb47-3"></a>arr_s <span class="op">=</span> arr[<span class="dv">3</span>:<span class="dv">5</span>]  <span class="co"># 切片，提出数组的第4、5个元素</span></span>
-<span id="cb47-4"><a href="boosting.html#cb47-4"></a>arr_s[:] <span class="op">=</span> <span class="dv">99</span>  <span class="co"># 将99赋值给切片arr_s中的所有元素</span></span>
-<span id="cb47-5"><a href="boosting.html#cb47-5"></a><span class="bu">print</span>(arr_s, arr, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)  <span class="co"># 修改会直接反映到源数组上</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="boosting.html#cb32-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href="boosting.html#cb32-2"></a>a <span class="op">=</span> np.arange(<span class="dv">24</span>).reshape((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))  <span class="co"># 创建2维、3行、4列的数组，元素从0-23填充</span></span>
+<span id="cb32-3"><a href="boosting.html#cb32-3"></a><span class="bu">print</span>(a[<span class="dv">0</span>, <span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># 索引第1个数组第1-2行第2-3列</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="boosting.html#cb33-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb33-2"><a href="boosting.html#cb33-2"></a>arr <span class="op">=</span> np.arange(<span class="dv">10</span>)  <span class="co"># 创建元素为0-9的一维数组</span></span>
+<span id="cb33-3"><a href="boosting.html#cb33-3"></a>arr_s <span class="op">=</span> arr[<span class="dv">3</span>:<span class="dv">5</span>]  <span class="co"># 切片，提出数组的第4、5个元素</span></span>
+<span id="cb33-4"><a href="boosting.html#cb33-4"></a>arr_s[:] <span class="op">=</span> <span class="dv">99</span>  <span class="co"># 将99赋值给切片arr_s中的所有元素</span></span>
+<span id="cb33-5"><a href="boosting.html#cb33-5"></a><span class="bu">print</span>(arr_s, arr, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)  <span class="co"># 修改会直接反映到源数组上</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>数学运算</li>
 </ol>
-<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="boosting.html#cb48-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb48-2"><a href="boosting.html#cb48-2"></a>a <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">5.55</span>, <span class="dv">123</span>, <span class="fl">0.567</span>, <span class="fl">25.532</span>])  </span>
-<span id="cb48-3"><a href="boosting.html#cb48-3"></a>b <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
-<span id="cb48-4"><a href="boosting.html#cb48-4"></a></span>
-<span id="cb48-5"><a href="boosting.html#cb48-5"></a><span class="bu">print</span>(np.around(a, decimals <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 四舍五入至1位小数</span></span>
-<span id="cb48-6"><a href="boosting.html#cb48-6"></a><span class="bu">print</span>(np.floor(a))  <span class="co"># 向下取整</span></span>
-<span id="cb48-7"><a href="boosting.html#cb48-7"></a><span class="bu">print</span>(np.ceil(a))  <span class="co"># 向上取整</span></span>
-<span id="cb48-8"><a href="boosting.html#cb48-8"></a></span>
-<span id="cb48-9"><a href="boosting.html#cb48-9"></a><span class="bu">print</span>(np.sqrt(a))  <span class="co"># 开根号</span></span>
-<span id="cb48-10"><a href="boosting.html#cb48-10"></a><span class="bu">print</span>(np.square(a))  <span class="co"># 平方</span></span>
-<span id="cb48-11"><a href="boosting.html#cb48-11"></a><span class="bu">print</span>(np.log(a))  <span class="co"># 取对数</span></span>
-<span id="cb48-12"><a href="boosting.html#cb48-12"></a><span class="bu">print</span>(np.exp(a))  <span class="co"># 取指数</span></span>
-<span id="cb48-13"><a href="boosting.html#cb48-13"></a><span class="bu">print</span>(np.sign(a))  <span class="co"># 取符号函数</span></span>
-<span id="cb48-14"><a href="boosting.html#cb48-14"></a></span>
-<span id="cb48-15"><a href="boosting.html#cb48-15"></a><span class="bu">print</span>(np.add(a, b))  <span class="co"># 两个数组相加</span></span>
-<span id="cb48-16"><a href="boosting.html#cb48-16"></a><span class="bu">print</span>(np.subtract(a, b))  <span class="co"># 两个数组相减</span></span>
-<span id="cb48-17"><a href="boosting.html#cb48-17"></a><span class="bu">print</span>(np.multiply(a, b))  <span class="co"># 两个数组相乘</span></span>
-<span id="cb48-18"><a href="boosting.html#cb48-18"></a><span class="bu">print</span>(np.divide(a, b))  <span class="co"># 两个数组相除</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="boosting.html#cb34-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-2"><a href="boosting.html#cb34-2"></a>a <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">5.55</span>, <span class="dv">123</span>, <span class="fl">0.567</span>, <span class="fl">25.532</span>])  </span>
+<span id="cb34-3"><a href="boosting.html#cb34-3"></a>b <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb34-4"><a href="boosting.html#cb34-4"></a></span>
+<span id="cb34-5"><a href="boosting.html#cb34-5"></a><span class="bu">print</span>(np.around(a, decimals <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 四舍五入至1位小数</span></span>
+<span id="cb34-6"><a href="boosting.html#cb34-6"></a><span class="bu">print</span>(np.floor(a))  <span class="co"># 向下取整</span></span>
+<span id="cb34-7"><a href="boosting.html#cb34-7"></a><span class="bu">print</span>(np.ceil(a))  <span class="co"># 向上取整</span></span>
+<span id="cb34-8"><a href="boosting.html#cb34-8"></a></span>
+<span id="cb34-9"><a href="boosting.html#cb34-9"></a><span class="bu">print</span>(np.sqrt(a))  <span class="co"># 开根号</span></span>
+<span id="cb34-10"><a href="boosting.html#cb34-10"></a><span class="bu">print</span>(np.square(a))  <span class="co"># 平方</span></span>
+<span id="cb34-11"><a href="boosting.html#cb34-11"></a><span class="bu">print</span>(np.log(a))  <span class="co"># 取对数</span></span>
+<span id="cb34-12"><a href="boosting.html#cb34-12"></a><span class="bu">print</span>(np.exp(a))  <span class="co"># 取指数</span></span>
+<span id="cb34-13"><a href="boosting.html#cb34-13"></a><span class="bu">print</span>(np.sign(a))  <span class="co"># 取符号函数</span></span>
+<span id="cb34-14"><a href="boosting.html#cb34-14"></a></span>
+<span id="cb34-15"><a href="boosting.html#cb34-15"></a><span class="bu">print</span>(np.add(a, b))  <span class="co"># 两个数组相加</span></span>
+<span id="cb34-16"><a href="boosting.html#cb34-16"></a><span class="bu">print</span>(np.subtract(a, b))  <span class="co"># 两个数组相减</span></span>
+<span id="cb34-17"><a href="boosting.html#cb34-17"></a><span class="bu">print</span>(np.multiply(a, b))  <span class="co"># 两个数组相乘</span></span>
+<span id="cb34-18"><a href="boosting.html#cb34-18"></a><span class="bu">print</span>(np.divide(a, b))  <span class="co"># 两个数组相除</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>统计运算</li>
 </ol>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="boosting.html#cb49-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb49-2"><a href="boosting.html#cb49-2"></a>a <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>], [<span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">9</span>]])  </span>
-<span id="cb49-3"><a href="boosting.html#cb49-3"></a></span>
-<span id="cb49-4"><a href="boosting.html#cb49-4"></a><span class="bu">print</span>(np.<span class="bu">min</span>(a, axis <span class="op">=</span> <span class="dv">0</span>))  <span class="co"># 沿纵轴的最小值</span></span>
-<span id="cb49-5"><a href="boosting.html#cb49-5"></a><span class="bu">print</span>(np.<span class="bu">max</span>(a, axis <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 沿横轴的最大值        # 以下函数均可以通过参数axis选择纵轴（axis=0）或横轴（axis=1）</span></span>
-<span id="cb49-6"><a href="boosting.html#cb49-6"></a><span class="bu">print</span>(np.ptp(a))  <span class="co"># 数组中元素最大值与最小值的差</span></span>
-<span id="cb49-7"><a href="boosting.html#cb49-7"></a><span class="bu">print</span>(np.percentile(a, q <span class="op">=</span> <span class="dv">70</span>, axis <span class="op">=</span> <span class="dv">0</span>))  <span class="co"># 百分位数</span></span>
-<span id="cb49-8"><a href="boosting.html#cb49-8"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(a))  <span class="co"># 求和</span></span>
-<span id="cb49-9"><a href="boosting.html#cb49-9"></a><span class="bu">print</span>(np.median(a))  <span class="co"># 中位数</span></span>
-<span id="cb49-10"><a href="boosting.html#cb49-10"></a><span class="bu">print</span>(np.mean(a))  <span class="co"># 均值</span></span>
-<span id="cb49-11"><a href="boosting.html#cb49-11"></a><span class="bu">print</span>(np.average(a, axis <span class="op">=</span> <span class="dv">0</span>, weights <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>], returned <span class="op">=</span> <span class="va">True</span>))  <span class="co"># 加权平均数</span></span>
-<span id="cb49-12"><a href="boosting.html#cb49-12"></a><span class="bu">print</span>(np.std(a))  <span class="co"># 标准差</span></span>
-<span id="cb49-13"><a href="boosting.html#cb49-13"></a><span class="bu">print</span>(np.var(a))  <span class="co"># 方差</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="boosting.html#cb35-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb35-2"><a href="boosting.html#cb35-2"></a>a <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>], [<span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">9</span>]])  </span>
+<span id="cb35-3"><a href="boosting.html#cb35-3"></a></span>
+<span id="cb35-4"><a href="boosting.html#cb35-4"></a><span class="bu">print</span>(np.<span class="bu">min</span>(a, axis <span class="op">=</span> <span class="dv">0</span>))  <span class="co"># 沿纵轴的最小值</span></span>
+<span id="cb35-5"><a href="boosting.html#cb35-5"></a><span class="bu">print</span>(np.<span class="bu">max</span>(a, axis <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 沿横轴的最大值        # 以下函数均可以通过参数axis选择纵轴（axis=0）或横轴（axis=1）</span></span>
+<span id="cb35-6"><a href="boosting.html#cb35-6"></a><span class="bu">print</span>(np.ptp(a))  <span class="co"># 数组中元素最大值与最小值的差</span></span>
+<span id="cb35-7"><a href="boosting.html#cb35-7"></a><span class="bu">print</span>(np.percentile(a, q <span class="op">=</span> <span class="dv">70</span>, axis <span class="op">=</span> <span class="dv">0</span>))  <span class="co"># 百分位数</span></span>
+<span id="cb35-8"><a href="boosting.html#cb35-8"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(a))  <span class="co"># 求和</span></span>
+<span id="cb35-9"><a href="boosting.html#cb35-9"></a><span class="bu">print</span>(np.median(a))  <span class="co"># 中位数</span></span>
+<span id="cb35-10"><a href="boosting.html#cb35-10"></a><span class="bu">print</span>(np.mean(a))  <span class="co"># 均值</span></span>
+<span id="cb35-11"><a href="boosting.html#cb35-11"></a><span class="bu">print</span>(np.average(a, axis <span class="op">=</span> <span class="dv">0</span>, weights <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>], returned <span class="op">=</span> <span class="va">True</span>))  <span class="co"># 加权平均数</span></span>
+<span id="cb35-12"><a href="boosting.html#cb35-12"></a><span class="bu">print</span>(np.std(a))  <span class="co"># 标准差</span></span>
+<span id="cb35-13"><a href="boosting.html#cb35-13"></a><span class="bu">print</span>(np.var(a))  <span class="co"># 方差</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>排序</li>
 </ol>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="boosting.html#cb50-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb50-2"><a href="boosting.html#cb50-2"></a>a <span class="op">=</span> np.array([(<span class="st">&quot;raju&quot;</span>,<span class="dv">21</span>), (<span class="st">&quot;anil&quot;</span>,<span class="dv">25</span>), (<span class="st">&quot;ravi&quot;</span>,<span class="dv">17</span>), (<span class="st">&quot;amar&quot;</span>,<span class="dv">27</span>)], dtype <span class="op">=</span> np.dtype([(<span class="st">&#39;name&#39;</span>,<span class="st">&#39;S10&#39;</span>), (<span class="st">&#39;age&#39;</span>,<span class="bu">int</span>)]))</span>
-<span id="cb50-3"><a href="boosting.html#cb50-3"></a></span>
-<span id="cb50-4"><a href="boosting.html#cb50-4"></a><span class="bu">print</span>(a)</span>
-<span id="cb50-5"><a href="boosting.html#cb50-5"></a><span class="bu">print</span>(np.sort(a, order <span class="op">=</span> <span class="st">&#39;age&#39;</span>))  <span class="co"># 从小到大排序</span></span>
-<span id="cb50-6"><a href="boosting.html#cb50-6"></a><span class="bu">print</span>(np.argsort(a, order <span class="op">=</span> <span class="st">&#39;age&#39;</span>))  <span class="co"># 从小到大排序的索引</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="boosting.html#cb36-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb36-2"><a href="boosting.html#cb36-2"></a>a <span class="op">=</span> np.array([(<span class="st">&quot;raju&quot;</span>,<span class="dv">21</span>), (<span class="st">&quot;anil&quot;</span>,<span class="dv">25</span>), (<span class="st">&quot;ravi&quot;</span>,<span class="dv">17</span>), (<span class="st">&quot;amar&quot;</span>,<span class="dv">27</span>)], dtype <span class="op">=</span> np.dtype([(<span class="st">&#39;name&#39;</span>,<span class="st">&#39;S10&#39;</span>), (<span class="st">&#39;age&#39;</span>,<span class="bu">int</span>)]))</span>
+<span id="cb36-3"><a href="boosting.html#cb36-3"></a></span>
+<span id="cb36-4"><a href="boosting.html#cb36-4"></a><span class="bu">print</span>(a)</span>
+<span id="cb36-5"><a href="boosting.html#cb36-5"></a><span class="bu">print</span>(np.sort(a, order <span class="op">=</span> <span class="st">&#39;age&#39;</span>))  <span class="co"># 从小到大排序</span></span>
+<span id="cb36-6"><a href="boosting.html#cb36-6"></a><span class="bu">print</span>(np.argsort(a, order <span class="op">=</span> <span class="st">&#39;age&#39;</span>))  <span class="co"># 从小到大排序的索引</span></span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>线性代数</li>
 </ol>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="boosting.html#cb51-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb51-2"><a href="boosting.html#cb51-2"></a>a <span class="op">=</span> np.arange(<span class="dv">6</span>).reshape(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb51-3"><a href="boosting.html#cb51-3"></a>b <span class="op">=</span> np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb51-4"><a href="boosting.html#cb51-4"></a>c <span class="op">=</span> a.copy()  <span class="co"># 复制</span></span>
-<span id="cb51-5"><a href="boosting.html#cb51-5"></a></span>
-<span id="cb51-6"><a href="boosting.html#cb51-6"></a><span class="bu">print</span>(a)</span>
-<span id="cb51-7"><a href="boosting.html#cb51-7"></a><span class="bu">print</span>(a.T)  <span class="co"># 转置</span></span>
-<span id="cb51-8"><a href="boosting.html#cb51-8"></a><span class="bu">print</span>(np.dot(a,b))  <span class="co"># 数组点积</span></span>
-<span id="cb51-9"><a href="boosting.html#cb51-9"></a><span class="bu">print</span>(np.vdot(a,b))  <span class="co"># 向量点积, 多维数组会被展开</span></span>
-<span id="cb51-10"><a href="boosting.html#cb51-10"></a><span class="bu">print</span>(np.inner(a,c))  <span class="co"># 向量内积，对于更高的维度，它返回最后一个轴上的和的乘积</span></span></code></pre></div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="boosting.html#cb52-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb52-2"><a href="boosting.html#cb52-2"></a>a <span class="op">=</span> np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb52-3"><a href="boosting.html#cb52-3"></a><span class="bu">print</span>(a)</span>
-<span id="cb52-4"><a href="boosting.html#cb52-4"></a><span class="bu">print</span>(np.diag(a))  <span class="co"># 对角阵</span></span>
-<span id="cb52-5"><a href="boosting.html#cb52-5"></a><span class="bu">print</span>(np.linalg.inv(a))  <span class="co"># 逆</span></span>
-<span id="cb52-6"><a href="boosting.html#cb52-6"></a><span class="bu">print</span>(np.linalg.det(a))  <span class="co"># 行列式</span></span>
-<span id="cb52-7"><a href="boosting.html#cb52-7"></a><span class="bu">print</span>(np.linalg.eig(a))  <span class="co"># 特征值与特征向量</span></span>
-<span id="cb52-8"><a href="boosting.html#cb52-8"></a><span class="bu">print</span>(np.linalg.svd(a))  <span class="co"># 奇异值分解</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="boosting.html#cb37-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb37-2"><a href="boosting.html#cb37-2"></a>a <span class="op">=</span> np.arange(<span class="dv">6</span>).reshape(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb37-3"><a href="boosting.html#cb37-3"></a>b <span class="op">=</span> np.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb37-4"><a href="boosting.html#cb37-4"></a>c <span class="op">=</span> a.copy()  <span class="co"># 复制</span></span>
+<span id="cb37-5"><a href="boosting.html#cb37-5"></a></span>
+<span id="cb37-6"><a href="boosting.html#cb37-6"></a><span class="bu">print</span>(a)</span>
+<span id="cb37-7"><a href="boosting.html#cb37-7"></a><span class="bu">print</span>(a.T)  <span class="co"># 转置</span></span>
+<span id="cb37-8"><a href="boosting.html#cb37-8"></a><span class="bu">print</span>(np.dot(a,b))  <span class="co"># 数组点积</span></span>
+<span id="cb37-9"><a href="boosting.html#cb37-9"></a><span class="bu">print</span>(np.vdot(a,b))  <span class="co"># 向量点积, 多维数组会被展开</span></span>
+<span id="cb37-10"><a href="boosting.html#cb37-10"></a><span class="bu">print</span>(np.inner(a,c))  <span class="co"># 向量内积，对于更高的维度，它返回最后一个轴上的和的乘积</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="boosting.html#cb38-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb38-2"><a href="boosting.html#cb38-2"></a>a <span class="op">=</span> np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb38-3"><a href="boosting.html#cb38-3"></a><span class="bu">print</span>(a)</span>
+<span id="cb38-4"><a href="boosting.html#cb38-4"></a><span class="bu">print</span>(np.diag(a))  <span class="co"># 对角阵</span></span>
+<span id="cb38-5"><a href="boosting.html#cb38-5"></a><span class="bu">print</span>(np.linalg.inv(a))  <span class="co"># 逆</span></span>
+<span id="cb38-6"><a href="boosting.html#cb38-6"></a><span class="bu">print</span>(np.linalg.det(a))  <span class="co"># 行列式</span></span>
+<span id="cb38-7"><a href="boosting.html#cb38-7"></a><span class="bu">print</span>(np.linalg.eig(a))  <span class="co"># 特征值与特征向量</span></span>
+<span id="cb38-8"><a href="boosting.html#cb38-8"></a><span class="bu">print</span>(np.linalg.svd(a))  <span class="co"># 奇异值分解</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>随机数</li>
 </ol>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="boosting.html#cb53-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb53-2"><a href="boosting.html#cb53-2"></a>np.random.seed(<span class="dv">123</span>)  <span class="co"># 随机数种子</span></span>
-<span id="cb53-3"><a href="boosting.html#cb53-3"></a></span>
-<span id="cb53-4"><a href="boosting.html#cb53-4"></a><span class="bu">print</span>(np.random.rand(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 均匀分布</span></span>
-<span id="cb53-5"><a href="boosting.html#cb53-5"></a><span class="bu">print</span>(np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>)) <span class="co"># 标准正态分布</span></span>
-<span id="cb53-6"><a href="boosting.html#cb53-6"></a><span class="bu">print</span>(np.random.randint(low <span class="op">=</span> <span class="dv">0</span>, high <span class="op">=</span> <span class="dv">100</span>, size <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">2</span>)))  <span class="co"># 随机整数</span></span>
-<span id="cb53-7"><a href="boosting.html#cb53-7"></a></span>
-<span id="cb53-8"><a href="boosting.html#cb53-8"></a><span class="co"># 分布</span></span>
-<span id="cb53-9"><a href="boosting.html#cb53-9"></a><span class="bu">print</span>(np.random.normal(loc <span class="op">=</span> <span class="dv">3</span>, scale <span class="op">=</span> <span class="dv">9</span>, size <span class="op">=</span> <span class="dv">2</span>))  <span class="co"># 正态</span></span>
-<span id="cb53-10"><a href="boosting.html#cb53-10"></a><span class="bu">print</span>(np.random.poisson(lam <span class="op">=</span> <span class="dv">10</span>, size <span class="op">=</span> <span class="dv">6</span>))  <span class="co"># 泊松</span></span>
-<span id="cb53-11"><a href="boosting.html#cb53-11"></a><span class="bu">print</span>(np.random.binomial(n <span class="op">=</span> <span class="dv">10</span>, p <span class="op">=</span> <span class="fl">0.1</span>, size <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">2</span>)))  <span class="co"># 二项</span></span>
-<span id="cb53-12"><a href="boosting.html#cb53-12"></a><span class="bu">print</span>(np.random.negative_binomial(n <span class="op">=</span> <span class="dv">10</span>, p <span class="op">=</span> <span class="fl">0.1</span>, size <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 负二项</span></span>
-<span id="cb53-13"><a href="boosting.html#cb53-13"></a><span class="bu">print</span>(np.random.gamma(shape <span class="op">=</span> <span class="dv">3</span>, scale <span class="op">=</span> <span class="dv">2</span>, size <span class="op">=</span> <span class="dv">10</span>))  <span class="co"># 伽马</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="boosting.html#cb39-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb39-2"><a href="boosting.html#cb39-2"></a>np.random.seed(<span class="dv">123</span>)  <span class="co"># 随机数种子</span></span>
+<span id="cb39-3"><a href="boosting.html#cb39-3"></a></span>
+<span id="cb39-4"><a href="boosting.html#cb39-4"></a><span class="bu">print</span>(np.random.rand(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 均匀分布</span></span>
+<span id="cb39-5"><a href="boosting.html#cb39-5"></a><span class="bu">print</span>(np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>)) <span class="co"># 标准正态分布</span></span>
+<span id="cb39-6"><a href="boosting.html#cb39-6"></a><span class="bu">print</span>(np.random.randint(low <span class="op">=</span> <span class="dv">0</span>, high <span class="op">=</span> <span class="dv">100</span>, size <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">2</span>)))  <span class="co"># 随机整数</span></span>
+<span id="cb39-7"><a href="boosting.html#cb39-7"></a></span>
+<span id="cb39-8"><a href="boosting.html#cb39-8"></a><span class="co"># 分布</span></span>
+<span id="cb39-9"><a href="boosting.html#cb39-9"></a><span class="bu">print</span>(np.random.normal(loc <span class="op">=</span> <span class="dv">3</span>, scale <span class="op">=</span> <span class="dv">9</span>, size <span class="op">=</span> <span class="dv">2</span>))  <span class="co"># 正态</span></span>
+<span id="cb39-10"><a href="boosting.html#cb39-10"></a><span class="bu">print</span>(np.random.poisson(lam <span class="op">=</span> <span class="dv">10</span>, size <span class="op">=</span> <span class="dv">6</span>))  <span class="co"># 泊松</span></span>
+<span id="cb39-11"><a href="boosting.html#cb39-11"></a><span class="bu">print</span>(np.random.binomial(n <span class="op">=</span> <span class="dv">10</span>, p <span class="op">=</span> <span class="fl">0.1</span>, size <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">2</span>)))  <span class="co"># 二项</span></span>
+<span id="cb39-12"><a href="boosting.html#cb39-12"></a><span class="bu">print</span>(np.random.negative_binomial(n <span class="op">=</span> <span class="dv">10</span>, p <span class="op">=</span> <span class="fl">0.1</span>, size <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 负二项</span></span>
+<span id="cb39-13"><a href="boosting.html#cb39-13"></a><span class="bu">print</span>(np.random.gamma(shape <span class="op">=</span> <span class="dv">3</span>, scale <span class="op">=</span> <span class="dv">2</span>, size <span class="op">=</span> <span class="dv">10</span>))  <span class="co"># 伽马</span></span></code></pre></div>
 </div>
 <div id="pandas包" class="section level3">
-<h3><span class="header-section-number">4.10.4</span> pandas包</h3>
+<h3><span class="header-section-number">3.10.4</span> pandas包</h3>
 <p>pandas是基于NumPy的一个为解决数据分析任务而创建的包，提供了大量能使我们快速便捷地处理数据的函数和方法。</p>
 <ol style="list-style-type: decimal">
 <li>创建DataFrame</li>
 </ol>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="boosting.html#cb54-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb54-2"><a href="boosting.html#cb54-2"></a></span>
-<span id="cb54-3"><a href="boosting.html#cb54-3"></a>data1 <span class="op">=</span> pd.read_csv(<span class="st">&#39;file.csv&#39;</span>, encoding <span class="op">=</span> <span class="st">&#39;gbk&#39;</span>)  <span class="co"># 从外部读入csv文件</span></span>
-<span id="cb54-4"><a href="boosting.html#cb54-4"></a></span>
-<span id="cb54-5"><a href="boosting.html#cb54-5"></a>data2 <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],  <span class="co"># 先创建字典</span></span>
-<span id="cb54-6"><a href="boosting.html#cb54-6"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
-<span id="cb54-7"><a href="boosting.html#cb54-7"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
-<span id="cb54-8"><a href="boosting.html#cb54-8"></a>data2 <span class="op">=</span> pd.DataFrame(data2, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])  <span class="co"># 基于字典创建DataFrame</span></span>
-<span id="cb54-9"><a href="boosting.html#cb54-9"></a>data2[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span>  <span class="co"># 新增一列debt</span></span>
-<span id="cb54-10"><a href="boosting.html#cb54-10"></a></span>
-<span id="cb54-11"><a href="boosting.html#cb54-11"></a><span class="bu">print</span>(data1, data2, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
-<span id="cb54-12"><a href="boosting.html#cb54-12"></a></span>
-<span id="cb54-13"><a href="boosting.html#cb54-13"></a><span class="bu">print</span>(data2.dtypes)  <span class="co"># 元素类型</span></span>
-<span id="cb54-14"><a href="boosting.html#cb54-14"></a><span class="bu">print</span>(data2.columns)  <span class="co"># 列名</span></span>
-<span id="cb54-15"><a href="boosting.html#cb54-15"></a><span class="bu">print</span>(data2.shape)  <span class="co"># 形状</span></span>
-<span id="cb54-16"><a href="boosting.html#cb54-16"></a><span class="bu">print</span>(data2.head(<span class="dv">10</span>))  <span class="co"># 看前10条记录</span></span>
-<span id="cb54-17"><a href="boosting.html#cb54-17"></a><span class="bu">print</span>(data2.tail(<span class="dv">5</span>))  <span class="co"># 看后5条记录</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="boosting.html#cb40-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb40-2"><a href="boosting.html#cb40-2"></a></span>
+<span id="cb40-3"><a href="boosting.html#cb40-3"></a>data1 <span class="op">=</span> pd.read_csv(<span class="st">&#39;file.csv&#39;</span>, encoding <span class="op">=</span> <span class="st">&#39;gbk&#39;</span>)  <span class="co"># 从外部读入csv文件</span></span>
+<span id="cb40-4"><a href="boosting.html#cb40-4"></a></span>
+<span id="cb40-5"><a href="boosting.html#cb40-5"></a>data2 <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],  <span class="co"># 先创建字典</span></span>
+<span id="cb40-6"><a href="boosting.html#cb40-6"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
+<span id="cb40-7"><a href="boosting.html#cb40-7"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
+<span id="cb40-8"><a href="boosting.html#cb40-8"></a>data2 <span class="op">=</span> pd.DataFrame(data2, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])  <span class="co"># 基于字典创建DataFrame</span></span>
+<span id="cb40-9"><a href="boosting.html#cb40-9"></a>data2[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span>  <span class="co"># 新增一列debt</span></span>
+<span id="cb40-10"><a href="boosting.html#cb40-10"></a></span>
+<span id="cb40-11"><a href="boosting.html#cb40-11"></a><span class="bu">print</span>(data1, data2, sep <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb40-12"><a href="boosting.html#cb40-12"></a></span>
+<span id="cb40-13"><a href="boosting.html#cb40-13"></a><span class="bu">print</span>(data2.dtypes)  <span class="co"># 元素类型</span></span>
+<span id="cb40-14"><a href="boosting.html#cb40-14"></a><span class="bu">print</span>(data2.columns)  <span class="co"># 列名</span></span>
+<span id="cb40-15"><a href="boosting.html#cb40-15"></a><span class="bu">print</span>(data2.shape)  <span class="co"># 形状</span></span>
+<span id="cb40-16"><a href="boosting.html#cb40-16"></a><span class="bu">print</span>(data2.head(<span class="dv">10</span>))  <span class="co"># 看前10条记录</span></span>
+<span id="cb40-17"><a href="boosting.html#cb40-17"></a><span class="bu">print</span>(data2.tail(<span class="dv">5</span>))  <span class="co"># 看后5条记录</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>索引</li>
 </ol>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="boosting.html#cb55-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb55-2"><a href="boosting.html#cb55-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
-<span id="cb55-3"><a href="boosting.html#cb55-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
-<span id="cb55-4"><a href="boosting.html#cb55-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
-<span id="cb55-5"><a href="boosting.html#cb55-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
-<span id="cb55-6"><a href="boosting.html#cb55-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
-<span id="cb55-7"><a href="boosting.html#cb55-7"></a></span>
-<span id="cb55-8"><a href="boosting.html#cb55-8"></a><span class="bu">print</span>(data)</span>
-<span id="cb55-9"><a href="boosting.html#cb55-9"></a><span class="bu">print</span>(data[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引第1-2行</span></span>
-<span id="cb55-10"><a href="boosting.html#cb55-10"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引第1-2行</span></span>
-<span id="cb55-11"><a href="boosting.html#cb55-11"></a><span class="bu">print</span>(data.loc[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引index为0-2的行</span></span>
-<span id="cb55-12"><a href="boosting.html#cb55-12"></a><span class="bu">print</span>(data[<span class="st">&#39;year&#39;</span>])  <span class="co"># 索引名为year的列</span></span>
-<span id="cb55-13"><a href="boosting.html#cb55-13"></a><span class="bu">print</span>(data.loc[<span class="dv">0</span>,<span class="st">&#39;year&#39;</span>])</span>
-<span id="cb55-14"><a href="boosting.html#cb55-14"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引第1-2行、第1-2列</span></span>
-<span id="cb55-15"><a href="boosting.html#cb55-15"></a></span>
-<span id="cb55-16"><a href="boosting.html#cb55-16"></a><span class="bu">print</span>(data[data[<span class="st">&#39;pop&#39;</span>]<span class="op">&gt;</span><span class="dv">2</span>])  <span class="co"># 索引pop&gt;2的行</span></span>
-<span id="cb55-17"><a href="boosting.html#cb55-17"></a><span class="bu">print</span>(data[(data[<span class="st">&#39;pop&#39;</span>]<span class="op">&gt;</span><span class="dv">2</span>) <span class="op">&amp;</span> (data[<span class="st">&#39;state&#39;</span>] <span class="op">==</span> <span class="st">&#39;Ohio&#39;</span>)])  <span class="co"># 索引pop&gt;2且state是Ohio的行</span></span>
-<span id="cb55-18"><a href="boosting.html#cb55-18"></a><span class="bu">print</span>(data[(data[<span class="st">&#39;pop&#39;</span>]<span class="op">&gt;</span><span class="dv">2</span>) <span class="op">&amp;</span> (data[<span class="st">&#39;state&#39;</span>] <span class="op">==</span> <span class="st">&#39;Ohio&#39;</span>)][[<span class="st">&#39;year&#39;</span>, <span class="st">&#39;debt&#39;</span>]])  <span class="co"># 索引pop&gt;2且state是Ohio的行、名为year和debt的列</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="boosting.html#cb41-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb41-2"><a href="boosting.html#cb41-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
+<span id="cb41-3"><a href="boosting.html#cb41-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
+<span id="cb41-4"><a href="boosting.html#cb41-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
+<span id="cb41-5"><a href="boosting.html#cb41-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
+<span id="cb41-6"><a href="boosting.html#cb41-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
+<span id="cb41-7"><a href="boosting.html#cb41-7"></a></span>
+<span id="cb41-8"><a href="boosting.html#cb41-8"></a><span class="bu">print</span>(data)</span>
+<span id="cb41-9"><a href="boosting.html#cb41-9"></a><span class="bu">print</span>(data[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引第1-2行</span></span>
+<span id="cb41-10"><a href="boosting.html#cb41-10"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引第1-2行</span></span>
+<span id="cb41-11"><a href="boosting.html#cb41-11"></a><span class="bu">print</span>(data.loc[<span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引index为0-2的行</span></span>
+<span id="cb41-12"><a href="boosting.html#cb41-12"></a><span class="bu">print</span>(data[<span class="st">&#39;year&#39;</span>])  <span class="co"># 索引名为year的列</span></span>
+<span id="cb41-13"><a href="boosting.html#cb41-13"></a><span class="bu">print</span>(data.loc[<span class="dv">0</span>,<span class="st">&#39;year&#39;</span>])</span>
+<span id="cb41-14"><a href="boosting.html#cb41-14"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>])  <span class="co"># 索引第1-2行、第1-2列</span></span>
+<span id="cb41-15"><a href="boosting.html#cb41-15"></a></span>
+<span id="cb41-16"><a href="boosting.html#cb41-16"></a><span class="bu">print</span>(data[data[<span class="st">&#39;pop&#39;</span>]<span class="op">&gt;</span><span class="dv">2</span>])  <span class="co"># 索引pop&gt;2的行</span></span>
+<span id="cb41-17"><a href="boosting.html#cb41-17"></a><span class="bu">print</span>(data[(data[<span class="st">&#39;pop&#39;</span>]<span class="op">&gt;</span><span class="dv">2</span>) <span class="op">&amp;</span> (data[<span class="st">&#39;state&#39;</span>] <span class="op">==</span> <span class="st">&#39;Ohio&#39;</span>)])  <span class="co"># 索引pop&gt;2且state是Ohio的行</span></span>
+<span id="cb41-18"><a href="boosting.html#cb41-18"></a><span class="bu">print</span>(data[(data[<span class="st">&#39;pop&#39;</span>]<span class="op">&gt;</span><span class="dv">2</span>) <span class="op">&amp;</span> (data[<span class="st">&#39;state&#39;</span>] <span class="op">==</span> <span class="st">&#39;Ohio&#39;</span>)][[<span class="st">&#39;year&#39;</span>, <span class="st">&#39;debt&#39;</span>]])  <span class="co"># 索引pop&gt;2且state是Ohio的行、名为year和debt的列</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>数据预处理</li>
 </ol>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="boosting.html#cb56-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb56-2"><a href="boosting.html#cb56-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
-<span id="cb56-3"><a href="boosting.html#cb56-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2001</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
-<span id="cb56-4"><a href="boosting.html#cb56-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">1.7</span>, <span class="fl">2.4</span>, <span class="va">None</span>]}</span>
-<span id="cb56-5"><a href="boosting.html#cb56-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
-<span id="cb56-6"><a href="boosting.html#cb56-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
-<span id="cb56-7"><a href="boosting.html#cb56-7"></a><span class="bu">print</span>(data)</span>
-<span id="cb56-8"><a href="boosting.html#cb56-8"></a><span class="bu">print</span>(data.drop_duplicates())  <span class="co"># 删除重复行</span></span>
-<span id="cb56-9"><a href="boosting.html#cb56-9"></a><span class="bu">print</span>(data.dropna(axis <span class="op">=</span> <span class="dv">0</span>, how <span class="op">=</span> <span class="st">&quot;any&quot;</span>))  <span class="co"># 删除有缺失值的行</span></span>
-<span id="cb56-10"><a href="boosting.html#cb56-10"></a><span class="bu">print</span>(data.drop([<span class="st">&#39;debt&#39;</span>], axis <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 删除列debt</span></span>
-<span id="cb56-11"><a href="boosting.html#cb56-11"></a></span>
-<span id="cb56-12"><a href="boosting.html#cb56-12"></a><span class="bu">print</span>(pd.get_dummies(data, drop_first <span class="op">=</span> <span class="va">True</span>))  <span class="co"># 生成哑变量</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="boosting.html#cb42-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-2"><a href="boosting.html#cb42-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
+<span id="cb42-3"><a href="boosting.html#cb42-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2001</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
+<span id="cb42-4"><a href="boosting.html#cb42-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">1.7</span>, <span class="fl">2.4</span>, <span class="va">None</span>]}</span>
+<span id="cb42-5"><a href="boosting.html#cb42-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
+<span id="cb42-6"><a href="boosting.html#cb42-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
+<span id="cb42-7"><a href="boosting.html#cb42-7"></a><span class="bu">print</span>(data)</span>
+<span id="cb42-8"><a href="boosting.html#cb42-8"></a><span class="bu">print</span>(data.drop_duplicates())  <span class="co"># 删除重复行</span></span>
+<span id="cb42-9"><a href="boosting.html#cb42-9"></a><span class="bu">print</span>(data.dropna(axis <span class="op">=</span> <span class="dv">0</span>, how <span class="op">=</span> <span class="st">&quot;any&quot;</span>))  <span class="co"># 删除有缺失值的行</span></span>
+<span id="cb42-10"><a href="boosting.html#cb42-10"></a><span class="bu">print</span>(data.drop([<span class="st">&#39;debt&#39;</span>], axis <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 删除列debt</span></span>
+<span id="cb42-11"><a href="boosting.html#cb42-11"></a></span>
+<span id="cb42-12"><a href="boosting.html#cb42-12"></a><span class="bu">print</span>(pd.get_dummies(data, drop_first <span class="op">=</span> <span class="va">True</span>))  <span class="co"># 生成哑变量</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>排序</li>
 </ol>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="boosting.html#cb57-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb57-2"><a href="boosting.html#cb57-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
-<span id="cb57-3"><a href="boosting.html#cb57-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
-<span id="cb57-4"><a href="boosting.html#cb57-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
-<span id="cb57-5"><a href="boosting.html#cb57-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
-<span id="cb57-6"><a href="boosting.html#cb57-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
-<span id="cb57-7"><a href="boosting.html#cb57-7"></a></span>
-<span id="cb57-8"><a href="boosting.html#cb57-8"></a><span class="bu">print</span>(data.sort_values(by <span class="op">=</span> <span class="st">&#39;year&#39;</span>, ascending <span class="op">=</span> <span class="va">True</span>))  <span class="co"># 按照year的值升序</span></span>
-<span id="cb57-9"><a href="boosting.html#cb57-9"></a><span class="bu">print</span>(data.sort_index(axis <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 按照列索引升序</span></span>
-<span id="cb57-10"><a href="boosting.html#cb57-10"></a><span class="bu">print</span>(data.rank())  <span class="co"># 求秩</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="boosting.html#cb43-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb43-2"><a href="boosting.html#cb43-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
+<span id="cb43-3"><a href="boosting.html#cb43-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
+<span id="cb43-4"><a href="boosting.html#cb43-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
+<span id="cb43-5"><a href="boosting.html#cb43-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
+<span id="cb43-6"><a href="boosting.html#cb43-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
+<span id="cb43-7"><a href="boosting.html#cb43-7"></a></span>
+<span id="cb43-8"><a href="boosting.html#cb43-8"></a><span class="bu">print</span>(data.sort_values(by <span class="op">=</span> <span class="st">&#39;year&#39;</span>, ascending <span class="op">=</span> <span class="va">True</span>))  <span class="co"># 按照year的值升序</span></span>
+<span id="cb43-9"><a href="boosting.html#cb43-9"></a><span class="bu">print</span>(data.sort_index(axis <span class="op">=</span> <span class="dv">1</span>))  <span class="co"># 按照列索引升序</span></span>
+<span id="cb43-10"><a href="boosting.html#cb43-10"></a><span class="bu">print</span>(data.rank())  <span class="co"># 求秩</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>统计分析</li>
 </ol>
-<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="boosting.html#cb58-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb58-2"><a href="boosting.html#cb58-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
-<span id="cb58-3"><a href="boosting.html#cb58-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
-<span id="cb58-4"><a href="boosting.html#cb58-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
-<span id="cb58-5"><a href="boosting.html#cb58-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
-<span id="cb58-6"><a href="boosting.html#cb58-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
-<span id="cb58-7"><a href="boosting.html#cb58-7"></a></span>
-<span id="cb58-8"><a href="boosting.html#cb58-8"></a><span class="bu">print</span>(data.describe())  <span class="co"># 对每列计算基本统计量</span></span>
-<span id="cb58-9"><a href="boosting.html#cb58-9"></a><span class="bu">print</span>(data.count())  <span class="co"># 计数</span></span>
-<span id="cb58-10"><a href="boosting.html#cb58-10"></a><span class="bu">print</span>(data.<span class="bu">max</span>())  <span class="co"># 最大值</span></span>
-<span id="cb58-11"><a href="boosting.html#cb58-11"></a><span class="bu">print</span>(data.<span class="bu">min</span>())  <span class="co"># 最小值</span></span>
-<span id="cb58-12"><a href="boosting.html#cb58-12"></a><span class="bu">print</span>(data.<span class="bu">sum</span>())  <span class="co"># 和</span></span>
-<span id="cb58-13"><a href="boosting.html#cb58-13"></a><span class="bu">print</span>(data.mean())  <span class="co"># 均值</span></span>
-<span id="cb58-14"><a href="boosting.html#cb58-14"></a><span class="bu">print</span>(data.median())  <span class="co"># 中位数</span></span>
-<span id="cb58-15"><a href="boosting.html#cb58-15"></a><span class="bu">print</span>(data.var())  <span class="co"># 方差</span></span>
-<span id="cb58-16"><a href="boosting.html#cb58-16"></a><span class="bu">print</span>(data.std())  <span class="co"># 标准差</span></span>
-<span id="cb58-17"><a href="boosting.html#cb58-17"></a><span class="bu">print</span>(data.cov())  <span class="co"># 协方差</span></span>
-<span id="cb58-18"><a href="boosting.html#cb58-18"></a><span class="bu">print</span>(data.corr())  <span class="co"># 相关系数</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="boosting.html#cb44-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-2"><a href="boosting.html#cb44-2"></a>data <span class="op">=</span> {<span class="st">&#39;state&#39;</span>: [<span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Ohio&#39;</span>, <span class="st">&#39;Nevada&#39;</span>, <span class="st">&#39;Nevada&#39;</span>],</span>
+<span id="cb44-3"><a href="boosting.html#cb44-3"></a>        <span class="st">&#39;year&#39;</span>: [<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2001</span>, <span class="dv">2002</span>],</span>
+<span id="cb44-4"><a href="boosting.html#cb44-4"></a>        <span class="st">&#39;pop&#39;</span>: [<span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">3.6</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>]}</span>
+<span id="cb44-5"><a href="boosting.html#cb44-5"></a>data <span class="op">=</span> pd.DataFrame(data, columns <span class="op">=</span> [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;state&#39;</span>, <span class="st">&#39;pop&#39;</span>])</span>
+<span id="cb44-6"><a href="boosting.html#cb44-6"></a>data[<span class="st">&#39;debt&#39;</span>] <span class="op">=</span> <span class="fl">16.5</span></span>
+<span id="cb44-7"><a href="boosting.html#cb44-7"></a></span>
+<span id="cb44-8"><a href="boosting.html#cb44-8"></a><span class="bu">print</span>(data.describe())  <span class="co"># 对每列计算基本统计量</span></span>
+<span id="cb44-9"><a href="boosting.html#cb44-9"></a><span class="bu">print</span>(data.count())  <span class="co"># 计数</span></span>
+<span id="cb44-10"><a href="boosting.html#cb44-10"></a><span class="bu">print</span>(data.<span class="bu">max</span>())  <span class="co"># 最大值</span></span>
+<span id="cb44-11"><a href="boosting.html#cb44-11"></a><span class="bu">print</span>(data.<span class="bu">min</span>())  <span class="co"># 最小值</span></span>
+<span id="cb44-12"><a href="boosting.html#cb44-12"></a><span class="bu">print</span>(data.<span class="bu">sum</span>())  <span class="co"># 和</span></span>
+<span id="cb44-13"><a href="boosting.html#cb44-13"></a><span class="bu">print</span>(data.mean())  <span class="co"># 均值</span></span>
+<span id="cb44-14"><a href="boosting.html#cb44-14"></a><span class="bu">print</span>(data.median())  <span class="co"># 中位数</span></span>
+<span id="cb44-15"><a href="boosting.html#cb44-15"></a><span class="bu">print</span>(data.var())  <span class="co"># 方差</span></span>
+<span id="cb44-16"><a href="boosting.html#cb44-16"></a><span class="bu">print</span>(data.std())  <span class="co"># 标准差</span></span>
+<span id="cb44-17"><a href="boosting.html#cb44-17"></a><span class="bu">print</span>(data.cov())  <span class="co"># 协方差</span></span>
+<span id="cb44-18"><a href="boosting.html#cb44-18"></a><span class="bu">print</span>(data.corr())  <span class="co"># 相关系数</span></span></code></pre></div>
 </div>
 <div id="matplotlib包" class="section level3">
-<h3><span class="header-section-number">4.10.5</span> Matplotlib包</h3>
+<h3><span class="header-section-number">3.10.5</span> Matplotlib包</h3>
 <p>Matplotlib是一个Python 的2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。</p>
 <ol style="list-style-type: decimal">
 <li>折线图</li>
 </ol>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="boosting.html#cb59-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb59-2"><a href="boosting.html#cb59-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt </span>
-<span id="cb59-3"><a href="boosting.html#cb59-3"></a> </span>
-<span id="cb59-4"><a href="boosting.html#cb59-4"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">11</span>) </span>
-<span id="cb59-5"><a href="boosting.html#cb59-5"></a>y <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">5</span> </span>
-<span id="cb59-6"><a href="boosting.html#cb59-6"></a></span>
-<span id="cb59-7"><a href="boosting.html#cb59-7"></a>plt.title(<span class="st">&#39;Matplotlib demo&#39;</span>) </span>
-<span id="cb59-8"><a href="boosting.html#cb59-8"></a>plt.xlabel(<span class="st">&#39;x&#39;</span>) </span>
-<span id="cb59-9"><a href="boosting.html#cb59-9"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>) </span>
-<span id="cb59-10"><a href="boosting.html#cb59-10"></a>plt.plot(x, y, ls <span class="op">=</span> <span class="st">&#39;--&#39;</span>, marker <span class="op">=</span> <span class="st">&#39;+&#39;</span>, color <span class="op">=</span> <span class="st">&#39;lightblue&#39;</span>)  <span class="co"># ls为线型，marker为标记类型</span></span>
-<span id="cb59-11"><a href="boosting.html#cb59-11"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="boosting.html#cb45-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb45-2"><a href="boosting.html#cb45-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt </span>
+<span id="cb45-3"><a href="boosting.html#cb45-3"></a> </span>
+<span id="cb45-4"><a href="boosting.html#cb45-4"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">11</span>) </span>
+<span id="cb45-5"><a href="boosting.html#cb45-5"></a>y <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">5</span> </span>
+<span id="cb45-6"><a href="boosting.html#cb45-6"></a></span>
+<span id="cb45-7"><a href="boosting.html#cb45-7"></a>plt.title(<span class="st">&#39;Matplotlib demo&#39;</span>) </span>
+<span id="cb45-8"><a href="boosting.html#cb45-8"></a>plt.xlabel(<span class="st">&#39;x&#39;</span>) </span>
+<span id="cb45-9"><a href="boosting.html#cb45-9"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>) </span>
+<span id="cb45-10"><a href="boosting.html#cb45-10"></a>plt.plot(x, y, ls <span class="op">=</span> <span class="st">&#39;--&#39;</span>, marker <span class="op">=</span> <span class="st">&#39;+&#39;</span>, color <span class="op">=</span> <span class="st">&#39;lightblue&#39;</span>)  <span class="co"># ls为线型，marker为标记类型</span></span>
+<span id="cb45-11"><a href="boosting.html#cb45-11"></a>plt.show()</span></code></pre></div>
 <p><img src="plots/4/%E6%8A%98%E7%BA%BF%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>散点图</li>
 </ol>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="boosting.html#cb60-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb60-2"><a href="boosting.html#cb60-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt </span>
-<span id="cb60-3"><a href="boosting.html#cb60-3"></a></span>
-<span id="cb60-4"><a href="boosting.html#cb60-4"></a>x <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
-<span id="cb60-5"><a href="boosting.html#cb60-5"></a>y <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
-<span id="cb60-6"><a href="boosting.html#cb60-6"></a></span>
-<span id="cb60-7"><a href="boosting.html#cb60-7"></a>plt.scatter(x, y, s<span class="op">=</span>x<span class="op">*</span><span class="dv">1000</span>, color<span class="op">=</span><span class="st">&#39;pink&#39;</span>, marker<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">1</span>), alpha<span class="op">=</span><span class="fl">0.5</span>, lw<span class="op">=</span><span class="dv">2</span>)  <span class="co"># s为图像大小，lw为图像边框宽度</span></span>
-<span id="cb60-8"><a href="boosting.html#cb60-8"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="boosting.html#cb46-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb46-2"><a href="boosting.html#cb46-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt </span>
+<span id="cb46-3"><a href="boosting.html#cb46-3"></a></span>
+<span id="cb46-4"><a href="boosting.html#cb46-4"></a>x <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
+<span id="cb46-5"><a href="boosting.html#cb46-5"></a>y <span class="op">=</span> np.random.random(<span class="dv">100</span>)</span>
+<span id="cb46-6"><a href="boosting.html#cb46-6"></a></span>
+<span id="cb46-7"><a href="boosting.html#cb46-7"></a>plt.scatter(x, y, s<span class="op">=</span>x<span class="op">*</span><span class="dv">1000</span>, color<span class="op">=</span><span class="st">&#39;pink&#39;</span>, marker<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">1</span>), alpha<span class="op">=</span><span class="fl">0.5</span>, lw<span class="op">=</span><span class="dv">2</span>)  <span class="co"># s为图像大小，lw为图像边框宽度</span></span>
+<span id="cb46-8"><a href="boosting.html#cb46-8"></a>plt.show()</span></code></pre></div>
 <p><img src="plots/4/%E6%95%A3%E7%82%B9%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>箱线图</li>
 </ol>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="boosting.html#cb61-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb61-2"><a href="boosting.html#cb61-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb61-3"><a href="boosting.html#cb61-3"></a>x <span class="op">=</span> np.random.gamma(shape <span class="op">=</span> <span class="dv">3</span>, scale <span class="op">=</span> <span class="dv">2</span>, size <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb61-4"><a href="boosting.html#cb61-4"></a></span>
-<span id="cb61-5"><a href="boosting.html#cb61-5"></a>plt.boxplot(x, vert<span class="op">=</span><span class="va">True</span>)  <span class="co"># vert控制方向</span></span>
-<span id="cb61-6"><a href="boosting.html#cb61-6"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="boosting.html#cb47-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb47-2"><a href="boosting.html#cb47-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb47-3"><a href="boosting.html#cb47-3"></a>x <span class="op">=</span> np.random.gamma(shape <span class="op">=</span> <span class="dv">3</span>, scale <span class="op">=</span> <span class="dv">2</span>, size <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb47-4"><a href="boosting.html#cb47-4"></a></span>
+<span id="cb47-5"><a href="boosting.html#cb47-5"></a>plt.boxplot(x, vert<span class="op">=</span><span class="va">True</span>)  <span class="co"># vert控制方向</span></span>
+<span id="cb47-6"><a href="boosting.html#cb47-6"></a>plt.show()</span></code></pre></div>
 <p><img src="plots/4/%E7%AE%B1%E7%BA%BF%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>条形图</li>
 </ol>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="boosting.html#cb62-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb62-2"><a href="boosting.html#cb62-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb62-3"><a href="boosting.html#cb62-3"></a></span>
-<span id="cb62-4"><a href="boosting.html#cb62-4"></a>x_index <span class="op">=</span> np.arange(<span class="dv">5</span>)   <span class="co">#柱的索引</span></span>
-<span id="cb62-5"><a href="boosting.html#cb62-5"></a>x_data <span class="op">=</span> [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;E&#39;</span>]</span>
-<span id="cb62-6"><a href="boosting.html#cb62-6"></a>y1_data <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">27</span>]</span>
-<span id="cb62-7"><a href="boosting.html#cb62-7"></a>y2_data <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">20</span>, <span class="dv">25</span>]</span>
-<span id="cb62-8"><a href="boosting.html#cb62-8"></a></span>
-<span id="cb62-9"><a href="boosting.html#cb62-9"></a>plt.bar(x_index, y1_data, width<span class="op">=</span><span class="fl">0.35</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">&#39;lightblue&#39;</span>, label<span class="op">=</span><span class="st">&#39;y1&#39;</span>)  <span class="co"># 参数：左偏移、高度、柱宽、透明度、颜色、图例</span></span>
-<span id="cb62-10"><a href="boosting.html#cb62-10"></a>plt.bar(x_index <span class="op">+</span> <span class="fl">0.35</span>, y2_data, width<span class="op">=</span><span class="fl">0.35</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">&#39;pink&#39;</span>, label<span class="op">=</span><span class="st">&#39;y2&#39;</span>)</span>
-<span id="cb62-11"><a href="boosting.html#cb62-11"></a></span>
-<span id="cb62-12"><a href="boosting.html#cb62-12"></a>plt.xticks(x_index <span class="op">+</span> bar_width<span class="op">/</span><span class="dv">2</span>, x_data)  <span class="co"># x轴刻度线</span></span>
-<span id="cb62-13"><a href="boosting.html#cb62-13"></a>plt.legend()  <span class="co"># 显示图例</span></span>
-<span id="cb62-14"><a href="boosting.html#cb62-14"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="boosting.html#cb48-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb48-2"><a href="boosting.html#cb48-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb48-3"><a href="boosting.html#cb48-3"></a></span>
+<span id="cb48-4"><a href="boosting.html#cb48-4"></a>x_index <span class="op">=</span> np.arange(<span class="dv">5</span>)   <span class="co">#柱的索引</span></span>
+<span id="cb48-5"><a href="boosting.html#cb48-5"></a>x_data <span class="op">=</span> [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;E&#39;</span>]</span>
+<span id="cb48-6"><a href="boosting.html#cb48-6"></a>y1_data <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">27</span>]</span>
+<span id="cb48-7"><a href="boosting.html#cb48-7"></a>y2_data <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">20</span>, <span class="dv">25</span>]</span>
+<span id="cb48-8"><a href="boosting.html#cb48-8"></a></span>
+<span id="cb48-9"><a href="boosting.html#cb48-9"></a>plt.bar(x_index, y1_data, width<span class="op">=</span><span class="fl">0.35</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">&#39;lightblue&#39;</span>, label<span class="op">=</span><span class="st">&#39;y1&#39;</span>)  <span class="co"># 参数：左偏移、高度、柱宽、透明度、颜色、图例</span></span>
+<span id="cb48-10"><a href="boosting.html#cb48-10"></a>plt.bar(x_index <span class="op">+</span> <span class="fl">0.35</span>, y2_data, width<span class="op">=</span><span class="fl">0.35</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">&#39;pink&#39;</span>, label<span class="op">=</span><span class="st">&#39;y2&#39;</span>)</span>
+<span id="cb48-11"><a href="boosting.html#cb48-11"></a></span>
+<span id="cb48-12"><a href="boosting.html#cb48-12"></a>plt.xticks(x_index <span class="op">+</span> bar_width<span class="op">/</span><span class="dv">2</span>, x_data)  <span class="co"># x轴刻度线</span></span>
+<span id="cb48-13"><a href="boosting.html#cb48-13"></a>plt.legend()  <span class="co"># 显示图例</span></span>
+<span id="cb48-14"><a href="boosting.html#cb48-14"></a>plt.show()</span></code></pre></div>
 <p><img src="plots/4/%E6%9D%A1%E5%BD%A2%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>直方图</li>
 </ol>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="boosting.html#cb63-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
-<span id="cb63-2"><a href="boosting.html#cb63-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb63-3"><a href="boosting.html#cb63-3"></a></span>
-<span id="cb63-4"><a href="boosting.html#cb63-4"></a>x <span class="op">=</span> np.random.randn(<span class="dv">10000</span>)</span>
-<span id="cb63-5"><a href="boosting.html#cb63-5"></a></span>
-<span id="cb63-6"><a href="boosting.html#cb63-6"></a>plt.hist(x, bins<span class="op">=</span><span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, histtype<span class="op">=</span><span class="st">&#39;bar&#39;</span>, color<span class="op">=</span><span class="st">&#39;lightblue&#39;</span>)</span>
-<span id="cb63-7"><a href="boosting.html#cb63-7"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="boosting.html#cb49-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb49-2"><a href="boosting.html#cb49-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb49-3"><a href="boosting.html#cb49-3"></a></span>
+<span id="cb49-4"><a href="boosting.html#cb49-4"></a>x <span class="op">=</span> np.random.randn(<span class="dv">10000</span>)</span>
+<span id="cb49-5"><a href="boosting.html#cb49-5"></a></span>
+<span id="cb49-6"><a href="boosting.html#cb49-6"></a>plt.hist(x, bins<span class="op">=</span><span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, histtype<span class="op">=</span><span class="st">&#39;bar&#39;</span>, color<span class="op">=</span><span class="st">&#39;lightblue&#39;</span>)</span>
+<span id="cb49-7"><a href="boosting.html#cb49-7"></a>plt.show()</span></code></pre></div>
 <p><img src="plots/4/%E7%9B%B4%E6%96%B9%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>饼图</li>
 </ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="boosting.html#cb64-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb64-2"><a href="boosting.html#cb64-2"></a></span>
-<span id="cb64-3"><a href="boosting.html#cb64-3"></a>labels <span class="op">=</span> [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>]</span>
-<span id="cb64-4"><a href="boosting.html#cb64-4"></a>x <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">10</span>]</span>
-<span id="cb64-5"><a href="boosting.html#cb64-5"></a>explode <span class="op">=</span> (<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb64-6"><a href="boosting.html#cb64-6"></a>colors <span class="op">=</span> [<span class="st">&#39;pink&#39;</span>, <span class="st">&#39;tomato&#39;</span>, <span class="st">&#39;lightblue&#39;</span>, <span class="st">&#39;lightyellow&#39;</span>]</span>
-<span id="cb64-7"><a href="boosting.html#cb64-7"></a>    </span>
-<span id="cb64-8"><a href="boosting.html#cb64-8"></a>plt.pie(x, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">&#39;</span><span class="sc">%1.1f%%</span><span class="st">&#39;</span>, shadow<span class="op">=</span><span class="va">False</span>, explode<span class="op">=</span>explode, startangle<span class="op">=</span><span class="dv">90</span>, colors<span class="op">=</span>colors)</span>
-<span id="cb64-9"><a href="boosting.html#cb64-9"></a>plt.axis(<span class="st">&#39;equal&#39;</span>)</span>
-<span id="cb64-10"><a href="boosting.html#cb64-10"></a>plt.legend(labels<span class="op">=</span>labels, loc<span class="op">=</span><span class="st">&#39;right&#39;</span>)</span>
-<span id="cb64-11"><a href="boosting.html#cb64-11"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="boosting.html#cb50-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb50-2"><a href="boosting.html#cb50-2"></a></span>
+<span id="cb50-3"><a href="boosting.html#cb50-3"></a>labels <span class="op">=</span> [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>]</span>
+<span id="cb50-4"><a href="boosting.html#cb50-4"></a>x <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">10</span>]</span>
+<span id="cb50-5"><a href="boosting.html#cb50-5"></a>explode <span class="op">=</span> (<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb50-6"><a href="boosting.html#cb50-6"></a>colors <span class="op">=</span> [<span class="st">&#39;pink&#39;</span>, <span class="st">&#39;tomato&#39;</span>, <span class="st">&#39;lightblue&#39;</span>, <span class="st">&#39;lightyellow&#39;</span>]</span>
+<span id="cb50-7"><a href="boosting.html#cb50-7"></a>    </span>
+<span id="cb50-8"><a href="boosting.html#cb50-8"></a>plt.pie(x, labels<span class="op">=</span>labels, autopct<span class="op">=</span><span class="st">&#39;</span><span class="sc">%1.1f%%</span><span class="st">&#39;</span>, shadow<span class="op">=</span><span class="va">False</span>, explode<span class="op">=</span>explode, startangle<span class="op">=</span><span class="dv">90</span>, colors<span class="op">=</span>colors)</span>
+<span id="cb50-9"><a href="boosting.html#cb50-9"></a>plt.axis(<span class="st">&#39;equal&#39;</span>)</span>
+<span id="cb50-10"><a href="boosting.html#cb50-10"></a>plt.legend(labels<span class="op">=</span>labels, loc<span class="op">=</span><span class="st">&#39;right&#39;</span>)</span>
+<span id="cb50-11"><a href="boosting.html#cb50-11"></a>plt.show()</span></code></pre></div>
 <p><img src="plots/4/%E9%A5%BC%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
 </div>
 <div id="常用教程网址" class="section level3">
-<h3><span class="header-section-number">4.10.6</span> 常用教程网址</h3>
+<h3><span class="header-section-number">3.10.6</span> 常用教程网址</h3>
 <ul>
 <li><p><a href="https://www.runoob.com/python/python-tutorial.html">Python基础教程</a></p></li>
 <li><p><a href="https://docs.python.org/3/">Python3说明文档</a></p></li>
@@ -1158,8 +1158,8 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
           </div>
         </div>
       </div>
-<a href="nn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="unsupervised-learning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="french.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

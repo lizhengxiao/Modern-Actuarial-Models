@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 自然语言处理 | 现代精算统计模型</title>
+  <title>7 自然语言处理初步 | 现代精算统计模型</title>
   <meta name="description" content="The output format is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 自然语言处理 | 现代精算统计模型" />
+  <meta property="og:title" content="7 自然语言处理初步 | 现代精算统计模型" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sxpyggy/Modern-Actuarial-Models" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 自然语言处理 | 现代精算统计模型" />
+  <meta name="twitter:title" content="7 自然语言处理初步 | 现代精算统计模型" />
   
   <meta name="twitter:description" content="The output format is bookdown::gitbook." />
   
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#答疑"><i class="fa fa-check"></i>🤔 答疑</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i>简介</a></li>
-<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 准备工作</a><ul>
+<li class="chapter" data-level="1" data-path="pre.html"><a href="pre.html"><i class="fa fa-check"></i><b>1</b> 计算环境的构建</a><ul>
 <li class="chapter" data-level="1.1" data-path="pre.html"><a href="pre.html#常用链接"><i class="fa fa-check"></i><b>1.1</b> 常用链接</a></li>
 <li class="chapter" data-level="1.2" data-path="pre.html"><a href="pre.html#克隆代码"><i class="fa fa-check"></i><b>1.2</b> 克隆代码</a></li>
 <li class="chapter" data-level="1.3" data-path="pre.html"><a href="pre.html#r-interface-to-keras"><i class="fa fa-check"></i><b>1.3</b> R interface to Keras</a><ul>
@@ -158,7 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.3" data-path="pre.html"><a href="pre.html#tensorflowpytorch-gpu-version"><i class="fa fa-check"></i><b>1.5.3</b> Tensorflow/Pytorch GPU version</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 车险索赔频率预测</a><ul>
+<li class="chapter" data-level="2" data-path="french.html"><a href="french.html"><i class="fa fa-check"></i><b>2</b> 统计学习与车险定价</a><ul>
 <li class="chapter" data-level="2.1" data-path="french.html"><a href="french.html#背景介绍"><i class="fa fa-check"></i><b>2.1</b> 背景介绍</a></li>
 <li class="chapter" data-level="2.2" data-path="french.html"><a href="french.html#预测模型概述"><i class="fa fa-check"></i><b>2.2</b> 预测模型概述</a></li>
 <li class="chapter" data-level="2.3" data-path="french.html"><a href="french.html#特征工程"><i class="fa fa-check"></i><b>2.3</b> 特征工程</a><ul>
@@ -176,69 +176,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="french.html"><a href="french.html#泊松提升树"><i class="fa fa-check"></i><b>2.10</b> 泊松提升树</a></li>
 <li class="chapter" data-level="2.11" data-path="french.html"><a href="french.html#模型比较"><i class="fa fa-check"></i><b>2.11</b> 模型比较</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>3</b> 神经网络</a><ul>
-<li class="chapter" data-level="3.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>3.1</b> 建立神经网络的一般步骤</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>3.1.1</b> 明确目标和数据类型</a></li>
-<li class="chapter" data-level="3.1.2" data-path="nn.html"><a href="nn.html#数据预处理"><i class="fa fa-check"></i><b>3.1.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="3.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>3.1.3</b> 选取合适的神经网络类型</a></li>
-<li class="chapter" data-level="3.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>3.1.4</b> 建立神经网络（全连接神经网络）</a></li>
-<li class="chapter" data-level="3.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>3.1.5</b> 训练神经网络</a></li>
-<li class="chapter" data-level="3.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>3.1.6</b> 调参</a></li>
+<li class="chapter" data-level="3" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>3</b> 提升方法与事故预测</a><ul>
+<li class="chapter" data-level="3.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>3.1</b> AdaBoost</a></li>
+<li class="chapter" data-level="3.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>3.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
+<li class="chapter" data-level="3.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>3.3</b> AdaBoost.M1</a></li>
+<li class="chapter" data-level="3.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>3.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
+<li class="chapter" data-level="3.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>3.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
+<li class="chapter" data-level="3.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>3.6</b> Gradient Boosting</a></li>
+<li class="chapter" data-level="3.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>3.7</b> Newton Boosting</a></li>
+<li class="chapter" data-level="3.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>3.8</b> XGBoost</a></li>
+<li class="chapter" data-level="3.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>3.9</b> Case study</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>3.9.1</b> 数据描述</a></li>
+<li class="chapter" data-level="3.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理"><i class="fa fa-check"></i><b>3.9.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="3.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>3.9.3</b> 特征工程</a></li>
+<li class="chapter" data-level="3.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>3.9.4</b> 建模流程</a></li>
+<li class="chapter" data-level="3.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>3.9.5</b> 模型度量——Gini系数</a></li>
+<li class="chapter" data-level="3.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>3.9.6</b> 建立AdaBoost模型</a></li>
+<li class="chapter" data-level="3.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>3.9.7</b> 建立XGBoost模型</a></li>
+<li class="chapter" data-level="3.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>3.9.8</b> 结论</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>3.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="3.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>3.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
-<li class="chapter" data-level="3.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>3.4</b> 神经网络结构</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>3.4.1</b> 结构参数</a></li>
-<li class="chapter" data-level="3.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>3.4.2</b> 输入层</a></li>
-<li class="chapter" data-level="3.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>3.4.3</b> Embedding layer</a></li>
-<li class="chapter" data-level="3.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>3.4.4</b> 隐藏层</a></li>
-<li class="chapter" data-level="3.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>3.4.5</b> 输出层</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>3.5</b> 训练神经网络</a></li>
-<li class="chapter" data-level="3.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>3.6</b> 总结</a></li>
-<li class="chapter" data-level="3.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>3.7</b> 其它模型</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="boosting.html"><a href="boosting.html"><i class="fa fa-check"></i><b>4</b> 提升方法 (Boosting)</a><ul>
-<li class="chapter" data-level="4.1" data-path="boosting.html"><a href="boosting.html#adaboost"><i class="fa fa-check"></i><b>4.1</b> AdaBoost</a></li>
-<li class="chapter" data-level="4.2" data-path="boosting.html"><a href="boosting.html#logit-boost-real-discrete-gentle-adaboost"><i class="fa fa-check"></i><b>4.2</b> Logit Boost (real, discrete, gentle AdaBoost)</a></li>
-<li class="chapter" data-level="4.3" data-path="boosting.html"><a href="boosting.html#adaboost.m1"><i class="fa fa-check"></i><b>4.3</b> AdaBoost.M1</a></li>
-<li class="chapter" data-level="4.4" data-path="boosting.html"><a href="boosting.html#samme-stage-wise-additive-modeling-using-a-multi-class-exponential-loss-function"><i class="fa fa-check"></i><b>4.4</b> SAMME (Stage-wise Additive Modeling using a Multi-class Exponential loss function)</a></li>
-<li class="chapter" data-level="4.5" data-path="boosting.html"><a href="boosting.html#samme.r-multi-class-real-adaboost"><i class="fa fa-check"></i><b>4.5</b> SAMME.R (multi-class real AdaBoost)</a></li>
-<li class="chapter" data-level="4.6" data-path="boosting.html"><a href="boosting.html#gradient-boosting"><i class="fa fa-check"></i><b>4.6</b> Gradient Boosting</a></li>
-<li class="chapter" data-level="4.7" data-path="boosting.html"><a href="boosting.html#newton-boosting"><i class="fa fa-check"></i><b>4.7</b> Newton Boosting</a></li>
-<li class="chapter" data-level="4.8" data-path="boosting.html"><a href="boosting.html#xgboost"><i class="fa fa-check"></i><b>4.8</b> XGBoost</a></li>
-<li class="chapter" data-level="4.9" data-path="boosting.html"><a href="boosting.html#case-study"><i class="fa fa-check"></i><b>4.9</b> Case study</a><ul>
-<li class="chapter" data-level="4.9.1" data-path="boosting.html"><a href="boosting.html#数据描述"><i class="fa fa-check"></i><b>4.9.1</b> 数据描述</a></li>
-<li class="chapter" data-level="4.9.2" data-path="boosting.html"><a href="boosting.html#数据预处理-2"><i class="fa fa-check"></i><b>4.9.2</b> 数据预处理</a></li>
-<li class="chapter" data-level="4.9.3" data-path="boosting.html"><a href="boosting.html#特征工程-1"><i class="fa fa-check"></i><b>4.9.3</b> 特征工程</a></li>
-<li class="chapter" data-level="4.9.4" data-path="boosting.html"><a href="boosting.html#建模流程"><i class="fa fa-check"></i><b>4.9.4</b> 建模流程</a></li>
-<li class="chapter" data-level="4.9.5" data-path="boosting.html"><a href="boosting.html#模型度量gini系数"><i class="fa fa-check"></i><b>4.9.5</b> 模型度量——Gini系数</a></li>
-<li class="chapter" data-level="4.9.6" data-path="boosting.html"><a href="boosting.html#建立adaboost模型"><i class="fa fa-check"></i><b>4.9.6</b> 建立AdaBoost模型</a></li>
-<li class="chapter" data-level="4.9.7" data-path="boosting.html"><a href="boosting.html#建立xgboost模型"><i class="fa fa-check"></i><b>4.9.7</b> 建立XGBoost模型</a></li>
-<li class="chapter" data-level="4.9.8" data-path="boosting.html"><a href="boosting.html#结论"><i class="fa fa-check"></i><b>4.9.8</b> 结论</a></li>
-</ul></li>
-<li class="chapter" data-level="4.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>4.10</b> Appendix: Commonly used Python code (for py-beginners)</a><ul>
-<li class="chapter" data-level="4.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>4.10.1</b> Python标准数据类型</a></li>
-<li class="chapter" data-level="4.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>4.10.2</b> Python内置函数</a></li>
-<li class="chapter" data-level="4.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>4.10.3</b> numpy包</a></li>
-<li class="chapter" data-level="4.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>4.10.4</b> pandas包</a></li>
-<li class="chapter" data-level="4.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>4.10.5</b> Matplotlib包</a></li>
-<li class="chapter" data-level="4.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>4.10.6</b> 常用教程网址</a></li>
+<li class="chapter" data-level="3.10" data-path="boosting.html"><a href="boosting.html#appendix-commonly-used-python-code-for-py-beginners"><i class="fa fa-check"></i><b>3.10</b> Appendix: Commonly used Python code (for py-beginners)</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="boosting.html"><a href="boosting.html#python标准数据类型"><i class="fa fa-check"></i><b>3.10.1</b> Python标准数据类型</a></li>
+<li class="chapter" data-level="3.10.2" data-path="boosting.html"><a href="boosting.html#python内置函数"><i class="fa fa-check"></i><b>3.10.2</b> Python内置函数</a></li>
+<li class="chapter" data-level="3.10.3" data-path="boosting.html"><a href="boosting.html#numpy包"><i class="fa fa-check"></i><b>3.10.3</b> numpy包</a></li>
+<li class="chapter" data-level="3.10.4" data-path="boosting.html"><a href="boosting.html#pandas包"><i class="fa fa-check"></i><b>3.10.4</b> pandas包</a></li>
+<li class="chapter" data-level="3.10.5" data-path="boosting.html"><a href="boosting.html#matplotlib包"><i class="fa fa-check"></i><b>3.10.5</b> Matplotlib包</a></li>
+<li class="chapter" data-level="3.10.6" data-path="boosting.html"><a href="boosting.html#常用教程网址"><i class="fa fa-check"></i><b>3.10.6</b> 常用教程网址</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>5</b> 无监督学习方法</a><ul>
-<li class="chapter" data-level="5.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-3"><i class="fa fa-check"></i><b>5.1</b> 数据预处理</a></li>
-<li class="chapter" data-level="5.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>5.2</b> 主成分分析</a></li>
-<li class="chapter" data-level="5.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>5.3</b> 自编码</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>5.3.1</b> 模型训练</a></li>
+<li class="chapter" data-level="4" data-path="nn.html"><a href="nn.html"><i class="fa fa-check"></i><b>4</b> 深度学习与索赔频率预测</a><ul>
+<li class="chapter" data-level="4.1" data-path="nn.html"><a href="nn.html#建立神经网络的一般步骤"><i class="fa fa-check"></i><b>4.1</b> 建立神经网络的一般步骤</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="nn.html"><a href="nn.html#明确目标和数据类型"><i class="fa fa-check"></i><b>4.1.1</b> 明确目标和数据类型</a></li>
+<li class="chapter" data-level="4.1.2" data-path="nn.html"><a href="nn.html#数据预处理-1"><i class="fa fa-check"></i><b>4.1.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.1.3" data-path="nn.html"><a href="nn.html#选取合适的神经网络类型"><i class="fa fa-check"></i><b>4.1.3</b> 选取合适的神经网络类型</a></li>
+<li class="chapter" data-level="4.1.4" data-path="nn.html"><a href="nn.html#建立神经网络全连接神经网络"><i class="fa fa-check"></i><b>4.1.4</b> 建立神经网络（全连接神经网络）</a></li>
+<li class="chapter" data-level="4.1.5" data-path="nn.html"><a href="nn.html#训练神经网络"><i class="fa fa-check"></i><b>4.1.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="4.1.6" data-path="nn.html"><a href="nn.html#调参"><i class="fa fa-check"></i><b>4.1.6</b> 调参</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>5.4</b> K-means clustering</a></li>
-<li class="chapter" data-level="5.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>5.5</b> K-medoids clustering (PAM)</a></li>
-<li class="chapter" data-level="5.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>5.6</b> Gaussian mixture models(GMMs)</a></li>
-<li class="chapter" data-level="5.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>5.7</b> 三种聚类方法评价</a></li>
-<li class="chapter" data-level="5.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>5.8</b> t-SNE</a></li>
-<li class="chapter" data-level="5.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>5.9</b> UMAP</a></li>
-<li class="chapter" data-level="5.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>5.10</b> SOM</a></li>
+<li class="chapter" data-level="4.2" data-path="nn.html"><a href="nn.html#数据预处理-2"><i class="fa fa-check"></i><b>4.2</b> 数据预处理</a></li>
+<li class="chapter" data-level="4.3" data-path="nn.html"><a href="nn.html#神经网络提升模型-combined-actuarial-neural-network"><i class="fa fa-check"></i><b>4.3</b> 神经网络提升模型 （combined actuarial neural network）</a></li>
+<li class="chapter" data-level="4.4" data-path="nn.html"><a href="nn.html#神经网络结构"><i class="fa fa-check"></i><b>4.4</b> 神经网络结构</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="nn.html"><a href="nn.html#结构参数"><i class="fa fa-check"></i><b>4.4.1</b> 结构参数</a></li>
+<li class="chapter" data-level="4.4.2" data-path="nn.html"><a href="nn.html#输入层"><i class="fa fa-check"></i><b>4.4.2</b> 输入层</a></li>
+<li class="chapter" data-level="4.4.3" data-path="nn.html"><a href="nn.html#embedding-layer"><i class="fa fa-check"></i><b>4.4.3</b> Embedding layer</a></li>
+<li class="chapter" data-level="4.4.4" data-path="nn.html"><a href="nn.html#隐藏层"><i class="fa fa-check"></i><b>4.4.4</b> 隐藏层</a></li>
+<li class="chapter" data-level="4.4.5" data-path="nn.html"><a href="nn.html#输出层"><i class="fa fa-check"></i><b>4.4.5</b> 输出层</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="nn.html"><a href="nn.html#训练神经网络-1"><i class="fa fa-check"></i><b>4.5</b> 训练神经网络</a></li>
+<li class="chapter" data-level="4.6" data-path="nn.html"><a href="nn.html#总结"><i class="fa fa-check"></i><b>4.6</b> 总结</a></li>
+<li class="chapter" data-level="4.7" data-path="nn.html"><a href="nn.html#其它模型"><i class="fa fa-check"></i><b>4.7</b> 其它模型</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>5</b> 卷积神经网络与车联网数据分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>5.1</b> 卷积层 (Convolution)</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>5.1.1</b> 超参数</a></li>
+<li class="chapter" data-level="5.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>5.1.2</b> 参数个数计算</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>5.2</b> 池化层 (Pooling)</a></li>
+<li class="chapter" data-level="5.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>5.3</b> 批标准化层 (Batch Normalization)</a></li>
+<li class="chapter" data-level="5.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>5.4</b> 其他组件</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>5.4.1</b> 全连接层 (Dense)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>5.4.2</b> 输出神经元</a></li>
+<li class="chapter" data-level="5.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>5.4.3</b> 激活函数 (Activation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>5.5</b> 特性</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>5.5.1</b> 平移不变性</a></li>
+<li class="chapter" data-level="5.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>5.5.2</b> 旋转不变性</a></li>
+<li class="chapter" data-level="5.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>5.5.3</b> 尺度不变性</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>5.6</b> 隐藏层可视化</a></li>
+<li class="chapter" data-level="5.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>5.7</b> 逆卷积</a></li>
+<li class="chapter" data-level="5.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>5.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
+<li class="chapter" data-level="5.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>5.8.1</b> 输入和标签</a></li>
+<li class="chapter" data-level="5.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>5.8.2</b> 评估指标</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>5.9</b> MNIST dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="rnn.html"><a href="rnn.html"><i class="fa fa-check"></i><b>6</b> 循环神经网络与死亡率预测</a><ul>
 <li class="chapter" data-level="6.1" data-path="rnn.html"><a href="rnn.html#lee-carter-model"><i class="fa fa-check"></i><b>6.1</b> Lee-Carter Model</a></li>
@@ -264,7 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.8" data-path="rnn.html"><a href="rnn.html#预测结果图"><i class="fa fa-check"></i><b>6.5.8</b> 预测结果图</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>7</b> 自然语言处理</a><ul>
+<li class="chapter" data-level="7" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>7</b> 自然语言处理初步</a><ul>
 <li class="chapter" data-level="7.1" data-path="nlp.html"><a href="nlp.html#预处理"><i class="fa fa-check"></i><b>7.1</b> 预处理</a></li>
 <li class="chapter" data-level="7.2" data-path="nlp.html"><a href="nlp.html#bag-of-words"><i class="fa fa-check"></i><b>7.2</b> Bag of words</a></li>
 <li class="chapter" data-level="7.3" data-path="nlp.html"><a href="nlp.html#bag-of-part-of-speech"><i class="fa fa-check"></i><b>7.3</b> Bag of part-of-speech</a></li>
@@ -276,7 +287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="nlp.html"><a href="nlp.html#机器学习算法"><i class="fa fa-check"></i><b>7.5</b> 机器学习算法</a></li>
 <li class="chapter" data-level="7.6" data-path="nlp.html"><a href="nlp.html#神经网络"><i class="fa fa-check"></i><b>7.6</b> 神经网络</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="nlp.html"><a href="nlp.html#数据预处理-4"><i class="fa fa-check"></i><b>7.6.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="7.6.1" data-path="nlp.html"><a href="nlp.html#数据预处理-3"><i class="fa fa-check"></i><b>7.6.1</b> 数据预处理</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="nlp.html"><a href="nlp.html#case-study-1"><i class="fa fa-check"></i><b>7.7</b> Case study</a><ul>
 <li class="chapter" data-level="7.7.1" data-path="nlp.html"><a href="nlp.html#函数说明"><i class="fa fa-check"></i><b>7.7.1</b> 函数说明</a></li>
@@ -320,30 +331,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.10.7" data-path="flashlight.html"><a href="flashlight.html#改进glm"><i class="fa fa-check"></i><b>8.10.7</b> 改进glm</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="cnn.html"><a href="cnn.html"><i class="fa fa-check"></i><b>9</b> 卷积神经网络</a><ul>
-<li class="chapter" data-level="9.1" data-path="cnn.html"><a href="cnn.html#卷积层-convolution"><i class="fa fa-check"></i><b>9.1</b> 卷积层 (Convolution)</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="cnn.html"><a href="cnn.html#超参数"><i class="fa fa-check"></i><b>9.1.1</b> 超参数</a></li>
-<li class="chapter" data-level="9.1.2" data-path="cnn.html"><a href="cnn.html#参数个数计算"><i class="fa fa-check"></i><b>9.1.2</b> 参数个数计算</a></li>
+<li class="chapter" data-level="9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>9</b> 无监督学习方法</a><ul>
+<li class="chapter" data-level="9.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#数据预处理-4"><i class="fa fa-check"></i><b>9.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="9.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#主成分分析"><i class="fa fa-check"></i><b>9.2</b> 主成分分析</a></li>
+<li class="chapter" data-level="9.3" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#自编码"><i class="fa fa-check"></i><b>9.3</b> 自编码</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#模型训练"><i class="fa fa-check"></i><b>9.3.1</b> 模型训练</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="cnn.html"><a href="cnn.html#池化层-pooling"><i class="fa fa-check"></i><b>9.2</b> 池化层 (Pooling)</a></li>
-<li class="chapter" data-level="9.3" data-path="cnn.html"><a href="cnn.html#批标准化层-batch-normalization"><i class="fa fa-check"></i><b>9.3</b> 批标准化层 (Batch Normalization)</a></li>
-<li class="chapter" data-level="9.4" data-path="cnn.html"><a href="cnn.html#其他组件"><i class="fa fa-check"></i><b>9.4</b> 其他组件</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="cnn.html"><a href="cnn.html#全连接层-dense"><i class="fa fa-check"></i><b>9.4.1</b> 全连接层 (Dense)</a></li>
-<li class="chapter" data-level="9.4.2" data-path="cnn.html"><a href="cnn.html#输出神经元"><i class="fa fa-check"></i><b>9.4.2</b> 输出神经元</a></li>
-<li class="chapter" data-level="9.4.3" data-path="cnn.html"><a href="cnn.html#激活函数-activation"><i class="fa fa-check"></i><b>9.4.3</b> 激活函数 (Activation)</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="cnn.html"><a href="cnn.html#特性"><i class="fa fa-check"></i><b>9.5</b> 特性</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="cnn.html"><a href="cnn.html#平移不变性"><i class="fa fa-check"></i><b>9.5.1</b> 平移不变性</a></li>
-<li class="chapter" data-level="9.5.2" data-path="cnn.html"><a href="cnn.html#旋转不变性"><i class="fa fa-check"></i><b>9.5.2</b> 旋转不变性</a></li>
-<li class="chapter" data-level="9.5.3" data-path="cnn.html"><a href="cnn.html#尺度不变性"><i class="fa fa-check"></i><b>9.5.3</b> 尺度不变性</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="cnn.html"><a href="cnn.html#隐藏层可视化"><i class="fa fa-check"></i><b>9.6</b> 隐藏层可视化</a></li>
-<li class="chapter" data-level="9.7" data-path="cnn.html"><a href="cnn.html#逆卷积"><i class="fa fa-check"></i><b>9.7</b> 逆卷积</a></li>
-<li class="chapter" data-level="9.8" data-path="cnn.html"><a href="cnn.html#human-mortality-database-hmd"><i class="fa fa-check"></i><b>9.8</b> <span>Human Mortality Database (HMD)</span></a><ul>
-<li class="chapter" data-level="9.8.1" data-path="cnn.html"><a href="cnn.html#输入和标签"><i class="fa fa-check"></i><b>9.8.1</b> 输入和标签</a></li>
-<li class="chapter" data-level="9.8.2" data-path="cnn.html"><a href="cnn.html#评估指标"><i class="fa fa-check"></i><b>9.8.2</b> 评估指标</a></li>
-</ul></li>
-<li class="chapter" data-level="9.9" data-path="cnn.html"><a href="cnn.html#mnist-dataset"><i class="fa fa-check"></i><b>9.9</b> MNIST dataset</a></li>
+<li class="chapter" data-level="9.4" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>9.4</b> K-means clustering</a></li>
+<li class="chapter" data-level="9.5" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#k-medoids-clustering-pam"><i class="fa fa-check"></i><b>9.5</b> K-medoids clustering (PAM)</a></li>
+<li class="chapter" data-level="9.6" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#gaussian-mixture-modelsgmms"><i class="fa fa-check"></i><b>9.6</b> Gaussian mixture models(GMMs)</a></li>
+<li class="chapter" data-level="9.7" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#三种聚类方法评价"><i class="fa fa-check"></i><b>9.7</b> 三种聚类方法评价</a></li>
+<li class="chapter" data-level="9.8" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#t-sne"><i class="fa fa-check"></i><b>9.8</b> t-SNE</a></li>
+<li class="chapter" data-level="9.9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#umap"><i class="fa fa-check"></i><b>9.9</b> UMAP</a></li>
+<li class="chapter" data-level="9.10" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#som"><i class="fa fa-check"></i><b>9.10</b> SOM</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sxpyggy/Modern-Actuarial-Models/tree/modern-actuarial-models" target="blank">GitHub 仓库</a></li>
@@ -366,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="nlp" class="section level1">
-<h1><span class="header-section-number">7</span> 自然语言处理</h1>
+<h1><span class="header-section-number">7</span> 自然语言处理初步</h1>
 <!-- *陈美昆、蒋慧华、高光远* -->
 <div class="figure" style="text-align: center"><span id="fig:history"></span>
 <img src="plots/7/history.png" alt="NLP历史（2000年以后）" width="70%" />
@@ -537,7 +537,7 @@ Figure 7.9: GRU
 </div></li>
 </ul>
 <p><img src="plots/7/GRU_2.png" width="70%"  style="display: block; margin: auto;" /></p>
-<div id="数据预处理-4" class="section level3">
+<div id="数据预处理-3" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> 数据预处理</h3>
 <p>在神经网络中，我们不需要进行以上bag-of-words, bag-of-POS, word embedding等人工特征工程，我们只需要用实数把文本中<strong>词语的顺序</strong>表征出来即可，神经网络可以同步进行特征工程和有监督训练。</p>
 <p>在python中可以使用Keras 中的<code>Tokenizer</code>模块把词语映射到非负整数上，此方法保持了保持了词语的顺序，是前面几种方法没有达到的。</p>
