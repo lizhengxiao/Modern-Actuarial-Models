@@ -5,7 +5,7 @@ editor_options:
 ---
 # 卷积神经网络 {#cnn}
 
-*万淇、蔡清扬、高光远*
+<!-- *万淇、蔡清扬、高光远* -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = F)

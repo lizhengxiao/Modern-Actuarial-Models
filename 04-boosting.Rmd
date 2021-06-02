@@ -1,6 +1,6 @@
 # 提升方法 (Boosting) {#boosting}
 
-*范雨文、毛雪婷、高光远*
+<!-- *范雨文、毛雪婷、高光远* -->
 
 > Breiman called **AdaBoost** the **‘best off-the-shelf classifier in the world’** (NIPS Workshop 1996).
 

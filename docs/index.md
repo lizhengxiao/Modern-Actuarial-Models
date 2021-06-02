@@ -1,7 +1,7 @@
 --- 
 title: "现代精算统计模型"
 author: "Modern Actuarial Models"
-date: "2021-01-18 15:19:06"
+date: "2021-06-02 10:08:17"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -16,9 +16,13 @@ editor_options:
 
 # 👨‍🏫 欢迎  {-}
 
-《现代精算统计模型》主要讲述如何使用统计学习和机器学习算法，提升传统的精算统计模型或者解决新的精算问题。这门课主要参考瑞士精算师协会发布的[“精算数据科学”](https://actuarialdatascience.org)，该教程的主要目的是“为精算师提供一个对数据科学全面且易懂的介绍”，该教程提供了多篇方法性文章并开源代码，这样“读者可以相对容易地把这些数据科学方法用在自己的数据上”。
+<!-- 《现代精算统计模型》主要讲述如何使用统计学习和机器学习算法，提升传统的精算统计模型或者解决新的精算问题。这门课主要参考瑞士精算师协会发布的[“精算数据科学”](https://actuarialdatascience.org)，该教程的主要目的是“为精算师提供一个对数据科学全面且易懂的介绍”，该教程提供了多篇方法性文章并开源代码，这样“读者可以相对容易地把这些数据科学方法用在自己的数据上”。 -->
 
-我们建议大家仔细阅读以下文献，尝试并理解[所有代码](https://github.com/JSchelldorfer/ActuarialDataScience)。此网站将作为该课程的辅助，为大家答疑，总结文献，并对文献中的方法做扩展。该网站由授课老师高光远和助教张玮钰管理，欢迎大家反馈意见到助教、微信群、或邮箱 <guangyuan.gao@ruc.edu.cn>。
+<!-- 我们建议大家仔细阅读以下文献，尝试并理解[所有代码](https://github.com/JSchelldorfer/ActuarialDataScience)。此网站将作为该课程的辅助，为大家答疑，总结文献，并对文献中的方法做扩展。该网站由授课老师高光远和助教张玮钰管理，欢迎大家反馈意见到助教、微信群、或邮箱 <guangyuan.gao@ruc.edu.cn>。 -->
+
+《现代精算统计模型》主要讲述如何使用统计学习和机器学习算法，提升传统的精算统计模型或者解决新的精算问题。该教程的主要目的是为大家提供一个对数据科学全面且易懂的介绍，该教程提供了多篇方法性文章并开源代码，这样读者可以相对容易地把这些数据科学方法用在自己的数据上。
+
+我们建议大家仔细阅读以下文献，尝试并理解所有代码。此网站将作为该课程的辅助，为大家答疑，总结文献，并对文献中的方法做扩展。该网站由授课老师高光远和助教张玮钰管理，欢迎大家反馈意见到助教、微信群、或邮箱 <guangyuan.gao@ruc.edu.cn>。
 
 ## 🤔 答疑{-}
 
@@ -97,71 +101,77 @@ html格式的slides：
 
 源文件在<http://cas.uqam.ca/>，但下载速度很慢，我把它放在[坚果云共享](https://www.jianguoyun.com/p/DdFyh74Q3cTHBhio2M0D)。下载后选择install from local archive file。
 
-**👉  微信群** (2020/11/08)
+<!-- **👉  微信群** (2020/11/08) -->
 
-<img src="./plots/wechat.png" width="30%"  style="display: block; margin: auto;" />
+<!-- ```{r,echo=FALSE,out.width="30%",fig.align = 'center'} -->
+<!-- knitr::opts_chunk$set(fig.pos = "!H", out.extra = "") -->
+<!-- knitr::include_graphics("./plots/wechat.png") -->
+<!-- ``` -->
 
-## 🗓️ 课程安排 {-}
+<!-- ## 🗓️ 课程安排 {-} -->
 
-<img src="./plots/plan.png" width="90%"  style="display: block; margin: auto;" />
+<!-- ```{r,echo=FALSE,out.width="90%",fig.align = 'center'} -->
+<!-- knitr::opts_chunk$set(fig.pos = "!H", out.extra = "") -->
+<!-- knitr::include_graphics("./plots/plan.png") -->
+<!-- ``` -->
 
-以下安排为初步计划，根据大家的需求和背景，我们可能要花更多的时间在某些重要的方法及其在精算上的应用。
+<!-- 以下安排为初步计划，根据大家的需求和背景，我们可能要花更多的时间在某些重要的方法及其在精算上的应用。 -->
 
-- 第10周：
+<!-- - 第10周： -->
 
-  准备工作。
+<!--   准备工作。 -->
 
-- 第11周: 
-  
-  1 - French Motor Third-Party Liability Claims 
-    
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3164764>
+<!-- - 第11周:  -->
 
-- 机动
+<!--   1 - French Motor Third-Party Liability Claims  -->
 
-  2 - Inisghts from Inside Neural Networks
-    
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3226852>
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3164764> -->
 
-  3 - Nesting Classical Actuarial Models into Neural Networks
-  
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3320525>
+<!-- - 机动 -->
 
-- 第12周：
+<!--   2 - Inisghts from Inside Neural Networks -->
 
-  4 - On Boosting: Theory and Applications
-    
-    <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3402687>
-  
-- 第13周：
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3226852> -->
 
-  5 - Unsupervised Learning: What is a Sports Car
-  
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3439358>
-  
-- 第14周：
+<!--   3 - Nesting Classical Actuarial Models into Neural Networks -->
 
-  6 - Lee and Carter go Machine Learning: Recurrent Neural Networks
-  
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3441030>
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3320525> -->
 
-- 第15周：
+<!-- - 第12周： -->
 
-  7 - The Art of Natural Language Processing: Classical, Modern and Contemporary Approaches to Text Document Classification
-  
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547887>
+<!--   4 - On Boosting: Theory and Applications -->
 
-- 第16周：
+<!--     <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3402687> -->
 
-  8 - Peeking into the Black Box: An Actuarial Case Study for Interpretable Machine Learning 
-  
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3595944>
+<!-- - 第13周： -->
 
-- 第17周：
+<!--   5 - Unsupervised Learning: What is a Sports Car -->
 
-  9 - Convolutional neural network case studies: (1) Anomalies in Mortality Rates (2) Image Recognition 
-  
-  <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3656210>
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3439358> -->
+
+<!-- - 第14周： -->
+
+<!--   6 - Lee and Carter go Machine Learning: Recurrent Neural Networks -->
+
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3441030> -->
+
+<!-- - 第15周： -->
+
+<!--   7 - The Art of Natural Language Processing: Classical, Modern and Contemporary Approaches to Text Document Classification -->
+
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547887> -->
+
+<!-- - 第16周： -->
+
+<!--   8 - Peeking into the Black Box: An Actuarial Case Study for Interpretable Machine Learning  -->
+
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3595944> -->
+
+<!-- - 第17周： -->
+
+<!--   9 - Convolutional neural network case studies: (1) Anomalies in Mortality Rates (2) Image Recognition  -->
+
+<!--   <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3656210> -->
 
 
 
