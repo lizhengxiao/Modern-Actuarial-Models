@@ -227,7 +227,7 @@ $$\tilde{\mathcal{L}}^m = \sum_{i=1}^n \lbrack L(\hat{y_i}^{m-1},y_i) + g_if_m(\
 
 此案例中，缺失值用-1表示。
 
-<img src="./plots/4/数据描述.png" width="60%"  style="display: block; margin: auto;" />
+<img src="./plots/4/data_des.png" width="60%"  style="display: block; margin: auto;" />
 
 ### 数据预处理
 
@@ -235,7 +235,7 @@ $$\tilde{\mathcal{L}}^m = \sum_{i=1}^n \lbrack L(\hat{y_i}^{m-1},y_i) + g_if_m(\
 
 数据中，`ps_car_03_cat`和`ps_car_05_cat`的缺失值较多，缺失值分别占69.09%和44.78%，之后将进行缺失值处理。
 
-<img src="./plots/4/缺失值.png" width="60%"  style="display: block; margin: auto;" />
+<img src="./plots/4/missing.png" width="60%"  style="display: block; margin: auto;" />
 
 2. 单变量分析
 
@@ -294,7 +294,7 @@ v = meta[(meta.level == 'interval') & (meta.keep)].index
 corr_heatmap(v)
 ```
 
-<img src="./plots/4/相关系数矩阵热图.png" width="60%"  style="display: block; margin: auto;" />
+<img src="./plots/4/cor_matrix.png" width="60%"  style="display: block; margin: auto;" />
 
 - 散点图矩阵
 
@@ -306,7 +306,7 @@ high = pd.Index(['ps_reg_01', 'ps_reg_02', 'ps_reg_03', 'ps_car_12', 'ps_car_13'
 pd.plotting.scatter_matrix(data[high], alpha = 0.2, figsize = (40, 40), diagonal = 'kde')
 ```
 
-<img src="./plots/4/散点图矩阵.png" width="80%"  style="display: block; margin: auto;" />
+<img src="./plots/4/scatter_matrix.png" width="80%"  style="display: block; margin: auto;" />
 
 在解释变量和目标变量之间，我们可以作散点图、箱线图、条形图等。
 
@@ -857,7 +857,7 @@ plt.plot(x, y, ls = '--', marker = '+', color = 'lightblue')  # ls为线型，ma
 plt.show()
 ```
 
-<img src="./plots/4/折线图.png" width="50%"  style="display: block; margin: auto;" />
+<img src="./plots/4/line_plot.png" width="50%"  style="display: block; margin: auto;" />
 
 2. 散点图
 
@@ -873,7 +873,7 @@ plt.scatter(x, y, s=x*1000, color='pink', marker=(5,1), alpha=0.5, lw=2)  # s为
 plt.show()
 ```
 
-<img src="./plots/4/散点图.png" width="50%"  style="display: block; margin: auto;" />
+<img src="./plots/4/scatter.png" width="50%"  style="display: block; margin: auto;" />
 
 3. 箱线图
 
@@ -887,7 +887,7 @@ plt.boxplot(x, vert=True)  # vert控制方向
 plt.show()
 ```
 
-<img src="./plots/4/箱线图.png" width="50%"  style="display: block; margin: auto;" />
+<img src="./plots/4/boxplot.png" width="50%"  style="display: block; margin: auto;" />
 
 4. 条形图
 
@@ -909,7 +909,7 @@ plt.legend()  # 显示图例
 plt.show()
 ```
 
-<img src="./plots/4/条形图.png" width="50%"  style="display: block; margin: auto;" />
+<img src="./plots/4/barplot.png" width="50%"  style="display: block; margin: auto;" />
 
 5. 直方图
 
@@ -924,7 +924,7 @@ plt.hist(x, bins=40, density=True, histtype='bar', color='lightblue')
 plt.show()
 ```
 
-<img src="./plots/4/直方图.png" width="50%"  style="display: block; margin: auto;" />
+<img src="./plots/4/hist.png" width="50%"  style="display: block; margin: auto;" />
 
 6. 饼图
 
@@ -943,7 +943,7 @@ plt.legend(labels=labels, loc='right')
 plt.show()
 ```
 
-<img src="./plots/4/饼图.png" width="50%"  style="display: block; margin: auto;" />
+<img src="./plots/4/pie_chart.png" width="50%"  style="display: block; margin: auto;" />
 
 ### 常用教程网址
 

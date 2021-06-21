@@ -533,7 +533,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li>解释变量（57个）：<code>ps_*</code>，包括四种，分别是二分类变量（binary），多分类变量（categorical），连续型变量（continuous），定序变量（ordinal）。</li>
 </ul>
 <p>此案例中，缺失值用-1表示。</p>
-<p><img src="plots/4/%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0.png" width="60%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/data_des.png" width="60%"  style="display: block; margin: auto;" /></p>
 </div>
 <div id="数据预处理" class="section level3">
 <h3><span class="header-section-number">3.9.2</span> 数据预处理</h3>
@@ -541,7 +541,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <li>统计缺失值</li>
 </ol>
 <p>数据中，<code>ps_car_03_cat</code>和<code>ps_car_05_cat</code>的缺失值较多，缺失值分别占69.09%和44.78%，之后将进行缺失值处理。</p>
-<p><img src="plots/4/%E7%BC%BA%E5%A4%B1%E5%80%BC.png" width="60%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/missing.png" width="60%"  style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>单变量分析</li>
 </ol>
@@ -586,7 +586,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb24-14"><a href="boosting.html#cb24-14"></a><span class="co"># one applies the corr_heatmap function on the interval features    </span></span>
 <span id="cb24-15"><a href="boosting.html#cb24-15"></a>v <span class="op">=</span> meta[(meta.level <span class="op">==</span> <span class="st">&#39;interval&#39;</span>) <span class="op">&amp;</span> (meta.keep)].index</span>
 <span id="cb24-16"><a href="boosting.html#cb24-16"></a>corr_heatmap(v)</span></code></pre></div>
-<p><img src="plots/4/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E7%9F%A9%E9%98%B5%E7%83%AD%E5%9B%BE.png" width="60%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/cor_matrix.png" width="60%"  style="display: block; margin: auto;" /></p>
 <ul>
 <li>散点图矩阵</li>
 </ul>
@@ -594,7 +594,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb25-2"><a href="boosting.html#cb25-2"></a><span class="im">import</span> seaborn</span>
 <span id="cb25-3"><a href="boosting.html#cb25-3"></a>high <span class="op">=</span> pd.Index([<span class="st">&#39;ps_reg_01&#39;</span>, <span class="st">&#39;ps_reg_02&#39;</span>, <span class="st">&#39;ps_reg_03&#39;</span>, <span class="st">&#39;ps_car_12&#39;</span>, <span class="st">&#39;ps_car_13&#39;</span>, <span class="st">&#39;ps_car_15&#39;</span>])</span>
 <span id="cb25-4"><a href="boosting.html#cb25-4"></a>pd.plotting.scatter_matrix(data[high], alpha <span class="op">=</span> <span class="fl">0.2</span>, figsize <span class="op">=</span> (<span class="dv">40</span>, <span class="dv">40</span>), diagonal <span class="op">=</span> <span class="st">&#39;kde&#39;</span>)</span></code></pre></div>
-<p><img src="plots/4/%E6%95%A3%E7%82%B9%E5%9B%BE%E7%9F%A9%E9%98%B5.png" width="80%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/scatter_matrix.png" width="80%"  style="display: block; margin: auto;" /></p>
 <p>在解释变量和目标变量之间，我们可以作散点图、箱线图、条形图等。</p>
 <p><img src="plots/4/target_vs_features.png" width="80%"  style="display: block; margin: auto;" /></p>
 </div>
@@ -1073,7 +1073,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb45-9"><a href="boosting.html#cb45-9"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>) </span>
 <span id="cb45-10"><a href="boosting.html#cb45-10"></a>plt.plot(x, y, ls <span class="op">=</span> <span class="st">&#39;--&#39;</span>, marker <span class="op">=</span> <span class="st">&#39;+&#39;</span>, color <span class="op">=</span> <span class="st">&#39;lightblue&#39;</span>)  <span class="co"># ls为线型，marker为标记类型</span></span>
 <span id="cb45-11"><a href="boosting.html#cb45-11"></a>plt.show()</span></code></pre></div>
-<p><img src="plots/4/%E6%8A%98%E7%BA%BF%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/line_plot.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>散点图</li>
 </ol>
@@ -1085,7 +1085,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb46-6"><a href="boosting.html#cb46-6"></a></span>
 <span id="cb46-7"><a href="boosting.html#cb46-7"></a>plt.scatter(x, y, s<span class="op">=</span>x<span class="op">*</span><span class="dv">1000</span>, color<span class="op">=</span><span class="st">&#39;pink&#39;</span>, marker<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">1</span>), alpha<span class="op">=</span><span class="fl">0.5</span>, lw<span class="op">=</span><span class="dv">2</span>)  <span class="co"># s为图像大小，lw为图像边框宽度</span></span>
 <span id="cb46-8"><a href="boosting.html#cb46-8"></a>plt.show()</span></code></pre></div>
-<p><img src="plots/4/%E6%95%A3%E7%82%B9%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/scatter.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>箱线图</li>
 </ol>
@@ -1095,7 +1095,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb47-4"><a href="boosting.html#cb47-4"></a></span>
 <span id="cb47-5"><a href="boosting.html#cb47-5"></a>plt.boxplot(x, vert<span class="op">=</span><span class="va">True</span>)  <span class="co"># vert控制方向</span></span>
 <span id="cb47-6"><a href="boosting.html#cb47-6"></a>plt.show()</span></code></pre></div>
-<p><img src="plots/4/%E7%AE%B1%E7%BA%BF%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/boxplot.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>条形图</li>
 </ol>
@@ -1113,7 +1113,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb48-12"><a href="boosting.html#cb48-12"></a>plt.xticks(x_index <span class="op">+</span> bar_width<span class="op">/</span><span class="dv">2</span>, x_data)  <span class="co"># x轴刻度线</span></span>
 <span id="cb48-13"><a href="boosting.html#cb48-13"></a>plt.legend()  <span class="co"># 显示图例</span></span>
 <span id="cb48-14"><a href="boosting.html#cb48-14"></a>plt.show()</span></code></pre></div>
-<p><img src="plots/4/%E6%9D%A1%E5%BD%A2%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/barplot.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>直方图</li>
 </ol>
@@ -1124,7 +1124,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb49-5"><a href="boosting.html#cb49-5"></a></span>
 <span id="cb49-6"><a href="boosting.html#cb49-6"></a>plt.hist(x, bins<span class="op">=</span><span class="dv">40</span>, density<span class="op">=</span><span class="va">True</span>, histtype<span class="op">=</span><span class="st">&#39;bar&#39;</span>, color<span class="op">=</span><span class="st">&#39;lightblue&#39;</span>)</span>
 <span id="cb49-7"><a href="boosting.html#cb49-7"></a>plt.show()</span></code></pre></div>
-<p><img src="plots/4/%E7%9B%B4%E6%96%B9%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/hist.png" width="50%"  style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>饼图</li>
 </ol>
@@ -1139,7 +1139,7 @@ we have <span class="math inline">\(y=x^+=x-\frac{\nabla f(x)}{\nabla ^2f(x)}\)<
 <span id="cb50-9"><a href="boosting.html#cb50-9"></a>plt.axis(<span class="st">&#39;equal&#39;</span>)</span>
 <span id="cb50-10"><a href="boosting.html#cb50-10"></a>plt.legend(labels<span class="op">=</span>labels, loc<span class="op">=</span><span class="st">&#39;right&#39;</span>)</span>
 <span id="cb50-11"><a href="boosting.html#cb50-11"></a>plt.show()</span></code></pre></div>
-<p><img src="plots/4/%E9%A5%BC%E5%9B%BE.png" width="50%"  style="display: block; margin: auto;" /></p>
+<p><img src="plots/4/pie_chart.png" width="50%"  style="display: block; margin: auto;" /></p>
 </div>
 <div id="常用教程网址" class="section level3">
 <h3><span class="header-section-number">3.10.6</span> 常用教程网址</h3>
