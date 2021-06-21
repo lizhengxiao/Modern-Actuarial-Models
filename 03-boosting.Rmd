@@ -235,7 +235,7 @@ knitr::include_graphics("./plots/4/summary.png")
 
 ```{r,echo=F,out.width="60%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/数据描述.png")
+knitr::include_graphics("./plots/4/data_des.png")
 ```
 
 ### 数据预处理
@@ -246,7 +246,7 @@ knitr::include_graphics("./plots/4/数据描述.png")
 
 ```{r,echo=F,out.width="60%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/缺失值.png")
+knitr::include_graphics("./plots/4/missing.png")
 ```
 
 2. 单变量分析
@@ -306,7 +306,7 @@ corr_heatmap(v)
 
 ```{r,echo=F,out.width="60%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/相关系数矩阵热图.png")
+knitr::include_graphics("./plots/4/cor_matrix.png")
 ```
 
 - 散点图矩阵
@@ -320,7 +320,7 @@ pd.plotting.scatter_matrix(data[high], alpha = 0.2, figsize = (40, 40), diagonal
 
 ```{r,echo=F,out.width="80%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/散点图矩阵.png")
+knitr::include_graphics("./plots/4/scatter_matrix.png")
 ```
 
 在解释变量和目标变量之间，我们可以作散点图、箱线图、条形图等。
@@ -875,7 +875,7 @@ plt.show()
 
 ```{r,echo=F,out.width="50%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/折线图.png")
+knitr::include_graphics("./plots/4/line_plot.png")
 ```
 
 2. 散点图
@@ -893,7 +893,7 @@ plt.show()
 
 ```{r,echo=F,out.width="50%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/散点图.png")
+knitr::include_graphics("./plots/4/scatter.png")
 ```
 
 3. 箱线图
@@ -909,7 +909,7 @@ plt.show()
 
 ```{r,echo=F,out.width="50%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/箱线图.png")
+knitr::include_graphics("./plots/4/boxplot.png")
 ```
 
 4. 条形图
@@ -933,7 +933,7 @@ plt.show()
 
 ```{r,echo=F,out.width="50%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/条形图.png")
+knitr::include_graphics("./plots/4/barplot.png")
 ```
 
 5. 直方图
@@ -950,7 +950,7 @@ plt.show()
 
 ```{r,echo=F,out.width="50%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/直方图.png")
+knitr::include_graphics("./plots/4/hist.png")
 ```
 
 6. 饼图
@@ -971,7 +971,7 @@ plt.show()
 
 ```{r,echo=F,out.width="50%",fig.align = 'center'}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
-knitr::include_graphics("./plots/4/饼图.png")
+knitr::include_graphics("./plots/4/pie_chart.png")
 ```
 
 ### 常用教程网址
